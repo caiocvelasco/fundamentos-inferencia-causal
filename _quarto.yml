@@ -1,0 +1,50 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Fundamentos para Inferência Causal"
+  subtitle: "Notas de Aula"
+
+  search: true
+
+  sidebar:
+    style: docked
+    collapse-level: 1
+
+  chapters:
+    - index.qmd
+    - conteudo.qmd
+
+    # - part: "Módulo 0 — Pré-curso de Matemática"
+    #   chapters:
+    #     - precurso/index.qmd
+
+    - part: "Módulo 1 — Probabilidade"
+      chapters:
+        - chapters/01_modelos_probabilisticos.qmd
+
+format:
+  html:
+    theme: flatly
+
+    toc: true
+    toc-location: right
+    toc-depth: 3
+
+    code-link: true
+    code-copy: true
+
+    fontsize: 1.1em
+    linestretch: 1.6
+
+    grid:
+      sidebar-width: 280px
+      body-width: 950px
+      margin-width: 280px
+      gutter-width: 1.5rem
+
+
+number-sections: false
+
+lang: pt-BR

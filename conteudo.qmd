@@ -1,0 +1,27 @@
+---
+title: "Conteúdo"
+---
+
+### Módulo 1 — Probabilidade
+
+- Modelos Probabilísticos
+- Probabilidade Condicional e Independência
+- Variáveis Aleatórias
+- Distribuições de Probabilidade
+- Esperança e Variância
+- Múltiplas Variáveis Aleatórias
+- Covariância e Correlação
+- Lei dos Grandes Números
+- Teorema Central do Limite
+
+### Módulo 2 — Inferência Estatística
+
+*Em breve.*
+
+### Módulo 3 — Regressão
+
+*Em breve.*
+
+### Módulo 4 — Inferência Causal
+
+*Em breve.*

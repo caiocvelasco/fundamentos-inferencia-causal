@@ -1,0 +1,17 @@
+---
+title: "Fundamentos para Inferência Causal"
+---
+
+Estas são as notas de aula do curso **Fundamentos para Inferência Causal**.
+
+O objetivo do curso é construir, passo a passo, os fundamentos necessários para compreender Inferência Causal de forma rigorosa, conectando teoria e aplicações reais.
+
+O percurso principal será:
+
+- Pré-Curso (Revisão de Matemática Básica)
+- Probabilidade
+- Inferência Estatística
+- Regressão
+- Inferência Causal
+
+As aulas são realizadas **ao vivo**. Estas notas funcionam como material de apoio, estudo e consulta.

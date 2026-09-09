@@ -1,0 +1,15 @@
+---
+title: "Modelos Probabilísticos"
+---
+
+# Modelos Probabilísticos
+
+Este capítulo introduz os objetos fundamentais usados para construir um modelo probabilístico.
+
+## O que veremos
+
+- Experimentos
+- Espaço amostral
+- Eventos
+- Leis de probabilidade
+- Modelos probabilísticos
