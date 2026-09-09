@@ -11,6 +11,7 @@
 # Integrating Jupyter Notebooks
 # ipytest # Pytest in Jupyter notebooks
 # ipykernel
+# PyYAML
 # jupyter
 
 # Integrating Software Engienering Best Practices Tools

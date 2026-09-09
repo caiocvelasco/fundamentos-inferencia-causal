@@ -22,7 +22,7 @@ book:
 
     - part: "Módulo 1 — Probabilidade"
       chapters:
-        - chapters/01_modelos_probabilisticos.qmd
+        - chapters/01_da_incerteza_a_probabilidade.qmd
 
 format:
   html:
