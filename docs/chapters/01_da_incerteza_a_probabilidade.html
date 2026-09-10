@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.28">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Da Incerteza à Probabilidade – Fundamentos para Inferência Causal</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../conteudo.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-b719d3d4935f2b08311a76135e2bf442.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-c756783dfb0358d45b59639da55b8c80.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Procurar"
+  }
+}</script>
+<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/01_da_incerteza_a_probabilidade.html">Módulo 1 — Probabilidade</a></li><li class="breadcrumb-item"><a href="../chapters/01_da_incerteza_a_probabilidade.html"><span class="chapter-title">Da Incerteza à Probabilidade</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Fundamentos para Inferência Causal</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Procurar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Fundamentos para Inferência Causal</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../conteudo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Conteúdo</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Módulo 1 — Probabilidade</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/01_da_incerteza_a_probabilidade.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Da Incerteza à Probabilidade</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Índice</h2>
+   
+  <ul>
+  <li><a href="#o-caminho-desta-seção" id="toc-o-caminho-desta-seção" class="nav-link active" data-scroll-target="#o-caminho-desta-seção">O caminho desta seção</a></li>
+  <li><a href="#fenômenos-determinísticos-e-estocásticos" id="toc-fenômenos-determinísticos-e-estocásticos" class="nav-link" data-scroll-target="#fenômenos-determinísticos-e-estocásticos">Fenômenos determinísticos e estocásticos</a>
+  <ul class="collapse">
+  <li><a href="#fenômenos-determinísticos" id="toc-fenômenos-determinísticos" class="nav-link" data-scroll-target="#fenômenos-determinísticos">Fenômenos determinísticos</a></li>
+  <li><a href="#fenômenos-estocásticos" id="toc-fenômenos-estocásticos" class="nav-link" data-scroll-target="#fenômenos-estocásticos">Fenômenos estocásticos</a></li>
+  </ul></li>
+  <li><a href="#incerteza" id="toc-incerteza" class="nav-link" data-scroll-target="#incerteza">Incerteza</a></li>
+  <li><a href="#acaso-e-regularidade" id="toc-acaso-e-regularidade" class="nav-link" data-scroll-target="#acaso-e-regularidade">Acaso e Regularidade</a>
+  <ul class="collapse">
+  <li><a href="#existe-uma-estrutura-por-trás-da-incerteza" id="toc-existe-uma-estrutura-por-trás-da-incerteza" class="nav-link" data-scroll-target="#existe-uma-estrutura-por-trás-da-incerteza">Existe uma estrutura por trás da incerteza</a></li>
+  <li><a href="#exemplo-resolvido" id="toc-exemplo-resolvido" class="nav-link" data-scroll-target="#exemplo-resolvido">Exemplo resolvido</a></li>
+  </ul></li>
+  <li><a href="#a-ideia-de-repetição" id="toc-a-ideia-de-repetição" class="nav-link" data-scroll-target="#a-ideia-de-repetição">A Ideia de Repetição</a></li>
+  <li><a href="#uma-lei-estável-de-frequências-relativas" id="toc-uma-lei-estável-de-frequências-relativas" class="nav-link" data-scroll-target="#uma-lei-estável-de-frequências-relativas">Uma Lei Estável de Frequências Relativas</a>
+  <ul class="collapse">
+  <li><a href="#um-resultado-que-explicaremos-mais-tarde" id="toc-um-resultado-que-explicaremos-mais-tarde" class="nav-link" data-scroll-target="#um-resultado-que-explicaremos-mais-tarde">Um resultado que explicaremos mais tarde</a></li>
+  </ul></li>
+  <li><a href="#do-fenômeno-aos-dados" id="toc-do-fenômeno-aos-dados" class="nav-link" data-scroll-target="#do-fenômeno-aos-dados">Do fenômeno aos dados</a></li>
+  <li><a href="#que-regularidades-podemos-procurar" id="toc-que-regularidades-podemos-procurar" class="nav-link" data-scroll-target="#que-regularidades-podemos-procurar">Que regularidades podemos procurar?</a>
+  <ul class="collapse">
+  <li><a href="#distribuição" id="toc-distribuição" class="nav-link" data-scroll-target="#distribuição">Distribuição</a></li>
+  <li><a href="#dependência" id="toc-dependência" class="nav-link" data-scroll-target="#dependência">Dependência</a></li>
+  <li><a href="#heterogeneidade" id="toc-heterogeneidade" class="nav-link" data-scroll-target="#heterogeneidade">Heterogeneidade</a></li>
+  </ul></li>
+  <li><a href="#por-que-teoria-das-probabilidades" id="toc-por-que-teoria-das-probabilidades" class="nav-link" data-scroll-target="#por-que-teoria-das-probabilidades">Por que Teoria das Probabilidades?</a>
+  <ul class="collapse">
+  <li><a href="#o-que-significa-pensar-sistematicamente" id="toc-o-que-significa-pensar-sistematicamente" class="nav-link" data-scroll-target="#o-que-significa-pensar-sistematicamente">O que significa pensar sistematicamente?</a></li>
+  </ul></li>
+  <li><a href="#antes-de-finalizarmos-feynman-e-o-framework" id="toc-antes-de-finalizarmos-feynman-e-o-framework" class="nav-link" data-scroll-target="#antes-de-finalizarmos-feynman-e-o-framework">Antes de finalizarmos: Feynman e o <em>framework</em></a></li>
+  <li><a href="#o-que-vem-a-seguir" id="toc-o-que-vem-a-seguir" class="nav-link" data-scroll-target="#o-que-vem-a-seguir">O que vem a seguir</a></li>
+  <li><a href="#antes-de-continuar" id="toc-antes-de-continuar" class="nav-link" data-scroll-target="#antes-de-continuar">Antes de continuar</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/01_da_incerteza_a_probabilidade.html">Módulo 1 — Probabilidade</a></li><li class="breadcrumb-item"><a href="../chapters/01_da_incerteza_a_probabilidade.html"><span class="chapter-title">Da Incerteza à Probabilidade</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">Da Incerteza à Probabilidade</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<!--
+FONTES PRINCIPAIS PARA ESTA SEÇÃO
+
+Spanos:
+- Chapter 1 — An Introduction to Empirical Modeling
+- 1.1 Introduction
+- 1.2 Stochastic Phenomena, a Preliminary View
+- 1.3 Chance Regularity and Statistical Models
+
+Bertsekas & Tsitsiklis:
+- Chapter 1 — Sample Space and Probability
+- abertura do capítulo
+- início de 1.2 Probabilistic Models
+-->
+<section id="o-caminho-desta-seção" class="level2">
+<h2 class="anchored" data-anchor-id="o-caminho-desta-seção">O caminho desta seção</h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+
+    A["Fenômenos&lt;br&gt;determinísticos"]
+    B["Fenômenos&lt;br&gt;estocásticos"]
+    C["Incerteza"]
+    D["Acaso e&lt;br&gt;regularidade"]
+    E["Padrões nos&lt;br&gt;dados"]
+    F["Teoria das&lt;br&gt;Probabilidades"]
+    G["Modelos&lt;br&gt;probabilísticos"]
+    H["Modelos&lt;br&gt;estatísticos"]
+    I["Inferência&lt;br&gt;Estatística"]
+
+    A --&gt; B --&gt; C --&gt; D --&gt; E --&gt; F --&gt; G --&gt; H --&gt; I
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Antes de aprender a calcular probabilidades, queremos responder uma pergunta anterior:</p>
+<blockquote class="blockquote">
+<p><strong>Por que precisamos de uma Teoria das Probabilidades?</strong></p>
+</blockquote>
+<p>Para isso, precisamos primeiro entender que tipo de fenômeno estamos tentando estudar.</p>
+</section>
+<section id="fenômenos-determinísticos-e-estocásticos" class="level2">
+<h2 class="anchored" data-anchor-id="fenômenos-determinísticos-e-estocásticos">Fenômenos determinísticos e estocásticos</h2>
+<p>Antes de falar em probabilidade, precisamos distinguir dois tipos de fenômenos.</p>
+<section id="fenômenos-determinísticos" class="level3">
+<h3 class="anchored" data-anchor-id="fenômenos-determinísticos">Fenômenos determinísticos</h3>
+<p>Considere a função:</p>
+<p><span class="math display">\[
+y = f(x) = 2x + 1.
+\]</span></p>
+<p>Se conhecemos o valor de <span class="math inline">\(x\)</span>, o valor de <span class="math inline">\(y\)</span> está completamente determinado.</p>
+<p>Por exemplo, se</p>
+<p><span class="math display">\[
+x = 3,
+\]</span></p>
+<p>então necessariamente</p>
+<p><span class="math display">\[
+y = f(3) = 7.
+\]</span></p>
+<p>Não existe incerteza sobre o resultado dentro desse modelo.</p>
+<p>A mesma ideia aparece em situações simples do mundo real. Se a receita de uma venda é definida por</p>
+<p><span class="math display">\[
+\text{Receita} = \text{Preço} \times \text{Quantidade},
+\]</span></p>
+<p>então, sabendo que</p>
+<p><span class="math display">\[
+\text{Preço} = 50
+\]</span></p>
+<p>e</p>
+<p><span class="math display">\[
+\text{Quantidade} = 100,
+\]</span></p>
+<p>temos necessariamente</p>
+<p><span class="math display">\[
+\text{Receita} = 5.000.
+\]</span></p>
+<p>Fixadas as informações relevantes e o mecanismo que relaciona essas informações ao resultado, o resultado está determinado.</p>
+<p>Chamamos um mecanismo desse tipo de <strong>determinístico</strong>.</p>
+<p>Podemos representar essa ideia de forma simples:</p>
+<p><span class="math display">\[
+x
+\longrightarrow
+f
+\longrightarrow
+y.
+\]</span></p>
+<p>Conhecido <span class="math inline">\(x\)</span> e conhecido o mecanismo <span class="math inline">\(f\)</span>, conhecemos <span class="math inline">\(y\)</span>.</p>
+</section>
+<section id="fenômenos-estocásticos" class="level3">
+<h3 class="anchored" data-anchor-id="fenômenos-estocásticos">Fenômenos estocásticos</h3>
+<p>Agora considere outro problema.</p>
+<p>Um usuário chega ao checkout de um e-commerce.</p>
+<p>Conhecemos várias de suas características:</p>
+<ul>
+<li>dispositivo utilizado;</li>
+<li>país;</li>
+<li>origem da sessão;</li>
+<li>horário;</li>
+<li>produtos no carrinho.</li>
+</ul>
+<p>Ainda assim, essas informações não necessariamente determinam se aquele usuário fará uma compra.</p>
+<p>Podemos observar:</p>
+<p><span class="math display">\[
+\text{compra}
+\]</span></p>
+<p>ou</p>
+<p><span class="math display">\[
+\text{não compra}.
+\]</span></p>
+<p>Existe, portanto, <strong>incerteza sobre o resultado particular que será observado</strong>.</p>
+<p>Esse é o tipo de situação que chamaremos de <strong>fenômeno estocástico</strong>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Ideia central">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Ideia central
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Em um mecanismo determinístico, dadas as condições relevantes, o resultado está determinado.</p>
+<p>Em um fenômeno estocástico, permanece incerteza sobre qual resultado particular será observado.</p>
+<p>Mas <strong>estocástico não significa ausência completa de estrutura</strong>.</p>
+<p>Essa será justamente a próxima ideia.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="incerteza" class="level2">
+<h2 class="anchored" data-anchor-id="incerteza">Incerteza</h2>
+<p>A palavra <em>incerteza</em> será fundamental ao longo deste curso.</p>
+<p>Por enquanto, podemos entendê-la de maneira simples:</p>
+<blockquote class="blockquote">
+<p>Existe incerteza quando não conseguimos determinar antecipadamente qual resultado particular será observado.</p>
+</blockquote>
+<p>Por exemplo, suponha que a taxa de conversão de um produto esteja próxima de 5%.</p>
+<p>Isso não significa que sabemos se <strong>um usuário específico</strong> fará uma compra.</p>
+<p>Para um determinado usuário, observaremos apenas um dos dois resultados:</p>
+<p><span class="math display">\[
+\text{compra}
+\qquad \text{ou} \qquad
+\text{não compra}.
+\]</span></p>
+<p>O resultado individual permanece incerto.</p>
+<p>Mas algo interessante acontece quando começamos a observar muitos usuários.</p>
+</section>
+<section id="acaso-e-regularidade" class="level2">
+<h2 class="anchored" data-anchor-id="acaso-e-regularidade">Acaso e Regularidade</h2>
+<p>Spanos utiliza a expressão <em>chance regularity</em>, que podemos traduzir como <strong>acaso e regularidade</strong>, para descrever uma característica fundamental dos fenômenos estocásticos.</p>
+<p>Ela combina duas ideias que, à primeira vista, podem parecer contraditórias:</p>
+<p><span class="math display">\[
+\underbrace{\text{Acaso}}_{\text{incerteza nos resultados individuais}}
++
+\underbrace{\text{Regularidade}}_{\text{regularidade quando observamos muitos resultados}}.
+\]</span></p>
+<p>Ou, de maneira mais intuitiva:</p>
+<blockquote class="blockquote">
+<p><strong>desordem no nível individual, regularidade no agregado.</strong></p>
+</blockquote>
+<p>Considere, por exemplo, lançamentos sucessivos de dois dados.</p>
+<p>Antes de cada lançamento, não sabemos exatamente qual será a soma observada.</p>
+<p>Ela pode ser:</p>
+<p><span class="math display">\[
+2,3,\ldots,12.
+\]</span></p>
+<p>Uma sequência de resultados pode parecer bastante irregular:</p>
+<p><span class="math display">\[
+7,\;4,\;10,\;6,\;7,\;9,\;3,\;8,\ldots
+\]</span></p>
+<p>O próximo resultado permanece incerto.</p>
+<p>Entretanto, existe uma estrutura por trás desses possíveis resultados.</p>
+<section id="existe-uma-estrutura-por-trás-da-incerteza" class="level3">
+<h3 class="anchored" data-anchor-id="existe-uma-estrutura-por-trás-da-incerteza">Existe uma estrutura por trás da incerteza</h3>
+<p>Considere todas as maneiras pelas quais a soma dos dois dados pode ser obtida.</p>
+<p>A soma <span class="math inline">\(2\)</span> pode ocorrer de apenas uma maneira:</p>
+<p><span class="math display">\[
+(1,1).
+\]</span></p>
+<p>A soma <span class="math inline">\(3\)</span> pode ocorrer de duas:</p>
+<p><span class="math display">\[
+(1,2),(2,1).
+\]</span></p>
+<p>Já a soma <span class="math inline">\(7\)</span> pode ocorrer de seis maneiras:</p>
+<p><span class="math display">\[
+(1,6),(2,5),(3,4),(4,3),(5,2),(6,1).
+\]</span></p>
+<p>Depois disso, o número de possibilidades começa a diminuir novamente.</p>
+<p>A estrutura completa é:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Soma</th>
+<th style="text-align: right;">Número de combinações</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
+<p>Podemos visualizar essa estrutura:</p>
+<div style="width: 100%; max-width: 900px; margin: 2rem auto; overflow-x: auto;">
+
+<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 900 390" width="100%" style="display: block;" role="img" aria-label="Número de combinações possíveis para cada soma de dois dados">
+
+  <line x1="70" y1="310" x2="850" y2="310" stroke="currentColor" stroke-width="2"></line>
+
+  <rect x="90" y="270" width="45" height="40" fill="currentColor" opacity="0.70"></rect>
+  <rect x="155" y="230" width="45" height="80" fill="currentColor" opacity="0.70"></rect>
+  <rect x="220" y="190" width="45" height="120" fill="currentColor" opacity="0.70"></rect>
+  <rect x="285" y="150" width="45" height="160" fill="currentColor" opacity="0.70"></rect>
+  <rect x="350" y="110" width="45" height="200" fill="currentColor" opacity="0.70"></rect>
+  <rect x="415" y="70" width="45" height="240" fill="currentColor" opacity="0.70"></rect>
+  <rect x="480" y="110" width="45" height="200" fill="currentColor" opacity="0.70"></rect>
+  <rect x="545" y="150" width="45" height="160" fill="currentColor" opacity="0.70"></rect>
+  <rect x="610" y="190" width="45" height="120" fill="currentColor" opacity="0.70"></rect>
+  <rect x="675" y="230" width="45" height="80" fill="currentColor" opacity="0.70"></rect>
+  <rect x="740" y="270" width="45" height="40" fill="currentColor" opacity="0.70"></rect>
+
+  <g fill="currentColor" font-size="16" text-anchor="middle">
+    <text x="112" y="260">1</text>
+    <text x="177" y="220">2</text>
+    <text x="242" y="180">3</text>
+    <text x="307" y="140">4</text>
+    <text x="372" y="100">5</text>
+    <text x="437" y="60">6</text>
+    <text x="502" y="100">5</text>
+    <text x="567" y="140">4</text>
+    <text x="632" y="180">3</text>
+    <text x="697" y="220">2</text>
+    <text x="762" y="260">1</text>
+  </g>
+
+  <g fill="currentColor" font-size="16" text-anchor="middle">
+    <text x="112" y="335">2</text>
+    <text x="177" y="335">3</text>
+    <text x="242" y="335">4</text>
+    <text x="307" y="335">5</text>
+    <text x="372" y="335">6</text>
+    <text x="437" y="335">7</text>
+    <text x="502" y="335">8</text>
+    <text x="567" y="335">9</text>
+    <text x="632" y="335">10</text>
+    <text x="697" y="335">11</text>
+    <text x="762" y="335">12</text>
+  </g>
+
+  <text x="437" y="375" text-anchor="middle" font-size="18" fill="currentColor">
+    Soma dos dois dados
+  </text>
+
+</svg>
+
+</div>
+<p>Observe o formato.</p>
+<p>A soma <span class="math inline">\(7\)</span> está associada ao maior número de combinações, enquanto <span class="math inline">\(2\)</span> e <span class="math inline">\(12\)</span> estão associadas a apenas uma combinação cada.</p>
+<p>Portanto, mesmo antes de desenvolvermos formalmente a Teoria das Probabilidades, já conseguimos perceber algo fundamental:</p>
+<blockquote class="blockquote">
+<p><strong>a incerteza pode possuir estrutura.</strong></p>
+</blockquote>
+<p>Não conseguimos determinar qual será o próximo resultado.</p>
+<p>Mas conseguimos identificar uma estrutura entre os possíveis resultados.</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="Ainda não estamos calculando probabilidades">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Ainda não estamos calculando probabilidades
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A tabela acima conta <strong>possibilidades</strong>.</p>
+<p>Contar possibilidades e calcular probabilidades não são, em geral, a mesma coisa.</p>
+<p>Mais adiante veremos que, sob uma determinada lei de probabilidade — por exemplo, quando certos resultados são considerados igualmente prováveis — essa estrutura de contagem poderá ser utilizada para calcular probabilidades.</p>
+<p>Essa distinção será muito importante.</p>
+</div>
+</div>
+</section>
+<section id="exemplo-resolvido" class="level3">
+<h3 class="anchored" data-anchor-id="exemplo-resolvido">Exemplo resolvido</h3>
+<p>Por que a soma <span class="math inline">\(7\)</span> possui mais possibilidades do que a soma <span class="math inline">\(2\)</span>?</p>
+<p>Para obter <span class="math inline">\(2\)</span>, existe apenas uma combinação:</p>
+<p><span class="math display">\[
+(1,1).
+\]</span></p>
+<p>Para obter <span class="math inline">\(7\)</span>, existem seis:</p>
+<p><span class="math display">\[
+(1,6),(2,5),(3,4),(4,3),(5,2),(6,1).
+\]</span></p>
+<p>Logo, a própria estrutura dos possíveis resultados já distingue <span class="math inline">\(7\)</span> de <span class="math inline">\(2\)</span>.</p>
+<p>Isso ainda não constitui, por si só, uma lei de probabilidade.</p>
+<p>Mas é uma primeira indicação de que o fenômeno possui uma <strong>estrutura probabilística que precisamos formalizar</strong>.</p>
+<p>É justamente isso que faremos nas próximas seções.</p>
+</section>
+</section>
+<section id="a-ideia-de-repetição" class="level2">
+<h2 class="anchored" data-anchor-id="a-ideia-de-repetição">A Ideia de Repetição</h2>
+<p>Existe uma ideia que aparecerá repetidamente ao longo de todo o curso:</p>
+<blockquote class="blockquote">
+<p><strong>imaginar que o mesmo experimento possa ser realizado muitas vezes sob as mesmas condições.</strong></p>
+</blockquote>
+<p>Para sermos precisos, vamos fixar a terminologia desde já.</p>
+<p>Neste exemplo, chamaremos de <strong>experimento</strong> o procedimento:</p>
+<p><span class="math display">\[
+\text{lançar dois dados uma vez e registrar sua soma}.
+\]</span></p>
+<p>Cada realização desse mesmo experimento será chamada de <strong>ensaio</strong> (<em>trial</em>).</p>
+<p>Portanto, não estamos imaginando vários experimentos diferentes. Estamos imaginando <strong>vários ensaios do mesmo experimento</strong>.</p>
+<p>Em um único ensaio, observamos apenas um resultado:</p>
+<p><span class="math display">\[
+\text{por exemplo, } 7.
+\]</span></p>
+<p>Esse único resultado nos diz muito pouco sobre a estrutura do fenômeno.</p>
+<p>Agora imagine realizar o mesmo experimento muitas vezes. Se fizermos <span class="math inline">\(n\)</span> ensaios, podemos representá-los como:</p>
+<p><span class="math display">\[
+\text{Ensaio}_1,
+\text{Ensaio}_2,
+\text{Ensaio}_3,
+\ldots,
+\text{Ensaio}_n.
+\]</span></p>
+<p>Cada ensaio produz um resultado particular:</p>
+<p><span class="math display">\[
+7,\;4,\;10,\;6,\;7,\;9,\;3,\;8,\ldots
+\]</span></p>
+<p>O resultado de cada ensaio continua sendo incerto.</p>
+<p>Mas agora temos algo que não existia quando olhávamos apenas para uma realização:</p>
+<blockquote class="blockquote">
+<p>podemos observar <strong>como os diferentes resultados se comportam ao longo de muitos ensaios do mesmo experimento</strong>.</p>
+</blockquote>
+<p>Essa mudança de perspectiva será fundamental:</p>
+<p><span class="math display">\[
+\text{um ensaio}
+\longrightarrow
+\text{incerteza sobre um resultado particular}
+\]</span></p>
+<p>enquanto</p>
+<p><span class="math display">\[
+\text{muitos ensaios do mesmo experimento}
+\longrightarrow
+\text{possibilidade de observar regularidades}.
+\]</span></p>
+<div class="callout callout-style-default callout-important callout-titled" title="Uma ideia que voltará muitas vezes">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Uma ideia que voltará muitas vezes
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A noção de <strong>realizar teoricamente muitos ensaios do mesmo experimento sob as mesmas condições</strong> será utilizada diversas vezes ao longo do curso.</p>
+<p>Mais adiante, ela nos ajudará a entender conceitos como:</p>
+<ul>
+<li>probabilidade como frequência de longo prazo;</li>
+<li>valor esperado;</li>
+<li>Lei dos Grandes Números;</li>
+<li>amostragem;</li>
+<li>distribuição amostral;</li>
+<li>Inferência Estatística.</li>
+</ul>
+<p>Por enquanto, precisamos apenas guardar duas ideias:</p>
+<blockquote class="blockquote">
+<p><strong>o experimento é o mesmo; o que se repete são seus ensaios.</strong></p>
+</blockquote>
+<p>e</p>
+<blockquote class="blockquote">
+<p><strong>o resultado de cada ensaio pode permanecer incerto mesmo quando muitos ensaios revelam um padrão extremamente regular.</strong></p>
+</blockquote>
+</div>
+</div>
+<p>Neste momento estamos usando informalmente a expressão <strong>“sob as mesmas condições”</strong>.</p>
+<p>Mais adiante, veremos como essa ideia pode ser formalizada matematicamente através de conceitos como <strong>independência</strong> e <strong>distribuição idêntica</strong>.</p>
+</section>
+<section id="uma-lei-estável-de-frequências-relativas" class="level2">
+<h2 class="anchored" data-anchor-id="uma-lei-estável-de-frequências-relativas">Uma Lei Estável de Frequências Relativas</h2>
+<p>Agora podemos entender melhor uma das primeiras regularidades observadas <strong>historicamente</strong> em fenômenos estocásticos.</p>
+<p>Suponha que realizamos <span class="math inline">\(n\)</span> ensaios do mesmo experimento.</p>
+<p>Escolha algum resultado ou evento de interesse, que chamaremos simplesmente de <span class="math inline">\(A\)</span>.</p>
+<p>Podemos perguntar:</p>
+<blockquote class="blockquote">
+<p>Em qual proporção dos <span class="math inline">\(n\)</span> ensaios o evento <span class="math inline">\(A\)</span> ocorreu?</p>
+</blockquote>
+<p>Essa proporção é chamada de <strong>frequência relativa</strong> de <span class="math inline">\(A\)</span>:</p>
+<p><span class="math display">\[
+\text{Frequência relativa de } A
+=
+\frac{\text{Número de ensaios em que } A \text{ ocorreu}}
+{\text{Número total de ensaios}}.
+\]</span></p>
+<p>Por exemplo, se realizarmos <span class="math inline">\(100\)</span> ensaios do experimento de lançar dois dados e a soma <span class="math inline">\(7\)</span> aparecer em <span class="math inline">\(18\)</span> deles, sua frequência relativa observada será</p>
+<p><span class="math display">\[
+\frac{18}{100}=0{,}18.
+\]</span></p>
+<p>Se realizarmos um novo conjunto de <span class="math inline">\(100\)</span> ensaios do mesmo experimento, não esperamos necessariamente obter exatamente a mesma frequência relativa.</p>
+<p>Podemos encontrar, por exemplo:</p>
+<p><span class="math display">\[
+0{,}15,\qquad
+0{,}19,\qquad
+0{,}17,\qquad
+\ldots
+\]</span></p>
+<p>As frequências relativas também apresentam variação.</p>
+<p>Entretanto, quando o número de ensaios aumenta, algo notável tende a acontecer:</p>
+<blockquote class="blockquote">
+<p><strong>as frequências relativas deixam de variar de maneira arbitrária e começam a se estabilizar em torno de determinados valores.</strong></p>
+</blockquote>
+<p>É essa regularidade que Spanos chama de uma <em>stable law of relative frequencies</em>, ou <strong>lei estável de frequências relativas</strong>.</p>
+<p>Temos, portanto, duas escalas diferentes:</p>
+<p><span class="math display">\[
+\underbrace{\text{resultado de um ensaio}}_{\text{incerto}}
+\]</span></p>
+<p>e</p>
+<p><span class="math display">\[
+\underbrace{\text{comportamento de muitos ensaios}}_{\text{regular}}.
+\]</span></p>
+<p>Essa é uma das manifestações mais importantes da ideia de <strong>acaso e regularidade</strong>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Probabilidade e frequência relativa não são a mesma coisa">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Probabilidade e frequência relativa não são a mesma coisa
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Neste momento, ainda não definimos formalmente o que é uma probabilidade.</p>
+<p>A frequência relativa é algo que <strong>observamos nos dados</strong> depois de realizar muitos ensaios do experimento.</p>
+<p>A probabilidade fará parte do <strong>modelo matemático</strong> que construiremos para representar o fenômeno.</p>
+<p>Mais adiante veremos por que essas duas ideias estão profundamente conectadas.</p>
+</div>
+</div>
+<section id="um-resultado-que-explicaremos-mais-tarde" class="level3">
+<h3 class="anchored" data-anchor-id="um-resultado-que-explicaremos-mais-tarde">Um resultado que explicaremos mais tarde</h3>
+<p>No final deste módulo, a <strong>Lei dos Grandes Números</strong> permitirá tornar essa história matematicamente precisa.</p>
+<p>Informalmente, veremos que, sob determinadas condições,</p>
+<p><span class="math display">\[
+\text{frequência relativa de } A
+\approx
+P(A)
+\]</span></p>
+<p>quando o número de ensaios é grande.</p>
+<p>Ou, conceitualmente:</p>
+<p><span class="math display">\[
+\text{modelo probabilístico}
+\longleftrightarrow
+\text{regularidade observada em muitos ensaios}.
+\]</span></p>
+<p>Não precisamos demonstrar nem formalizar isso agora.</p>
+<p>Por enquanto, queremos apenas reconhecer o fenômeno que motivará a teoria.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="O que vem a seguir">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+O que vem a seguir
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Começamos com:</p>
+<p><span class="math display">\[
+\text{incerteza sobre o resultado de um ensaio}.
+\]</span></p>
+<p>Ao imaginar muitos ensaios do mesmo experimento, descobrimos:</p>
+<p><span class="math display">\[
+\text{regularidade nas frequências relativas}.
+\]</span></p>
+<p>A pergunta agora é:</p>
+<blockquote class="blockquote">
+<p><strong>Como construir uma estrutura matemática capaz de representar simultaneamente essa incerteza e essa regularidade?</strong></p>
+</blockquote>
+<p>Essa estrutura será o <strong>modelo probabilístico</strong>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Uma ideia para guardar">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Uma ideia para guardar
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Se observamos resultados individuais incertos, mas regularidades persistentes quando olhamos muitos ensaios, é natural começar a imaginar que exista algum <strong>mecanismo subjacente capaz de gerar esses dados</strong>.</p>
+<p>Mais adiante, daremos um nome muito importante a essa ideia: <strong>Processo Gerador dos Dados</strong>, ou <em>Data Generating Process</em> (<strong>DGP</strong>).</p>
+<p>O DGP será uma das ideias centrais quando começarmos a conectar Probabilidade, Inferência Estatística e Inferência Causal.</p>
+<p>Mas calma: <strong>o DGP vai ter bastante tempo de tela neste curso. Ainda não precisamos dele.</strong></p>
+</div>
+</div>
+</section>
+</section>
+<section id="do-fenômeno-aos-dados" class="level2">
+<h2 class="anchored" data-anchor-id="do-fenômeno-aos-dados">Do fenômeno aos dados</h2>
+<p>Na prática, não observamos diretamente um mecanismo estocástico.</p>
+<p>Observamos seus resultados.</p>
+<p>Por exemplo, uma plataforma pode registrar:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">user_id</th>
+<th style="text-align: right;">compra</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">…</td>
+<td style="text-align: right;">…</td>
+</tr>
+</tbody>
+</table>
+<p>Esses dados são uma <strong>realização particular</strong> do fenômeno que estamos estudando.</p>
+<p>Isso cria uma distinção que será importante durante todo o curso:</p>
+<p><span class="math display">\[
+\text{mecanismo que gera os dados}
+\neq
+\text{dados que observamos}.
+\]</span></p>
+<p>Os dados são aquilo que vemos.</p>
+<p>Nosso objetivo científico é aprender algo sobre a estrutura subjacente capaz de produzir esses dados.</p>
+</section>
+<section id="que-regularidades-podemos-procurar" class="level2">
+<h2 class="anchored" data-anchor-id="que-regularidades-podemos-procurar">Que regularidades podemos procurar?</h2>
+<p>Spanos organiza parte importante dessa estrutura em três dimensões:</p>
+<p><span class="math display">\[
+\boxed{\text{Distribuição}}
+\qquad
+\boxed{\text{Dependência}}
+\qquad
+\boxed{\text{Heterogeneidade}}.
+\]</span></p>
+<section id="distribuição" class="level3">
+<h3 class="anchored" data-anchor-id="distribuição">Distribuição</h3>
+<p>Quais resultados podem ocorrer e com que regularidade?</p>
+<p>Por exemplo:</p>
+<blockquote class="blockquote">
+<p>Como se distribui o gasto mensal dos clientes?</p>
+</blockquote>
+</section>
+<section id="dependência" class="level3">
+<h3 class="anchored" data-anchor-id="dependência">Dependência</h3>
+<p>Observar uma informação nos ajuda a aprender algo sobre outra?</p>
+<p>Por exemplo:</p>
+<blockquote class="blockquote">
+<p>Conhecer o tipo de dispositivo utilizado pelo usuário muda o que esperamos sobre sua conversão?</p>
+</blockquote>
+</section>
+<section id="heterogeneidade" class="level3">
+<h3 class="anchored" data-anchor-id="heterogeneidade">Heterogeneidade</h3>
+<p>O comportamento probabilístico permanece o mesmo entre diferentes indivíduos, grupos ou momentos?</p>
+<p>Por exemplo:</p>
+<blockquote class="blockquote">
+<p>A taxa de conversão é a mesma para todos os mercados e períodos?</p>
+</blockquote>
+<p>Não desenvolveremos essas três ideias agora.</p>
+<p>Elas funcionam como um <strong>mapa</strong> para conceitos que aparecerão repetidamente ao longo do curso.</p>
+</section>
+</section>
+<section id="por-que-teoria-das-probabilidades" class="level2">
+<h2 class="anchored" data-anchor-id="por-que-teoria-das-probabilidades">Por que Teoria das Probabilidades?</h2>
+<p>Até aqui temos:</p>
+<ol type="1">
+<li>fenômenos cujos resultados individuais são incertos;</li>
+<li>estrutura e regularidade apesar dessa incerteza;</li>
+<li>dados que representam realizações desses fenômenos.</li>
+</ol>
+<p>Precisamos agora de uma linguagem matemática que nos permita representar essa incerteza e sua estrutura de maneira <strong>sistemática</strong>.</p>
+<p>Mas o que significa, exatamente, pensar de maneira sistemática?</p>
+<section id="o-que-significa-pensar-sistematicamente" class="level3">
+<h3 class="anchored" data-anchor-id="o-que-significa-pensar-sistematicamente">O que significa pensar sistematicamente?</h3>
+<p>Uma teoria matemática não é simplesmente uma coleção de fórmulas.</p>
+<p>Ela estabelece um <strong>framework</strong>: definimos objetos, estabelecemos algumas regras ou premissas e, a partir delas, utilizamos lógica para descobrir quais conclusões necessariamente seguem.</p>
+<p>A estrutura básica é:</p>
+<p><span class="math display">\[
+\text{premissas}
+\quad+\quad
+\text{regras}
+\quad\Longrightarrow\quad
+\text{consequências}.
+\]</span></p>
+<p>Ou, de maneira ainda mais abstrata:</p>
+<p><span class="math display">\[
+P \Longrightarrow Q.
+\]</span></p>
+<p>Isto significa:</p>
+<blockquote class="blockquote">
+<p><strong>se aceitamos <span class="math inline">\(P\)</span> dentro do framework, então <span class="math inline">\(Q\)</span> deve seguir logicamente.</strong></p>
+</blockquote>
+<p>Considere um exemplo extremamente simples.</p>
+<p>Definimos:</p>
+<p><span class="math display">\[
+\text{Receita}
+=
+\text{Preço}
+\times
+\text{Quantidade}.
+\]</span></p>
+<p>E assumimos que:</p>
+<p><span class="math display">\[
+\text{Preço}=50
+\qquad\text{e}\qquad
+\text{Quantidade}=100.
+\]</span></p>
+<p>Então, dadas essas premissas e essa regra, segue necessariamente que:</p>
+<p><span class="math display">\[
+\boxed{\text{Receita}=5.000}.
+\]</span></p>
+<p>Observe o ponto importante.</p>
+<p>A matemática não está afirmando que <strong>toda empresa no mundo vende 100 unidades a R$ 50</strong>.</p>
+<p>Ela está dizendo:</p>
+<blockquote class="blockquote">
+<p><strong>se essas são as premissas que adotamos, então essa conclusão segue delas.</strong></p>
+</blockquote>
+<p>Essa é uma característica fundamental do raciocínio sistemático: deixamos explícito <strong>de onde partimos</strong> e utilizamos regras bem definidas para determinar <strong>até onde podemos chegar</strong>.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Matemática e realidade">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Matemática e realidade
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Existe uma distinção que será importante durante todo o curso:</p>
+<p><span class="math display">\[
+\text{Matemática:}
+\qquad
+\text{se as premissas são estas, o que necessariamente segue?}
+\]</span></p>
+<p><span class="math display">\[
+\text{Modelagem científica:}
+\qquad
+\text{essas premissas representam adequadamente o fenômeno que queremos estudar?}
+\]</span></p>
+<p>São perguntas diferentes.</p>
+<p>A Teoria das Probabilidades começará pela primeira: construiremos um framework matemático coerente para raciocinar sobre incerteza.</p>
+<p>Mais adiante, quando conectarmos modelos aos dados, a segunda pergunta se tornará fundamental.</p>
+</div>
+</div>
+<p>É exatamente esse tipo de estrutura que construiremos para fenômenos estocásticos.</p>
+<p>Em vez de raciocinar informalmente sobre palavras como “chance”, “sorte” ou “incerteza”, vamos definir cuidadosamente objetos como:</p>
+<p><span class="math display">\[
+\text{experimento},
+\quad
+\text{resultado},
+\quad
+\text{espaço amostral},
+\quad
+\text{evento}
+\]</span></p>
+<p>e estabelecer regras que uma <strong>lei de probabilidade</strong> deve satisfazer.</p>
+<p>A partir daí, outras propriedades não precisarão ser simplesmente decoradas: poderão ser <strong>deduzidas dentro do framework</strong>.</p>
+<p>Essa linguagem será a <strong>Teoria das Probabilidades</strong>.</p>
+<p>Podemos pensar no caminho que começaremos a construir como:</p>
+<p><span class="math display">\[
+\text{fenômeno estocástico}
+\]</span></p>
+<p><span class="math display">\[
+\downarrow
+\]</span></p>
+<p><span class="math display">\[
+\text{incerteza + estrutura}
+\]</span></p>
+<p><span class="math display">\[
+\downarrow
+\]</span></p>
+<p><span class="math display">\[
+\text{framework matemático}
+\]</span></p>
+<p><span class="math display">\[
+\downarrow
+\]</span></p>
+<p><span class="math display">\[
+\boxed{\text{modelo probabilístico}}.
+\]</span></p>
+<p>Na próxima seção começaremos a construir esse framework.</p>
+</section>
+</section>
+<section id="antes-de-finalizarmos-feynman-e-o-framework" class="level2">
+<h2 class="anchored" data-anchor-id="antes-de-finalizarmos-feynman-e-o-framework">Antes de finalizarmos: Feynman e o <em>framework</em></h2>
+<p>Antes de continuar, assista a este breve vídeo de Richard Feynman, um físico super famoso que já veio ao Brasil, no Rio de Janeiro! Eu gosto muito dele.</p>
+<p>O vídeo é engraçado, pois o reporter chega a se assustar com a necessidade do Feynman de mostrar a importância de <em>aprender algo mais profundo para entender um assunto</em>!</p>
+<p><strong>Preste atenção</strong> especialmente à ideia de que uma explicação só pode ir até certo ponto sem que quem pergunta e quem responde compartilhem um <strong>framework de conhecimento e raciocínio</strong>.</p>
+<p>Ele fala isso no <strong>minuto 1:38</strong>, mas assita tudo e você vai perceber que ele só conseguiria dar a resposta final se o reporter primeiro aprendesse esse <strong>framework</strong>, ou seja, só se ele fizesse um <strong>PhD em Física</strong>!</p>
+<p>Imagina, então, quanta coisa você estava perdendo ao não estudar profundamente as coisas! <em>Te convenci?</em></p>
+<p>O objetivo deste curso não é nivelar a discussão por baixo. É ajudá-lo a <strong>entrar nesse framework</strong>, construindo a linguagem e as ideias necessárias para raciocinar, questionar e criar dentro dele.</p>
+<div style="max-width: 900px; margin: 1.5rem auto;">
+  <iframe width="100%" style="aspect-ratio: 16 / 9; border: 0;" src="https://www.youtube.com/embed/36GT2zI8lVA?start=1" title="Richard Feynman — Why?" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="">
+  </iframe>
+</div>
+</section>
+<section id="o-que-vem-a-seguir" class="level2">
+<h2 class="anchored" data-anchor-id="o-que-vem-a-seguir">O que vem a seguir</h2>
+<p>Nas próximas seções, introduziremos gradualmente:</p>
+<p><span class="math display">\[
+\text{Experimento}
+\]</span></p>
+<p><span class="math display">\[
+\downarrow
+\]</span></p>
+<p><span class="math display">\[
+\text{Resultado}
+\]</span></p>
+<p><span class="math display">\[
+\downarrow
+\]</span></p>
+<p><span class="math display">\[
+\text{Espaço amostral}
+\]</span></p>
+<p><span class="math display">\[
+\downarrow
+\]</span></p>
+<p><span class="math display">\[
+\text{Eventos}
+\]</span></p>
+<p><span class="math display">\[
+\downarrow
+\]</span></p>
+<p><span class="math display">\[
+\text{Lei de probabilidade}
+\]</span></p>
+<p><span class="math display">\[
+\downarrow
+\]</span></p>
+<p><span class="math display">\[
+\boxed{\text{Modelo probabilístico}}.
+\]</span></p>
+<p>Mais adiante, <strong>variáveis aleatórias</strong> permitirão transformar os resultados desses experimentos em quantidades numéricas como:</p>
+<ul>
+<li>conversão;</li>
+<li>receita;</li>
+<li>gasto;</li>
+<li>tempo;</li>
+<li>retenção.</li>
+</ul>
+<p>E, finalmente, a <strong>Inferência Estatística</strong> utilizará os dados observados para aprender sobre o mecanismo probabilístico que os gerou.</p>
+</section>
+<section id="antes-de-continuar" class="level2">
+<h2 class="anchored" data-anchor-id="antes-de-continuar">Antes de continuar</h2>
+<p>Tente responder, sem recorrer às definições acima:</p>
+<ol type="1">
+<li><p>Qual é a principal diferença entre um fenômeno determinístico e um fenômeno estocástico?</p></li>
+<li><p>Por que um fenômeno estocástico não significa simplesmente um fenômeno “caótico”?</p></li>
+<li><p>O que significa dizer que existe acaso no nível individual e regularidade no agregado?</p></li>
+<li><p>O exemplo dos dois dados mostra que existe estrutura mesmo antes de definirmos formalmente probabilidades. Que estrutura é essa?</p></li>
+<li><p>Por que contar possibilidades ainda não é necessariamente o mesmo que calcular probabilidades?</p></li>
+<li><p>No exemplo dos dois dados, qual é a diferença entre o <strong>experimento</strong>, um <strong>ensaio</strong> e o <strong>resultado</strong> de um ensaio?</p></li>
+<li><p>Por que imaginar muitos ensaios do mesmo experimento é importante para compreender a ideia de frequência relativa?</p></li>
+<li><p>Qual é a diferença entre o mecanismo que gera os dados e os dados que efetivamente observamos?</p></li>
+<li><p>Por que observar frequências relativas aproximadamente estáveis sugere que existe alguma estrutura por trás dos resultados individuais?</p></li>
+</ol>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiada");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiada");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../conteudo.html" class="pagination-link" aria-label="Conteúdo">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Conteúdo</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

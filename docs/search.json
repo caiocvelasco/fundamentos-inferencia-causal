@@ -1,0 +1,165 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Fundamentos para Inferência Causal",
+    "section": "",
+    "text": "Estas são as notas de aula do curso Fundamentos para Inferência Causal.\nO objetivo do curso é construir, passo a passo, os fundamentos necessários para compreender Inferência Causal de forma rigorosa, conectando teoria e aplicações reais.\nO percurso principal será:\n\nPré-Curso (Revisão de Matemática Básica)\nProbabilidade\nInferência Estatística\nRegressão\nInferência Causal\n\nAs aulas são realizadas ao vivo. Estas notas funcionam como material de apoio, estudo e consulta.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Fundamentos para Inferência Causal</span>"
+    ]
+  },
+  {
+    "objectID": "conteudo.html",
+    "href": "conteudo.html",
+    "title": "Conteúdo",
+    "section": "",
+    "text": "Módulo 1 — Probabilidade\n\nModelos Probabilísticos\nProbabilidade Condicional e Independência\nVariáveis Aleatórias\nDistribuições de Probabilidade\nEsperança e Variância\nMúltiplas Variáveis Aleatórias\nCovariância e Correlação\nLei dos Grandes Números\nTeorema Central do Limite\n\n\n\nMódulo 2 — Inferência Estatística\nEm breve.\n\n\nMódulo 3 — Regressão\nEm breve.\n\n\nMódulo 4 — Inferência Causal\nEm breve.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Conteúdo</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/01_da_incerteza_a_probabilidade.html",
+    "href": "chapters/01_da_incerteza_a_probabilidade.html",
+    "title": "Da Incerteza à Probabilidade",
+    "section": "",
+    "text": "O caminho desta seção\nflowchart LR\n\n    A[\"Fenômenos&lt;br&gt;determinísticos\"]\n    B[\"Fenômenos&lt;br&gt;estocásticos\"]\n    C[\"Incerteza\"]\n    D[\"Acaso e&lt;br&gt;regularidade\"]\n    E[\"Padrões nos&lt;br&gt;dados\"]\n    F[\"Teoria das&lt;br&gt;Probabilidades\"]\n    G[\"Modelos&lt;br&gt;probabilísticos\"]\n    H[\"Modelos&lt;br&gt;estatísticos\"]\n    I[\"Inferência&lt;br&gt;Estatística\"]\n\n    A --&gt; B --&gt; C --&gt; D --&gt; E --&gt; F --&gt; G --&gt; H --&gt; I\nAntes de aprender a calcular probabilidades, queremos responder uma pergunta anterior:\nPara isso, precisamos primeiro entender que tipo de fenômeno estamos tentando estudar.",
+    "crumbs": [
+      "Módulo 1 — Probabilidade",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Da Incerteza à Probabilidade</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/01_da_incerteza_a_probabilidade.html#o-caminho-desta-seção",
+    "href": "chapters/01_da_incerteza_a_probabilidade.html#o-caminho-desta-seção",
+    "title": "Da Incerteza à Probabilidade",
+    "section": "",
+    "text": "Por que precisamos de uma Teoria das Probabilidades?",
+    "crumbs": [
+      "Módulo 1 — Probabilidade",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Da Incerteza à Probabilidade</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/01_da_incerteza_a_probabilidade.html#fenômenos-determinísticos-e-estocásticos",
+    "href": "chapters/01_da_incerteza_a_probabilidade.html#fenômenos-determinísticos-e-estocásticos",
+    "title": "Da Incerteza à Probabilidade",
+    "section": "Fenômenos determinísticos e estocásticos",
+    "text": "Fenômenos determinísticos e estocásticos\nAntes de falar em probabilidade, precisamos distinguir dois tipos de fenômenos.\n\nFenômenos determinísticos\nConsidere a função:\n\\[\ny = f(x) = 2x + 1.\n\\]\nSe conhecemos o valor de \\(x\\), o valor de \\(y\\) está completamente determinado.\nPor exemplo, se\n\\[\nx = 3,\n\\]\nentão necessariamente\n\\[\ny = f(3) = 7.\n\\]\nNão existe incerteza sobre o resultado dentro desse modelo.\nA mesma ideia aparece em situações simples do mundo real. Se a receita de uma venda é definida por\n\\[\n\\text{Receita} = \\text{Preço} \\times \\text{Quantidade},\n\\]\nentão, sabendo que\n\\[\n\\text{Preço} = 50\n\\]\ne\n\\[\n\\text{Quantidade} = 100,\n\\]\ntemos necessariamente\n\\[\n\\text{Receita} = 5.000.\n\\]\nFixadas as informações relevantes e o mecanismo que relaciona essas informações ao resultado, o resultado está determinado.\nChamamos um mecanismo desse tipo de determinístico.\nPodemos representar essa ideia de forma simples:\n\\[\nx\n\\longrightarrow\nf\n\\longrightarrow\ny.\n\\]\nConhecido \\(x\\) e conhecido o mecanismo \\(f\\), conhecemos \\(y\\).\n\n\nFenômenos estocásticos\nAgora considere outro problema.\nUm usuário chega ao checkout de um e-commerce.\nConhecemos várias de suas características:\n\ndispositivo utilizado;\npaís;\norigem da sessão;\nhorário;\nprodutos no carrinho.\n\nAinda assim, essas informações não necessariamente determinam se aquele usuário fará uma compra.\nPodemos observar:\n\\[\n\\text{compra}\n\\]\nou\n\\[\n\\text{não compra}.\n\\]\nExiste, portanto, incerteza sobre o resultado particular que será observado.\nEsse é o tipo de situação que chamaremos de fenômeno estocástico.\n\n\n\n\n\n\nIdeia central\n\n\n\nEm um mecanismo determinístico, dadas as condições relevantes, o resultado está determinado.\nEm um fenômeno estocástico, permanece incerteza sobre qual resultado particular será observado.\nMas estocástico não significa ausência completa de estrutura.\nEssa será justamente a próxima ideia.",
+    "crumbs": [
+      "Módulo 1 — Probabilidade",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Da Incerteza à Probabilidade</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/01_da_incerteza_a_probabilidade.html#incerteza",
+    "href": "chapters/01_da_incerteza_a_probabilidade.html#incerteza",
+    "title": "Da Incerteza à Probabilidade",
+    "section": "Incerteza",
+    "text": "Incerteza\nA palavra incerteza será fundamental ao longo deste curso.\nPor enquanto, podemos entendê-la de maneira simples:\n\nExiste incerteza quando não conseguimos determinar antecipadamente qual resultado particular será observado.\n\nPor exemplo, suponha que a taxa de conversão de um produto esteja próxima de 5%.\nIsso não significa que sabemos se um usuário específico fará uma compra.\nPara um determinado usuário, observaremos apenas um dos dois resultados:\n\\[\n\\text{compra}\n\\qquad \\text{ou} \\qquad\n\\text{não compra}.\n\\]\nO resultado individual permanece incerto.\nMas algo interessante acontece quando começamos a observar muitos usuários.",
+    "crumbs": [
+      "Módulo 1 — Probabilidade",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Da Incerteza à Probabilidade</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/01_da_incerteza_a_probabilidade.html#acaso-e-regularidade",
+    "href": "chapters/01_da_incerteza_a_probabilidade.html#acaso-e-regularidade",
+    "title": "Da Incerteza à Probabilidade",
+    "section": "Acaso e Regularidade",
+    "text": "Acaso e Regularidade\nSpanos utiliza a expressão chance regularity, que podemos traduzir como acaso e regularidade, para descrever uma característica fundamental dos fenômenos estocásticos.\nEla combina duas ideias que, à primeira vista, podem parecer contraditórias:\n\\[\n\\underbrace{\\text{Acaso}}_{\\text{incerteza nos resultados individuais}}\n+\n\\underbrace{\\text{Regularidade}}_{\\text{regularidade quando observamos muitos resultados}}.\n\\]\nOu, de maneira mais intuitiva:\n\ndesordem no nível individual, regularidade no agregado.\n\nConsidere, por exemplo, lançamentos sucessivos de dois dados.\nAntes de cada lançamento, não sabemos exatamente qual será a soma observada.\nEla pode ser:\n\\[\n2,3,\\ldots,12.\n\\]\nUma sequência de resultados pode parecer bastante irregular:\n\\[\n7,\\;4,\\;10,\\;6,\\;7,\\;9,\\;3,\\;8,\\ldots\n\\]\nO próximo resultado permanece incerto.\nEntretanto, existe uma estrutura por trás desses possíveis resultados.\n\nExiste uma estrutura por trás da incerteza\nConsidere todas as maneiras pelas quais a soma dos dois dados pode ser obtida.\nA soma \\(2\\) pode ocorrer de apenas uma maneira:\n\\[\n(1,1).\n\\]\nA soma \\(3\\) pode ocorrer de duas:\n\\[\n(1,2),(2,1).\n\\]\nJá a soma \\(7\\) pode ocorrer de seis maneiras:\n\\[\n(1,6),(2,5),(3,4),(4,3),(5,2),(6,1).\n\\]\nDepois disso, o número de possibilidades começa a diminuir novamente.\nA estrutura completa é:\n\n\n\nSoma\nNúmero de combinações\n\n\n\n\n2\n1\n\n\n3\n2\n\n\n4\n3\n\n\n5\n4\n\n\n6\n5\n\n\n7\n6\n\n\n8\n5\n\n\n9\n4\n\n\n10\n3\n\n\n11\n2\n\n\n12\n1\n\n\n\nPodemos visualizar essa estrutura:\n\n\n\n\n  \n\n  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n\n  \n    1\n    2\n    3\n    4\n    5\n    6\n    5\n    4\n    3\n    2\n    1\n  \n\n  \n    2\n    3\n    4\n    5\n    6\n    7\n    8\n    9\n    10\n    11\n    12\n  \n\n  \n    Soma dos dois dados\n  \n\n\n\n\nObserve o formato.\nA soma \\(7\\) está associada ao maior número de combinações, enquanto \\(2\\) e \\(12\\) estão associadas a apenas uma combinação cada.\nPortanto, mesmo antes de desenvolvermos formalmente a Teoria das Probabilidades, já conseguimos perceber algo fundamental:\n\na incerteza pode possuir estrutura.\n\nNão conseguimos determinar qual será o próximo resultado.\nMas conseguimos identificar uma estrutura entre os possíveis resultados.\n\n\n\n\n\n\nAinda não estamos calculando probabilidades\n\n\n\nA tabela acima conta possibilidades.\nContar possibilidades e calcular probabilidades não são, em geral, a mesma coisa.\nMais adiante veremos que, sob uma determinada lei de probabilidade — por exemplo, quando certos resultados são considerados igualmente prováveis — essa estrutura de contagem poderá ser utilizada para calcular probabilidades.\nEssa distinção será muito importante.\n\n\n\n\nExemplo resolvido\nPor que a soma \\(7\\) possui mais possibilidades do que a soma \\(2\\)?\nPara obter \\(2\\), existe apenas uma combinação:\n\\[\n(1,1).\n\\]\nPara obter \\(7\\), existem seis:\n\\[\n(1,6),(2,5),(3,4),(4,3),(5,2),(6,1).\n\\]\nLogo, a própria estrutura dos possíveis resultados já distingue \\(7\\) de \\(2\\).\nIsso ainda não constitui, por si só, uma lei de probabilidade.\nMas é uma primeira indicação de que o fenômeno possui uma estrutura probabilística que precisamos formalizar.\nÉ justamente isso que faremos nas próximas seções.",
+    "crumbs": [
+      "Módulo 1 — Probabilidade",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Da Incerteza à Probabilidade</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/01_da_incerteza_a_probabilidade.html#a-ideia-de-repetição",
+    "href": "chapters/01_da_incerteza_a_probabilidade.html#a-ideia-de-repetição",
+    "title": "Da Incerteza à Probabilidade",
+    "section": "A Ideia de Repetição",
+    "text": "A Ideia de Repetição\nExiste uma ideia que aparecerá repetidamente ao longo de todo o curso:\n\nimaginar que o mesmo experimento possa ser realizado muitas vezes sob as mesmas condições.\n\nPara sermos precisos, vamos fixar a terminologia desde já.\nNeste exemplo, chamaremos de experimento o procedimento:\n\\[\n\\text{lançar dois dados uma vez e registrar sua soma}.\n\\]\nCada realização desse mesmo experimento será chamada de ensaio (trial).\nPortanto, não estamos imaginando vários experimentos diferentes. Estamos imaginando vários ensaios do mesmo experimento.\nEm um único ensaio, observamos apenas um resultado:\n\\[\n\\text{por exemplo, } 7.\n\\]\nEsse único resultado nos diz muito pouco sobre a estrutura do fenômeno.\nAgora imagine realizar o mesmo experimento muitas vezes. Se fizermos \\(n\\) ensaios, podemos representá-los como:\n\\[\n\\text{Ensaio}_1,\n\\text{Ensaio}_2,\n\\text{Ensaio}_3,\n\\ldots,\n\\text{Ensaio}_n.\n\\]\nCada ensaio produz um resultado particular:\n\\[\n7,\\;4,\\;10,\\;6,\\;7,\\;9,\\;3,\\;8,\\ldots\n\\]\nO resultado de cada ensaio continua sendo incerto.\nMas agora temos algo que não existia quando olhávamos apenas para uma realização:\n\npodemos observar como os diferentes resultados se comportam ao longo de muitos ensaios do mesmo experimento.\n\nEssa mudança de perspectiva será fundamental:\n\\[\n\\text{um ensaio}\n\\longrightarrow\n\\text{incerteza sobre um resultado particular}\n\\]\nenquanto\n\\[\n\\text{muitos ensaios do mesmo experimento}\n\\longrightarrow\n\\text{possibilidade de observar regularidades}.\n\\]\n\n\n\n\n\n\nUma ideia que voltará muitas vezes\n\n\n\nA noção de realizar teoricamente muitos ensaios do mesmo experimento sob as mesmas condições será utilizada diversas vezes ao longo do curso.\nMais adiante, ela nos ajudará a entender conceitos como:\n\nprobabilidade como frequência de longo prazo;\nvalor esperado;\nLei dos Grandes Números;\namostragem;\ndistribuição amostral;\nInferência Estatística.\n\nPor enquanto, precisamos apenas guardar duas ideias:\n\no experimento é o mesmo; o que se repete são seus ensaios.\n\ne\n\no resultado de cada ensaio pode permanecer incerto mesmo quando muitos ensaios revelam um padrão extremamente regular.\n\n\n\nNeste momento estamos usando informalmente a expressão “sob as mesmas condições”.\nMais adiante, veremos como essa ideia pode ser formalizada matematicamente através de conceitos como independência e distribuição idêntica.",
+    "crumbs": [
+      "Módulo 1 — Probabilidade",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Da Incerteza à Probabilidade</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/01_da_incerteza_a_probabilidade.html#uma-lei-estável-de-frequências-relativas",
+    "href": "chapters/01_da_incerteza_a_probabilidade.html#uma-lei-estável-de-frequências-relativas",
+    "title": "Da Incerteza à Probabilidade",
+    "section": "Uma Lei Estável de Frequências Relativas",
+    "text": "Uma Lei Estável de Frequências Relativas\nAgora podemos entender melhor uma das primeiras regularidades observadas historicamente em fenômenos estocásticos.\nSuponha que realizamos \\(n\\) ensaios do mesmo experimento.\nEscolha algum resultado ou evento de interesse, que chamaremos simplesmente de \\(A\\).\nPodemos perguntar:\n\nEm qual proporção dos \\(n\\) ensaios o evento \\(A\\) ocorreu?\n\nEssa proporção é chamada de frequência relativa de \\(A\\):\n\\[\n\\text{Frequência relativa de } A\n=\n\\frac{\\text{Número de ensaios em que } A \\text{ ocorreu}}\n{\\text{Número total de ensaios}}.\n\\]\nPor exemplo, se realizarmos \\(100\\) ensaios do experimento de lançar dois dados e a soma \\(7\\) aparecer em \\(18\\) deles, sua frequência relativa observada será\n\\[\n\\frac{18}{100}=0{,}18.\n\\]\nSe realizarmos um novo conjunto de \\(100\\) ensaios do mesmo experimento, não esperamos necessariamente obter exatamente a mesma frequência relativa.\nPodemos encontrar, por exemplo:\n\\[\n0{,}15,\\qquad\n0{,}19,\\qquad\n0{,}17,\\qquad\n\\ldots\n\\]\nAs frequências relativas também apresentam variação.\nEntretanto, quando o número de ensaios aumenta, algo notável tende a acontecer:\n\nas frequências relativas deixam de variar de maneira arbitrária e começam a se estabilizar em torno de determinados valores.\n\nÉ essa regularidade que Spanos chama de uma stable law of relative frequencies, ou lei estável de frequências relativas.\nTemos, portanto, duas escalas diferentes:\n\\[\n\\underbrace{\\text{resultado de um ensaio}}_{\\text{incerto}}\n\\]\ne\n\\[\n\\underbrace{\\text{comportamento de muitos ensaios}}_{\\text{regular}}.\n\\]\nEssa é uma das manifestações mais importantes da ideia de acaso e regularidade.\n\n\n\n\n\n\nProbabilidade e frequência relativa não são a mesma coisa\n\n\n\nNeste momento, ainda não definimos formalmente o que é uma probabilidade.\nA frequência relativa é algo que observamos nos dados depois de realizar muitos ensaios do experimento.\nA probabilidade fará parte do modelo matemático que construiremos para representar o fenômeno.\nMais adiante veremos por que essas duas ideias estão profundamente conectadas.\n\n\n\nUm resultado que explicaremos mais tarde\nNo final deste módulo, a Lei dos Grandes Números permitirá tornar essa história matematicamente precisa.\nInformalmente, veremos que, sob determinadas condições,\n\\[\n\\text{frequência relativa de } A\n\\approx\nP(A)\n\\]\nquando o número de ensaios é grande.\nOu, conceitualmente:\n\\[\n\\text{modelo probabilístico}\n\\longleftrightarrow\n\\text{regularidade observada em muitos ensaios}.\n\\]\nNão precisamos demonstrar nem formalizar isso agora.\nPor enquanto, queremos apenas reconhecer o fenômeno que motivará a teoria.\n\n\n\n\n\n\nO que vem a seguir\n\n\n\nComeçamos com:\n\\[\n\\text{incerteza sobre o resultado de um ensaio}.\n\\]\nAo imaginar muitos ensaios do mesmo experimento, descobrimos:\n\\[\n\\text{regularidade nas frequências relativas}.\n\\]\nA pergunta agora é:\n\nComo construir uma estrutura matemática capaz de representar simultaneamente essa incerteza e essa regularidade?\n\nEssa estrutura será o modelo probabilístico.\n\n\n\n\n\n\n\n\nUma ideia para guardar\n\n\n\nSe observamos resultados individuais incertos, mas regularidades persistentes quando olhamos muitos ensaios, é natural começar a imaginar que exista algum mecanismo subjacente capaz de gerar esses dados.\nMais adiante, daremos um nome muito importante a essa ideia: Processo Gerador dos Dados, ou Data Generating Process (DGP).\nO DGP será uma das ideias centrais quando começarmos a conectar Probabilidade, Inferência Estatística e Inferência Causal.\nMas calma: o DGP vai ter bastante tempo de tela neste curso. Ainda não precisamos dele.",
+    "crumbs": [
+      "Módulo 1 — Probabilidade",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Da Incerteza à Probabilidade</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/01_da_incerteza_a_probabilidade.html#do-fenômeno-aos-dados",
+    "href": "chapters/01_da_incerteza_a_probabilidade.html#do-fenômeno-aos-dados",
+    "title": "Da Incerteza à Probabilidade",
+    "section": "Do fenômeno aos dados",
+    "text": "Do fenômeno aos dados\nNa prática, não observamos diretamente um mecanismo estocástico.\nObservamos seus resultados.\nPor exemplo, uma plataforma pode registrar:\n\n\n\nuser_id\ncompra\n\n\n\n\n1\n0\n\n\n2\n0\n\n\n3\n1\n\n\n4\n0\n\n\n5\n0\n\n\n…\n…\n\n\n\nEsses dados são uma realização particular do fenômeno que estamos estudando.\nIsso cria uma distinção que será importante durante todo o curso:\n\\[\n\\text{mecanismo que gera os dados}\n\\neq\n\\text{dados que observamos}.\n\\]\nOs dados são aquilo que vemos.\nNosso objetivo científico é aprender algo sobre a estrutura subjacente capaz de produzir esses dados.",
+    "crumbs": [
+      "Módulo 1 — Probabilidade",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Da Incerteza à Probabilidade</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/01_da_incerteza_a_probabilidade.html#que-regularidades-podemos-procurar",
+    "href": "chapters/01_da_incerteza_a_probabilidade.html#que-regularidades-podemos-procurar",
+    "title": "Da Incerteza à Probabilidade",
+    "section": "Que regularidades podemos procurar?",
+    "text": "Que regularidades podemos procurar?\nSpanos organiza parte importante dessa estrutura em três dimensões:\n\\[\n\\boxed{\\text{Distribuição}}\n\\qquad\n\\boxed{\\text{Dependência}}\n\\qquad\n\\boxed{\\text{Heterogeneidade}}.\n\\]\n\nDistribuição\nQuais resultados podem ocorrer e com que regularidade?\nPor exemplo:\n\nComo se distribui o gasto mensal dos clientes?\n\n\n\nDependência\nObservar uma informação nos ajuda a aprender algo sobre outra?\nPor exemplo:\n\nConhecer o tipo de dispositivo utilizado pelo usuário muda o que esperamos sobre sua conversão?\n\n\n\nHeterogeneidade\nO comportamento probabilístico permanece o mesmo entre diferentes indivíduos, grupos ou momentos?\nPor exemplo:\n\nA taxa de conversão é a mesma para todos os mercados e períodos?\n\nNão desenvolveremos essas três ideias agora.\nElas funcionam como um mapa para conceitos que aparecerão repetidamente ao longo do curso.",
+    "crumbs": [
+      "Módulo 1 — Probabilidade",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Da Incerteza à Probabilidade</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/01_da_incerteza_a_probabilidade.html#por-que-teoria-das-probabilidades",
+    "href": "chapters/01_da_incerteza_a_probabilidade.html#por-que-teoria-das-probabilidades",
+    "title": "Da Incerteza à Probabilidade",
+    "section": "Por que Teoria das Probabilidades?",
+    "text": "Por que Teoria das Probabilidades?\nAté aqui temos:\n\nfenômenos cujos resultados individuais são incertos;\nestrutura e regularidade apesar dessa incerteza;\ndados que representam realizações desses fenômenos.\n\nPrecisamos agora de uma linguagem matemática que nos permita representar essa incerteza e sua estrutura de maneira sistemática.\nMas o que significa, exatamente, pensar de maneira sistemática?\n\nO que significa pensar sistematicamente?\nUma teoria matemática não é simplesmente uma coleção de fórmulas.\nEla estabelece um framework: definimos objetos, estabelecemos algumas regras ou premissas e, a partir delas, utilizamos lógica para descobrir quais conclusões necessariamente seguem.\nA estrutura básica é:\n\\[\n\\text{premissas}\n\\quad+\\quad\n\\text{regras}\n\\quad\\Longrightarrow\\quad\n\\text{consequências}.\n\\]\nOu, de maneira ainda mais abstrata:\n\\[\nP \\Longrightarrow Q.\n\\]\nIsto significa:\n\nse aceitamos \\(P\\) dentro do framework, então \\(Q\\) deve seguir logicamente.\n\nConsidere um exemplo extremamente simples.\nDefinimos:\n\\[\n\\text{Receita}\n=\n\\text{Preço}\n\\times\n\\text{Quantidade}.\n\\]\nE assumimos que:\n\\[\n\\text{Preço}=50\n\\qquad\\text{e}\\qquad\n\\text{Quantidade}=100.\n\\]\nEntão, dadas essas premissas e essa regra, segue necessariamente que:\n\\[\n\\boxed{\\text{Receita}=5.000}.\n\\]\nObserve o ponto importante.\nA matemática não está afirmando que toda empresa no mundo vende 100 unidades a R$ 50.\nEla está dizendo:\n\nse essas são as premissas que adotamos, então essa conclusão segue delas.\n\nEssa é uma característica fundamental do raciocínio sistemático: deixamos explícito de onde partimos e utilizamos regras bem definidas para determinar até onde podemos chegar.\n\n\n\n\n\n\nMatemática e realidade\n\n\n\nExiste uma distinção que será importante durante todo o curso:\n\\[\n\\text{Matemática:}\n\\qquad\n\\text{se as premissas são estas, o que necessariamente segue?}\n\\]\n\\[\n\\text{Modelagem científica:}\n\\qquad\n\\text{essas premissas representam adequadamente o fenômeno que queremos estudar?}\n\\]\nSão perguntas diferentes.\nA Teoria das Probabilidades começará pela primeira: construiremos um framework matemático coerente para raciocinar sobre incerteza.\nMais adiante, quando conectarmos modelos aos dados, a segunda pergunta se tornará fundamental.\n\n\nÉ exatamente esse tipo de estrutura que construiremos para fenômenos estocásticos.\nEm vez de raciocinar informalmente sobre palavras como “chance”, “sorte” ou “incerteza”, vamos definir cuidadosamente objetos como:\n\\[\n\\text{experimento},\n\\quad\n\\text{resultado},\n\\quad\n\\text{espaço amostral},\n\\quad\n\\text{evento}\n\\]\ne estabelecer regras que uma lei de probabilidade deve satisfazer.\nA partir daí, outras propriedades não precisarão ser simplesmente decoradas: poderão ser deduzidas dentro do framework.\nEssa linguagem será a Teoria das Probabilidades.\nPodemos pensar no caminho que começaremos a construir como:\n\\[\n\\text{fenômeno estocástico}\n\\]\n\\[\n\\downarrow\n\\]\n\\[\n\\text{incerteza + estrutura}\n\\]\n\\[\n\\downarrow\n\\]\n\\[\n\\text{framework matemático}\n\\]\n\\[\n\\downarrow\n\\]\n\\[\n\\boxed{\\text{modelo probabilístico}}.\n\\]\nNa próxima seção começaremos a construir esse framework.",
+    "crumbs": [
+      "Módulo 1 — Probabilidade",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Da Incerteza à Probabilidade</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/01_da_incerteza_a_probabilidade.html#antes-de-finalizarmos-feynman-e-o-framework",
+    "href": "chapters/01_da_incerteza_a_probabilidade.html#antes-de-finalizarmos-feynman-e-o-framework",
+    "title": "Da Incerteza à Probabilidade",
+    "section": "Antes de finalizarmos: Feynman e o framework",
+    "text": "Antes de finalizarmos: Feynman e o framework\nAntes de continuar, assista a este breve vídeo de Richard Feynman, um físico super famoso que já veio ao Brasil, no Rio de Janeiro! Eu gosto muito dele.\nO vídeo é engraçado, pois o reporter chega a se assustar com a necessidade do Feynman de mostrar a importância de aprender algo mais profundo para entender um assunto!\nPreste atenção especialmente à ideia de que uma explicação só pode ir até certo ponto sem que quem pergunta e quem responde compartilhem um framework de conhecimento e raciocínio.\nEle fala isso no minuto 1:38, mas assita tudo e você vai perceber que ele só conseguiria dar a resposta final se o reporter primeiro aprendesse esse framework, ou seja, só se ele fizesse um PhD em Física!\nImagina, então, quanta coisa você estava perdendo ao não estudar profundamente as coisas! Te convenci?\nO objetivo deste curso não é nivelar a discussão por baixo. É ajudá-lo a entrar nesse framework, construindo a linguagem e as ideias necessárias para raciocinar, questionar e criar dentro dele.",
+    "crumbs": [
+      "Módulo 1 — Probabilidade",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Da Incerteza à Probabilidade</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/01_da_incerteza_a_probabilidade.html#o-que-vem-a-seguir",
+    "href": "chapters/01_da_incerteza_a_probabilidade.html#o-que-vem-a-seguir",
+    "title": "Da Incerteza à Probabilidade",
+    "section": "O que vem a seguir",
+    "text": "O que vem a seguir\nNas próximas seções, introduziremos gradualmente:\n\\[\n\\text{Experimento}\n\\]\n\\[\n\\downarrow\n\\]\n\\[\n\\text{Resultado}\n\\]\n\\[\n\\downarrow\n\\]\n\\[\n\\text{Espaço amostral}\n\\]\n\\[\n\\downarrow\n\\]\n\\[\n\\text{Eventos}\n\\]\n\\[\n\\downarrow\n\\]\n\\[\n\\text{Lei de probabilidade}\n\\]\n\\[\n\\downarrow\n\\]\n\\[\n\\boxed{\\text{Modelo probabilístico}}.\n\\]\nMais adiante, variáveis aleatórias permitirão transformar os resultados desses experimentos em quantidades numéricas como:\n\nconversão;\nreceita;\ngasto;\ntempo;\nretenção.\n\nE, finalmente, a Inferência Estatística utilizará os dados observados para aprender sobre o mecanismo probabilístico que os gerou.",
+    "crumbs": [
+      "Módulo 1 — Probabilidade",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Da Incerteza à Probabilidade</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/01_da_incerteza_a_probabilidade.html#antes-de-continuar",
+    "href": "chapters/01_da_incerteza_a_probabilidade.html#antes-de-continuar",
+    "title": "Da Incerteza à Probabilidade",
+    "section": "Antes de continuar",
+    "text": "Antes de continuar\nTente responder, sem recorrer às definições acima:\n\nQual é a principal diferença entre um fenômeno determinístico e um fenômeno estocástico?\nPor que um fenômeno estocástico não significa simplesmente um fenômeno “caótico”?\nO que significa dizer que existe acaso no nível individual e regularidade no agregado?\nO exemplo dos dois dados mostra que existe estrutura mesmo antes de definirmos formalmente probabilidades. Que estrutura é essa?\nPor que contar possibilidades ainda não é necessariamente o mesmo que calcular probabilidades?\nNo exemplo dos dois dados, qual é a diferença entre o experimento, um ensaio e o resultado de um ensaio?\nPor que imaginar muitos ensaios do mesmo experimento é importante para compreender a ideia de frequência relativa?\nQual é a diferença entre o mecanismo que gera os dados e os dados que efetivamente observamos?\nPor que observar frequências relativas aproximadamente estáveis sugere que existe alguma estrutura por trás dos resultados individuais?",
+    "crumbs": [
+      "Módulo 1 — Probabilidade",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Da Incerteza à Probabilidade</span>"
+    ]
+  }
+]

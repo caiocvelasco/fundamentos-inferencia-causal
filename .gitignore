@@ -25,7 +25,6 @@ Thumbs.db
 _site/
 _book/
 _publish/
-docs/
 
 # Build artifacts & logs
 *.log
