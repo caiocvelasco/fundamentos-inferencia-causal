@@ -17,36 +17,15 @@ Bertsekas & Tsitsiklis:
 - início de 1.2 Probabilistic Models
 -->
 
-
-## O caminho desta seção
-
-```{mermaid}
-flowchart LR
-
-    A["Fenômenos<br>determinísticos"]
-    B["Fenômenos<br>estocásticos"]
-    C["Incerteza"]
-    D["Acaso e<br>regularidade"]
-    E["Padrões nos<br>dados"]
-    F["Teoria das<br>Probabilidades"]
-    G["Modelos<br>probabilísticos"]
-    H["Modelos<br>estatísticos"]
-    I["Inferência<br>Estatística"]
-
-    A --> B --> C --> D --> E --> F --> G --> H --> I
-```
-
 Antes de aprender a calcular probabilidades, queremos responder uma pergunta anterior:
 
 > **Por que precisamos de uma Teoria das Probabilidades?**
 
 Para isso, precisamos primeiro entender que tipo de fenômeno estamos tentando estudar.
 
-
 ## Fenômenos determinísticos e estocásticos
 
 Antes de falar em probabilidade, precisamos distinguir dois tipos de fenômenos.
-
 
 ### Fenômenos determinísticos
 
@@ -347,7 +326,6 @@ Mais adiante veremos que, sob uma determinada lei de probabilidade — por exemp
 Essa distinção será muito importante.
 :::
 
-
 ### Exemplo resolvido
 
 Por que a soma $7$ possui mais possibilidades do que a soma $2$?
@@ -560,6 +538,8 @@ Não precisamos demonstrar nem formalizar isso agora.
 
 Por enquanto, queremos apenas reconhecer o fenômeno que motivará a teoria.
 
+![](/images/individual_agregado.png){.course-figure width="80%"}
+
 ::: {.callout-tip title="O que vem a seguir"}
 Começamos com:
 
@@ -581,7 +561,6 @@ Essa estrutura será o **modelo probabilístico**.
 :::
 
 
-
 ::: {.callout-note title="Uma ideia para guardar"}
 Se observamos resultados individuais incertos, mas regularidades persistentes quando olhamos muitos ensaios, é natural começar a imaginar que exista algum **mecanismo subjacente capaz de gerar esses dados**.
 
@@ -591,7 +570,6 @@ O DGP será uma das ideias centrais quando começarmos a conectar Probabilidade,
 
 Mas calma: **o DGP vai ter bastante tempo de tela neste curso. Ainda não precisamos dele.**
 :::
-
 
 ## Do fenômeno aos dados
 

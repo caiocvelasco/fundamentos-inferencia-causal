@@ -27,7 +27,8 @@ book:
 format:
   html:
     theme: flatly
-
+    css: styles.css
+    
     toc: true
     toc-location: right
     toc-depth: 3

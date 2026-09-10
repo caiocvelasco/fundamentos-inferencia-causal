@@ -68,9 +68,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Procurar"
   }
 }</script>
-<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
-<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -102,6 +99,7 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-sidebar docked quarto-light">
@@ -174,8 +172,7 @@ window.Quarto = {
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#o-caminho-desta-seção" id="toc-o-caminho-desta-seção" class="nav-link active" data-scroll-target="#o-caminho-desta-seção">O caminho desta seção</a></li>
-  <li><a href="#fenômenos-determinísticos-e-estocásticos" id="toc-fenômenos-determinísticos-e-estocásticos" class="nav-link" data-scroll-target="#fenômenos-determinísticos-e-estocásticos">Fenômenos determinísticos e estocásticos</a>
+  <li><a href="#fenômenos-determinísticos-e-estocásticos" id="toc-fenômenos-determinísticos-e-estocásticos" class="nav-link active" data-scroll-target="#fenômenos-determinísticos-e-estocásticos">Fenômenos determinísticos e estocásticos</a>
   <ul class="collapse">
   <li><a href="#fenômenos-determinísticos" id="toc-fenômenos-determinísticos" class="nav-link" data-scroll-target="#fenômenos-determinísticos">Fenômenos determinísticos</a></li>
   <li><a href="#fenômenos-estocásticos" id="toc-fenômenos-estocásticos" class="nav-link" data-scroll-target="#fenômenos-estocásticos">Fenômenos estocásticos</a></li>
@@ -244,38 +241,11 @@ Bertsekas & Tsitsiklis:
 - abertura do capítulo
 - início de 1.2 Probabilistic Models
 -->
-<section id="o-caminho-desta-seção" class="level2">
-<h2 class="anchored" data-anchor-id="o-caminho-desta-seção">O caminho desta seção</h2>
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart LR
-
-    A["Fenômenos&lt;br&gt;determinísticos"]
-    B["Fenômenos&lt;br&gt;estocásticos"]
-    C["Incerteza"]
-    D["Acaso e&lt;br&gt;regularidade"]
-    E["Padrões nos&lt;br&gt;dados"]
-    F["Teoria das&lt;br&gt;Probabilidades"]
-    G["Modelos&lt;br&gt;probabilísticos"]
-    H["Modelos&lt;br&gt;estatísticos"]
-    I["Inferência&lt;br&gt;Estatística"]
-
-    A --&gt; B --&gt; C --&gt; D --&gt; E --&gt; F --&gt; G --&gt; H --&gt; I
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
 <p>Antes de aprender a calcular probabilidades, queremos responder uma pergunta anterior:</p>
 <blockquote class="blockquote">
 <p><strong>Por que precisamos de uma Teoria das Probabilidades?</strong></p>
 </blockquote>
 <p>Para isso, precisamos primeiro entender que tipo de fenômeno estamos tentando estudar.</p>
-</section>
 <section id="fenômenos-determinísticos-e-estocásticos" class="level2">
 <h2 class="anchored" data-anchor-id="fenômenos-determinísticos-e-estocásticos">Fenômenos determinísticos e estocásticos</h2>
 <p>Antes de falar em probabilidade, precisamos distinguir dois tipos de fenômenos.</p>
@@ -731,6 +701,7 @@ P(A)
 \]</span></p>
 <p>Não precisamos demonstrar nem formalizar isso agora.</p>
 <p>Por enquanto, queremos apenas reconhecer o fenômeno que motivará a teoria.</p>
+<p><img src="..\images/individual_agregado.png" class="course-figure img-fluid" style="width:80.0%"></p>
 <div class="callout callout-style-default callout-tip callout-titled" title="O que vem a seguir">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
