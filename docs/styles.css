@@ -18,3 +18,26 @@ figure:has(.course-figure) {
 figure:has(.course-figure) figcaption:empty {
   display: none;
 }
+
+/* ========================================
+   COMPACT TABLES
+   ======================================== */
+
+.compact-table {
+  text-align: center !important;
+  margin: 1rem 0 !important;
+}
+
+.compact-table table,
+.compact-table table.table,
+.compact-table .table {
+  width: auto !important;
+  display: inline-table !important;
+  margin: 0 !important;
+}
+
+.compact-table th,
+.compact-table td {
+  text-align: center !important;
+  padding: 0.5rem 1.5rem !important;
+}

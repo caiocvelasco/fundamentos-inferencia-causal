@@ -199,6 +199,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#o-que-significa-pensar-sistematicamente" id="toc-o-que-significa-pensar-sistematicamente" class="nav-link" data-scroll-target="#o-que-significa-pensar-sistematicamente">O que significa pensar sistematicamente?</a></li>
   </ul></li>
+  <li><a href="#no-mundo-real" id="toc-no-mundo-real" class="nav-link" data-scroll-target="#no-mundo-real">No mundo real</a></li>
   <li><a href="#antes-de-finalizarmos-feynman-e-o-framework" id="toc-antes-de-finalizarmos-feynman-e-o-framework" class="nav-link" data-scroll-target="#antes-de-finalizarmos-feynman-e-o-framework">Antes de finalizarmos: Feynman e o <em>framework</em></a></li>
   <li><a href="#o-que-vem-a-seguir" id="toc-o-que-vem-a-seguir" class="nav-link" data-scroll-target="#o-que-vem-a-seguir">O que vem a seguir</a></li>
   <li><a href="#antes-de-continuar" id="toc-antes-de-continuar" class="nav-link" data-scroll-target="#antes-de-continuar">Antes de continuar</a></li>
@@ -251,46 +252,13 @@ Bertsekas & Tsitsiklis:
 <p>Antes de falar em probabilidade, precisamos distinguir dois tipos de fenômenos.</p>
 <section id="fenômenos-determinísticos" class="level3">
 <h3 class="anchored" data-anchor-id="fenômenos-determinísticos">Fenômenos determinísticos</h3>
-<p>Considere a função:</p>
-<p><span class="math display">\[
-y = f(x) = 2x + 1.
-\]</span></p>
-<p>Se conhecemos o valor de <span class="math inline">\(x\)</span>, o valor de <span class="math inline">\(y\)</span> está completamente determinado.</p>
-<p>Por exemplo, se</p>
-<p><span class="math display">\[
-x = 3,
-\]</span></p>
-<p>então necessariamente</p>
-<p><span class="math display">\[
-y = f(3) = 7.
-\]</span></p>
+<p>Considere a função <span class="math inline">\(y=f(x)=2x+1\)</span>.</p>
+<p>Se conhecemos o valor de <span class="math inline">\(x\)</span>, o valor de <span class="math inline">\(y\)</span> está completamente determinado. Por exemplo, se <span class="math inline">\(x=3\)</span>, então necessariamente <span class="math inline">\(y=f(3)=7\)</span>.</p>
 <p>Não existe incerteza sobre o resultado dentro desse modelo.</p>
-<p>A mesma ideia aparece em situações simples do mundo real. Se a receita de uma venda é definida por</p>
-<p><span class="math display">\[
-\text{Receita} = \text{Preço} \times \text{Quantidade},
-\]</span></p>
-<p>então, sabendo que</p>
-<p><span class="math display">\[
-\text{Preço} = 50
-\]</span></p>
-<p>e</p>
-<p><span class="math display">\[
-\text{Quantidade} = 100,
-\]</span></p>
-<p>temos necessariamente</p>
-<p><span class="math display">\[
-\text{Receita} = 5.000.
-\]</span></p>
+<p>A mesma ideia aparece em situações simples do mundo real. Se a receita de uma venda é definida por <span class="math inline">\(\text{Receita}=\text{Preço}\times\text{Quantidade}\)</span>, então, sabendo que <span class="math inline">\(\text{Preço}=50\)</span> e <span class="math inline">\(\text{Quantidade}=100\)</span>, temos necessariamente <span class="math inline">\(\text{Receita}=5.000\)</span>.</p>
 <p>Fixadas as informações relevantes e o mecanismo que relaciona essas informações ao resultado, o resultado está determinado.</p>
 <p>Chamamos um mecanismo desse tipo de <strong>determinístico</strong>.</p>
-<p>Podemos representar essa ideia de forma simples:</p>
-<p><span class="math display">\[
-x
-\longrightarrow
-f
-\longrightarrow
-y.
-\]</span></p>
+<p>Podemos representar essa ideia de forma simples como <span class="math inline">\(x \longrightarrow f \longrightarrow y\)</span>.</p>
 <p>Conhecido <span class="math inline">\(x\)</span> e conhecido o mecanismo <span class="math inline">\(f\)</span>, conhecemos <span class="math inline">\(y\)</span>.</p>
 </section>
 <section id="fenômenos-estocásticos" class="level3">
@@ -306,30 +274,25 @@ y.
 <li>produtos no carrinho.</li>
 </ul>
 <p>Ainda assim, essas informações não necessariamente determinam se aquele usuário fará uma compra.</p>
-<p>Podemos observar:</p>
-<p><span class="math display">\[
-\text{compra}
-\]</span></p>
-<p>ou</p>
-<p><span class="math display">\[
-\text{não compra}.
-\]</span></p>
+<p>Podemos observar <strong>compra</strong> ou <strong>não compra</strong>.</p>
 <p>Existe, portanto, <strong>incerteza sobre o resultado particular que será observado</strong>.</p>
-<p>Esse é o tipo de situação que chamaremos de <strong>fenômeno estocástico</strong>.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Ideia central">
+<p>Esse é o tipo de situação que chamaremos de <strong>fenômeno estocástico</strong>. Mas <strong>estocástico não significa ausência completa de estrutura</strong>.</p>
+<p>Essa será justamente a próxima ideia.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Onde isso aparece na prática?">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Ideia central
+Onde isso aparece na prática?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Em um mecanismo determinístico, dadas as condições relevantes, o resultado está determinado.</p>
-<p>Em um fenômeno estocástico, permanece incerteza sobre qual resultado particular será observado.</p>
-<p>Mas <strong>estocástico não significa ausência completa de estrutura</strong>.</p>
-<p>Essa será justamente a próxima ideia.</p>
+<p>Essa distinção aparece imediatamente em <strong>Machine Learning</strong>.</p>
+<p>Um modelo pode receber dezenas de características de um usuário — histórico de compras, dispositivo, país, horário, origem da sessão — e ainda assim não ser capaz de determinar com certeza se ele comprará.</p>
+<p>Em muitos problemas, o que queremos aprender é algo como <span class="math inline">\(P(\text{compra}\mid \text{informações do usuário})\)</span>, ou seja, <em>qual é a chance de um usuário realizar uma compra, dados suas características?</em> (nós vamos aprender sobre essa notação, não se preocupe)</p>
+<p>Ou seja: o objetivo não é eliminar a incerteza, mas <strong>representá-la e aprender sua estrutura</strong>.</p>
+<p>Isso vale para problemas como <strong>conversão</strong>, <strong>churn</strong>, <strong>fraude</strong>, <strong>default</strong> e <strong>retenção</strong>.</p>
 </div>
 </div>
 </section>
@@ -342,23 +305,17 @@ Ideia central
 <p>Existe incerteza quando não conseguimos determinar antecipadamente qual resultado particular será observado.</p>
 </blockquote>
 <p>Por exemplo, suponha que a taxa de conversão de um produto esteja próxima de 5%.</p>
-<p>Isso não significa que sabemos se <strong>um usuário específico</strong> fará uma compra.</p>
-<p>Para um determinado usuário, observaremos apenas um dos dois resultados:</p>
-<p><span class="math display">\[
-\text{compra}
-\qquad \text{ou} \qquad
-\text{não compra}.
-\]</span></p>
+<p>Isso não significa que sabemos se <strong>um usuário específico</strong> fará uma compra. Para um determinado usuário, observaremos apenas um dos dois resultados: <strong>compra</strong> ou <strong>não compra</strong>.</p>
 <p>O resultado individual permanece incerto.</p>
-<p>Mas algo interessante acontece quando começamos a observar muitos usuários.</p>
+<p>Mas algo interessante acontece <strong>quando começamos a observar muitos usuários</strong>.</p>
 </section>
 <section id="acaso-e-regularidade" class="level2">
 <h2 class="anchored" data-anchor-id="acaso-e-regularidade">Acaso e Regularidade</h2>
-<p>Spanos utiliza a expressão <em>chance regularity</em>, que podemos traduzir como <strong>acaso e regularidade</strong>, para descrever uma característica fundamental dos fenômenos estocásticos.</p>
+<p>Spanos utiliza a expressão <em>chance regularity</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, que podemos traduzir como <strong>acaso e regularidade</strong>, para descrever uma característica fundamental dos fenômenos estocásticos.</p>
 <p>Ela combina duas ideias que, à primeira vista, podem parecer contraditórias:</p>
 <p><span class="math display">\[
 \underbrace{\text{Acaso}}_{\text{incerteza nos resultados individuais}}
-+
+\;+\;
 \underbrace{\text{Regularidade}}_{\text{regularidade quando observamos muitos resultados}}.
 \]</span></p>
 <p>Ou, de maneira mais intuitiva:</p>
@@ -366,88 +323,73 @@ Ideia central
 <p><strong>desordem no nível individual, regularidade no agregado.</strong></p>
 </blockquote>
 <p>Considere, por exemplo, lançamentos sucessivos de dois dados.</p>
-<p>Antes de cada lançamento, não sabemos exatamente qual será a soma observada.</p>
-<p>Ela pode ser:</p>
-<p><span class="math display">\[
-2,3,\ldots,12.
-\]</span></p>
-<p>Uma sequência de resultados pode parecer bastante irregular:</p>
-<p><span class="math display">\[
-7,\;4,\;10,\;6,\;7,\;9,\;3,\;8,\ldots
-\]</span></p>
-<p>O próximo resultado permanece incerto.</p>
-<p>Entretanto, existe uma estrutura por trás desses possíveis resultados.</p>
+<p>Antes de cada lançamento, não sabemos exatamente qual será a soma observada. Ela pode assumir qualquer valor entre <span class="math inline">\(2\)</span> e <span class="math inline">\(12\)</span>.</p>
+<p>Uma sequência como <span class="math inline">\(7,\;4,\;10,\;6,\;7,\;9,\;3,\;8,\ldots\)</span> pode parecer bastante irregular. O próximo resultado permanece incerto.</p>
+<p>Entretanto, existe uma <strong>estrutura por trás</strong> desses possíveis resultados.</p>
 <section id="existe-uma-estrutura-por-trás-da-incerteza" class="level3">
 <h3 class="anchored" data-anchor-id="existe-uma-estrutura-por-trás-da-incerteza">Existe uma estrutura por trás da incerteza</h3>
 <p>Considere todas as maneiras pelas quais a soma dos dois dados pode ser obtida.</p>
-<p>A soma <span class="math inline">\(2\)</span> pode ocorrer de apenas uma maneira:</p>
-<p><span class="math display">\[
-(1,1).
-\]</span></p>
-<p>A soma <span class="math inline">\(3\)</span> pode ocorrer de duas:</p>
-<p><span class="math display">\[
-(1,2),(2,1).
-\]</span></p>
-<p>Já a soma <span class="math inline">\(7\)</span> pode ocorrer de seis maneiras:</p>
-<p><span class="math display">\[
-(1,6),(2,5),(3,4),(4,3),(5,2),(6,1).
-\]</span></p>
+<p>A soma <span class="math inline">\(2\)</span> pode ocorrer de apenas uma maneira: <span class="math inline">\((1,1)\)</span>.</p>
+<p>A soma <span class="math inline">\(3\)</span> pode ocorrer de duas: <span class="math inline">\((1,2)\)</span> e <span class="math inline">\((2,1)\)</span>.</p>
+<p>Já a soma <span class="math inline">\(7\)</span> pode ocorrer de seis maneiras: <span class="math inline">\((1,6)\)</span>, <span class="math inline">\((2,5)\)</span>, <span class="math inline">\((3,4)\)</span>, <span class="math inline">\((4,3)\)</span>, <span class="math inline">\((5,2)\)</span> e <span class="math inline">\((6,1)\)</span>.</p>
 <p>Depois disso, o número de possibilidades começa a diminuir novamente.</p>
 <p>A estrutura completa é:</p>
+<div class="compact-table">
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th style="text-align: right;">Soma</th>
-<th style="text-align: right;">Número de combinações</th>
+<th style="text-align: center;">Soma</th>
+<th style="text-align: center;">Número de combinações</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">2</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">3</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">4</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">5</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">5</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">6</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">6</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">5</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">5</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">4</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">4</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">3</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">3</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">2</td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">2</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">1</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">1</td>
 </tr>
 </tbody>
 </table>
+</div>
 <p>Podemos visualizar essa estrutura:</p>
 <div style="width: 100%; max-width: 900px; margin: 2rem auto; overflow-x: auto;">
 
@@ -530,14 +472,8 @@ Ainda não estamos calculando probabilidades
 <section id="exemplo-resolvido" class="level3">
 <h3 class="anchored" data-anchor-id="exemplo-resolvido">Exemplo resolvido</h3>
 <p>Por que a soma <span class="math inline">\(7\)</span> possui mais possibilidades do que a soma <span class="math inline">\(2\)</span>?</p>
-<p>Para obter <span class="math inline">\(2\)</span>, existe apenas uma combinação:</p>
-<p><span class="math display">\[
-(1,1).
-\]</span></p>
-<p>Para obter <span class="math inline">\(7\)</span>, existem seis:</p>
-<p><span class="math display">\[
-(1,6),(2,5),(3,4),(4,3),(5,2),(6,1).
-\]</span></p>
+<p>Para obter <span class="math inline">\(2\)</span>, existe apenas uma combinação: <span class="math inline">\((1,1)\)</span>.</p>
+<p>Para obter <span class="math inline">\(7\)</span>, existem seis: <span class="math inline">\((1,6)\)</span>, <span class="math inline">\((2,5)\)</span>, <span class="math inline">\((3,4)\)</span>, <span class="math inline">\((4,3)\)</span>, <span class="math inline">\((5,2)\)</span> e <span class="math inline">\((6,1)\)</span>.</p>
 <p>Logo, a própria estrutura dos possíveis resultados já distingue <span class="math inline">\(7\)</span> de <span class="math inline">\(2\)</span>.</p>
 <p>Isso ainda não constitui, por si só, uma lei de probabilidade.</p>
 <p>Mas é uma primeira indicação de que o fenômeno possui uma <strong>estrutura probabilística que precisamos formalizar</strong>.</p>
@@ -551,29 +487,13 @@ Ainda não estamos calculando probabilidades
 <p><strong>imaginar que o mesmo experimento possa ser realizado muitas vezes sob as mesmas condições.</strong></p>
 </blockquote>
 <p>Para sermos precisos, vamos fixar a terminologia desde já.</p>
-<p>Neste exemplo, chamaremos de <strong>experimento</strong> o procedimento:</p>
-<p><span class="math display">\[
-\text{lançar dois dados uma vez e registrar sua soma}.
-\]</span></p>
+<p>Neste exemplo, chamaremos de <strong>experimento</strong> o procedimento de <strong>lançar dois dados uma vez e registrar sua soma</strong>.</p>
 <p>Cada realização desse mesmo experimento será chamada de <strong>ensaio</strong> (<em>trial</em>).</p>
 <p>Portanto, não estamos imaginando vários experimentos diferentes. Estamos imaginando <strong>vários ensaios do mesmo experimento</strong>.</p>
-<p>Em um único ensaio, observamos apenas um resultado:</p>
-<p><span class="math display">\[
-\text{por exemplo, } 7.
-\]</span></p>
+<p>Em um único ensaio, observamos apenas um resultado, por exemplo, <span class="math inline">\(7\)</span>.</p>
 <p>Esse único resultado nos diz muito pouco sobre a estrutura do fenômeno.</p>
-<p>Agora imagine realizar o mesmo experimento muitas vezes. Se fizermos <span class="math inline">\(n\)</span> ensaios, podemos representá-los como:</p>
-<p><span class="math display">\[
-\text{Ensaio}_1,
-\text{Ensaio}_2,
-\text{Ensaio}_3,
-\ldots,
-\text{Ensaio}_n.
-\]</span></p>
-<p>Cada ensaio produz um resultado particular:</p>
-<p><span class="math display">\[
-7,\;4,\;10,\;6,\;7,\;9,\;3,\;8,\ldots
-\]</span></p>
+<p>Agora imagine realizar o mesmo experimento muitas vezes. Se fizermos <span class="math inline">\(n\)</span> ensaios, podemos representá-los como <span class="math inline">\(\text{Ensaio}_1,\text{Ensaio}_2,\ldots,\text{Ensaio}_n\)</span>.</p>
+<p>Cada ensaio produz um resultado particular, como <span class="math inline">\(7,\;4,\;10,\;6,\;7,\;9,\;3,\;8,\ldots\)</span>.</p>
 <p>O resultado de cada ensaio continua sendo incerto.</p>
 <p>Mas agora temos algo que não existia quando olhávamos apenas para uma realização:</p>
 <blockquote class="blockquote">
@@ -581,15 +501,15 @@ Ainda não estamos calculando probabilidades
 </blockquote>
 <p>Essa mudança de perspectiva será fundamental:</p>
 <p><span class="math display">\[
+\begin{aligned}
 \text{um ensaio}
-\longrightarrow
+&amp;\longrightarrow
 \text{incerteza sobre um resultado particular}
-\]</span></p>
-<p>enquanto</p>
-<p><span class="math display">\[
+\\[0.5em]
 \text{muitos ensaios do mesmo experimento}
-\longrightarrow
-\text{possibilidade de observar regularidades}.
+&amp;\longrightarrow
+\text{possibilidade de observar regularidades}
+\end{aligned}
 \]</span></p>
 <div class="callout callout-style-default callout-important callout-titled" title="Uma ideia que voltará muitas vezes">
 <div class="callout-header d-flex align-content-center">
@@ -612,13 +532,10 @@ Uma ideia que voltará muitas vezes
 <li>Inferência Estatística.</li>
 </ul>
 <p>Por enquanto, precisamos apenas guardar duas ideias:</p>
-<blockquote class="blockquote">
-<p><strong>o experimento é o mesmo; o que se repete são seus ensaios.</strong></p>
-</blockquote>
-<p>e</p>
-<blockquote class="blockquote">
-<p><strong>o resultado de cada ensaio pode permanecer incerto mesmo quando muitos ensaios revelam um padrão extremamente regular.</strong></p>
-</blockquote>
+<ul>
+<li><strong>o experimento é o mesmo; o que se repete são seus ensaios.</strong></li>
+<li><strong>o resultado de cada ensaio pode permanecer incerto mesmo quando muitos ensaios revelam um padrão extremamente regular.</strong></li>
+</ul>
 </div>
 </div>
 <p>Neste momento estamos usando informalmente a expressão <strong>“sob as mesmas condições”</strong>.</p>
@@ -626,7 +543,7 @@ Uma ideia que voltará muitas vezes
 </section>
 <section id="uma-lei-estável-de-frequências-relativas" class="level2">
 <h2 class="anchored" data-anchor-id="uma-lei-estável-de-frequências-relativas">Uma Lei Estável de Frequências Relativas</h2>
-<p>Agora podemos entender melhor uma das primeiras regularidades observadas <strong>historicamente</strong> em fenômenos estocásticos.</p>
+<p>Agora podemos entender melhor uma das regularidades mais importantes que aparecem quando realizamos muitos ensaios do mesmo experimento.</p>
 <p>Suponha que realizamos <span class="math inline">\(n\)</span> ensaios do mesmo experimento.</p>
 <p>Escolha algum resultado ou evento de interesse, que chamaremos simplesmente de <span class="math inline">\(A\)</span>.</p>
 <p>Podemos perguntar:</p>
@@ -638,21 +555,12 @@ Uma ideia que voltará muitas vezes
 \text{Frequência relativa de } A
 =
 \frac{\text{Número de ensaios em que } A \text{ ocorreu}}
-{\text{Número total de ensaios}}.
+{\text{Número total de ensaios}}
 \]</span></p>
-<p>Por exemplo, se realizarmos <span class="math inline">\(100\)</span> ensaios do experimento de lançar dois dados e a soma <span class="math inline">\(7\)</span> aparecer em <span class="math inline">\(18\)</span> deles, sua frequência relativa observada será</p>
-<p><span class="math display">\[
-\frac{18}{100}=0{,}18.
-\]</span></p>
+<p>Por exemplo, se realizarmos <span class="math inline">\(100\)</span> ensaios do experimento de lançar dois dados e a soma <span class="math inline">\(7\)</span> aparecer em <span class="math inline">\(18\)</span> deles, sua frequência relativa observada será <span class="math inline">\(\frac{18}{100}=0{,}18\)</span>.</p>
 <p>Se realizarmos um novo conjunto de <span class="math inline">\(100\)</span> ensaios do mesmo experimento, não esperamos necessariamente obter exatamente a mesma frequência relativa.</p>
-<p>Podemos encontrar, por exemplo:</p>
-<p><span class="math display">\[
-0{,}15,\qquad
-0{,}19,\qquad
-0{,}17,\qquad
-\ldots
-\]</span></p>
-<p>As frequências relativas também apresentam variação.</p>
+<p>Podemos encontrar, por exemplo, <span class="math inline">\(0{,}15\)</span>, <span class="math inline">\(0{,}19\)</span>, <span class="math inline">\(0{,}17\)</span>, <span class="math inline">\(\ldots\)</span>.</p>
+<p>As frequências relativas <strong>também apresentam variação</strong>.</p>
 <p>Entretanto, quando o número de ensaios aumenta, algo notável tende a acontecer:</p>
 <blockquote class="blockquote">
 <p><strong>as frequências relativas deixam de variar de maneira arbitrária e começam a se estabilizar em torno de determinados valores.</strong></p>
@@ -661,10 +569,8 @@ Uma ideia que voltará muitas vezes
 <p>Temos, portanto, duas escalas diferentes:</p>
 <p><span class="math display">\[
 \underbrace{\text{resultado de um ensaio}}_{\text{incerto}}
-\]</span></p>
-<p>e</p>
-<p><span class="math display">\[
-\underbrace{\text{comportamento de muitos ensaios}}_{\text{regular}}.
+\qquad\text{e}\qquad
+\underbrace{\text{comportamento de muitos ensaios}}_{\text{regular}}
 \]</span></p>
 <p>Essa é uma das manifestações mais importantes da ideia de <strong>acaso e regularidade</strong>.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Probabilidade e frequência relativa não são a mesma coisa">
@@ -686,17 +592,11 @@ Probabilidade e frequência relativa não são a mesma coisa
 <section id="um-resultado-que-explicaremos-mais-tarde" class="level3">
 <h3 class="anchored" data-anchor-id="um-resultado-que-explicaremos-mais-tarde">Um resultado que explicaremos mais tarde</h3>
 <p>No final deste módulo, a <strong>Lei dos Grandes Números</strong> permitirá tornar essa história matematicamente precisa.</p>
-<p>Informalmente, veremos que, sob determinadas condições,</p>
-<p><span class="math display">\[
-\text{frequência relativa de } A
-\approx
-P(A)
-\]</span></p>
-<p>quando o número de ensaios é grande.</p>
+<p>Informalmente, veremos que, sob determinadas condições, <span class="math inline">\(\text{frequência relativa de }A \approx P(A)\)</span> quando o número de ensaios é grande.</p>
 <p>Ou, conceitualmente:</p>
 <p><span class="math display">\[
 \text{modelo probabilístico}
-\longleftrightarrow
+\stackrel{\text{é a mesma ideia que}}{\longleftrightarrow}
 \text{regularidade observada em muitos ensaios}.
 \]</span></p>
 <p>Não precisamos demonstrar nem formalizar isso agora.</p>
@@ -712,14 +612,8 @@ O que vem a seguir
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Começamos com:</p>
-<p><span class="math display">\[
-\text{incerteza sobre o resultado de um ensaio}.
-\]</span></p>
-<p>Ao imaginar muitos ensaios do mesmo experimento, descobrimos:</p>
-<p><span class="math display">\[
-\text{regularidade nas frequências relativas}.
-\]</span></p>
+<p>Começamos com <strong>incerteza sobre o resultado de um ensaio</strong>.</p>
+<p>Ao imaginar muitos ensaios do mesmo experimento, descobrimos <strong>regularidade nas frequências relativas</strong>.</p>
 <p>A pergunta agora é:</p>
 <blockquote class="blockquote">
 <p><strong>Como construir uma estrutura matemática capaz de representar simultaneamente essa incerteza e essa regularidade?</strong></p>
@@ -727,22 +621,11 @@ O que vem a seguir
 <p>Essa estrutura será o <strong>modelo probabilístico</strong>.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Uma ideia para guardar">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Uma ideia para guardar
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<p><strong>Uma ideia para guardar (Introduzindo a famosa “DGP”)</strong></p>
 <p>Se observamos resultados individuais incertos, mas regularidades persistentes quando olhamos muitos ensaios, é natural começar a imaginar que exista algum <strong>mecanismo subjacente capaz de gerar esses dados</strong>.</p>
 <p>Mais adiante, daremos um nome muito importante a essa ideia: <strong>Processo Gerador dos Dados</strong>, ou <em>Data Generating Process</em> (<strong>DGP</strong>).</p>
 <p>O DGP será uma das ideias centrais quando começarmos a conectar Probabilidade, Inferência Estatística e Inferência Causal.</p>
 <p>Mas calma: <strong>o DGP vai ter bastante tempo de tela neste curso. Ainda não precisamos dele.</strong></p>
-</div>
-</div>
 </section>
 </section>
 <section id="do-fenômeno-aos-dados" class="level2">
@@ -750,48 +633,48 @@ Uma ideia para guardar
 <p>Na prática, não observamos diretamente um mecanismo estocástico.</p>
 <p>Observamos seus resultados.</p>
 <p>Por exemplo, uma plataforma pode registrar:</p>
+<div class="compact-table">
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th style="text-align: right;">user_id</th>
-<th style="text-align: right;">compra</th>
+<th style="text-align: center;">user_id</th>
+<th style="text-align: center;">compra</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">0</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">1</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">0</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">0</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">…</td>
-<td style="text-align: right;">…</td>
+<td style="text-align: center;">…</td>
+<td style="text-align: center;">…</td>
 </tr>
 </tbody>
 </table>
+</div>
 <p>Esses dados são uma <strong>realização particular</strong> do fenômeno que estamos estudando.</p>
 <p>Isso cria uma distinção que será importante durante todo o curso:</p>
 <p><span class="math display">\[
-\text{mecanismo que gera os dados}
-\neq
-\text{dados que observamos}.
+\text{mecanismo que gera os dados} \neq \text{dados que observamos}
 \]</span></p>
-<p>Os dados são aquilo que vemos.</p>
+<p>Os dados são aquilo que <strong>vemos</strong> ou, na linguagem mais usada na Estatística: é aquilo que <strong>observamos</strong>!.</p>
 <p>Nosso objetivo científico é aprender algo sobre a estrutura subjacente capaz de produzir esses dados.</p>
 </section>
 <section id="que-regularidades-podemos-procurar" class="level2">
@@ -802,8 +685,10 @@ Uma ideia para guardar
 \qquad
 \boxed{\text{Dependência}}
 \qquad
-\boxed{\text{Heterogeneidade}}.
+\boxed{\text{Heterogeneidade}}
 \]</span></p>
+<p><strong>ATENÇÃO!</strong><br>
+- Apesar de você estar lendo isso, esse conteúdo é muito importante e vai aparecer por trás de muita coisa no estudo de Probabilidade e Estatística Inferencial. Lá na frente, a gente vai aprender sobre Independência (por exemplo), e relembrar sobre o conceito de “Dependência” vai te ajudar a entender que isso veio de quando tentamos compreender essas tais <strong><em>regularidades</em></strong> presentes na <em>estrutura que observamos na natureza quando agregações ocorrem</em>.</p>
 <section id="distribuição" class="level3">
 <h3 class="anchored" data-anchor-id="distribuição">Distribuição</h3>
 <p>Quais resultados podem ocorrer e com que regularidade?</p>
@@ -844,7 +729,7 @@ Uma ideia para guardar
 <section id="o-que-significa-pensar-sistematicamente" class="level3">
 <h3 class="anchored" data-anchor-id="o-que-significa-pensar-sistematicamente">O que significa pensar sistematicamente?</h3>
 <p>Uma teoria matemática não é simplesmente uma coleção de fórmulas.</p>
-<p>Ela estabelece um <strong>framework</strong>: definimos objetos, estabelecemos algumas regras ou premissas e, a partir delas, utilizamos lógica para descobrir quais conclusões necessariamente seguem.</p>
+<p>Ela estabelece um <strong>framework</strong>: definimos objetos, estabelecemos regras ou premissas e, a partir delas, usamos lógica para descobrir quais conclusões necessariamente seguem.</p>
 <p>A estrutura básica é:</p>
 <p><span class="math display">\[
 \text{premissas}
@@ -853,104 +738,124 @@ Uma ideia para guardar
 \quad\Longrightarrow\quad
 \text{consequências}.
 \]</span></p>
-<p>Ou, de maneira ainda mais abstrata:</p>
-<p><span class="math display">\[
-P \Longrightarrow Q.
-\]</span></p>
-<p>Isto significa:</p>
+<p>Ou, de maneira ainda mais abstrata, o famoso <span class="math inline">\(P \Longrightarrow Q\)</span>:</p>
 <blockquote class="blockquote">
 <p><strong>se aceitamos <span class="math inline">\(P\)</span> dentro do framework, então <span class="math inline">\(Q\)</span> deve seguir logicamente.</strong></p>
 </blockquote>
-<p>Considere um exemplo extremamente simples.</p>
-<p>Definimos:</p>
-<p><span class="math display">\[
-\text{Receita}
-=
-\text{Preço}
-\times
-\text{Quantidade}.
-\]</span></p>
-<p>E assumimos que:</p>
-<p><span class="math display">\[
-\text{Preço}=50
-\qquad\text{e}\qquad
-\text{Quantidade}=100.
-\]</span></p>
-<p>Então, dadas essas premissas e essa regra, segue necessariamente que:</p>
-<p><span class="math display">\[
-\boxed{\text{Receita}=5.000}.
-\]</span></p>
-<p>Observe o ponto importante.</p>
-<p>A matemática não está afirmando que <strong>toda empresa no mundo vende 100 unidades a R$ 50</strong>.</p>
-<p>Ela está dizendo:</p>
+<p>Considere um exemplo simples.</p>
+<p>Definimos <span class="math inline">\(\text{Receita}=\text{Preço}\times\text{Quantidade}\)</span> e assumimos que <span class="math inline">\(\text{Preço}=50\)</span> e <span class="math inline">\(\text{Quantidade}=100\)</span>.</p>
+<p>Então segue necessariamente que <span class="math inline">\(\text{Receita}=5.000\)</span>.</p>
+<p>A matemática não está afirmando que <strong>toda empresa vende 100 unidades a R$ 50</strong>. Ela está dizendo:</p>
 <blockquote class="blockquote">
 <p><strong>se essas são as premissas que adotamos, então essa conclusão segue delas.</strong></p>
 </blockquote>
-<p>Essa é uma característica fundamental do raciocínio sistemático: deixamos explícito <strong>de onde partimos</strong> e utilizamos regras bem definidas para determinar <strong>até onde podemos chegar</strong>.</p>
-<div class="callout callout-style-default callout-important callout-titled" title="Matemática e realidade">
+<p>Pensar sistematicamente significa justamente deixar explícito <strong>de onde partimos</strong>, quais regras estamos utilizando e <strong>até onde elas nos permitem chegar</strong>.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="A matemática não escolhe as premissas por nós">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Matemática e realidade
+A matemática não escolhe as premissas por nós
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Existe uma distinção que será importante durante todo o curso:</p>
-<p><span class="math display">\[
-\text{Matemática:}
-\qquad
-\text{se as premissas são estas, o que necessariamente segue?}
-\]</span></p>
-<p><span class="math display">\[
-\text{Modelagem científica:}
-\qquad
-\text{essas premissas representam adequadamente o fenômeno que queremos estudar?}
-\]</span></p>
-<p>São perguntas diferentes.</p>
-<p>A Teoria das Probabilidades começará pela primeira: construiremos um framework matemático coerente para raciocinar sobre incerteza.</p>
-<p>Mais adiante, quando conectarmos modelos aos dados, a segunda pergunta se tornará fundamental.</p>
+<p>Essa distinção será fundamental durante todo o curso.</p>
+<p>A matemática pode nos dizer corretamente:</p>
+<blockquote class="blockquote">
+<p><strong>se estas premissas forem verdadeiras, então estas consequências seguem.</strong></p>
+</blockquote>
+<p>Mas ainda precisamos perguntar:</p>
+<blockquote class="blockquote">
+<p><strong>essas premissas representam bem o fenômeno que estamos estudando?</strong></p>
+</blockquote>
+<p>Por exemplo, podemos construir um modelo supondo que todos os usuários de um site possuem a mesma probabilidade <span class="math inline">\(p\)</span> de comprar. A matemática nos dirá exatamente o que segue dessa hipótese.</p>
+<p>Mas se usuários de países, campanhas ou períodos diferentes tiverem comportamentos muito distintos, o problema não estará na matemática: estará na <strong>premissa que escolhemos para representar o mundo</strong>.</p>
+<p>Em resumo:</p>
+<blockquote class="blockquote">
+<p><strong>a matemática garante a lógica das consequências; a modelagem precisa justificar as premissas.</strong></p>
+</blockquote>
 </div>
 </div>
 <p>É exatamente esse tipo de estrutura que construiremos para fenômenos estocásticos.</p>
-<p>Em vez de raciocinar informalmente sobre palavras como “chance”, “sorte” ou “incerteza”, vamos definir cuidadosamente objetos como:</p>
-<p><span class="math display">\[
-\text{experimento},
-\quad
-\text{resultado},
-\quad
-\text{espaço amostral},
-\quad
-\text{evento}
-\]</span></p>
-<p>e estabelecer regras que uma <strong>lei de probabilidade</strong> deve satisfazer.</p>
-<p>A partir daí, outras propriedades não precisarão ser simplesmente decoradas: poderão ser <strong>deduzidas dentro do framework</strong>.</p>
+<p>Em vez de raciocinar informalmente sobre palavras como “chance”, “sorte” ou “incerteza”, vamos definir cuidadosamente objetos como <strong>experimento</strong>, <strong>resultado</strong>, <strong>espaço amostral</strong> e <strong>evento</strong>, e estabelecer regras que uma <strong>lei de probabilidade</strong> deve satisfazer.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Aplicar é necessário. Entender é outra camada.">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Aplicar é necessário. Entender é outra camada.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>É relativamente fácil aprender uma sequência de passos para aplicar uma técnica.</p>
+<p>Muito mais importante é conseguir perguntar:</p>
+<blockquote class="blockquote">
+<p><strong>De onde isso vem? Quais premissas tornam isso válido? E o que realmente posso concluir?</strong></p>
+</blockquote>
+<p>Projetos práticos e atividades <em>hands-on</em> são importantes. O problema aparece quando substituem — em vez de complementar — os fundamentos.</p>
+<p>O objetivo aqui é justamente construir o framework que permite <strong>não apenas aplicar uma técnica, mas entender, questionar e eventualmente criar dentro dela</strong>.</p>
+</div>
+</div>
+<p>A partir daí, muitas propriedades não precisarão ser simplesmente decoradas: poderão ser <strong>deduzidas dentro do framework</strong>.</p>
 <p>Essa linguagem será a <strong>Teoria das Probabilidades</strong>.</p>
 <p>Podemos pensar no caminho que começaremos a construir como:</p>
 <p><span class="math display">\[
+\begin{gathered}
 \text{fenômeno estocástico}
-\]</span></p>
-<p><span class="math display">\[
+\\[-0.1em]
 \downarrow
-\]</span></p>
-<p><span class="math display">\[
+\\[-0.1em]
 \text{incerteza + estrutura}
-\]</span></p>
-<p><span class="math display">\[
+\\[-0.1em]
 \downarrow
-\]</span></p>
-<p><span class="math display">\[
+\\[-0.1em]
 \text{framework matemático}
-\]</span></p>
-<p><span class="math display">\[
+\\[-0.1em]
 \downarrow
+\\[-0.1em]
+\boxed{\text{modelo probabilístico}}
+\end{gathered}
 \]</span></p>
-<p><span class="math display">\[
-\boxed{\text{modelo probabilístico}}.
-\]</span></p>
-<p>Na próxima seção começaremos a construir esse framework.</p>
+<p>Na próxima seção (<em>Modelos Probabilísticos</em>) começaremos a construir esse framework.</p>
 </section>
+</section>
+<section id="no-mundo-real" class="level2">
+<h2 class="anchored" data-anchor-id="no-mundo-real">No mundo real</h2>
+<p>Considere uma empresa de e-commerce acompanhando milhares de visitas ao seu site.</p>
+<p>Para cada usuário individual, antes da visita terminar, não sabemos com certeza se ele irá comprar ou não.</p>
+<p>Alguns compram. Outros não.</p>
+<p>O comportamento individual é, portanto, <strong>incerto</strong>.</p>
+<p>Agora imagine que a empresa observa esse processo durante várias semanas.</p>
+<p>Ela pode começar a perceber certas regularidades:</p>
+<ul>
+<li>uma fração relativamente estável dos usuários compra;</li>
+<li>alguns períodos apresentam mais conversões do que outros;</li>
+<li>determinados grupos de usuários parecem comprar com maior frequência.</li>
+</ul>
+<p>Ou seja:</p>
+<p><span class="math display">\[
+\text{incerteza no nível individual}
+\longrightarrow
+\text{regularidade quando observamos muitos casos}.
+\]</span></p>
+<p>Esse é exatamente o tipo de situação que motiva a Probabilidade.</p>
+<p>A empresa não precisa saber antecipadamente o resultado de cada usuário para conseguir descrever, comparar e estudar o comportamento do conjunto.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="O ponto principal">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+O ponto principal
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A existência de incerteza individual não significa ausência de estrutura.</p>
+<p>Quando observamos muitas realizações de um fenômeno, podem surgir regularidades. É essa combinação de <strong>incerteza + regularidade</strong> que a Teoria da Probabilidade tentará formalizar.</p>
+</div>
+</div>
 </section>
 <section id="antes-de-finalizarmos-feynman-e-o-framework" class="level2">
 <h2 class="anchored" data-anchor-id="antes-de-finalizarmos-feynman-e-o-framework">Antes de finalizarmos: Feynman e o <em>framework</em></h2>
@@ -969,37 +874,29 @@ Matemática e realidade
 <h2 class="anchored" data-anchor-id="o-que-vem-a-seguir">O que vem a seguir</h2>
 <p>Nas próximas seções, introduziremos gradualmente:</p>
 <p><span class="math display">\[
+\begin{gathered}
 \text{Experimento}
-\]</span></p>
-<p><span class="math display">\[
+\\[-0.1em]
 \downarrow
-\]</span></p>
-<p><span class="math display">\[
+\\[-0.1em]
 \text{Resultado}
-\]</span></p>
-<p><span class="math display">\[
+\\[-0.1em]
 \downarrow
-\]</span></p>
-<p><span class="math display">\[
+\\[-0.1em]
 \text{Espaço amostral}
-\]</span></p>
-<p><span class="math display">\[
+\\[-0.1em]
 \downarrow
-\]</span></p>
-<p><span class="math display">\[
+\\[-0.1em]
 \text{Eventos}
-\]</span></p>
-<p><span class="math display">\[
+\\[-0.1em]
 \downarrow
-\]</span></p>
-<p><span class="math display">\[
+\\[-0.1em]
 \text{Lei de probabilidade}
-\]</span></p>
-<p><span class="math display">\[
+\\[-0.1em]
 \downarrow
-\]</span></p>
-<p><span class="math display">\[
-\boxed{\text{Modelo probabilístico}}.
+\\[-0.1em]
+\boxed{\text{Modelo probabilístico}}
+\end{gathered}
 \]</span></p>
 <p>Mais adiante, <strong>variáveis aleatórias</strong> permitirão transformar os resultados desses experimentos em quantidades numéricas como:</p>
 <ul>
@@ -1024,9 +921,18 @@ Matemática e realidade
 <li><p>Por que imaginar muitos ensaios do mesmo experimento é importante para compreender a ideia de frequência relativa?</p></li>
 <li><p>Qual é a diferença entre o mecanismo que gera os dados e os dados que efetivamente observamos?</p></li>
 <li><p>Por que observar frequências relativas aproximadamente estáveis sugere que existe alguma estrutura por trás dos resultados individuais?</p></li>
+<li><p>Uma empresa observa milhares de visitas ao seu site. Por que o fato de não sabermos se um usuário individual irá comprar não impede que apareçam regularidades quando observamos muitos usuários?</p></li>
+<li><p>Qual é a semelhança entre repetir o lançamento de um dado e observar muitos casos de um mesmo tipo de fenômeno em um contexto real, como compras em um site?</p></li>
+<li><p>Se uma empresa observa uma taxa de conversão relativamente estável ao longo do tempo, isso significa que ela consegue prever com certeza o comportamento de cada usuário? Explique.</p></li>
 </ol>
 
 
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Spanos, A. (1999). <em>Probability Theory and Statistical Inference: Econometric Modeling with Observational Data</em>. Cambridge University Press.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->
