@@ -23,12 +23,14 @@ book:
     - part: "Módulo 1 — Probabilidade"
       chapters:
         - chapters/01_da_incerteza_a_probabilidade.qmd
+        - chapters/02_construindo_um_modelo_probabilistico.qmd
+      #  - chapters/03_quando_o_espaco_amostral_e_continuo.qmd
 
 format:
   html:
     theme: flatly
     css: styles.css
-    
+
     toc: true
     toc-location: right
     toc-depth: 3
@@ -44,7 +46,6 @@ format:
       body-width: 950px
       margin-width: 280px
       gutter-width: 1.5rem
-
 
 number-sections: false
 

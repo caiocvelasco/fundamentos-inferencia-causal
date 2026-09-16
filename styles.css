@@ -19,6 +19,7 @@ figure:has(.course-figure) figcaption:empty {
   display: none;
 }
 
+
 /* ========================================
    COMPACT TABLES
    ======================================== */
@@ -40,4 +41,27 @@ figure:has(.course-figure) figcaption:empty {
 .compact-table td {
   text-align: center !important;
   padding: 0.5rem 1.5rem !important;
+}
+
+
+/* ========================================
+   INLINE HIGHLIGHTS
+   ======================================== */
+
+/* Main mathematical / statistical concepts */
+.conceito {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+/* Important warnings, common mistakes, things to notice */
+.atencao {
+  color: #dc3545;
+  font-weight: 600;
+}
+
+/* Connections to practice / real-world applications */
+.mundo-real {
+  color: #198754;
+  font-weight: 600;
 }
