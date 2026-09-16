@@ -188,7 +188,9 @@ Por exemplo: lançar dois dados e observar o resultado.
 
 Cada vez que realizamos esse mesmo procedimento temos um **ensaio** (*trial*).
 
-Assim, podemos pensar em um mesmo experimento sendo realizado em vários ensaios: $\text{Ensaio}_1,\text{Ensaio}_2,\text{Ensaio}_3,\ldots$
+Assim, podemos pensar em um mesmo experimento sendo realizado em vários ensaios:
+
+$\text{Ensaio}_1,\text{Ensaio}_2,\text{Ensaio}_3,\ldots$
 
 Cada ensaio produz exatamente **um resultado**.
 
@@ -202,15 +204,35 @@ O resultado é **aquilo que observamos nessa realização**.
 
 ::: {.callout-note title="Uma distinção importante"}
 
-Se lançamos uma moeda três vezes e nosso experimento foi definido como:
+Tudo depende de como definimos o experimento.
 
-> lançar uma moeda três vezes e observar toda a sequência,
+Se o experimento for
 
-então $HTH$ é **um resultado de um único experimento**.
+> lançar uma moeda uma vez e observar a face,
 
-Os três lançamentos não precisam ser tratados como três experimentos diferentes.
+um resultado é simplesmente
 
-Tudo depende de como definimos o experimento que queremos modelar.
+$H$ ou $T$.
+
+Mas suponha que o experimento seja
+
+> lançar uma moeda três vezes e registrar, na ordem, os três resultados.
+
+Agora, um único resultado precisa guardar **três informações**:
+
+- o resultado do primeiro lançamento;
+- o resultado do segundo;
+- o resultado do terceiro.
+
+Por exemplo,
+
+$$
+(H,T,H)
+$$
+
+é **um único resultado de um único ensaio desse experimento**.
+
+Os três lançamentos fazem parte da definição do experimento. Não são, nesse caso, três experimentos diferentes.
 
 :::
 
@@ -238,13 +260,21 @@ Chamamos o conjunto de todos os resultados possíveis de um experimento de **esp
 
 Vamos representá-lo por $\Omega$.
 
-No lançamento de uma moeda, $\Omega=\{H,T\}$.
+No lançamento de uma moeda,
+
+$$
+\Omega=\{H,T\}.
+$$
 
 Cada elemento de $\Omega$ representa um possível resultado do experimento.
 
-Costumamos representar um resultado particular por uma letra minúscula grega, $\omega$.
+Costumamos representar um resultado particular pela letra grega minúscula $\omega$.
 
-Portanto, $\omega \in \Omega$.
+Portanto,
+
+$$
+\omega\in\Omega.
+$$
 
 Antes do experimento, sabemos que algum elemento de $\Omega$ será observado.
 
@@ -258,11 +288,103 @@ Considere o experimento:
 
 > lançar um dado de seis faces e observar o número da face superior.
 
-O espaço amostral é $\Omega=\{1,2,3,4,5,6\}$.
+O espaço amostral é
+
+$$
+\Omega=\{1,2,3,4,5,6\}.
+$$
 
 Se o dado for lançado e observarmos $\omega=4$, então $4$ foi o resultado realizado.
 
-Mas antes do lançamento nosso modelo precisava contemplar todos os resultados: $1,2,3,4,5,6$.
+Mas antes do lançamento nosso modelo precisava contemplar todos os resultados possíveis.
+
+### Quando um resultado precisa guardar mais de uma informação
+
+Até agora, em exemplos como uma moeda ou um dado, cada resultado carregava apenas **uma informação**.
+
+Mas um resultado também pode precisar registrar várias coisas ao mesmo tempo.
+
+Considere o experimento:
+
+> lançar uma moeda duas vezes e registrar, na ordem, o resultado dos dois lançamentos.
+
+Cada lançamento possui as possibilidades
+
+$$
+\{H,T\}.
+$$
+
+Como precisamos registrar **o primeiro e o segundo lançamento**, combinamos as possibilidades dos dois.
+
+É aqui que aparece o [**produto cartesiano**]{.conceito}.
+
+Dados dois conjuntos $A$ e $B$, o produto cartesiano
+
+$$
+A\times B
+$$
+
+é o conjunto de todos os **pares ordenados** em que o primeiro elemento vem de $A$ e o segundo vem de $B$.
+
+No nosso exemplo:
+
+$$
+\Omega
+=
+\{H,T\}\times\{H,T\}.
+$$
+
+Portanto,
+
+$$
+\Omega
+=
+\{
+(H,H),(H,T),(T,H),(T,T)
+\}.
+$$
+
+Perceba o que aconteceu.
+
+Com um lançamento, um resultado poderia ser simplesmente
+
+$$
+\omega=H.
+$$
+
+Com dois lançamentos, precisamos registrar duas informações:
+
+$$
+\omega=(H,T).
+$$
+
+O espaço amostral ganhou uma estrutura adicional porque **o próprio resultado do experimento passou a ter mais de um componente**.
+
+Isso também explica por que
+
+$$
+(H,T)\neq(T,H).
+$$
+
+Como os pares são ordenados, $(H,T)$ significa cara no primeiro lançamento e coroa no segundo, enquanto $(T,H)$ significa exatamente o contrário.
+
+::: {.callout-tip title="A ideia por trás do produto cartesiano"}
+
+Quando um resultado precisa registrar mais de uma informação, podemos combinar os conjuntos de possibilidades de cada componente:
+
+$$
+\boxed{
+\text{possibilidades do primeiro componente}
+\times
+\text{possibilidades do segundo componente}
+}
+$$
+
+O produto cartesiano constrói **todas as combinações possíveis**.
+
+Essa mesma ideia aparecerá várias vezes ao longo do curso.
+
+:::
 
 ### Exemplo: dois dados
 
@@ -270,22 +392,41 @@ Agora considere:
 
 > lançar dois dados e observar o resultado de cada dado.
 
-Um resultado precisa informar tanto o primeiro quanto o segundo dado.
-
-Assim, $\omega=(i,j)$, onde $i,j\in\{1,2,3,4,5,6\}$.
-
-O espaço amostral contém, portanto,
+Cada dado possui como possíveis resultados
 
 $$
-\Omega=
-\{
-(1,1),(1,2),\ldots,(1,6),
-(2,1),\ldots,
-(6,6)
-\}.
+\{1,2,3,4,5,6\}.
 $$
 
-Existem $6\times6=36$ resultados possíveis.
+Como precisamos registrar o resultado **do primeiro e do segundo dado**, construímos
+
+$$
+\Omega
+=
+\{1,2,3,4,5,6\}
+\times
+\{1,2,3,4,5,6\}.
+$$
+
+Cada elemento de $\Omega$ é um par ordenado
+
+$$
+\omega=(i,j),
+$$
+
+onde $i$ é o resultado do primeiro dado e $j$ o resultado do segundo.
+
+Por exemplo,
+
+$$
+(2,5),\qquad(6,1),\qquad(3,3).
+$$
+
+Como existem $6$ possibilidades para o primeiro componente e $6$ para o segundo,
+
+$$
+|\Omega|=6\times6=36.
+$$
 
 ### Espaços amostrais podem ter tamanhos diferentes
 
@@ -299,13 +440,17 @@ Um espaço amostral é **finito** quando possui um número limitado de resultado
 
 Por exemplo, ao lançar um dado de seis faces:
 
-$\Omega=\{1,2,3,4,5,6\}$.
+$$
+\Omega=\{1,2,3,4,5,6\}.
+$$
 
 Podemos literalmente listar todos os resultados possíveis e terminar a lista.
 
 O mesmo acontece com uma moeda:
 
-$\Omega=\{H,T\}$.
+$$
+\Omega=\{H,T\}.
+$$
 
 ---
 
@@ -317,7 +462,9 @@ Agora imagine que queremos registrar:
 
 Os resultados possíveis são:
 
-$\Omega=\{0,1,2,3,\ldots\}$.
+$$
+\Omega=\{0,1,2,3,\ldots\}.
+$$
 
 Não existe um último número possível nessa lista.
 
@@ -325,13 +472,17 @@ Portanto, $\Omega$ possui **infinitos elementos**.
 
 Mas existe algo importante: ainda conseguimos imaginar os resultados sendo listados, um depois do outro:
 
-$0,1,2,3,4,\ldots$
+$$
+0,1,2,3,4,\ldots
+$$
 
 Por isso dizemos que esse conjunto é **infinito enumerável** (*countably infinite*).
 
 Outro exemplo seria o número de tentativas até um usuário conseguir concluir determinado processo:
 
-$1,2,3,4,\ldots$
+$$
+1,2,3,4,\ldots
+$$
 
 Novamente, existem infinitas possibilidades, mas elas podem ser organizadas em uma sequência.
 
@@ -343,29 +494,37 @@ Agora considere outra pergunta:
 
 > **quanto tempo um usuário leva para concluir o checkout?**
 
-Poderíamos representar os resultados possíveis por:
+Poderíamos representar os resultados possíveis por
 
-$\Omega=[0,\infty)$.
+$$
+\Omega=[0,\infty).
+$$
 
 Mas o que significa esse intervalo?
 
 Ele contém não apenas $1$, $2$, $3$, etc., mas qualquer valor intermediário possível:
 
-$1.2,\;1.23,\;1.234,\;1.2345,\ldots$
+$$
+1.2,\;1.23,\;1.234,\;1.2345,\ldots
+$$
 
 E isso não acontece apenas entre $1$ e $2$.
 
 Entre **quaisquer dois valores diferentes**, por mais próximos que estejam, existem infinitos outros valores.
 
-Por exemplo, entre $1.2$ e $1.3$ temos:
+Por exemplo, entre $1.2$ e $1.3$ temos
 
-$1.21,\;1.211,\;1.212,\;1.25,\ldots$
+$$
+1.21,\;1.211,\;1.212,\;1.25,\ldots
+$$
 
 Não existe um "próximo número" depois de $1.2$ da mesma forma que existe um próximo inteiro depois de $1$.
 
-Por isso não conseguimos listar esses resultados um a um como fizemos com:
+Por isso não conseguimos listar esses resultados um a um como fizemos com
 
-$\{0,1,2,3,\ldots\}$.
+$$
+\{0,1,2,3,\ldots\}.
+$$
 
 Chamamos esse tipo de conjunto de **infinito não enumerável** (*uncountably infinite*).
 
@@ -381,11 +540,15 @@ Portanto, podemos ter:
 
 Os conjuntos
 
-$\{0,1,2,3,\ldots\}$
+$$
+\{0,1,2,3,\ldots\}
+$$
 
 e
 
-$[0,\infty)$
+$$
+[0,\infty)
+$$
 
 possuem ambos infinitos elementos.
 
@@ -393,7 +556,9 @@ Mas são infinitos de naturezas diferentes.
 
 No primeiro, conseguimos conceitualmente **enumerar** os resultados:
 
-$0,1,2,3,\ldots$
+$$
+0,1,2,3,\ldots
+$$
 
 No segundo, isso não é possível: dentro de qualquer pequeno intervalo continuam existindo infinitas possibilidades.
 
@@ -435,7 +600,7 @@ Existe aqui uma ideia muito mais importante do que pode parecer inicialmente:
 
 Ele faz parte da forma como decidimos representar o problema.
 
-**-> Considere um usuário chegando ao checkout de um e-commerce.**
+**→ Considere um usuário chegando ao checkout de um e-commerce.**
 
 Se nossa pergunta for apenas:
 
@@ -443,13 +608,17 @@ Se nossa pergunta for apenas:
 
 podemos construir um espaço amostral simples:
 
-$\Omega=\{\text{compra},\text{não compra}\}$.
+$$
+\Omega=\{\text{compra},\text{não compra}\}.
+$$
 
-Agora imagine que nossa pergunta seja um pouco mais detalhada:
+Agora imagine que queremos registrar mais informação:
 
 > **Se houver uma compra, qual será a forma de pagamento utilizada?**
 
-Nesse caso, precisamos distinguir mais resultados possíveis. Podemos definir, por exemplo,
+O resultado precisa agora distinguir diferentes possibilidades de compra.
+
+Podemos definir:
 
 $$
 \Omega=
@@ -463,19 +632,23 @@ $$
 
 A situação real pode ser exatamente a mesma.
 
-O que mudou foi **a pergunta que queremos responder** e, consequentemente, nossa **representação matemática** do fenômeno.
+O que mudou foi **a informação que decidimos registrar** e, consequentemente, nossa **representação matemática** do fenômeno.
+
+Perceba que isso é uma versão da mesma ideia que vimos com duas moedas e dois dados: quando queremos guardar mais informação sobre o resultado, precisamos enriquecer a estrutura de $\omega$ e, consequentemente, de $\Omega$.
 
 ---
 
-**-> Agora considere um problema extremamente comum em Data Science: churn.**
+**→ Agora considere um problema extremamente comum em Data Science: churn.**
 
 Suponha que acompanhamos um cliente durante determinado período e queremos registrar apenas uma coisa:
 
 > **O cliente cancelará ou permanecerá ativo?**
 
-Um espaço amostral possível é simplesmente:
+Um espaço amostral possível é simplesmente
 
-$\Omega=\{\text{churn},\text{não churn}\}$.
+$$
+\Omega=\{\text{churn},\text{não churn}\}.
+$$
 
 Temos apenas dois resultados possíveis. Portanto, estamos novamente diante de um espaço amostral **finito e discreto**.
 
@@ -483,13 +656,23 @@ Esse exemplo extremamente simples está por trás de problemas muito familiares 
 
 Mais adiante, quando introduzirmos **variáveis aleatórias**, poderemos representar esses dois resultados numericamente, por exemplo:
 
-$Y=1$ para churn e $Y=0$ para não churn.
+$$
+Y=1
+$$
+
+para churn e
+
+$$
+Y=0
+$$
+
+para não churn.
 
 E quando estudarmos modelos estatísticos, poderemos fazer uma pergunta ainda mais interessante:
 
 > **Qual é a probabilidade de churn para um cliente com determinadas características?**
 
-É exatamente o tipo de problema em que aparece, por exemplo, a **regressão logística (*logistic regression*)**.
+É exatamente o tipo de problema em que aparece, por exemplo, a **regressão logística** (*logistic regression*).
 
 ::: {.callout-tip title="Do espaço amostral ao Machine Learning"}
 
@@ -497,11 +680,13 @@ E quando estudarmos modelos estatísticos, poderemos fazer uma pergunta ainda ma
 
 Começamos com algo aparentemente elementar:
 
-$\Omega=\{\text{churn},\text{não churn}\}$.
+$$
+\Omega=\{\text{churn},\text{não churn}\}.
+$$
 
 Mais adiante, esses resultados poderão ser representados por uma variável $Y\in\{0,1\}$ e poderemos modelar a probabilidade de observar $Y=1$ dadas determinadas características do cliente.
 
-É daí que surgem muitos problemas que, na prática, chamamos de **classificação binária (*binary classification*)**.
+É daí que surgem muitos problemas que, na prática, chamamos de **classificação binária** (*binary classification*).
 
 Problemas de *churn prediction*, conversão, fraude ou inadimplência não começam no algoritmo.
 
@@ -544,16 +729,35 @@ Considere o experimento:
 
 > lançar uma moeda duas vezes e registrar, na ordem, o resultado dos dois lançamentos.
 
-Quais são todos os resultados possíveis? $\Omega=\{HH,HT,TH,TT\}$.
+Já vimos que
 
-Por que precisamos tanto de $HT$ quanto de $TH$?
+$$
+\Omega
+=
+\{H,T\}\times\{H,T\}
+=
+\{
+(H,H),(H,T),(T,H),(T,T)
+\}.
+$$
+
+Por que precisamos tanto de $(H,T)$ quanto de $(T,H)$?
 
 Porque eles representam resultados diferentes:
 
-- $HT$: primeiro saiu cara e depois coroa;
-- $TH$: primeiro saiu coroa e depois cara.
+- $(H,T)$: primeiro saiu cara e depois coroa;
+- $(T,H)$: primeiro saiu coroa e depois cara.
 
-Se definíssemos $\Omega=\{HH,HT,TT\}$, o espaço amostral estaria incompleto.
+Se definíssemos
+
+$$
+\Omega=
+\{
+(H,H),(H,T),(T,T)
+\},
+$$
+
+o espaço amostral estaria incompleto.
 
 Se o experimento produzisse primeiro $T$ e depois $H$, teríamos observado um resultado possível que **não existe em $\Omega$**.
 
@@ -561,35 +765,53 @@ Portanto, esse espaço amostral não seria coletivamente exaustivo.
 
 ::: {.callout-warning title="O erro que essa ideia evita"}
 
-A exaustividade funciona como uma checagem de sanidade do modelo: **existe alguma coisa que pode acontecer no mundo, mas que nosso espaço amostral esqueceu de representar?**
+A exaustividade funciona como uma checagem de sanidade do modelo:
 
-No exemplo das moedas, esquecer $TH$ produz exatamente esse problema.
+> **existe alguma coisa que pode acontecer no mundo, mas que nosso espaço amostral esqueceu de representar?**
+
+No exemplo das moedas, esquecer $(T,H)$ produz exatamente esse problema.
 
 Em dados reais, a mesma falha aparece quando criamos categorias para um processo e deixamos de fora um estado que pode realmente ocorrer.
 
 :::
 
-::: {.callout-note title="Mas HT e TH precisam sempre ser separados?"}
+::: {.callout-note title="Mas $(H,T)$ e $(T,H)$ precisam sempre ser separados?"}
 
 Não.
 
 Tudo depende do que definimos como resultado do experimento.
 
-Se nosso experimento for:
+Se nosso experimento for
 
 > lançar uma moeda duas vezes e registrar a sequência,
 
-então $HT$ e $TH$ são resultados diferentes e precisamos de $\Omega=\{HH,HT,TH,TT\}$.
+então $(H,T)$ e $(T,H)$ são resultados diferentes e precisamos de
 
-Mas suponha que nosso experimento seja:
+$$
+\Omega
+=
+\{
+(H,H),(H,T),(T,H),(T,T)
+\}.
+$$
+
+Mas suponha que nosso experimento seja
 
 > lançar uma moeda duas vezes e registrar apenas o número de caras.
 
 Agora não nos interessa a ordem.
 
-Os possíveis resultados são simplesmente $\Omega=\{0,1,2\}$.
+Os possíveis resultados são simplesmente
 
-Tanto $HT$ quanto $TH$ correspondem ao mesmo resultado: **uma cara**.
+$$
+\Omega=\{0,1,2\}.
+$$
+
+Tanto $(H,T)$ quanto $(T,H)$ correspondem ao mesmo resultado nessa nova representação:
+
+$$
+1\text{ cara}.
+$$
 
 Os dois espaços amostrais são válidos.
 
@@ -609,7 +831,17 @@ Os elementos de $\Omega$ devem ser definidos de maneira que, ao realizar o exper
 
 Dizemos que os resultados são **mutuamente exclusivos**.
 
-No experimento em que registramos a sequência das duas moedas, se observamos $HT$, não observamos simultaneamente $HH$, $TH$ ou $TT$.
+No experimento em que registramos a sequência das duas moedas, se observamos
+
+$$
+(H,T),
+$$
+
+não observamos simultaneamente
+
+$$
+(H,H),\qquad(T,H)\qquad\text{ou}\qquad(T,T).
+$$
 
 Assim:
 
@@ -628,28 +860,39 @@ Lançamos uma moeda duas vezes e queremos registrar **apenas se as duas faces fo
 
 Qual dos seguintes espaços amostrais representa corretamente esse experimento?
 
-1. $\Omega=\{HH,HT,TH,TT\}$
+1. $\Omega=\{(H,H),(H,T),(T,H),(T,T)\}$
+
 2. $\Omega=\{\text{iguais},\text{diferentes}\}$
-3. $\Omega=\{HH,HT,TT\}$
+
+3. $\Omega=\{(H,H),(H,T),(T,T)\}$
 
 O segundo é suficiente para a pergunta que escolhemos responder.
 
 O primeiro também contém informação suficiente, mas registra mais detalhes do que precisamos.
 
-O terceiro não é válido se estivermos registrando a sequência completa, pois deixou de fora o resultado possível $TH$.
+O terceiro não é válido se estivermos registrando a sequência completa, pois deixou de fora o resultado possível $(T,H)$.
+
 :::
 
 **Podemos resumir as duas condições assim:**
 
 $$
 \begin{gathered}
+
 \underbrace{\text{pelo menos um resultado ocorre}}_{\text{exaustividade}}
+
 \;+\;
+
 \underbrace{\text{no máximo um resultado ocorre}}_{\text{exclusividade}}
+
 \qquad \Longrightarrow
+
 \\[0.8em]
+
 \Longrightarrow \qquad
+
 \underbrace{\text{exatamente um resultado ocorre}}_{\text{as duas juntas}}
+
 \end{gathered}
 $$
 
@@ -669,12 +912,17 @@ $$
 
 Agora sabemos representar **todos os resultados que um ensaio do experimento pode produzir**.
 
+E vimos também que um resultado $\omega$ não precisa carregar apenas uma informação: quando o experimento exige várias, podemos construir espaços mais ricos usando estruturas como o **produto cartesiano**.
+
 Mas ainda não atribuímos nenhuma probabilidade.
 
 Antes disso, precisamos decidir quais **conjuntos de resultados** queremos tratar como objetos probabilísticos.
 
-É daí que nasce a segunda peça: $\mathcal F$.
+É daí que nasce a segunda peça:
 
+$$
+\mathcal F.
+$$
 
 ## 2. Família de eventos ($\mathcal F$)
 
