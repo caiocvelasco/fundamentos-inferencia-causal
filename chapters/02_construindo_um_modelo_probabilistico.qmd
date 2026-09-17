@@ -1082,18 +1082,45 @@ Assim:
 
 Mas existe uma exigência natural.
 
-Se conseguimos perguntar sobre $A$ e $B$, também queremos conseguir perguntar sobre **não $A$**, **$A$ ou $B$**, **$A$ e $B$**.
+Até aqui chamamos $\mathcal F$ de nossa **família de eventos**. Podemos agora dar um nome um pouco mais formal a essa coleção: ela será o nosso [**espaço de eventos**]{.conceito}.
 
-Por isso queremos que esses novos eventos **também** continuem pertencendo à mesma família.
+A ideia é que esse espaço não contenha apenas os eventos que nos interessam originalmente, como $A$ e $B$.
 
-A matemática chama essa propriedade de **fechamento**: aplicamos determinadas operações a elementos da coleção e o resultado continua dentro dela. (_É abstrato, mas faz todo sentido, veja abaixo!_)
+Se conseguimos perguntar:
+
+- **"$A$ ocorreu?"**
+- **"$B$ ocorreu?"**
+
+também queremos conseguir perguntar:
+
+- **"$A$ não ocorreu?"**
+- **"$A$ ou $B$ ocorreu?"**
+- **"$A$ e $B$ ocorreram?"**
+
+Essas novas perguntas correspondem aos eventos $A^c$, $A\cup B$ e $A\cap B$.
+
+Por isso, queremos que, ao combinar eventos que já pertencem a $\mathcal F$, os novos eventos produzidos **continuem pertencendo a $\mathcal F$**.
+
+Na matemática, dizemos que uma coleção é [**fechada sob uma operação**]{.conceito} quando aplicamos essa operação aos seus elementos e o resultado continua dentro da própria coleção.
 
 Por exemplo:
 
-- $A\in\mathcal F \Rightarrow A^c\in\mathcal F$. 
-    Se $A\in\mathcal F$, queremos também que $A^c\in\mathcal F$, pois, se conseguimos perguntar **"A ocorreu?"**, também queremos conseguir perguntar **"A não ocorreu?"**.
+- os números inteiros são **fechados sob adição**, porque a soma de dois inteiros continua sendo um inteiro;
+- mas **não são fechados sob divisão**, porque, por exemplo, $1/2$ não é inteiro.
 
-- Da mesma forma, se $A,B\in\mathcal F$, queremos que $A\cup B\in\mathcal F$, pois, se conseguimos perguntar sobre $A$ e sobre $B$, também queremos conseguir perguntar **"A ou B ocorreu?"**.
+No nosso caso, queremos que o espaço de eventos seja **fechado sob operações de conjuntos**.
+
+Assim:
+
+- se $A\in\mathcal F$, então queremos também $A^c\in\mathcal F$;
+- se $A,B\in\mathcal F$, então queremos $A\cup B\in\mathcal F$;
+- e também $A\cap B\in\mathcal F$.
+
+Ou seja,
+
+> **o espaço de eventos é uma coleção de subconjuntos de $\Omega$ que permanece estável quando aplicamos a ela as operações de conjuntos que precisamos usar.**
+
+Isso é justamente o que significa dizer que, nesse caso, $\mathcal F$ é **fechado sob complemento, união e interseção** (ou como apresentamos inicialmente, **fechado sob operações de conjuntos**).
 
 ::: {.callout-note title="No caso finito, a ideia é simples"}
 
@@ -1169,11 +1196,57 @@ $$
 [0,1].
 $$
 
-Em espaços finitos, frequentemente podemos trabalhar dessa forma, pensando que $\mathcal F$ pode "facilmente" tomado como o **conjunto das partes**:  $\mathcal F=2^\Omega$.
+Em espaços finitos pequenos, frequentemente podemos trabalhar dessa forma e simplesmente tomar o **conjunto das partes** como nosso espaço de eventos: $\mathcal F=2^\Omega$.
 
-Porém, como vimos mais acima no estudo do [**Espaço Amostral**]{.conceito}, a maioria das perguntas do mundo real cai no caso de [**espaços infinitos**]{.conceito}, por exemplo: _quanto tempo um usuário leva para concluir o checkout?_
+Mas existe uma primeira sutileza importante: o conjunto das partes cresce **muito rapidamente**.
 
-Em espaços infinitos — principalmente os contínuos (_lembra?_) — existem algumas sutilezas e nem sempre consideramos todos os subconjuntos de $\Omega$ como eventos. Não precisamos entrar nisso agora.
+Se $\Omega$ possui $N$ resultados possíveis, então $2^\Omega$ possui
+
+$$
+2^N
+$$
+
+subconjuntos — isto é, $2^N$ eventos possíveis.
+
+Com uma única moeda, temos apenas $2$ resultados e, portanto, $2^2=4$ subconjuntos. Nada demais.
+
+Mas, se lançarmos uma moeda três vezes e registrarmos a sequência, teremos $8$ resultados possíveis. O conjunto das partes já terá $2^8=256$ eventos.
+
+Ou seja:
+
+> **não precisamos necessariamente colocar em $\mathcal F$ todos os eventos matematicamente possíveis se apenas alguns deles são relevantes para o problema que queremos modelar.**
+
+Essa é uma primeira razão, bastante prática, para distinguir **espaço de eventos** de **conjunto das partes**.
+
+E a situação cresce ainda mais rápido quando $\Omega$ é infinito.
+
+Por exemplo, considere um espaço enumerável como $\Omega=\{0,1,2,3,\ldots\}$.
+
+Os elementos de $\Omega$ podem ser listados um a um. Porém, seu conjunto das partes $2^\Omega$ já é **não enumerável**: existem tantos subconjuntos de $\Omega$ quanto números reais.
+
+Ou seja, algo interessante aconteceu:
+
+$$
+\boxed{\Omega\text{ é enumerável}}
+\qquad\text{mas}\qquad
+\boxed{2^\Omega\text{ não é enumerável}.}
+$$
+
+Isso mostra como o conjunto das partes pode se tornar enorme mesmo quando o próprio espaço amostral ainda parece relativamente simples.
+
+E existe ainda uma segunda sutileza, agora **matemática**.
+
+Quando $\Omega$ é não enumerável, como acontece ao modelarmos uma quantidade contínua, por exemplo o tempo necessário para concluir um checkout, nem sempre podemos tratar **todos** os elementos de $2^\Omega$ como eventos aos quais uma probabilidade pode ser atribuída de maneira consistente.
+
+Não precisamos entender essa dificuldade ainda.
+
+Por enquanto, guarde apenas:
+
+> **$\mathcal F$ é o nosso espaço de eventos e não precisa ser igual ao conjunto das partes $2^\Omega$.**
+
+Nos casos finitos mais simples, muitas vezes usamos $\mathcal F=2^\Omega$ porque isso é conveniente.
+
+Mais adiante veremos por que, em espaços infinitos e principalmente contínuos, precisamos escolher $\mathcal F$ com um pouco mais de cuidado.
 
 :::
 

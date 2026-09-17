@@ -1200,14 +1200,39 @@ Resultado e evento não são a mesma coisa
 <li><span class="math inline">\(A\in\mathcal F\)</span>: <span class="math inline">\(A\)</span> pertence à <strong>família de eventos</strong> considerada, ou seja, é um elemento de <span class="math inline">\(\mathcal F\)</span> (e <strong>não</strong> um subconjunto!).</li>
 </ul>
 <p>Mas existe uma exigência natural.</p>
-<p>Se conseguimos perguntar sobre <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span>, também queremos conseguir perguntar sobre <strong>não <span class="math inline">\(A\)</span></strong>, <strong><span class="math inline">\(A\)</span> ou <span class="math inline">\(B\)</span></strong>, <strong><span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span></strong>.</p>
-<p>Por isso queremos que esses novos eventos <strong>também</strong> continuem pertencendo à mesma família.</p>
-<p>A matemática chama essa propriedade de <strong>fechamento</strong>: aplicamos determinadas operações a elementos da coleção e o resultado continua dentro dela. (<em>É abstrato, mas faz todo sentido, veja abaixo!</em>)</p>
+<p>Até aqui chamamos <span class="math inline">\(\mathcal F\)</span> de nossa <strong>família de eventos</strong>. Podemos agora dar um nome um pouco mais formal a essa coleção: ela será o nosso <span class="conceito"><strong>espaço de eventos</strong></span>.</p>
+<p>A ideia é que esse espaço não contenha apenas os eventos que nos interessam originalmente, como <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span>.</p>
+<p>Se conseguimos perguntar:</p>
+<ul>
+<li><strong>“<span class="math inline">\(A\)</span> ocorreu?”</strong></li>
+<li><strong>“<span class="math inline">\(B\)</span> ocorreu?”</strong></li>
+</ul>
+<p>também queremos conseguir perguntar:</p>
+<ul>
+<li><strong>“<span class="math inline">\(A\)</span> não ocorreu?”</strong></li>
+<li><strong>“<span class="math inline">\(A\)</span> ou <span class="math inline">\(B\)</span> ocorreu?”</strong></li>
+<li><strong>“<span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> ocorreram?”</strong></li>
+</ul>
+<p>Essas novas perguntas correspondem aos eventos <span class="math inline">\(A^c\)</span>, <span class="math inline">\(A\cup B\)</span> e <span class="math inline">\(A\cap B\)</span>.</p>
+<p>Por isso, queremos que, ao combinar eventos que já pertencem a <span class="math inline">\(\mathcal F\)</span>, os novos eventos produzidos <strong>continuem pertencendo a <span class="math inline">\(\mathcal F\)</span></strong>.</p>
+<p>Na matemática, dizemos que uma coleção é <span class="conceito"><strong>fechada sob uma operação</strong></span> quando aplicamos essa operação aos seus elementos e o resultado continua dentro da própria coleção.</p>
 <p>Por exemplo:</p>
 <ul>
-<li><p><span class="math inline">\(A\in\mathcal F \Rightarrow A^c\in\mathcal F\)</span>. Se <span class="math inline">\(A\in\mathcal F\)</span>, queremos também que <span class="math inline">\(A^c\in\mathcal F\)</span>, pois, se conseguimos perguntar <strong>“A ocorreu?”</strong>, também queremos conseguir perguntar <strong>“A não ocorreu?”</strong>.</p></li>
-<li><p>Da mesma forma, se <span class="math inline">\(A,B\in\mathcal F\)</span>, queremos que <span class="math inline">\(A\cup B\in\mathcal F\)</span>, pois, se conseguimos perguntar sobre <span class="math inline">\(A\)</span> e sobre <span class="math inline">\(B\)</span>, também queremos conseguir perguntar <strong>“A ou B ocorreu?”</strong>.</p></li>
+<li>os números inteiros são <strong>fechados sob adição</strong>, porque a soma de dois inteiros continua sendo um inteiro;</li>
+<li>mas <strong>não são fechados sob divisão</strong>, porque, por exemplo, <span class="math inline">\(1/2\)</span> não é inteiro.</li>
 </ul>
+<p>No nosso caso, queremos que o espaço de eventos seja <strong>fechado sob operações de conjuntos</strong>.</p>
+<p>Assim:</p>
+<ul>
+<li>se <span class="math inline">\(A\in\mathcal F\)</span>, então queremos também <span class="math inline">\(A^c\in\mathcal F\)</span>;</li>
+<li>se <span class="math inline">\(A,B\in\mathcal F\)</span>, então queremos <span class="math inline">\(A\cup B\in\mathcal F\)</span>;</li>
+<li>e também <span class="math inline">\(A\cap B\in\mathcal F\)</span>.</li>
+</ul>
+<p>Ou seja,</p>
+<blockquote class="blockquote">
+<p><strong>o espaço de eventos é uma coleção de subconjuntos de <span class="math inline">\(\Omega\)</span> que permanece estável quando aplicamos a ela as operações de conjuntos que precisamos usar.</strong></p>
+</blockquote>
+<p>Isso é justamente o que significa dizer que, nesse caso, <span class="math inline">\(\mathcal F\)</span> é <strong>fechado sob complemento, união e interseção</strong> (ou como apresentamos inicialmente, <strong>fechado sob operações de conjuntos</strong>).</p>
 <div class="callout callout-style-default callout-note callout-titled" title="No caso finito, a ideia é simples">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1278,9 +1303,39 @@ No caso finito, a ideia é simples
 \;\xrightarrow{\quad P\quad}\;
 [0,1].
 \]</span></p>
-<p>Em espaços finitos, frequentemente podemos trabalhar dessa forma, pensando que <span class="math inline">\(\mathcal F\)</span> pode “facilmente” tomado como o <strong>conjunto das partes</strong>: <span class="math inline">\(\mathcal F=2^\Omega\)</span>.</p>
-<p>Porém, como vimos mais acima no estudo do <span class="conceito"><strong>Espaço Amostral</strong></span>, a maioria das perguntas do mundo real cai no caso de <span class="conceito"><strong>espaços infinitos</strong></span>, por exemplo: <em>quanto tempo um usuário leva para concluir o checkout?</em></p>
-<p>Em espaços infinitos — principalmente os contínuos (<em>lembra?</em>) — existem algumas sutilezas e nem sempre consideramos todos os subconjuntos de <span class="math inline">\(\Omega\)</span> como eventos. Não precisamos entrar nisso agora.</p>
+<p>Em espaços finitos pequenos, frequentemente podemos trabalhar dessa forma e simplesmente tomar o <strong>conjunto das partes</strong> como nosso espaço de eventos: <span class="math inline">\(\mathcal F=2^\Omega\)</span>.</p>
+<p>Mas existe uma primeira sutileza importante: o conjunto das partes cresce <strong>muito rapidamente</strong>.</p>
+<p>Se <span class="math inline">\(\Omega\)</span> possui <span class="math inline">\(N\)</span> resultados possíveis, então <span class="math inline">\(2^\Omega\)</span> possui</p>
+<p><span class="math display">\[
+2^N
+\]</span></p>
+<p>subconjuntos — isto é, <span class="math inline">\(2^N\)</span> eventos possíveis.</p>
+<p>Com uma única moeda, temos apenas <span class="math inline">\(2\)</span> resultados e, portanto, <span class="math inline">\(2^2=4\)</span> subconjuntos. Nada demais.</p>
+<p>Mas, se lançarmos uma moeda três vezes e registrarmos a sequência, teremos <span class="math inline">\(8\)</span> resultados possíveis. O conjunto das partes já terá <span class="math inline">\(2^8=256\)</span> eventos.</p>
+<p>Ou seja:</p>
+<blockquote class="blockquote">
+<p><strong>não precisamos necessariamente colocar em <span class="math inline">\(\mathcal F\)</span> todos os eventos matematicamente possíveis se apenas alguns deles são relevantes para o problema que queremos modelar.</strong></p>
+</blockquote>
+<p>Essa é uma primeira razão, bastante prática, para distinguir <strong>espaço de eventos</strong> de <strong>conjunto das partes</strong>.</p>
+<p>E a situação cresce ainda mais rápido quando <span class="math inline">\(\Omega\)</span> é infinito.</p>
+<p>Por exemplo, considere um espaço enumerável como <span class="math inline">\(\Omega=\{0,1,2,3,\ldots\}\)</span>.</p>
+<p>Os elementos de <span class="math inline">\(\Omega\)</span> podem ser listados um a um. Porém, seu conjunto das partes <span class="math inline">\(2^\Omega\)</span> já é <strong>não enumerável</strong>: existem tantos subconjuntos de <span class="math inline">\(\Omega\)</span> quanto números reais.</p>
+<p>Ou seja, algo interessante aconteceu:</p>
+<p><span class="math display">\[
+\boxed{\Omega\text{ é enumerável}}
+\qquad\text{mas}\qquad
+\boxed{2^\Omega\text{ não é enumerável}.}
+\]</span></p>
+<p>Isso mostra como o conjunto das partes pode se tornar enorme mesmo quando o próprio espaço amostral ainda parece relativamente simples.</p>
+<p>E existe ainda uma segunda sutileza, agora <strong>matemática</strong>.</p>
+<p>Quando <span class="math inline">\(\Omega\)</span> é não enumerável, como acontece ao modelarmos uma quantidade contínua, por exemplo o tempo necessário para concluir um checkout, nem sempre podemos tratar <strong>todos</strong> os elementos de <span class="math inline">\(2^\Omega\)</span> como eventos aos quais uma probabilidade pode ser atribuída de maneira consistente.</p>
+<p>Não precisamos entender essa dificuldade ainda.</p>
+<p>Por enquanto, guarde apenas:</p>
+<blockquote class="blockquote">
+<p><strong><span class="math inline">\(\mathcal F\)</span> é o nosso espaço de eventos e não precisa ser igual ao conjunto das partes <span class="math inline">\(2^\Omega\)</span>.</strong></p>
+</blockquote>
+<p>Nos casos finitos mais simples, muitas vezes usamos <span class="math inline">\(\mathcal F=2^\Omega\)</span> porque isso é conveniente.</p>
+<p>Mais adiante veremos por que, em espaços infinitos e principalmente contínuos, precisamos escolher <span class="math inline">\(\mathcal F\)</span> com um pouco mais de cuidado.</p>
 </div>
 </div>
 </section>
