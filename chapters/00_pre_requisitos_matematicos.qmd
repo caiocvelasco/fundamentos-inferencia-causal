@@ -1,0 +1,961 @@
+---
+title: "Pré-requisitos Matemáticos"
+---
+
+<!--
+
+OBJETIVO DESTE MÓDULO
+
+Este arquivo deve conter SOMENTE a Matemática que o aluno realmente precisa
+
+para acompanhar os módulos seguintes.
+
+Regra de manutenção:
+
+- quando um novo conceito matemático aparecer no curso, perguntar primeiro:
+
+  "o aluno precisa saber isso antes ou o próprio capítulo já ensina o suficiente?"
+
+- adicionar aqui apenas o que for realmente pré-requisito;
+
+- evitar transformar este módulo em um curso de Matemática separado;
+
+- sempre apresentar a ideia, usar imediatamente e propor um exercício curto logo depois.
+
+VERSÃO ATUAL
+
+Construída a partir dos três primeiros capítulos do Módulo 1:
+
+1. Da Incerteza à Probabilidade
+
+2. Formalização — Espaço de Probabilidade
+
+3. Quando o Espaço Amostral é Contínuo
+
+Neste momento NÃO são pré-requisitos:
+
+- Cálculo diferencial;
+
+- Cálculo integral;
+
+- Álgebra Linear;
+
+- demonstrações formais de teoremas;
+
+- combinatória avançada.
+
+-->
+
+A proposta aqui é revisar os principais pontos da Matemática que aparecem ao longo do nosso estudo.
+
+Vamos aprender **somente as ferramentas que precisamos**, nada mais, nada menos.
+
+E faremos sempre da mesma forma: **ideia → exemplo → exercício.**
+
+## 1. Aritmética e Álgebra Básica
+
+### Números, proporções e porcentagens
+
+Boa parte da Probabilidade começa com algo muito familiar: **comparar uma parte com um todo**.
+
+Se, em $100$ sessões de um site, $23$ terminaram em compra, a fração de sessões com compra foi
+
+$23/100=0.23$.
+
+E $0.23$ corresponde a **23%**.
+
+Essas são apenas três formas diferentes de representar a mesma proporção:
+
+$\frac{23}{100}=0.23=23\%$.
+
+Mais adiante, essa linguagem aparecerá naturalmente quando falarmos de **frequências relativas**, taxas de conversão e probabilidades.
+
+::: {.callout-note title="Na prática"}
+
+Se um experimento A/B tem $5\,000$ usuários no tratamento e $600$ convertem, a taxa de conversão observada é
+
+$600/5000=0.12=12\%$.
+
+Ainda não estamos fazendo Inferência. Estamos apenas descrevendo uma proporção observada.
+
+:::
+
+#### Exercício rápido
+
+1. Em $2\,000$ sessões, $340$ terminaram em compra. Escreva a proporção de compras como:
+
+   - fração;
+
+   - número decimal;
+
+   - porcentagem.
+
+2. Uma taxa passou de $0.20$ para $0.25$. Qual é o aumento em **pontos percentuais**?
+
+### Igualdades, expressões e desigualdades
+
+Uma expressão matemática é apenas uma maneira compacta de representar uma relação.
+
+Por exemplo,
+
+$y=2x+1$
+
+nos diz como obter $y$ quando conhecemos $x$.
+
+Se $x=3$, então
+
+$y=2(3)+1=7$.
+
+Também usaremos frequentemente **desigualdades**:
+
+- $x<10$: $x$ é menor que $10$;
+
+- $x\leq10$: $x$ é menor ou igual a $10$;
+
+- $x>10$: $x$ é maior que $10$;
+
+- $x\geq10$: $x$ é maior ou igual a $10$.
+
+Em um problema de checkout, por exemplo,
+
+$Y\leq15$
+
+pode representar a afirmação:
+
+> **o checkout levou no máximo 15 segundos.**
+
+#### Exercício rápido
+
+Traduza para Matemática:
+
+1. "O gasto foi maior que R$ 100."
+
+2. "O tempo de checkout foi de no máximo 20 segundos."
+
+3. "A receita não pode ser negativa."
+
+### Intervalos
+
+Quando queremos representar **todos os números entre certos limites**, usamos intervalos.
+
+Por exemplo,
+
+$[0,1]$
+
+representa todos os números reais entre $0$ e $1$, **incluindo** os extremos.
+
+Já
+
+$(0,1)$
+
+representa os números entre $0$ e $1$, **sem incluir** $0$ e $1$.
+
+A diferença é visual:
+
+- colchete $[$ ou $]$: extremo incluído;
+
+- parêntese $($ ou $)$: extremo excluído.
+
+Também podemos ter intervalos sem limite superior. Por exemplo,
+
+$[0,\infty)$
+
+representa todos os números reais maiores ou iguais a zero.
+
+::: {.callout-tip title="Por que isso aparece em Probabilidade?"}
+
+Muitas variáveis do mundo real são modeladas como podendo assumir qualquer valor dentro de um intervalo:
+
+- tempo de espera: $[0,\infty)$;
+
+- proporção: $[0,1]$;
+
+- temperatura: potencialmente um intervalo de números reais.
+
+:::
+
+#### Exercício rápido
+
+Escreva usando intervalos:
+
+1. todos os valores entre $0$ e $100$, incluindo os dois extremos;
+
+2. todos os números positivos;
+
+3. todos os tempos possíveis de conclusão de uma tarefa, assumindo apenas que o tempo não pode ser negativo.
+
+## 2. Conjuntos
+
+### Conjuntos e elementos
+
+Um **conjunto** é uma coleção de objetos.
+
+Por exemplo,
+
+$A=\{1,2,3\}$.
+
+Os objetos $1$, $2$ e $3$ são os **elementos** de $A$.
+
+Para dizer que $2$ pertence a $A$, escrevemos
+
+$2\in A$.
+
+Para dizer que $5$ não pertence a $A$, escrevemos
+
+$5\notin A$.
+
+Essa distinção será central em Probabilidade porque o **espaço amostral** será um conjunto de resultados possíveis.
+
+Se
+
+$\Omega=\{H,T\}$,
+
+então
+
+$H\in\Omega$.
+
+#### Exercício rápido
+
+Considere $S=\{2,4,6,8\}$.
+
+Diga se cada afirmação é verdadeira ou falsa:
+
+1. $4\in S$;
+
+2. $5\in S$;
+
+3. $\{4\}\in S$.
+
+::: {.callout-warning title="Cuidado com um detalhe"}
+
+$4$ e $\{4\}$ são objetos diferentes.
+
+- $4$ é um número;
+
+- $\{4\}$ é um **conjunto que contém o número 4**.
+
+Essa diferença parece pequena, mas será importante quando distinguirmos **resultados** de **eventos**.
+
+:::
+
+### Subconjuntos
+
+Dizemos que $A$ é um **subconjunto** de $B$ quando **todo elemento de $A$ também pertence a $B$**.
+
+Escrevemos
+
+$A\subseteq B$.
+
+Por exemplo, se
+
+$B=\{1,2,3,4\}$
+
+e
+
+$A=\{2,4\}$,
+
+então $A\subseteq B$.
+
+No curso, veremos constantemente estruturas como
+
+$A\subseteq\Omega$.
+
+A interpretação será:
+
+> todos os resultados que pertencem ao evento $A$ são resultados possíveis do experimento.
+
+#### Exercício rápido
+
+Considere $\Omega=\{HH,HT,TH,TT\}$.
+
+1. O conjunto $A=\{HT,TH\}$ é subconjunto de $\Omega$?
+
+2. E $B=\{HH,XX\}$?
+
+3. O próprio $\Omega$ é subconjunto de $\Omega$?
+
+### O conjunto vazio
+
+Existe um conjunto que não possui nenhum elemento. Ele é chamado de **conjunto vazio** e representado por
+
+$\varnothing$.
+
+Uma propriedade simples, mas importante, é:
+
+$\varnothing\subseteq A$
+
+para qualquer conjunto $A$.
+
+Em Probabilidade, o conjunto vazio terá uma interpretação natural: **um evento impossível**.
+
+#### Exercício rápido
+
+Se $\Omega=\{H,T\}$, qual conjunto representa o evento
+
+> "o lançamento da moeda resultou simultaneamente em cara e em coroa"?
+
+### Operações entre conjuntos
+
+Se eventos serão conjuntos, precisamos saber como combinar conjuntos.
+
+Considere
+
+$A=\{1,2,3\}$
+
+e
+
+$B=\{3,4,5\}$.
+
+#### Interseção
+
+A **interseção** contém os elementos que pertencem aos dois conjuntos:
+
+$A\cap B=\{3\}$.
+
+Pense em $\cap$ como **E**.
+
+Em Probabilidade, $A\cap B$ representará:
+
+> **A ocorre E B ocorre.**
+
+#### União
+
+A **união** contém os elementos que pertencem a $A$, a $B$ ou a ambos:
+
+$A\cup B=\{1,2,3,4,5\}$.
+
+Pense em $\cup$ como **OU**.
+
+Em Probabilidade, $A\cup B$ representará:
+
+> **A ocorre OU B ocorre.**
+
+#### Complemento
+
+Se estamos trabalhando dentro de um universo $\Omega$, o **complemento** de $A$ contém tudo que está em $\Omega$ mas não está em $A$.
+
+Escrevemos $A^c$.
+
+Se
+
+$\Omega=\{1,2,3,4,5\}$
+
+e
+
+$A=\{1,2\}$,
+
+então
+
+$A^c=\{3,4,5\}$.
+
+Em Probabilidade, $A^c$ representará simplesmente:
+
+> **A não ocorre.**
+
+#### Exercício rápido
+
+Considere $\Omega=\{HH,HT,TH,TT\}$ e os eventos
+
+- $A=$ "a primeira moeda é cara" $=\{HH,HT\}$;
+
+- $B=$ "a segunda moeda é cara" $=\{HH,TH\}$.
+
+Encontre:
+
+1. $A\cap B$;
+
+2. $A\cup B$;
+
+3. $A^c$.
+
+Depois traduza cada resultado de volta para uma frase sobre as duas moedas.
+
+### Conjuntos disjuntos
+
+Dois conjuntos são **disjuntos** quando não possuem elementos em comum.
+
+Equivalentemente,
+
+$A\cap B=\varnothing$.
+
+Em Probabilidade, também usaremos a expressão **eventos mutuamente exclusivos**.
+
+Isso significa que os dois eventos **não podem ocorrer simultaneamente**.
+
+Por exemplo, em um único lançamento de dado:
+
+- $A=$ "o resultado foi 1";
+
+- $B=$ "o resultado foi 6".
+
+Esses eventos são mutuamente exclusivos.
+
+#### Exercício rápido
+
+Considere um dado de seis faces.
+
+Quais pares abaixo são disjuntos?
+
+1. $A=\{1,2\}$ e $B=\{3,4\}$;
+
+2. $A=\{1,2\}$ e $B=\{2,3\}$;
+
+3. $A=$ "resultado par" e $B=$ "resultado ímpar".
+
+### Notação por propriedade
+
+Nem sempre queremos listar todos os elementos de um conjunto.
+
+Podemos descrevê-lo pela **propriedade que seus elementos precisam satisfazer**.
+
+Por exemplo,
+
+$A=\{x\in\mathbb R:x\geq0\}$
+
+pode ser lido como:
+
+> **o conjunto dos números reais $x$ tais que $x$ é maior ou igual a zero.**
+
+No curso aparecerão expressões como
+
+$A=\{(x,y)\in\Omega:y\leq15\}$.
+
+Leia da esquerda para a direita:
+
+> o conjunto de resultados $(x,y)$ pertencentes a $\Omega$ **tais que** $y\leq15$.
+
+Não existe nenhuma nova Matemática escondida aí. É apenas uma maneira compacta de descrever um conjunto.
+
+#### Exercício rápido
+
+Escreva em palavras:
+
+1. $A=\{x\in\mathbb R:x>100\}$;
+
+2. $B=\{x\in[0,1]:x\leq0.5\}$.
+
+Depois tente escrever em notação matemática:
+
+3. "o conjunto dos tempos $t$ maiores que 10 segundos".
+
+### Cardinalidade: o número de elementos de um conjunto
+
+Quando um conjunto possui um número finito de elementos, podemos contar quantos existem.
+
+A **cardinalidade** de $A$ é representada por $|A|$.
+
+Se
+
+$A=\{a,b,c\}$,
+
+então
+
+$|A|=3$.
+
+Se lançamos dois dados, existem $6\times6=36$ pares possíveis. Portanto,
+
+$|\Omega|=36$.
+
+::: {.callout-note title="Não confunda as barras"}
+
+Neste contexto, $|A|$ significa **número de elementos do conjunto $A$**.
+
+Mais adiante, barras também podem aparecer com outros significados matemáticos. O contexto dirá qual deles estamos usando.
+
+:::
+
+#### Exercício rápido
+
+1. Se $A=\{2,4,6,8,10\}$, qual é $|A|$?
+
+2. Se um experimento registra simultaneamente uma de $3$ versões de uma página e um de $4$ dispositivos possíveis, quantas combinações existem?
+
+### Conjunto das partes
+
+Se $S$ é um conjunto, podemos perguntar:
+
+> **quais são todos os subconjuntos que podem ser formados a partir de $S$?**
+
+A coleção de todos eles é chamada de **conjunto das partes** (*\*power set\**).
+
+Se
+
+$S=\{1,2\}$,
+
+então seus subconjuntos são
+
+- $\varnothing$;
+
+- $\{1\}$;
+
+- $\{2\}$;
+
+- $\{1,2\}$.
+
+Podemos representar o conjunto das partes por $2^S$.
+
+Assim,
+
+$$
+
+2^S=\{\varnothing,\{1\},\{2\},\{1,2\}\}.
+
+$$
+
+Observe um detalhe importante: **os elementos de $2^S$ são conjuntos**.
+
+Isso nos ajudará quando construirmos uma **família de eventos**.
+
+#### Exercício rápido
+
+Liste $2^S$ quando $S=\{H,T\}$.
+
+Quantos elementos o conjunto das partes possui?
+
+## 3. Pares Ordenados e Produto Cartesiano
+
+### Pares ordenados
+
+Às vezes um único resultado precisa guardar **mais de uma informação**.
+
+Nesse caso podemos usar um **par ordenado**:
+
+$(x,y)$.
+
+"Ordenado" significa que a posição importa.
+
+Em geral,
+
+$(x,y)\neq(y,x)$.
+
+Por exemplo,
+
+$(H,T)$
+
+pode significar:
+
+- primeira moeda: cara;
+
+- segunda moeda: coroa.
+
+Já $(T,H)$ representa outro resultado.
+
+No mundo real, poderíamos ter
+
+$(1,12.7)$,
+
+onde:
+
+- $1$ identifica a versão nova do checkout;
+
+- $12.7$ é o tempo observado, em segundos.
+
+#### Exercício rápido
+
+Explique por que os pares abaixo representam informações diferentes:
+
+1. $(2,5)$ e $(5,2)$ no lançamento de dois dados;
+
+2. $(1,12.7)$ e $(0,12.7)$ em um experimento de checkout.
+
+### Produto cartesiano
+
+Se o primeiro componente de um resultado pode vir de um conjunto $A$ e o segundo de um conjunto $B$, o conjunto de **todas as combinações possíveis** é chamado de **produto cartesiano**:
+
+$A\times B$.
+
+Por exemplo,
+
+$\{H,T\}\times\{H,T\}$
+
+produz
+
+$\{(H,H),(H,T),(T,H),(T,T)\}$.
+
+A ideia é simples:
+
+$$
+
+\boxed{\text{possibilidades do primeiro componente}}
+
+\times
+
+\boxed{\text{possibilidades do segundo componente}}
+
+\longrightarrow
+
+\boxed{\text{todas as combinações}}
+
+$$
+
+No experimento do checkout, poderemos ter
+
+$\Omega=\{0,1\}\times[0,\infty)$.
+
+Isso significa que cada resultado possui:
+
+- um primeiro componente igual a $0$ ou $1$;
+
+- um segundo componente igual a algum número não negativo.
+
+#### Exercício rápido
+
+1. Expanda completamente $\{A,B\}\times\{1,2,3\}$.
+
+2. Se $|A|=4$ e $|B|=5$, quantos elementos existem em $A\times B$?
+
+3. Interprete em palavras $\{0,1\}\times[0,\infty)$.
+
+## 4. Funções
+
+### Funções: entrada, regra e saída
+
+Uma **função** é uma regra que associa a cada elemento permitido como entrada **exatamente uma saída**.
+
+Por exemplo,
+
+$f(x)=x^2$.
+
+Se $x=3$, então $f(3)=9$.
+
+Podemos escrever
+
+$f:\{1,2,3\}\longrightarrow\mathbb R$.
+
+A leitura é:
+
+> a função $f$ recebe elementos de $\{1,2,3\}$ e produz valores no conjunto dos números reais $\mathbb R$.
+
+Três ideias serão importantes:
+
+- **domínio:** conjunto das entradas permitidas;
+
+- **contradomínio:** conjunto no qual as saídas são definidas;
+
+- **imagem:** valores que a função efetivamente produz.
+
+No exemplo $f(x)=x^2$ com domínio $\{1,2,3\}$:
+
+- domínio: $\{1,2,3\}$;
+
+- contradomínio: $\mathbb R$;
+
+- imagem: $\{1,4,9\}$.
+
+#### Exercício rápido
+
+Considere $f:\{0,1,2\}\to\mathbb R$ definida por $f(x)=2x+1$.
+
+1. Calcule $f(0)$, $f(1)$ e $f(2)$.
+
+2. Qual é o domínio?
+
+3. Qual é o contradomínio?
+
+4. Qual é a imagem?
+
+### Uma função pode receber conjuntos como entrada
+
+Nada na definição de função diz que a entrada precisa ser um número.
+
+Uma função pode receber **conjuntos**.
+
+Isso será exatamente o que acontecerá com uma lei de probabilidade:
+
+$P:\mathcal F\longrightarrow[0,1]$.
+
+Aqui:
+
+- o domínio é $\mathcal F$, uma família de eventos;
+
+- cada elemento de $\mathcal F$ é ele próprio um conjunto;
+
+- $P$ recebe um evento $A$ e devolve um número $P(A)$ entre $0$ e $1$.
+
+Portanto, em
+
+$P(A)=0.3$,
+
+$A$ é a **entrada da função** e $0.3$ é sua saída.
+
+::: {.callout-important title="Uma distinção que precisa ficar automática"}
+
+Mais adiante teremos simultaneamente:
+
+- $\omega\in\Omega$: um resultado pertence ao espaço amostral;
+
+- $A\subseteq\Omega$: um evento é um subconjunto do espaço amostral;
+
+- $A\in\mathcal F$: esse evento é um elemento da família de eventos.
+
+Os símbolos $\in$ e $\subseteq$ não significam a mesma coisa.
+
+:::
+
+#### Exercício rápido
+
+Suponha
+
+$\Omega=\{H,T\}$
+
+e
+
+$\mathcal F=\{\varnothing,\{H\},\{T\},\Omega\}$.
+
+Classifique cada afirmação como verdadeira ou falsa:
+
+1. $H\in\Omega$;
+
+2. $\{H\}\subseteq\Omega$;
+
+3. $\{H\}\in\mathcal F$;
+
+4. $H\in\mathcal F$.
+
+## 5. Sequências e Notação Matemática
+
+### Sequências e índices
+
+Quando temos muitos objetos semelhantes, é conveniente identificá-los por um índice:
+
+$A_1,A_2,A_3,\ldots$
+
+A letra $i$ pode ser usada para representar um índice genérico:
+
+$A_i$.
+
+Nada misterioso está acontecendo. $A_i$ significa simplesmente:
+
+> **o conjunto que ocupa a posição $i$ na coleção.**
+
+O mesmo vale para números:
+
+$x_1,x_2,x_3,\ldots$
+
+Essa notação aparecerá quando precisarmos falar de uma sequência de eventos.
+
+#### Exercício rápido
+
+Considere
+
+$A_1=\{1\}$, $A_2=\{2\}$, $A_3=\{3\}$.
+
+1. Qual é o elemento de $A_2$?
+
+2. O que representa $A_i$ nessa coleção?
+
+### Somatórios
+
+O símbolo $\sum$ é apenas uma maneira compacta de escrever uma soma com muitos termos.
+
+Por exemplo,
+
+$$
+
+\sum_{i=1}^{3}x_i=x_1+x_2+x_3.
+
+$$
+
+Se $x_1=2$, $x_2=5$ e $x_3=7$, então
+
+$\sum_{i=1}^{3}x_i=14$.
+
+Também poderemos escrever
+
+$\sum_{i=1}^{\infty}x_i$.
+
+Neste momento, você **não precisa estudar séries infinitas**.
+
+Basta saber ler a notação como:
+
+> somar os termos $x_1,x_2,x_3,\ldots$.
+
+Mais adiante, quando a convergência dessa soma realmente importar, trataremos do assunto com o cuidado necessário.
+
+#### Exercício rápido
+
+Expanda sem usar $\sum$:
+
+1. $\sum_{i=1}^{4}x_i$;
+
+2. $\sum_{i=1}^{3}P(A_i)$.
+
+### Uniões indexadas
+
+A mesma ideia de índices pode ser usada com conjuntos.
+
+Por exemplo,
+
+$$
+
+\bigcup_{i=1}^{3}A_i
+
+\=
+
+A_1\cup A_2\cup A_3.
+
+$$
+
+E
+
+$$
+
+\bigcup_{i=1}^{\infty}A_i
+
+$$
+
+significa a união dos conjuntos
+
+$A_1,A_2,A_3,\ldots$
+
+Essa notação aparecerá nos **axiomas da Probabilidade** e na definição de uma $\sigma$-álgebra.
+
+Neste momento, o importante é apenas conseguir **ler** a expressão.
+
+#### Exercício rápido
+
+Considere
+
+$A_1=\{1,2\}$, $A_2=\{2,3\}$ e $A_3=\{4\}$.
+
+Calcule
+
+$\bigcup_{i=1}^{3}A_i$.
+
+### Finito, infinito enumerável e infinito não enumerável
+
+Nem todos os conjuntos infinitos possuem o mesmo tipo de estrutura.
+
+Para este começo do curso, precisamos reconhecer três casos.
+
+#### Finito
+
+Podemos listar todos os elementos e a lista termina.
+
+Exemplo:
+
+$\{1,2,3,4,5,6\}$.
+
+#### Infinito enumerável
+
+A lista nunca termina, mas podemos organizar os elementos em uma sequência:
+
+$1,2,3,4,\ldots$
+
+Exemplo: os números naturais.
+
+#### Infinito não enumerável
+
+Nem mesmo uma lista infinita consegue percorrer todos os elementos.
+
+O exemplo mais importante para nós será um intervalo contínuo como
+
+$[0,1]$.
+
+Não precisamos demonstrar essa diferença agora.
+
+Precisamos apenas saber que ela existe — porque terá consequências para a maneira como construímos modelos probabilísticos contínuos.
+
+#### Exercício rápido
+
+Classifique como finito, infinito enumerável ou infinito não enumerável:
+
+1. resultados de um dado;
+
+2. número de compras que um cliente pode realizar ao longo do tempo;
+
+3. tempo de espera modelado como qualquer valor em $[0,\infty)$.
+
+## 6. Juntando as peças
+
+### O mapa matemático que levaremos para Probabilidade
+
+Chegamos ao ponto em que a notação dos primeiros capítulos deixa de ser uma barreira.
+
+Você já consegue ler estruturas como
+
+$$
+
+\Omega=\{0,1\}\times[0,\infty)
+
+$$
+
+como:
+
+> cada resultado possui dois componentes: o primeiro é $0$ ou $1$ e o segundo é um número real não negativo.
+
+Você também consegue ler
+
+$A=\{(x,y)\in\Omega:y\leq15\}$
+
+como:
+
+> o conjunto dos resultados de $\Omega$ cujo segundo componente é menor ou igual a $15$.
+
+E consegue distinguir
+
+- $\omega\in\Omega$;
+
+- $A\subseteq\Omega$;
+
+- $A\in\mathcal F$;
+
+- $P(A)\in[0,1]$.
+
+É exatamente essa Matemática que precisamos para começar a formalizar a Probabilidade.
+
+::: {.callout-tip title="Checklist antes de seguir"}
+
+Antes do Módulo 1, você deve conseguir explicar, sem decorar:
+
+- o que significa $x\in A$;
+
+- o que significa $A\subseteq B$;
+
+- união, interseção e complemento;
+
+- o que significa $A\cap B=\varnothing$;
+
+- como ler um intervalo como $[0,\infty)$;
+
+- o que é um par ordenado;
+
+- o que faz um produto cartesiano;
+
+- o que são domínio, contradomínio e imagem de uma função;
+
+- por que uma função pode receber conjuntos como entrada;
+
+- como ler $\sum_i$ e $\bigcup_i$;
+
+- a diferença intuitiva entre conjuntos finitos, enumeráveis e não enumeráveis.
+
+Se isso estiver confortável, você tem a Matemática necessária **para o ponto em que o curso está hoje**.
+
+:::
+
+### Desafio integrado
+
+Considere um experimento em que uma empresa mostra a um visitante uma de duas versões de uma página e registra quanto tempo, em segundos, ele permanece nela.
+
+Defina
+
+$\Omega=\{0,1\}\times[0,\infty)$.
+
+Responda:
+
+1. O que representa o resultado $\omega=(1,23.4)$?
+
+2. Escreva como conjunto o evento $A=$ "o usuário permaneceu no máximo 15 segundos".
+
+3. O evento $A$ é um elemento de $\Omega$ ou um subconjunto de $\Omega$?
+
+4. O que representaria $A^c$?
+
+5. Se $B=$ "o usuário recebeu a versão nova", o que representa $A\cap B$?
+
+6. Se $A\in\mathcal F$, o que significa escrever $P(A)=0.20$?
+
+7. Qual é a entrada da função $P$ nessa expressão? E qual é a saída?
+
+Esse exercício reúne praticamente toda a Matemática que usaremos para construir o primeiro espaço de probabilidade do curso.

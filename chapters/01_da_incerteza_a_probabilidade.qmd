@@ -733,7 +733,7 @@ Tente responder, sem recorrer às definições acima:
 
 1. Qual é a principal diferença entre um fenômeno determinístico e um fenômeno estocástico?
 
-2. Por que um fenômeno estocástico não significa simplesmente um fenômeno "caótico"?
+2. Por que um fenômeno estocástico não significa simplesmente um fenômeno sem estrutura ou completamente desordenado?
 
 3. O que significa dizer que existe acaso no nível individual e regularidade no agregado?
 
