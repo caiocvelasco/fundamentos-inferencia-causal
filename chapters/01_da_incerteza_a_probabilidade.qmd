@@ -17,11 +17,15 @@ Bertsekas & Tsitsiklis:
 - início de 1.2 Probabilistic Models
 -->
 
+No prelúdio, vimos o mapa geral: fenômenos do mundo real produzem dados, e usamos a Probabilidade para construir uma representação matemática do mecanismo capaz de gerá-los.
+
+Agora vamos voltar _ao início dessa história_.
+
 Antes de aprender a calcular probabilidades, queremos responder uma pergunta anterior:
 
 > **Por que precisamos de uma Teoria das Probabilidades?**
 
-Para isso, precisamos primeiro entender que tipo de fenômeno estamos tentando estudar.
+Para isso, precisamos entender primeiro **que tipo de fenômeno estamos tentando representar** — e o que existe nele que torna necessária uma teoria matemática da incerteza.
 
 ## Fenômenos determinísticos e estocásticos
 
