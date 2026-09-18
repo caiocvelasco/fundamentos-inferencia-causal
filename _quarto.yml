@@ -15,14 +15,8 @@ book:
   chapters:
     - index.qmd
     - conteudo.qmd
-
-    - part: "Pré-curso de Matemática"
-      chapters:
-        - chapters/00-1_pre_requisitos_matematicos.qmd
-
-    - part: "Prelúdio - O Mapa da Probabilidade e da Inferência"
-      chapters:
-        - chapters/00-2_preludio.qmd
+    - chapters/00-1_pre_requisitos_matematicos.qmd
+    - chapters/00-2_preludio.qmd
 
     - part: "Módulo 1 — Probabilidade"
       chapters:
