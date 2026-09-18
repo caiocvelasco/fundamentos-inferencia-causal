@@ -1,0 +1,644 @@
+---
+title: "Antes de Começar - O Mapa da Probabilidade e da Inferência"
+---
+
+Antes de entrarmos nos detalhes, quero deixar clara **uma única ideia central**:
+
+> **o mundo produz dados; nós usamos a Probabilidade para construir uma representação matemática do mecanismo que poderia produzi-los.**
+
+A partir daí, aparecem duas perguntas diferentes:
+
+- **Se o modelo probabilístico está completamente especificado, o que ele implica?**
+- **Se sabemos como representar o fenômeno, mas alguma característica do modelo é desconhecida, o que os dados nos permitem aprender sobre ela?**
+
+É dessa diferença que nascem, respectivamente, **Probabilidade** e **Inferência Estatística**.
+
+::: {.callout-note appearance="simple"}
+
+Não precisamos dominar agora os termos que aparecerão nesta página.
+
+O objetivo é apenas construir um **mapa mental** para que, quando surgirem espaço de probabilidade, variáveis aleatórias, amostras, parâmetros e distribuições amostrais, fique claro **por que cada objeto apareceu**.
+
+:::
+
+## Onde tudo começa: acaso e regularidade
+
+Em muitos fenômenos, o resultado individual é incerto, mas algum padrão aparece quando observamos muitos resultados.
+
+É a ideia de [**acaso e regularidade**]{.conceito} (*chance regularity*):
+
+$$
+\begin{array}{c}
+\boxed{\text{resultado individual incerto}} \\
+\Downarrow \\
+\boxed{\text{muitos resultados observados}} \\
+\Downarrow \\
+\boxed{\text{regularidades no agregado}}
+\end{array}
+$$
+
+Historicamente e conceitualmente, observar esse tipo de regularidade ajudou a motivar a construção da Teoria da Probabilidade.
+
+Mas aqui está a distinção importante:
+
+> **a regularidade observada não é a probabilidade. Ela é parte daquilo que queremos representar matematicamente.**
+
+Se lançamos um dado muitas vezes e a face $6$ aparece em $16\%$ dos lançamentos, $0.16$ é uma **frequência observada**.
+
+Já uma afirmação como $P(6)=1/6$ pertence a uma **representação probabilística** do fenômeno.
+
+## Do mundo para o modelo — e do modelo para o mundo
+
+Podemos resumir a relação assim:
+
+$$
+\begin{array}{c}
+\boxed{\text{fenômeno real}} \\
+\Downarrow \\
+\boxed{\text{regularidades observadas}} \\
+\Downarrow \\
+\boxed{\text{postulamos um modelo probabilístico}} \\
+\Downarrow \\
+\boxed{\text{deduzimos o que esse modelo implica}}
+\end{array}
+$$
+
+A primeira metade representa a **motivação e construção do modelo**.
+
+A segunda representa o trabalho da **Teoria da Probabilidade**: uma vez especificado o modelo, usamos Matemática para deduzir suas consequências.
+
+::: {.callout-important title="O ponto que não pode se perder"}
+
+O modelo não é simplesmente a frequência observada escrita de outra maneira.
+
+Ele é uma **estrutura matemática _postulada_ para representar o fenômeno**.
+
+> **_postular_** significa assumir, como hipótese, uma estrutura matemática que represente o fenômeno.
+
+Observações, conhecimento do problema, desenho do experimento e hipóteses como simetria podem nos ajudar a escolher essa estrutura.
+
+Depois que ela é especificada, podemos perguntar o que ela implica sobre resultados que ainda nem observamos.
+
+:::
+
+## "Lançar uma moeda ou um dado" versus "Dataset"
+
+Essa é a distinção que costuma ficar escondida.
+
+Não existe uma teoria para moedas e dados e outra teoria para datasets reais.
+
+A estrutura é a mesma.
+
+O que muda é **quanto conhecemos sobre o modelo probabilístico**.
+
+### Caso 1 — o modelo está completamente especificado
+
+Considere uma moeda justa.
+
+Podemos escrever
+
+$$
+X\sim\operatorname{Bernoulli}(0.5).
+$$
+
+Isso significa que o modelo já especifica
+
+$P(X=1)=0.5$ e $P(X=0)=0.5$.
+
+Agora imagine $100$ lançamentos, $X_1,\ldots,X_{100}$.
+
+Como o modelo está especificado, podemos usar Probabilidade para calcular consequências sobre dados que **poderiam** ser observados. Por exemplo, considere a seguinte pergunta:
+
+> Se eu lançar uma moeda justa 100 vezes, qual é a probabilidade de observar exatamente 50 caras?
+
+$$
+P\left(\sum_{i=1}^{100}X_i=50\right)
+=
+\binom{100}{50}(0.5)^{100}.
+$$
+
+Ou seja:
+
+$$
+\begin{array}{c}
+\boxed{X\sim\operatorname{Bernoulli}(0.5)} \\
+\Downarrow \\
+\boxed{\text{100 repetições possíveis}} \\
+\Downarrow \\
+\boxed{\text{probabilidades sobre os possíveis resultados}}
+\end{array}
+$$
+
+Aqui estamos fazendo **Probabilidade**:
+
+> **partimos de um modelo completamente especificado e deduzimos o que ele implica.**
+
+
+::: {.callout-important title="Mas isso é suficiente para o dia a dia?"}
+
+Aqui surge uma limitação importante:
+
+> **no mundo real, quase nunca recebemos o modelo probabilístico completamente especificado.**
+
+No exemplo da moeda justa, sabíamos de antemão (ou seja, especificamos no modelo) que $P(X=1)=0.5$. Por isso podíamos simplesmente partir dessa probabilidade e calcular suas consequências.
+
+Mas pense agora em um checkout. Qual é a probabilidade de uma sessão terminar em compra?
+
+Não existe uma simetria física (como no caso da moeda e de um dado simétrico) ou uma regra que nos entregue esse número antecipadamente. Ele pode ser $0.03$, $0.12$, $0.40$ — **não sabemos**.
+
+É justamente essa situação que nos leva ao próximo caso:
+
+> sabemos como representar probabilisticamente o fenômeno, mas **alguma característica do modelo precisa ser aprendida a partir dos dados**.
+
+:::
+
+### Caso 2 — sabemos a forma do modelo, mas não seu parâmetro
+
+Agora imagine conversão em um checkout.
+
+Para cada sessão, definimos
+
+$X=1$ se houve compra e $X=0$ caso contrário.
+
+Podemos usar exatamente a mesma família de modelos:
+
+$$
+X\sim\operatorname{Bernoulli}(p).
+$$
+
+Mas agora existe uma diferença fundamental:
+
+> **não sabemos quanto vale $p$, isto é, a verdadeira probabilidade de uma sessão terminar em compra, ou em outras palavras, o parâmetro do modelo que representa a probabilidade de conversão: $p=P(X=1)$.**
+
+Sabemos **como representar o fenômeno** — uma Bernoulli parece ser um modelo possível para compra/não compra — mas ainda não conhecemos completamente sua _lei de probabilidade_.
+
+Por isso escrevemos
+
+$$
+p\in[0,1],
+$$
+
+em vez de fixar, por exemplo, $p=0.5$.
+
+Agora observamos várias sessões:
+
+$$
+X_1,X_2,\ldots,X_n,
+$$
+
+e, depois da coleta, obtemos valores concretos:
+
+$$
+x_1,x_2,\ldots,x_n.
+$$
+
+A partir desses dados, queremos aprender sobre $p$.
+
+Por exemplo, uma primeira estimativa natural seria a proporção observada de compras:
+
+$$
+\hat p=\frac{1}{n}\sum_{i=1}^n x_i.
+$$
+
+Agora o raciocínio é:
+
+$$
+\begin{array}{c}
+\boxed{X\sim\operatorname{Bernoulli}(p)} \\
+\Downarrow \\
+\boxed{p\text{ desconhecido}} \\
+\Downarrow \\
+\boxed{\text{amostra }X_1,\ldots,X_n} \\
+\Downarrow \\
+\boxed{\text{dataset observado }x_1,\ldots,x_n} \\
+\Downarrow \\
+\boxed{\text{aprender sobre }p}
+\end{array}
+$$
+
+Aqui começa a **Inferência Estatística**.
+
+::: {.callout-important title="A Probabilidade não desapareceu"}
+
+Quando entramos em Inferência Estatística, **não paramos de usar Probabilidade**.
+
+Continuamos postulando um modelo probabilístico.
+
+A diferença é que agora **alguma característica desse modelo é desconhecida** e queremos aprendê-la usando os dados.
+
+No exemplo:
+
+- Bernoulli descreve a **estrutura probabilística**;
+- $p$ é uma característica desconhecida dessa estrutura;
+- o dataset fornece informação sobre $p$.
+
+:::
+
+## Então onde entra a amostra?
+
+Vamos continuar com **o mesmo exemplo do checkout**.
+
+Definimos uma variável:
+
+$X=1$ se uma sessão termina em compra e $X=0$ caso contrário.
+
+No nosso modelo,
+
+$$
+X\sim\operatorname{Bernoulli}(p),
+$$
+
+onde $p=P(X=1)$ é a probabilidade de conversão que queremos aprender.
+
+Agora imagine observarmos $n$ sessões.
+
+Antes de coletarmos os dados, representamos seus resultados por
+
+$$
+X_1,X_2,\ldots,X_n.
+$$
+
+Cada $X_i$ representa o resultado ainda desconhecido da sessão $i$.
+
+Depois da coleta, esses resultados assumem valores concretos:
+
+$$
+x_1,x_2,\ldots,x_n.
+$$
+
+Na prática, isso pode ser literalmente **uma coluna do nosso dataset**:
+
+::: {.compact-table}
+
+| sessão | compra |
+|:---:|:---:|
+| 1 | 0 |
+| 2 | 1 |
+| 3 | 0 |
+| 4 | 0 |
+| 5 | 1 |
+| $\vdots$ | $\vdots$ |
+| $n$ | 0 |
+
+:::
+
+Ou seja,
+
+$x_1=0,\;x_2=1,\;x_3=0,\ldots,x_n=0$.
+
+A distinção é simples:
+
+$$
+\begin{array}{c}
+\boxed{X_1,\ldots,X_n} \\
+\Downarrow \\
+\boxed{\text{resultados ainda aleatórios}} \\
+\Downarrow \\
+\boxed{\text{coletamos os dados}} \\
+\Downarrow \\
+\boxed{x_1,\ldots,x_n} \\
+\Downarrow \\
+\boxed{\text{valores que realmente observamos}}
+\end{array}
+$$
+
+O conjunto $X_1,\ldots,X_n$ é a **amostra** antes de observarmos seus valores.
+
+O conjunto $x_1,\ldots,x_n$ é uma **realização dessa amostra** — aquilo que aparece efetivamente no nosso dataset.
+
+### E agora aparece uma conexão muito importante
+
+Como cada observação vale apenas $0$ ou $1$, podemos calcular
+
+$$
+\bar x=\frac{1}{n}\sum_{i=1}^n x_i.
+$$
+
+Mas somar os valores $0$ e $1$ simplesmente conta quantas compras ocorreram.
+
+Portanto,
+
+$$
+\bar x
+=
+\frac{\text{número de compras}}{\text{número de sessões}}.
+$$
+
+Ou seja, $\bar x$ é simplesmente a **taxa de conversão observada no dataset**.
+
+E, para uma variável Bernoulli,
+
+$$
+E[X]=p.
+$$
+
+Veja então o que aconteceu:
+
+$$
+\begin{array}{c}
+\boxed{p=E[X]\text{ desconhecido}} \\
+\Downarrow \\
+\boxed{X_1,\ldots,X_n\text{ — amostra}} \\
+\Downarrow \\
+\boxed{x_1,\ldots,x_n\text{ — dados observados}} \\
+\Downarrow \\
+\boxed{\bar x\text{ — conversão observada}} \\
+\Downarrow \\
+\boxed{\text{usar }\bar x\text{ para aprender sobre }p}
+\end{array}
+$$
+
+Essa é a ponte para a **Inferência Estatística**.
+
+A probabilidade $p$ pertence ao **modelo**.
+
+A taxa de conversão $\bar x$ pertence aos **dados observados**.
+
+Usaremos aquilo que observamos, $\bar x$, para aprender sobre aquilo que não conhecemos, $p$.
+
+## E o que exatamente estamos repetindo?
+
+Aqui existem **dois níveis diferentes de repetição**.
+
+### Primeiro nível: várias realizações viram uma amostra
+
+Começamos com um único mecanismo probabilístico.
+
+No exemplo do checkout, cada vez que uma nova sessão ocorre temos uma nova realização desse mecanismo:
+
+$$
+\begin{array}{c}
+\boxed{\text{mesmo mecanismo probabilístico}} \\
+\Downarrow \\
+\boxed{\text{sessão 1 } \rightarrow X_1} \\
+\boxed{\text{sessão 2 } \rightarrow X_2} \\
+\boxed{\text{sessão 3 } \rightarrow X_3} \\
+\vdots \\
+\boxed{\text{sessão }n \rightarrow X_n}
+\end{array}
+$$
+
+Antes de observarmos os resultados, escrevemos
+
+$$
+X_1,X_2,\ldots,X_n.
+$$
+
+Cada $X_i$ representa o resultado ainda aleatório da $i$-ésima realização do mecanismo.
+
+Juntos, eles formam a **amostra**:
+
+$$
+\boxed{X^{(n)}=(X_1,X_2,\ldots,X_n)}.
+$$
+
+Depois que as sessões realmente acontecem, observamos valores concretos:
+
+$$
+x_1,x_2,\ldots,x_n.
+$$
+
+E aqui aparece a conexão com aquilo que vemos no dia a dia:
+
+> **esses valores observados são armazenados como dados — isto é, como um dataset.**
+
+No exemplo de conversão, o dataset poderia ser literalmente:
+
+::: {.compact-table}
+
+| sessão | compra |
+|:---:|:---:|
+| 1 | 0 |
+| 2 | 1 |
+| 3 | 0 |
+| 4 | 0 |
+| 5 | 1 |
+| $\vdots$ | $\vdots$ |
+| $n$ | 0 |
+
+:::
+
+Matematicamente, essa coluna corresponde a
+
+$$
+(x_1,x_2,\ldots,x_n).
+$$
+
+Portanto:
+
+$$
+\begin{array}{c}
+\boxed{\text{repetimos o mecanismo }n\text{ vezes}} \\
+\Downarrow \\
+\boxed{X_1,X_2,\ldots,X_n} \\
+\Downarrow \\
+\boxed{\text{amostra aleatória}} \\
+\Downarrow \\
+\boxed{\text{observamos seus valores}} \\
+\Downarrow \\
+\boxed{x_1,x_2,\ldots,x_n} \\
+\Downarrow \\
+\boxed{\text{dataset observado}}
+\end{array}
+$$
+
+Essa distinção é importante:
+
+> **a amostra é o objeto aleatório antes de observarmos os resultados; o dataset é uma realização concreta dessa amostra.**
+
+Na prática, é comum chamar informalmente o próprio dataset de "amostra". Matematicamente, porém, vale manter essa diferença.
+
+### Segundo nível — A repetição da repetição 😄
+
+Aqui acontece um salto conceitual importante:
+
+> **primeiro temos várias realizações do mecanismo para formar uma amostra; depois imaginamos repetir teoricamente a própria amostra inteira.**
+
+No primeiro nível:
+
+$$
+\begin{array}{c}
+\boxed{\text{uma realização}} \\
+\Downarrow \\
+\boxed{\text{outra realização}} \\
+\Downarrow \\
+\boxed{\cdots} \\
+\Downarrow \\
+\boxed{\text{uma amostra com }n\text{ observações}}
+\end{array}
+$$
+
+Ou, na nossa notação:
+
+$$
+\begin{array}{c}
+\boxed{X_1,X_2,\ldots,X_n} \\
+\Downarrow \\
+\boxed{\text{observamos seus valores}} \\
+\Downarrow \\
+\boxed{x_1,x_2,\ldots,x_n} \\
+\Downarrow \\
+\boxed{\text{dataset observado}}
+\end{array}
+$$
+
+Agora vem o **segundo nível**.
+
+O dataset que efetivamente observamos é apenas **um dos datasets que poderiam ter sido produzidos pelo mesmo modelo probabilístico**.
+
+Se repetíssemos teoricamente todo o processo de obter uma amostra de tamanho $n$, poderíamos ter:
+
+$$
+\begin{array}{c}
+\boxed{\text{mesmo modelo probabilístico}} \\
+\Downarrow \\
+\boxed{\text{dataset possível 1}} \\
+\boxed{\text{dataset possível 2}} \\
+\boxed{\text{dataset possível 3}} \\
+\vdots
+\end{array}
+$$
+
+Por exemplo:
+
+$$
+(x_1^{(1)},\ldots,x_n^{(1)}),
+\qquad
+(x_1^{(2)},\ldots,x_n^{(2)}),
+\qquad
+(x_1^{(3)},\ldots,x_n^{(3)}),
+\ldots
+$$
+
+::: {.callout-important title="A repetição da repetição 😄"}
+
+No primeiro nível, várias realizações do mecanismo formam **uma amostra**.
+
+No segundo, imaginamos teoricamente **muitas amostras inteiras possíveis**, todas geradas sob o mesmo modelo.
+
+É essa segunda repetição que permite estudar como uma estatística varia de uma amostra para outra.
+
+:::
+
+Suponha que, em cada dataset possível, calculemos a média.
+
+Teríamos:
+
+$$
+\bar X^{(1)},
+\qquad
+\bar X^{(2)},
+\qquad
+\bar X^{(3)},
+\ldots
+$$
+
+Esses valores não seriam necessariamente iguais, porque cada amostra poderia conter observações diferentes.
+
+A pergunta passa a ser:
+
+> **como $\bar X$ varia entre todas as amostras que poderíamos ter observado?**
+
+É justamente isso que dá origem à [**distribuição amostral**]{.conceito}:
+
+$$
+\begin{array}{c}
+\boxed{\text{muitas amostras possíveis}} \\
+\Downarrow \\
+\boxed{\text{uma }\bar X\text{ para cada amostra}} \\
+\Downarrow \\
+\boxed{\text{distribuição de }\bar X}
+\end{array}
+$$
+
+Não precisamos coletar milhares de datasets na prática.
+
+Estamos imaginando, dentro do modelo probabilístico, **quais outros datasets poderiam ter sido observados e quais valores da estatística eles produziriam**.
+
+Essa construção será a base para entender variabilidade de estimadores, erros-padrão, intervalos de confiança e testes de hipótese.
+
+::: {.callout-tip title="E é aqui que o Teorema Central do Limite começa a aparecer"}
+
+Talvez você já tenha visto uma figura parecida com esta em algum curso de Estatística.
+
+Quando imaginamos muitas amostras de mesmo tamanho e calculamos $\bar X$ em cada uma delas, obtemos a **distribuição amostral da média**.
+
+Em condições adequadas, o **Teorema Central do Limite (CLT)** mostrará que, conforme **o tamanho da amostra (ou _dataset_)** $n$ aumenta, essa distribuição tende a assumir uma forma aproximadamente Normal.
+
+Por enquanto, não precisamos entender o teorema.
+
+Guarde apenas a sequência:
+
+$$
+\begin{array}{c}
+\boxed{\text{muitas amostras possíveis}} \\
+\Downarrow \\
+\boxed{\text{uma }\bar X\text{ em cada amostra}} \\
+\Downarrow \\
+\boxed{\text{distribuição amostral de }\bar X} \\
+\Downarrow \\
+\boxed{\text{CLT: frequentemente }\approx\text{ Normal para }n\text{ grande}}
+\end{array}
+$$
+
+:::
+
+![](/images/sampling_distribution_bernoulli.png){.course-figure width="75%"}
+
+## O mapa que queremos guardar
+
+::: {.callout-note title="O mapa que queremos guardar"}
+
+Tudo nesta página pode ser resumido em três ideias.
+
+**1. O mundo nos mostra acaso e regularidade.**
+
+Isso motiva a construção de uma representação probabilística.
+
+$$
+\begin{array}{c}
+\boxed{\text{fenômeno}} \\
+\Downarrow \\
+\boxed{\text{regularidade observada}} \\
+\Downarrow \\
+\boxed{\text{modelo probabilístico}}
+\end{array}
+$$
+
+**2. Se o modelo está completamente especificado, usamos Probabilidade para deduzir suas consequências.**
+
+$$
+\begin{array}{c}
+\boxed{\text{modelo probabilístico conhecido}} \\
+\Downarrow \\
+\boxed{\text{dados que poderiam ser gerados}} \\
+\Downarrow \\
+\boxed{\text{Probabilidade}}
+\end{array}
+$$
+
+**3. Se conhecemos a estrutura do modelo, mas alguma característica é desconhecida, usamos os dados para aprender sobre ela.**
+
+$$
+\begin{array}{c}
+\boxed{\text{modelo com parâmetros desconhecidos}} \\
+\Downarrow \\
+\boxed{\text{amostra}} \\
+\Downarrow \\
+\boxed{\text{dataset observado}} \\
+\Downarrow \\
+\boxed{\text{Inferência Estatística}}
+\end{array}
+$$
+
+A ideia mais importante é:
+
+> **Probabilidade e Inferência não são duas histórias separadas. A Inferência usa a estrutura da Probabilidade para aprender, a partir dos dados observados, aquilo que não conhecemos sobre o mecanismo que os gerou.**
+
+:::
+
+Com esse mapa em mente, podemos começar pela primeira pergunta:
+
+> **que tipo de fenômeno estamos tentando representar?**
+
+E isso são "_Cenas do próximo capítulo..._"
