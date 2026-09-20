@@ -188,22 +188,9 @@ window.Quarto = {
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#onde-tudo-começa-acaso-e-regularidade" id="toc-onde-tudo-começa-acaso-e-regularidade" class="nav-link active" data-scroll-target="#onde-tudo-começa-acaso-e-regularidade">Onde tudo começa: acaso e regularidade</a></li>
-  <li><a href="#do-mundo-para-o-modelo-e-do-modelo-para-o-mundo" id="toc-do-mundo-para-o-modelo-e-do-modelo-para-o-mundo" class="nav-link" data-scroll-target="#do-mundo-para-o-modelo-e-do-modelo-para-o-mundo">Do mundo para o modelo — e do modelo para o mundo</a></li>
-  <li><a href="#lançar-uma-moeda-ou-um-dado-versus-dataset" id="toc-lançar-uma-moeda-ou-um-dado-versus-dataset" class="nav-link" data-scroll-target="#lançar-uma-moeda-ou-um-dado-versus-dataset">“Lançar uma moeda ou um dado” versus “Dataset”</a>
-  <ul class="collapse">
+  <li><a href="#por-que-construímos-modelos-probabilísticos" id="toc-por-que-construímos-modelos-probabilísticos" class="nav-link active" data-scroll-target="#por-que-construímos-modelos-probabilísticos">Por que construímos modelos probabilísticos?</a></li>
   <li><a href="#caso-1-o-modelo-está-completamente-especificado" id="toc-caso-1-o-modelo-está-completamente-especificado" class="nav-link" data-scroll-target="#caso-1-o-modelo-está-completamente-especificado">Caso 1 — o modelo está completamente especificado</a></li>
-  <li><a href="#caso-2-sabemos-a-forma-do-modelo-mas-não-seu-parâmetro" id="toc-caso-2-sabemos-a-forma-do-modelo-mas-não-seu-parâmetro" class="nav-link" data-scroll-target="#caso-2-sabemos-a-forma-do-modelo-mas-não-seu-parâmetro">Caso 2 — sabemos a forma do modelo, mas não seu parâmetro</a></li>
-  </ul></li>
-  <li><a href="#então-onde-entra-a-amostra" id="toc-então-onde-entra-a-amostra" class="nav-link" data-scroll-target="#então-onde-entra-a-amostra">Então onde entra a amostra?</a>
-  <ul class="collapse">
-  <li><a href="#e-agora-aparece-uma-conexão-muito-importante" id="toc-e-agora-aparece-uma-conexão-muito-importante" class="nav-link" data-scroll-target="#e-agora-aparece-uma-conexão-muito-importante">E agora aparece uma conexão muito importante</a></li>
-  </ul></li>
-  <li><a href="#e-o-que-exatamente-estamos-repetindo" id="toc-e-o-que-exatamente-estamos-repetindo" class="nav-link" data-scroll-target="#e-o-que-exatamente-estamos-repetindo">E o que exatamente estamos repetindo?</a>
-  <ul class="collapse">
-  <li><a href="#primeiro-nível-várias-realizações-viram-uma-amostra" id="toc-primeiro-nível-várias-realizações-viram-uma-amostra" class="nav-link" data-scroll-target="#primeiro-nível-várias-realizações-viram-uma-amostra">Primeiro nível: várias realizações viram uma amostra</a></li>
-  <li><a href="#segundo-nível-a-repetição-da-repetição" id="toc-segundo-nível-a-repetição-da-repetição" class="nav-link" data-scroll-target="#segundo-nível-a-repetição-da-repetição">Segundo nível — A repetição da repetição 😄</a></li>
-  </ul></li>
+  <li><a href="#caso-2-parte-do-modelo-é-desconhecida" id="toc-caso-2-parte-do-modelo-é-desconhecida" class="nav-link" data-scroll-target="#caso-2-parte-do-modelo-é-desconhecida">Caso 2 — parte do modelo é desconhecida</a></li>
   <li><a href="#o-mapa-que-queremos-guardar" id="toc-o-mapa-que-queremos-guardar" class="nav-link" data-scroll-target="#o-mapa-que-queremos-guardar">O mapa que queremos guardar</a></li>
   </ul>
 </nav>
@@ -230,194 +217,236 @@ window.Quarto = {
 </header>
 
 
-<p>Antes de entrarmos nos detalhes, quero deixar clara <strong>uma única ideia central</strong>:</p>
-<blockquote class="blockquote">
-<p><strong>o mundo produz dados; nós usamos a Probabilidade para construir uma representação matemática do mecanismo que poderia produzi-los.</strong></p>
-</blockquote>
-<p>A partir daí, aparecem duas perguntas diferentes:</p>
+<p>Antes de começarmos, quero deixar claro <strong>onde estamos indo</strong>.</p>
+<p>A ideia central deste curso é simples e pode ser vista a partir de duas perspectivas distintas, mas profundamente conectadas:</p>
 <ul>
-<li><strong>Se o modelo probabilístico está completamente especificado, o que ele implica?</strong></li>
-<li><strong>Se sabemos como representar o fenômeno, mas alguma característica do modelo é desconhecida, o que os dados nos permitem aprender sobre ela?</strong></li>
+<li><p><strong>O mundo (ou a “natureza”) produz dados, mas não observamos diretamente o mecanismo que os gerou. A partir dos dados observados, queremos aprender — ou inferir — características desse mecanismo.</strong></p></li>
+<li><p><strong>Motivados pelas regularidades que observamos na natureza, desenvolvemos a Teoria da Probabilidade como uma linguagem matemática para representar esse mecanismo incerto que poderia ter produzido os dados.</strong></p></li>
 </ul>
-<p>É dessa diferença que nascem, respectivamente, <strong>Probabilidade</strong> e <strong>Inferência Estatística</strong>.</p>
+<p>Quando <em>alguma característica desse mecanismo é desconhecida</em> (tipo a “média” ou alguma outra característica de nosso interesse), usamos os dados observados para aprender sobre ela.</p>
+<p>É dessa relação entre <strong>modelo</strong> e <strong>dados</strong> que surgem as duas grandes ideias que vamos conectar ao longo do curso: <strong>Probabilidade</strong> e <strong>Inferência Estatística</strong>.</p>
 <div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>Não precisamos dominar agora os termos que aparecerão nesta página.</p>
-<p>O objetivo é apenas construir um <strong>mapa mental</strong> para que, quando surgirem espaço de probabilidade, variáveis aleatórias, amostras, parâmetros e distribuições amostrais, fique claro <strong>por que cada objeto apareceu</strong>.</p>
+<p>Não precisamos dominar agora todos os termos que aparecerão nesta página.</p>
+<p>O objetivo deste prelúdio é apenas construir um <strong>mapa mental</strong>. Nos próximos capítulos, vamos construir cada parte desse mapa com calma.</p>
 </div>
 </div>
 </div>
-<section id="onde-tudo-começa-acaso-e-regularidade" class="level2">
-<h2 class="anchored" data-anchor-id="onde-tudo-começa-acaso-e-regularidade">Onde tudo começa: acaso e regularidade</h2>
-<p>Em muitos fenômenos, o resultado individual é incerto, mas algum padrão aparece quando observamos muitos resultados.</p>
-<p>É a ideia de <span class="conceito"><strong>acaso e regularidade</strong></span> (<em>chance regularity</em>):</p>
+<section id="por-que-construímos-modelos-probabilísticos" class="level2">
+<h2 class="anchored" data-anchor-id="por-que-construímos-modelos-probabilísticos">Por que construímos modelos probabilísticos?</h2>
+<p>No mundo real existem fenômenos cujo resultado individual não conseguimos determinar antecipadamente com certeza.</p>
+<ul>
+<li>Um usuário vai comprar?</li>
+<li>Um cliente vai cancelar?</li>
+<li>Quanto uma pessoa vai gastar no próximo mês?</li>
+<li>Qual será o resultado do próximo lançamento de uma moeda?</li>
+</ul>
+<p>Existe <strong>incerteza no nível individual</strong>, ou seja, se você realizar um ensaio de um experimento, você não sabe o que pode vir a acontecer!</p>
+<p>Mas incerteza não significa ausência completa de <strong>estrutura</strong>.</p>
+<p>E ter <em>algum estrutura</em> é algo <strong>muito importante</strong>, pois é ai que a matemática entra para entender e modelar o fenômeno.</p>
+<p>Olha que interessante. Quando observamos muitas ocorrências de certos fenômenos, podem aparecer <strong>regularidades no agregado</strong>: alguns resultados aparecem mais frequentemente que outros, algumas proporções parecem se estabilizar e certos padrões reaparecem nos dados.</p>
+<p>Essa combinação de incerteza individual com regularidade agregada é uma maneira útil de pensar no que chamamos de <span class="conceito"><strong>chance regularity</strong></span> (<em>acaso e regularidade</em>).</p>
 <p><span class="math display">\[
 \begin{array}{c}
-\boxed{\text{resultado individual incerto}} \\
+\boxed{\text{fenômeno real incerto}} \\
 \Downarrow \\
-\boxed{\text{muitos resultados observados}} \\
+\boxed{\text{resultados individuais imprevisíveis}} \\
 \Downarrow \\
-\boxed{\text{regularidades no agregado}}
+\boxed{\text{regularidades podem aparecer no agregado}}
 \end{array}
 \]</span></p>
-<p>Historicamente e conceitualmente, observar esse tipo de regularidade ajudou a motivar a construção da Teoria da Probabilidade.</p>
-<p>Mas aqui está a distinção importante:</p>
-<blockquote class="blockquote">
-<p><strong>a regularidade observada não é a probabilidade. Ela é parte daquilo que queremos representar matematicamente.</strong></p>
-</blockquote>
-<p>Se lançamos um dado muitas vezes e a face <span class="math inline">\(6\)</span> aparece em <span class="math inline">\(16\%\)</span> dos lançamentos, <span class="math inline">\(0.16\)</span> é uma <strong>frequência observada</strong>.</p>
-<p>Já uma afirmação como <span class="math inline">\(P(6)=1/6\)</span> pertence a uma <strong>representação probabilística</strong> do fenômeno.</p>
-</section>
-<section id="do-mundo-para-o-modelo-e-do-modelo-para-o-mundo" class="level2">
-<h2 class="anchored" data-anchor-id="do-mundo-para-o-modelo-e-do-modelo-para-o-mundo">Do mundo para o modelo — e do modelo para o mundo</h2>
-<p>Podemos resumir a relação assim:</p>
+<p>A <strong>Teoria da Probabilidade</strong> fornece uma linguagem matemática para representar esse tipo de fenômeno.</p>
+<p>Em vez de tentar descrever cada resultado individual antecipadamente, construímos uma <strong>representação <span class="atencao">matemática</span> do mecanismo incerto</strong> que poderia produzir esses resultados.</p>
+<p>Chamaremos essa representação de <strong><span class="conceito">modelo probabilístico</span></strong>.</p>
 <p><span class="math display">\[
 \begin{array}{c}
-\boxed{\text{fenômeno real}} \\
+\boxed{\text{MUNDO REAL}} \\
 \Downarrow \\
-\boxed{\text{regularidades observadas}} \\
+\boxed{\text{fenômeno incerto}} \\
 \Downarrow \\
-\boxed{\text{postulamos um modelo probabilístico}} \\
+\boxed{\text{regularidades observáveis}} \\
 \Downarrow \\
-\boxed{\text{deduzimos o que esse modelo implica}}
+\boxed{\text{representação matemática}} \\
+\Downarrow \\
+\boxed{\text{MODELO PROBABILÍSTICO}}
 \end{array}
 \]</span></p>
-<p>A primeira metade representa a <strong>motivação e construção do modelo</strong>.</p>
-<p>A segunda representa o trabalho da <strong>Teoria da Probabilidade</strong>: uma vez especificado o modelo, usamos Matemática para deduzir suas consequências.</p>
-<div class="callout callout-style-default callout-important callout-titled" title="O ponto que não pode se perder">
+<div class="callout callout-style-default callout-important callout-titled" title="Um cuidado importante">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-O ponto que não pode se perder
+Um cuidado importante
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>O modelo não é simplesmente a frequência observada escrita de outra maneira.</p>
-<p>Ele é uma <strong>estrutura matemática <em>postulada</em> para representar o fenômeno</strong>.</p>
-<blockquote class="blockquote">
-<p><strong><em>postular</em></strong> significa assumir, como hipótese, uma estrutura matemática que represente o fenômeno.</p>
-</blockquote>
-<p>Observações, conhecimento do problema, desenho do experimento e hipóteses como simetria podem nos ajudar a escolher essa estrutura.</p>
-<p>Depois que ela é especificada, podemos perguntar o que ela implica sobre resultados que ainda nem observamos.</p>
+<p>Uma <strong>frequência observada nos dados</strong> não é a mesma coisa que uma <strong>probabilidade no modelo</strong>.</p>
+<p>Se, em um conjunto de observações, <span class="math inline">\(16\%\)</span> dos resultados foram iguais a <span class="math inline">\(6\)</span>, esse <span class="math inline">\(16\%\)</span> é uma frequência observada.</p>
+<p>Já uma afirmação como <span class="math inline">\(P(X=6)=1/6\)</span> pertence a um modelo probabilístico construído depois de perceber como o mundo parece funcionar.</p>
+<p>Os dados podem motivar, informar e posteriormente permitir avaliar um modelo. Mas <strong>dados e modelo são objetos diferentes</strong>.</p>
 </div>
 </div>
+<p>Uma vez que temos um modelo probabilístico, ou seja, <em>depois que temos uma boa ideia de como a estrutura de fenômenos incertos pode ser representada</em>, <strong>surgem duas situações fundamentais</strong>.</p>
 </section>
-<section id="lançar-uma-moeda-ou-um-dado-versus-dataset" class="level2">
-<h2 class="anchored" data-anchor-id="lançar-uma-moeda-ou-um-dado-versus-dataset">“Lançar uma moeda ou um dado” versus “Dataset”</h2>
-<p>Essa é a distinção que costuma ficar escondida.</p>
-<p>Não existe uma teoria para moedas e dados e outra teoria para datasets reais.</p>
-<p>A estrutura é a mesma.</p>
-<p>O que muda é <strong>quanto conhecemos sobre o modelo probabilístico</strong>.</p>
-<section id="caso-1-o-modelo-está-completamente-especificado" class="level3">
-<h3 class="anchored" data-anchor-id="caso-1-o-modelo-está-completamente-especificado">Caso 1 — o modelo está completamente especificado</h3>
-<p>Considere uma moeda justa.</p>
-<p>Podemos escrever</p>
+<section id="caso-1-o-modelo-está-completamente-especificado" class="level2">
+<h2 class="anchored" data-anchor-id="caso-1-o-modelo-está-completamente-especificado">Caso 1 — o modelo está completamente especificado</h2>
+<p>Considere uma moeda que decidimos modelar como <strong>justa</strong>.</p>
+<p>Aqui, partimos do pressuposto que já temos o que é um Modelo Probabilístico sobre o mundo.</p>
+<p>Definimos</p>
+<p><span class="math display">\[
+X=
+\begin{cases}
+1, &amp; \text{se sair cara},\\
+0, &amp; \text{se sair coroa}.
+\end{cases}
+\]</span></p>
+<p>E especificamos o modelo, ou seja, assumimos que esse fenômeno segue algo do tipo</p>
 <p><span class="math display">\[
 X\sim\operatorname{Bernoulli}(0.5).
 \]</span></p>
-<p>Isso significa que o modelo já especifica</p>
-<p><span class="math inline">\(P(X=1)=0.5\)</span> e <span class="math inline">\(P(X=0)=0.5\)</span>.</p>
-<p>Agora imagine <span class="math inline">\(100\)</span> lançamentos, <span class="math inline">\(X_1,\ldots,X_{100}\)</span>.</p>
-<p>Como o modelo está especificado, podemos usar Probabilidade para calcular consequências sobre dados que <strong>poderiam</strong> ser observados. Por exemplo, considere a seguinte pergunta:</p>
+<p>O valor <span class="math inline">\(0.5\)</span> não apareceu porque os axiomas da Probabilidade obrigam uma moeda a ter essa probabilidade.</p>
+<p>Ele faz parte da nossa <strong>modelagem da moeda como justa</strong>, isto é,</p>
+<p><span class="math display">\[
+P(X=1)=P(X=0)=0.5.
+\]</span></p>
+<p>Neste exemplo, <em>a simetria física da moeda ajuda a justificar essa hipótese de modelagem</em>. Um cientista percebeu isso e criou um exemplo para quando <span class="math inline">\(p=0.5\)</span>. Em outros problemas, as hipóteses podem vir de outras fontes.</p>
+<p>Agora imagine <span class="math inline">\(100\)</span> lançamentos:</p>
+<p><span class="math display">\[
+X_1,X_2,\ldots,X_{100}.
+\]</span></p>
+<p>Como o modelo está completamente especificado (no sentido de nós assumimos que <em>conhecemos todos os parâmetros</em>, inclusive o tal <span class="math inline">\(p\)</span>), podemos perguntar:</p>
 <blockquote class="blockquote">
-<p>Se eu lançar uma moeda justa 100 vezes, qual é a probabilidade de observar exatamente 50 caras?</p>
+<p><strong>Se eu lançar essa moeda 100 vezes, qual é a probabilidade de observar exatamente 50 caras?</strong></p>
 </blockquote>
+<p>E calcular</p>
 <p><span class="math display">\[
 P\left(\sum_{i=1}^{100}X_i=50\right)
 =
 \binom{100}{50}(0.5)^{100}.
 \]</span></p>
-<p>Ou seja:</p>
+<p>A direção do raciocínio é:</p>
 <p><span class="math display">\[
 \begin{array}{c}
-\boxed{X\sim\operatorname{Bernoulli}(0.5)} \\
+\boxed{\text{já temos um modelo probabilístico especificado}} \\
 \Downarrow \\
-\boxed{\text{100 repetições possíveis}} \\
+\boxed{\text{o que esse modelo implica matematicamente?}} \\
 \Downarrow \\
-\boxed{\text{probabilidades sobre os possíveis resultados}}
+\boxed{\text{chegamos em possíveis dados e suas probabilidades}}
 \end{array}
 \]</span></p>
 <p>Aqui estamos fazendo <strong>Probabilidade</strong>:</p>
 <blockquote class="blockquote">
-<p><strong>partimos de um modelo completamente especificado e deduzimos o que ele implica.</strong></p>
+<p><strong>partimos de um modelo especificado e deduzimos suas consequências.</strong></p>
 </blockquote>
-<div class="callout callout-style-default callout-important callout-titled" title="Mas isso é suficiente para o dia a dia?">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Mas isso é suficiente para o dia a dia?
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Aqui surge uma limitação importante:</p>
-<blockquote class="blockquote">
-<p><strong>no mundo real, quase nunca recebemos o modelo probabilístico completamente especificado.</strong></p>
-</blockquote>
-<p>No exemplo da moeda justa, sabíamos de antemão (ou seja, especificamos no modelo) que <span class="math inline">\(P(X=1)=0.5\)</span>. Por isso podíamos simplesmente partir dessa probabilidade e calcular suas consequências.</p>
-<p>Mas pense agora em um checkout. Qual é a probabilidade de uma sessão terminar em compra?</p>
-<p>Não existe uma simetria física (como no caso da moeda e de um dado simétrico) ou uma regra que nos entregue esse número antecipadamente. Ele pode ser <span class="math inline">\(0.03\)</span>, <span class="math inline">\(0.12\)</span>, <span class="math inline">\(0.40\)</span> — <strong>não sabemos</strong>.</p>
-<p>É justamente essa situação que nos leva ao próximo caso:</p>
-<blockquote class="blockquote">
-<p>sabemos como representar probabilisticamente o fenômeno, mas <strong>alguma característica do modelo precisa ser aprendida a partir dos dados</strong>.</p>
-</blockquote>
-</div>
-</div>
 </section>
-<section id="caso-2-sabemos-a-forma-do-modelo-mas-não-seu-parâmetro" class="level3">
-<h3 class="anchored" data-anchor-id="caso-2-sabemos-a-forma-do-modelo-mas-não-seu-parâmetro">Caso 2 — sabemos a forma do modelo, mas não seu parâmetro</h3>
-<p>Agora imagine conversão em um checkout.</p>
-<p>Para cada sessão, definimos</p>
-<p><span class="math inline">\(X=1\)</span> se houve compra e <span class="math inline">\(X=0\)</span> caso contrário.</p>
-<p>Podemos usar exatamente a mesma família de modelos:</p>
+<section id="caso-2-parte-do-modelo-é-desconhecida" class="level2">
+<h2 class="anchored" data-anchor-id="caso-2-parte-do-modelo-é-desconhecida">Caso 2 — parte do modelo é desconhecida</h2>
+<p>Agora considere algo muito mais parecido com o dia a dia de <strong><em>Data Science</em></strong>: a conversão de um checkout.</p>
+<p>Para cada sessão observada de um usuário no site, definimos</p>
+<p><span class="math display">\[
+X=
+\begin{cases}
+1, &amp; \text{se houve compra},\\
+0, &amp; \text{caso contrário}.
+\end{cases}
+\]</span></p>
+<p>Motivados pelo nosso conhecimento prévio de Modelos Probabilísticos, podemos representar esse resultado por uma Bernoulli:</p>
 <p><span class="math display">\[
 X\sim\operatorname{Bernoulli}(p).
 \]</span></p>
-<p>Mas agora existe uma diferença fundamental:</p>
-<blockquote class="blockquote">
-<p><strong>não sabemos quanto vale <span class="math inline">\(p\)</span>, isto é, a verdadeira probabilidade de uma sessão terminar em compra, ou em outras palavras, o parâmetro do modelo que representa a probabilidade de conversão: <span class="math inline">\(p=P(X=1)\)</span>.</strong></p>
-</blockquote>
-<p>Sabemos <strong>como representar o fenômeno</strong> — uma Bernoulli parece ser um modelo possível para compra/não compra — mas ainda não conhecemos completamente sua <em>lei de probabilidade</em>.</p>
-<p>Por isso escrevemos</p>
+<p>Mas agora existe uma diferença fundamental: não sabemos quanto vale</p>
 <p><span class="math display">\[
-p\in[0,1],
+p=P(X=1),
 \]</span></p>
-<p>em vez de fixar, por exemplo, <span class="math inline">\(p=0.5\)</span>.</p>
-<p>Agora observamos várias sessões:</p>
+<p>isto é, <strong>a probabilidade de conversão no modelo</strong>.</p>
+<p>Nesse caso, <strong>infelizmente não existe aqui uma simetria física</strong> que nos entregue antecipadamente algo como <span class="math inline">\(p=0.5\)</span> e nos ajude a chegar numa resposta final.</p>
+<p>Sabemos uma maneira possível de representar probabilisticamente o fenômeno, mas <strong>uma característica do modelo permanece desconhecida</strong>.</p>
+<p>É aí que entram os dados (a a <strong>Inferência Estatística</strong>).</p>
+<p>Se observarmos <span class="math inline">\(n\)</span> sessões, antes de vermos os resultados podemos representá-las por</p>
 <p><span class="math display">\[
-X_1,X_2,\ldots,X_n,
+X_1,X_2,\ldots,X_n.
 \]</span></p>
-<p>e, depois da coleta, obtemos valores concretos:</p>
+<p>Depois que essas sessões realmente acontecem, observamos valores concretos:</p>
 <p><span class="math display">\[
 x_1,x_2,\ldots,x_n.
 \]</span></p>
-<p>A partir desses dados, queremos aprender sobre <span class="math inline">\(p\)</span>.</p>
-<p>Por exemplo, uma primeira estimativa natural seria a proporção observada de compras:</p>
+<p>Na prática, esses valores observados são armazenados como dados — isto é, como um <strong>dataset</strong> (e nesse caso com apenas uma coluna).</p>
+<div class="compact-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">sessão</th>
+<th style="text-align: center;">compra</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(n\)</span></td>
+<td style="text-align: center;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Essa é uma conexão importante entre a linguagem da teoria e aquilo que vemos no dia a dia:</p>
 <p><span class="math display">\[
-\hat p=\frac{1}{n}\sum_{i=1}^n x_i.
+\begin{array}{c}
+\boxed{X_1,\ldots,X_n} \\
+\Downarrow \\
+\boxed{\text{observamos seus valores}} \\
+\Downarrow \\
+\boxed{x_1,\ldots,x_n} \\
+\Downarrow \\
+\boxed{\text{dataset observado}}
+\end{array}
 \]</span></p>
-<p>Agora o raciocínio é:</p>
+<p>Agora usamos aquilo que observamos para aprender sobre aquilo que não conhecemos.</p>
+<p>No nosso exemplo:</p>
 <p><span class="math display">\[
 \begin{array}{c}
 \boxed{X\sim\operatorname{Bernoulli}(p)} \\
 \Downarrow \\
 \boxed{p\text{ desconhecido}} \\
 \Downarrow \\
-\boxed{\text{amostra }X_1,\ldots,X_n} \\
+\boxed{\text{observamos dados (a famosa "amostra")}} \\
 \Downarrow \\
-\boxed{\text{dataset observado }x_1,\ldots,x_n} \\
+\boxed{x_1,\ldots,x_n} \\
 \Downarrow \\
 \boxed{\text{aprender sobre }p}
 \end{array}
 \]</span></p>
-<p>Aqui começa a <strong>Inferência Estatística</strong>.</p>
+<p>Aqui começa a <strong>Inferência Estatística</strong>:</p>
+<blockquote class="blockquote">
+<p><strong>partimos dos dados observados para aprender sobre características desconhecidas do modelo probabilístico;</strong> <strong>mas continuamos usando matemática a a teoria da probabilidade para formalizar a ideia da inferência.</strong></p>
+</blockquote>
 <div class="callout callout-style-default callout-important callout-titled" title="A Probabilidade não desapareceu">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -428,419 +457,63 @@ A Probabilidade não desapareceu
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Quando entramos em Inferência Estatística, <strong>não paramos de usar Probabilidade</strong>.</p>
-<p>Continuamos postulando um modelo probabilístico.</p>
-<p>A diferença é que agora <strong>alguma característica desse modelo é desconhecida</strong> e queremos aprendê-la usando os dados.</p>
-<p>No exemplo:</p>
-<ul>
-<li>Bernoulli descreve a <strong>estrutura probabilística</strong>;</li>
-<li><span class="math inline">\(p\)</span> é uma característica desconhecida dessa estrutura;</li>
-<li>o dataset fornece informação sobre <span class="math inline">\(p\)</span>.</li>
-</ul>
+<p>Inferência Estatística não substitui a Probabilidade.</p>
+<p>Ela depende dela.</p>
+<p>Continuamos usando uma estrutura probabilística para representar o mecanismo que poderia ter gerado os dados. A diferença é que agora alguma parte dessa estrutura é desconhecida e precisa ser aprendida a partir das observações.</p>
 </div>
 </div>
-</section>
-</section>
-<section id="então-onde-entra-a-amostra" class="level2">
-<h2 class="anchored" data-anchor-id="então-onde-entra-a-amostra">Então onde entra a amostra?</h2>
-<p>Vamos continuar com <strong>o mesmo exemplo do checkout</strong>.</p>
-<p>Definimos uma variável:</p>
-<p><span class="math inline">\(X=1\)</span> se uma sessão termina em compra e <span class="math inline">\(X=0\)</span> caso contrário.</p>
-<p>No nosso modelo,</p>
-<p><span class="math display">\[
-X\sim\operatorname{Bernoulli}(p),
-\]</span></p>
-<p>onde <span class="math inline">\(p=P(X=1)\)</span> é a probabilidade de conversão que queremos aprender.</p>
-<p>Agora imagine observarmos <span class="math inline">\(n\)</span> sessões.</p>
-<p>Antes de coletarmos os dados, representamos seus resultados por</p>
-<p><span class="math display">\[
-X_1,X_2,\ldots,X_n.
-\]</span></p>
-<p>Cada <span class="math inline">\(X_i\)</span> representa o resultado ainda desconhecido da sessão <span class="math inline">\(i\)</span>.</p>
-<p>Depois da coleta, esses resultados assumem valores concretos:</p>
-<p><span class="math display">\[
-x_1,x_2,\ldots,x_n.
-\]</span></p>
-<p>Na prática, isso pode ser literalmente <strong>uma coluna do nosso dataset</strong>:</p>
-<div class="compact-table">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: center;">sessão</th>
-<th style="text-align: center;">compra</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">2</td>
-<td style="text-align: center;">1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">5</td>
-<td style="text-align: center;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><span class="math inline">\(n\)</span></td>
-<td style="text-align: center;">0</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>Ou seja,</p>
-<p><span class="math inline">\(x_1=0,\;x_2=1,\;x_3=0,\ldots,x_n=0\)</span>.</p>
-<p>A distinção é simples:</p>
-<p><span class="math display">\[
-\begin{array}{c}
-\boxed{X_1,\ldots,X_n} \\
-\Downarrow \\
-\boxed{\text{resultados ainda aleatórios}} \\
-\Downarrow \\
-\boxed{\text{coletamos os dados}} \\
-\Downarrow \\
-\boxed{x_1,\ldots,x_n} \\
-\Downarrow \\
-\boxed{\text{valores que realmente observamos}}
-\end{array}
-\]</span></p>
-<p>O conjunto <span class="math inline">\(X_1,\ldots,X_n\)</span> é a <strong>amostra</strong> antes de observarmos seus valores.</p>
-<p>O conjunto <span class="math inline">\(x_1,\ldots,x_n\)</span> é uma <strong>realização dessa amostra</strong> — aquilo que aparece efetivamente no nosso dataset.</p>
-<section id="e-agora-aparece-uma-conexão-muito-importante" class="level3">
-<h3 class="anchored" data-anchor-id="e-agora-aparece-uma-conexão-muito-importante">E agora aparece uma conexão muito importante</h3>
-<p>Como cada observação vale apenas <span class="math inline">\(0\)</span> ou <span class="math inline">\(1\)</span>, podemos calcular</p>
-<p><span class="math display">\[
-\bar x=\frac{1}{n}\sum_{i=1}^n x_i.
-\]</span></p>
-<p>Mas somar os valores <span class="math inline">\(0\)</span> e <span class="math inline">\(1\)</span> simplesmente conta quantas compras ocorreram.</p>
-<p>Portanto,</p>
-<p><span class="math display">\[
-\bar x
-=
-\frac{\text{número de compras}}{\text{número de sessões}}.
-\]</span></p>
-<p>Ou seja, <span class="math inline">\(\bar x\)</span> é simplesmente a <strong>taxa de conversão observada no dataset</strong>.</p>
-<p>E, para uma variável Bernoulli,</p>
-<p><span class="math display">\[
-E[X]=p.
-\]</span></p>
-<p>Veja então o que aconteceu:</p>
-<p><span class="math display">\[
-\begin{array}{c}
-\boxed{p=E[X]\text{ desconhecido}} \\
-\Downarrow \\
-\boxed{X_1,\ldots,X_n\text{ — amostra}} \\
-\Downarrow \\
-\boxed{x_1,\ldots,x_n\text{ — dados observados}} \\
-\Downarrow \\
-\boxed{\bar x\text{ — conversão observada}} \\
-\Downarrow \\
-\boxed{\text{usar }\bar x\text{ para aprender sobre }p}
-\end{array}
-\]</span></p>
-<p>Essa é a ponte para a <strong>Inferência Estatística</strong>.</p>
-<p>A probabilidade <span class="math inline">\(p\)</span> pertence ao <strong>modelo</strong>.</p>
-<p>A taxa de conversão <span class="math inline">\(\bar x\)</span> pertence aos <strong>dados observados</strong>.</p>
-<p>Usaremos aquilo que observamos, <span class="math inline">\(\bar x\)</span>, para aprender sobre aquilo que não conhecemos, <span class="math inline">\(p\)</span>.</p>
-</section>
-</section>
-<section id="e-o-que-exatamente-estamos-repetindo" class="level2">
-<h2 class="anchored" data-anchor-id="e-o-que-exatamente-estamos-repetindo">E o que exatamente estamos repetindo?</h2>
-<p>Aqui existem <strong>dois níveis diferentes de repetição</strong>.</p>
-<section id="primeiro-nível-várias-realizações-viram-uma-amostra" class="level3">
-<h3 class="anchored" data-anchor-id="primeiro-nível-várias-realizações-viram-uma-amostra">Primeiro nível: várias realizações viram uma amostra</h3>
-<p>Começamos com um único mecanismo probabilístico.</p>
-<p>No exemplo do checkout, cada vez que uma nova sessão ocorre temos uma nova realização desse mecanismo:</p>
-<p><span class="math display">\[
-\begin{array}{c}
-\boxed{\text{mesmo mecanismo probabilístico}} \\
-\Downarrow \\
-\boxed{\text{sessão 1 } \rightarrow X_1} \\
-\boxed{\text{sessão 2 } \rightarrow X_2} \\
-\boxed{\text{sessão 3 } \rightarrow X_3} \\
-\vdots \\
-\boxed{\text{sessão }n \rightarrow X_n}
-\end{array}
-\]</span></p>
-<p>Antes de observarmos os resultados, escrevemos</p>
-<p><span class="math display">\[
-X_1,X_2,\ldots,X_n.
-\]</span></p>
-<p>Cada <span class="math inline">\(X_i\)</span> representa o resultado ainda aleatório da <span class="math inline">\(i\)</span>-ésima realização do mecanismo.</p>
-<p>Juntos, eles formam a <strong>amostra</strong>:</p>
-<p><span class="math display">\[
-\boxed{X^{(n)}=(X_1,X_2,\ldots,X_n)}.
-\]</span></p>
-<p>Depois que as sessões realmente acontecem, observamos valores concretos:</p>
-<p><span class="math display">\[
-x_1,x_2,\ldots,x_n.
-\]</span></p>
-<p>E aqui aparece a conexão com aquilo que vemos no dia a dia:</p>
-<blockquote class="blockquote">
-<p><strong>esses valores observados são armazenados como dados — isto é, como um dataset.</strong></p>
-</blockquote>
-<p>No exemplo de conversão, o dataset poderia ser literalmente:</p>
-<div class="compact-table">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: center;">sessão</th>
-<th style="text-align: center;">compra</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">2</td>
-<td style="text-align: center;">1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">5</td>
-<td style="text-align: center;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><span class="math inline">\(n\)</span></td>
-<td style="text-align: center;">0</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>Matematicamente, essa coluna corresponde a</p>
-<p><span class="math display">\[
-(x_1,x_2,\ldots,x_n).
-\]</span></p>
-<p>Portanto:</p>
-<p><span class="math display">\[
-\begin{array}{c}
-\boxed{\text{repetimos o mecanismo }n\text{ vezes}} \\
-\Downarrow \\
-\boxed{X_1,X_2,\ldots,X_n} \\
-\Downarrow \\
-\boxed{\text{amostra aleatória}} \\
-\Downarrow \\
-\boxed{\text{observamos seus valores}} \\
-\Downarrow \\
-\boxed{x_1,x_2,\ldots,x_n} \\
-\Downarrow \\
-\boxed{\text{dataset observado}}
-\end{array}
-\]</span></p>
-<p>Essa distinção é importante:</p>
-<blockquote class="blockquote">
-<p><strong>a amostra é o objeto aleatório antes de observarmos os resultados; o dataset é uma realização concreta dessa amostra.</strong></p>
-</blockquote>
-<p>Na prática, é comum chamar informalmente o próprio dataset de “amostra”. Matematicamente, porém, vale manter essa diferença.</p>
-</section>
-<section id="segundo-nível-a-repetição-da-repetição" class="level3">
-<h3 class="anchored" data-anchor-id="segundo-nível-a-repetição-da-repetição">Segundo nível — A repetição da repetição 😄</h3>
-<p>Aqui acontece um salto conceitual importante:</p>
-<blockquote class="blockquote">
-<p><strong>primeiro temos várias realizações do mecanismo para formar uma amostra; depois imaginamos repetir teoricamente a própria amostra inteira.</strong></p>
-</blockquote>
-<p>No primeiro nível:</p>
-<p><span class="math display">\[
-\begin{array}{c}
-\boxed{\text{uma realização}} \\
-\Downarrow \\
-\boxed{\text{outra realização}} \\
-\Downarrow \\
-\boxed{\cdots} \\
-\Downarrow \\
-\boxed{\text{uma amostra com }n\text{ observações}}
-\end{array}
-\]</span></p>
-<p>Ou, na nossa notação:</p>
-<p><span class="math display">\[
-\begin{array}{c}
-\boxed{X_1,X_2,\ldots,X_n} \\
-\Downarrow \\
-\boxed{\text{observamos seus valores}} \\
-\Downarrow \\
-\boxed{x_1,x_2,\ldots,x_n} \\
-\Downarrow \\
-\boxed{\text{dataset observado}}
-\end{array}
-\]</span></p>
-<p>Agora vem o <strong>segundo nível</strong>.</p>
-<p>O dataset que efetivamente observamos é apenas <strong>um dos datasets que poderiam ter sido produzidos pelo mesmo modelo probabilístico</strong>.</p>
-<p>Se repetíssemos teoricamente todo o processo de obter uma amostra de tamanho <span class="math inline">\(n\)</span>, poderíamos ter:</p>
-<p><span class="math display">\[
-\begin{array}{c}
-\boxed{\text{mesmo modelo probabilístico}} \\
-\Downarrow \\
-\boxed{\text{dataset possível 1}} \\
-\boxed{\text{dataset possível 2}} \\
-\boxed{\text{dataset possível 3}} \\
-\vdots
-\end{array}
-\]</span></p>
-<p>Por exemplo:</p>
-<p><span class="math display">\[
-(x_1^{(1)},\ldots,x_n^{(1)}),
-\qquad
-(x_1^{(2)},\ldots,x_n^{(2)}),
-\qquad
-(x_1^{(3)},\ldots,x_n^{(3)}),
-\ldots
-\]</span></p>
-<div class="callout callout-style-default callout-important callout-titled" title="A repetição da repetição 😄">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-A repetição da repetição 😄
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>No primeiro nível, várias realizações do mecanismo formam <strong>uma amostra</strong>.</p>
-<p>No segundo, imaginamos teoricamente <strong>muitas amostras inteiras possíveis</strong>, todas geradas sob o mesmo modelo.</p>
-<p>É essa segunda repetição que permite estudar como uma estatística varia de uma amostra para outra.</p>
-</div>
-</div>
-<p>Suponha que, em cada dataset possível, calculemos a média.</p>
-<p>Teríamos:</p>
-<p><span class="math display">\[
-\bar X^{(1)},
-\qquad
-\bar X^{(2)},
-\qquad
-\bar X^{(3)},
-\ldots
-\]</span></p>
-<p>Esses valores não seriam necessariamente iguais, porque cada amostra poderia conter observações diferentes.</p>
-<p>A pergunta passa a ser:</p>
-<blockquote class="blockquote">
-<p><strong>como <span class="math inline">\(\bar X\)</span> varia entre todas as amostras que poderíamos ter observado?</strong></p>
-</blockquote>
-<p>É justamente isso que dá origem à <span class="conceito"><strong>distribuição amostral</strong></span>:</p>
-<p><span class="math display">\[
-\begin{array}{c}
-\boxed{\text{muitas amostras possíveis}} \\
-\Downarrow \\
-\boxed{\text{uma }\bar X\text{ para cada amostra}} \\
-\Downarrow \\
-\boxed{\text{distribuição de }\bar X}
-\end{array}
-\]</span></p>
-<p>Não precisamos coletar milhares de datasets na prática.</p>
-<p>Estamos imaginando, dentro do modelo probabilístico, <strong>quais outros datasets poderiam ter sido observados e quais valores da estatística eles produziriam</strong>.</p>
-<p>Essa construção será a base para entender variabilidade de estimadores, erros-padrão, intervalos de confiança e testes de hipótese.</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="E é aqui que o Teorema Central do Limite começa a aparecer">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-E é aqui que o Teorema Central do Limite começa a aparecer
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Talvez você já tenha visto uma figura parecida com esta em algum curso de Estatística.</p>
-<p>Quando imaginamos muitas amostras de mesmo tamanho e calculamos <span class="math inline">\(\bar X\)</span> em cada uma delas, obtemos a <strong>distribuição amostral da média</strong>.</p>
-<p>Em condições adequadas, o <strong>Teorema Central do Limite (CLT)</strong> mostrará que, conforme <strong>o tamanho da amostra (ou <em>dataset</em>)</strong> <span class="math inline">\(n\)</span> aumenta, essa distribuição tende a assumir uma forma aproximadamente Normal.</p>
-<p>Por enquanto, não precisamos entender o teorema.</p>
-<p>Guarde apenas a sequência:</p>
-<p><span class="math display">\[
-\begin{array}{c}
-\boxed{\text{muitas amostras possíveis}} \\
-\Downarrow \\
-\boxed{\text{uma }\bar X\text{ em cada amostra}} \\
-\Downarrow \\
-\boxed{\text{distribuição amostral de }\bar X} \\
-\Downarrow \\
-\boxed{\text{CLT: frequentemente }\approx\text{ Normal para }n\text{ grande}}
-\end{array}
-\]</span></p>
-</div>
-</div>
-<p><img src="..\images/sampling_distribution_bernoulli.png" class="course-figure img-fluid" style="width:75.0%"></p>
-</section>
 </section>
 <section id="o-mapa-que-queremos-guardar" class="level2">
 <h2 class="anchored" data-anchor-id="o-mapa-que-queremos-guardar">O mapa que queremos guardar</h2>
-<div class="callout callout-style-default callout-note callout-titled" title="O mapa que queremos guardar">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-O mapa que queremos guardar
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Tudo nesta página pode ser resumido em três ideias.</p>
-<p><strong>1. O mundo nos mostra acaso e regularidade.</strong></p>
-<p>Isso motiva a construção de uma representação probabilística.</p>
+<p>Tudo deste prelúdio pode ser resumido em um único mapa.</p>
+<p>Primeiro, o mundo real motiva a construção de modelos probabilísticos:</p>
 <p><span class="math display">\[
 \begin{array}{c}
-\boxed{\text{fenômeno}} \\
+\boxed{\text{fenômeno real incerto}} \\
 \Downarrow \\
-\boxed{\text{regularidade observada}} \\
+\boxed{\text{regularidades no agregado}} \\
 \Downarrow \\
-\boxed{\text{modelo probabilístico}}
+\boxed{\begin{array}{c}
+\text{modelo probabilístico} \\
+\text{(matemática!)}
+\end{array}}
 \end{array}
 \]</span></p>
-<p><strong>2. Se o modelo está completamente especificado, usamos Probabilidade para deduzir suas consequências.</strong></p>
+<p>Depois aparecem duas direções:</p>
 <p><span class="math display">\[
-\begin{array}{c}
-\boxed{\text{modelo probabilístico conhecido}} \\
-\Downarrow \\
-\boxed{\text{dados que poderiam ser gerados}} \\
-\Downarrow \\
-\boxed{\text{Probabilidade}}
+\begin{array}{ccc}
+\boxed{\text{modelo especificado}}
+&amp;&amp;
+\boxed{\text{parte do modelo desconhecida}}
+\\[0.15cm]
+\Downarrow &amp;&amp; \Downarrow
+\\[0.15cm]
+\boxed{\text{o que ele implica?}}
+&amp;&amp;
+\boxed{\text{observamos dados}}
+\\[0.15cm]
+\Downarrow &amp;&amp; \Downarrow
+\\[0.15cm]
+\boxed{\text{PROBABILIDADE}}
+&amp;&amp;
+\boxed{\text{INFERÊNCIA}}
 \end{array}
 \]</span></p>
-<p><strong>3. Se conhecemos a estrutura do modelo, mas alguma característica é desconhecida, usamos os dados para aprender sobre ela.</strong></p>
-<p><span class="math display">\[
-\begin{array}{c}
-\boxed{\text{modelo com parâmetros desconhecidos}} \\
-\Downarrow \\
-\boxed{\text{amostra}} \\
-\Downarrow \\
-\boxed{\text{dataset observado}} \\
-\Downarrow \\
-\boxed{\text{Inferência Estatística}}
-\end{array}
-\]</span></p>
-<p>A ideia mais importante é:</p>
+<p>No primeiro caso:</p>
 <blockquote class="blockquote">
-<p><strong>Probabilidade e Inferência não são duas histórias separadas. A Inferência usa a estrutura da Probabilidade para aprender, a partir dos dados observados, aquilo que não conhecemos sobre o mecanismo que os gerou.</strong></p>
+<p><strong>modelo <span class="math inline">\(\rightarrow\)</span> possíveis dados.</strong></p>
 </blockquote>
-</div>
-</div>
-<p>Com esse mapa em mente, podemos começar pela primeira pergunta:</p>
+<p>No segundo:</p>
 <blockquote class="blockquote">
-<p><strong>que tipo de fenômeno estamos tentando representar?</strong></p>
+<p><strong>dados observados <span class="math inline">\(\rightarrow\)</span> aprender sobre o modelo.</strong></p>
+</blockquote>
+<p>E os dois lados pertencem à mesma história.</p>
+<blockquote class="blockquote">
+<p><strong>Probabilidade constrói a linguagem matemática para representar mecanismos incertos. Inferência Estatística usa essa linguagem, junto com os dados observados, para aprender sobre aquilo que não conhecemos.</strong></p>
+</blockquote>
+<p>Com esse mapa em mente, podemos voltar ao começo e fazer a primeira pergunta do curso:</p>
+<blockquote class="blockquote">
+<p><strong>por que precisamos de uma Teoria das Probabilidades?</strong></p>
 </blockquote>
 <p>E isso são “<em>Cenas do próximo capítulo…</em>”</p>
 
