@@ -191,6 +191,13 @@ window.Quarto = {
   <li><a href="#por-que-construímos-modelos-probabilísticos" id="toc-por-que-construímos-modelos-probabilísticos" class="nav-link active" data-scroll-target="#por-que-construímos-modelos-probabilísticos">Por que construímos modelos probabilísticos?</a></li>
   <li><a href="#caso-1-o-modelo-está-completamente-especificado" id="toc-caso-1-o-modelo-está-completamente-especificado" class="nav-link" data-scroll-target="#caso-1-o-modelo-está-completamente-especificado">Caso 1 — o modelo está completamente especificado</a></li>
   <li><a href="#caso-2-parte-do-modelo-é-desconhecida" id="toc-caso-2-parte-do-modelo-é-desconhecida" class="nav-link" data-scroll-target="#caso-2-parte-do-modelo-é-desconhecida">Caso 2 — parte do modelo é desconhecida</a></li>
+  <li><a href="#mas-e-a-estatística-descritiva" id="toc-mas-e-a-estatística-descritiva" class="nav-link" data-scroll-target="#mas-e-a-estatística-descritiva">Mas e a Estatística Descritiva?</a></li>
+  <li><a href="#a-confusão-que-quase-ninguém-explica" id="toc-a-confusão-que-quase-ninguém-explica" class="nav-link" data-scroll-target="#a-confusão-que-quase-ninguém-explica">A confusão que quase ninguém explica</a>
+  <ul class="collapse">
+  <li><a href="#a-média-no-modelo-probabilístico" id="toc-a-média-no-modelo-probabilístico" class="nav-link" data-scroll-target="#a-média-no-modelo-probabilístico">1. A média no modelo probabilístico</a></li>
+  <li><a href="#a-média-da-amostra-antes-de-observarmos-os-dados" id="toc-a-média-da-amostra-antes-de-observarmos-os-dados" class="nav-link" data-scroll-target="#a-média-da-amostra-antes-de-observarmos-os-dados">2. A média da amostra, antes de observarmos os dados</a></li>
+  <li><a href="#a-média-calculada-no-dataset-observado" id="toc-a-média-calculada-no-dataset-observado" class="nav-link" data-scroll-target="#a-média-calculada-no-dataset-observado">3. A média calculada no dataset observado</a></li>
+  </ul></li>
   <li><a href="#o-mapa-que-queremos-guardar" id="toc-o-mapa-que-queremos-guardar" class="nav-link" data-scroll-target="#o-mapa-que-queremos-guardar">O mapa que queremos guardar</a></li>
   </ul>
 </nav>
@@ -224,7 +231,7 @@ window.Quarto = {
 <li><p><strong>Motivados pelas regularidades que observamos na natureza, desenvolvemos a Teoria da Probabilidade como uma linguagem matemática para representar esse mecanismo incerto que poderia ter produzido os dados.</strong></p></li>
 </ul>
 <p>Quando <em>alguma característica desse mecanismo é desconhecida</em> (tipo a “média” ou alguma outra característica de nosso interesse), usamos os dados observados para aprender sobre ela.</p>
-<p>É dessa relação entre <strong>modelo</strong> e <strong>dados</strong> que surgem as duas grandes ideias que vamos conectar ao longo do curso: <strong>Probabilidade</strong> e <strong>Inferência Estatística</strong>.</p>
+<p>É dessa relação entre <strong>modelo</strong> e <strong>dados</strong> que surgem as duas grandes ideias que vamos conectar ao longo do curso: <span class="conceito"><strong>Probabilidade</strong></span> e <span class="conceito"><strong>Inferência Estatística</strong></span>.</p>
 <div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -247,7 +254,7 @@ window.Quarto = {
 </ul>
 <p>Existe <strong>incerteza no nível individual</strong>, ou seja, se você realizar um ensaio de um experimento, você não sabe o que pode vir a acontecer!</p>
 <p>Mas incerteza não significa ausência completa de <strong>estrutura</strong>.</p>
-<p>E ter <em>algum estrutura</em> é algo <strong>muito importante</strong>, pois é ai que a matemática entra para entender e modelar o fenômeno.</p>
+<p>E ter <em>alguma estrutura</em> é algo <strong>muito importante</strong>, pois é aí que a matemática entra para entender e modelar o fenômeno.</p>
 <p>Olha que interessante. Quando observamos muitas ocorrências de certos fenômenos, podem aparecer <strong>regularidades no agregado</strong>: alguns resultados aparecem mais frequentemente que outros, algumas proporções parecem se estabilizar e certos padrões reaparecem nos dados.</p>
 <p>Essa combinação de incerteza individual com regularidade agregada é uma maneira útil de pensar no que chamamos de <span class="conceito"><strong>chance regularity</strong></span> (<em>acaso e regularidade</em>).</p>
 <p><span class="math display">\[
@@ -314,7 +321,7 @@ X\sim\operatorname{Bernoulli}(0.5).
 <p><span class="math display">\[
 P(X=1)=P(X=0)=0.5.
 \]</span></p>
-<p>Neste exemplo, <em>a simetria física da moeda ajuda a justificar essa hipótese de modelagem</em>. Um cientista percebeu isso e criou um exemplo para quando <span class="math inline">\(p=0.5\)</span>. Em outros problemas, as hipóteses podem vir de outras fontes.</p>
+<p>Neste exemplo, <em>a simetria física da moeda ajuda a justificar essa hipótese de modelagem</em>. Neste exemplo, a simetria física da moeda ajuda a justificar a hipótese de probabilidades iguais. Em outros problemas, as hipóteses podem vir de outras fontes.</p>
 <p>Agora imagine <span class="math inline">\(100\)</span> lançamentos:</p>
 <p><span class="math display">\[
 X_1,X_2,\ldots,X_{100}.
@@ -366,7 +373,7 @@ p=P(X=1),
 <p>isto é, <strong>a probabilidade de conversão no modelo</strong>.</p>
 <p>Nesse caso, <strong>infelizmente não existe aqui uma simetria física</strong> que nos entregue antecipadamente algo como <span class="math inline">\(p=0.5\)</span> e nos ajude a chegar numa resposta final.</p>
 <p>Sabemos uma maneira possível de representar probabilisticamente o fenômeno, mas <strong>uma característica do modelo permanece desconhecida</strong>.</p>
-<p>É aí que entram os dados (a a <strong>Inferência Estatística</strong>).</p>
+<p>É aí que entram os dados (e a <strong>Inferência Estatística</strong>).</p>
 <p>Se observarmos <span class="math inline">\(n\)</span> sessões, antes de vermos os resultados podemos representá-las por</p>
 <p><span class="math display">\[
 X_1,X_2,\ldots,X_n.
@@ -445,7 +452,7 @@ x_1,x_2,\ldots,x_n.
 \]</span></p>
 <p>Aqui começa a <strong>Inferência Estatística</strong>:</p>
 <blockquote class="blockquote">
-<p><strong>partimos dos dados observados para aprender sobre características desconhecidas do modelo probabilístico;</strong> <strong>mas continuamos usando matemática a a teoria da probabilidade para formalizar a ideia da inferência.</strong></p>
+<p><strong>partimos dos dados observados para aprender sobre características desconhecidas do modelo probabilístico;</strong> <strong>mas continuamos usando a matemática e a Teoria da Probabilidade para formalizar a ideia da inferência.</strong></p>
 </blockquote>
 <div class="callout callout-style-default callout-important callout-titled" title="A Probabilidade não desapareceu">
 <div class="callout-header d-flex align-content-center">
@@ -463,6 +470,123 @@ A Probabilidade não desapareceu
 </div>
 </div>
 </section>
+<section id="mas-e-a-estatística-descritiva" class="level2">
+<h2 class="anchored" data-anchor-id="mas-e-a-estatística-descritiva">Mas e a Estatística Descritiva?</h2>
+<p>Até aqui falamos de <strong>Probabilidade</strong> e <strong>Inferência Estatística</strong>. Mas existe um terceiro termo que aparece o tempo inteiro em livros, cursos e no trabalho com dados: <span class="conceito"><strong>Estatística Descritiva</strong></span>.</p>
+<p>A ideia é bem mais simples do que o nome pode sugerir.</p>
+<p>Depois que observamos os valores</p>
+<p><span class="math display">\[
+x_1,x_2,\ldots,x_n,
+\]</span></p>
+<p>e temos um <strong>dataset em mãos</strong>, podemos simplesmente perguntar:</p>
+<blockquote class="blockquote">
+<p><strong>O que estes dados que eu observei mostram?</strong></p>
+</blockquote>
+<p>Por exemplo:</p>
+<ul>
+<li>qual foi a taxa de conversão observada?</li>
+<li>qual foi o gasto médio?</li>
+<li>qual foi a mediana?</li>
+<li>como os valores estão distribuídos?</li>
+<li>existem valores muito distantes dos demais?</li>
+<li>qual é a correlação observada entre duas colunas?</li>
+</ul>
+<p>Isso é o papel da <strong>Estatística Descritiva</strong>: <strong>organizar, resumir e visualizar os dados que efetivamente observamos</strong>.</p>
+<p><span class="math display">\[
+\begin{array}{c}
+\boxed{\text{dataset observado}} \\
+\Downarrow \\
+\boxed{\text{resumir e descrever o que aconteceu nos dados}}
+\end{array}
+\]</span></p>
+<p>Suponha, por exemplo, que observamos <span class="math inline">\(1.000\)</span> sessões de checkout e, em <span class="math inline">\(120\)</span> delas, houve compra.</p>
+<p>A taxa de conversão observada é</p>
+<p><span class="math display">\[
+\frac{120}{1000}=0.12.
+\]</span></p>
+<p>Dizer</p>
+<blockquote class="blockquote">
+<p><strong>“12% das sessões deste dataset terminaram em compra”</strong></p>
+</blockquote>
+<p>é uma afirmação puramente <strong>descritiva</strong>. Estamos apenas resumindo aquilo que aconteceu nos dados que temos em mãos.</p>
+<p>Perceba que, para fazer essa afirmação, ainda não precisamos dizer que <span class="math inline">\(0.12\)</span> é a verdadeira probabilidade de conversão de todos os usuários, nem que esse número se repetirá em outro conjunto de sessões.</p>
+<p>Para tentar ir <strong>além do dataset observado</strong>, precisamos de algo a mais. É justamente aí que entram o <strong>modelo probabilístico</strong> e a <strong>Inferência Estatística</strong>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="E onde entra o famoso EDA?">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+E onde entra o famoso EDA?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="conceito"><strong>EDA (<em>Exploratory Data Analysis</em>)</strong></span> <strong>e Estatística Descritiva são muito próximos, mas não são exatamente sinônimos.</strong></p>
+<p>A Estatística Descritiva fornece várias das ferramentas que usamos para resumir os dados: médias, medianas, proporções, tabelas, distribuições, correlações e gráficos.</p>
+<p>O EDA é um processo mais amplo de <strong>explorar o dataset</strong>: entender sua estrutura, procurar padrões e relações, detectar problemas de qualidade, valores estranhos e levantar perguntas que podem orientar análises e modelos posteriores.</p>
+<p>Em outras palavras, <strong>usamos Estatística Descritiva dentro de uma análise exploratória</strong>.</p>
+<p>É por isso que livros e cursos costumam apresentá-la cedo: antes de tentar aprender algo sobre um mecanismo desconhecido, precisamos saber <strong>descrever aquilo que efetivamente observamos</strong>.</p>
+</div>
+</div>
+</section>
+<section id="a-confusão-que-quase-ninguém-explica" class="level2">
+<h2 class="anchored" data-anchor-id="a-confusão-que-quase-ninguém-explica">A confusão que quase ninguém explica</h2>
+<p>Agora aparece uma sutileza que causa muita confusão em Estatística.</p>
+<p>Imagine que estamos interessados na <strong>média</strong> de alguma variável, como o gasto de um usuário.</p>
+<p>A palavra “média” pode estar se referindo a <strong>objetos diferentes</strong>, dependendo de onde estamos no mapa.</p>
+<section id="a-média-no-modelo-probabilístico" class="level3">
+<h3 class="anchored" data-anchor-id="a-média-no-modelo-probabilístico">1. A média no modelo probabilístico</h3>
+<p>Se <span class="math inline">\(X\)</span> representa o gasto de um usuário no nosso modelo probabilístico, podemos definir</p>
+<p><span class="math display">\[
+\mu=E[X].
+\]</span></p>
+<p>Aqui, <span class="math inline">\(\mu\)</span> é uma <strong>característica da distribuição probabilística de <span class="math inline">\(X\)</span></strong>.</p>
+<p>Ela pertence ao modelo. Não é uma média que acabamos de calcular em um dataset.</p>
+</section>
+<section id="a-média-da-amostra-antes-de-observarmos-os-dados" class="level3">
+<h3 class="anchored" data-anchor-id="a-média-da-amostra-antes-de-observarmos-os-dados">2. A média da amostra, antes de observarmos os dados</h3>
+<p>Antes de observar os valores de <span class="math inline">\(X_1,\ldots,X_n\)</span>, podemos definir</p>
+<p><span class="math display">\[
+\bar X=\frac{1}{n}\sum_{i=1}^{n}X_i.
+\]</span></p>
+<p>Como <span class="math inline">\(X_1,\ldots,X_n\)</span> ainda são variáveis aleatórias, <span class="math inline">\(\bar X\)</span> também é uma <strong>variável aleatória</strong>.</p>
+<p>Em Estatística, chamamos uma função da amostra como essa de uma <strong>estatística</strong>.</p>
+</section>
+<section id="a-média-calculada-no-dataset-observado" class="level3">
+<h3 class="anchored" data-anchor-id="a-média-calculada-no-dataset-observado">3. A média calculada no dataset observado</h3>
+<p>Depois que observamos</p>
+<p><span class="math display">\[
+x_1,x_2,\ldots,x_n,
+\]</span></p>
+<p>calculamos</p>
+<p><span class="math display">\[
+\bar x=\frac{1}{n}\sum_{i=1}^{n}x_i.
+\]</span></p>
+<p>Agora temos simplesmente <strong>um número calculado a partir do dataset</strong>.</p>
+<p>E aqui está a parte importante: esse mesmo número pode cumprir dois papéis diferentes.</p>
+<ul>
+<li><strong>Descritivamente:</strong> <span class="math inline">\(\bar x\)</span> resume os valores que observamos no dataset.</li>
+<li><strong>Inferencialmente:</strong> <span class="math inline">\(\bar x\)</span> pode ser usado como evidência para aprender sobre uma característica desconhecida do modelo, como <span class="math inline">\(\mu=E[X]\)</span>.</li>
+</ul>
+<p>Portanto:</p>
+<p><span class="math display">\[
+\begin{array}{ccc}
+\boxed{\mu=E[X]}
+&amp;\qquad&amp;
+\boxed{\bar X=\frac{1}{n}\sum X_i}
+&amp;\qquad&amp;
+\boxed{\bar x=\frac{1}{n}\sum x_i}
+\\[0.2cm]
+\text{característica do modelo}
+&amp;&amp;
+\text{estatística aleatória}
+&amp;&amp;
+\text{número observado no dataset}
+\end{array}
+\]</span></p>
+<p>Essa distinção vai reaparecer várias vezes no curso. Palavras como <strong>média, variância, desvio-padrão e correlação</strong> podem ser usadas para objetos matematicamente relacionados, mas que vivem em lugares diferentes do nosso mapa.</p>
+</section>
+</section>
 <section id="o-mapa-que-queremos-guardar" class="level2">
 <h2 class="anchored" data-anchor-id="o-mapa-que-queremos-guardar">O mapa que queremos guardar</h2>
 <p>Tudo deste prelúdio pode ser resumido em um único mapa.</p>
@@ -479,37 +603,54 @@ A Probabilidade não desapareceu
 \end{array}}
 \end{array}
 \]</span></p>
-<p>Depois aparecem duas direções:</p>
+<p>Quando o modelo está completamente especificado, fazemos o caminho da <strong>Probabilidade</strong>:</p>
 <p><span class="math display">\[
-\begin{array}{ccc}
-\boxed{\text{modelo especificado}}
-&amp;&amp;
-\boxed{\text{parte do modelo desconhecida}}
-\\[0.15cm]
-\Downarrow &amp;&amp; \Downarrow
-\\[0.15cm]
-\boxed{\text{o que ele implica?}}
-&amp;&amp;
-\boxed{\text{observamos dados}}
-\\[0.15cm]
-\Downarrow &amp;&amp; \Downarrow
-\\[0.15cm]
-\boxed{\text{PROBABILIDADE}}
-&amp;&amp;
-\boxed{\text{INFERÊNCIA}}
+\boxed{\text{modelo probabilístico especificado}}
+\;\longrightarrow\;
+\boxed{\text{possíveis dados e suas probabilidades}}
+\]</span></p>
+<p>Quando parte do modelo é desconhecida, observamos uma amostra:</p>
+<p><span class="math display">\[
+\begin{array}{c}
+\boxed{X_1,\ldots,X_n} \\
+\Downarrow \\
+\boxed{\text{observamos}} \\
+\Downarrow \\
+\boxed{x_1,\ldots,x_n} \\
+\Downarrow \\
+\boxed{\text{dataset observado}}
 \end{array}
 \]</span></p>
-<p>No primeiro caso:</p>
+<p>E, a partir desse dataset, aparecem <strong>duas perguntas diferentes</strong>:</p>
+<p><span class="math display">\[
+\begin{array}{ccc}
+&amp; \boxed{\text{dataset observado}} &amp; \\
+&amp; \boxed{x_1,\ldots,x_n} &amp; \\
+&amp; \swarrow \qquad \searrow &amp; \\
+\boxed{\text{ESTATÍSTICA DESCRITIVA}}
+&amp;&amp;
+\boxed{\text{INFERÊNCIA ESTATÍSTICA}}
+\\[0.15cm]
+\Downarrow &amp;&amp; \Downarrow
+\\[0.15cm]
+\boxed{\text{descrever o que observamos}}
+&amp;&amp;
+\boxed{\begin{array}{c}
+\text{usar dados + modelo probabilístico}\\
+\text{para aprender sobre o mecanismo}
+\end{array}}
+\end{array}
+\]</span></p>
+<p>Em uma frase para cada parte:</p>
 <blockquote class="blockquote">
-<p><strong>modelo <span class="math inline">\(\rightarrow\)</span> possíveis dados.</strong></p>
+<p><strong>Estatística Descritiva:</strong> o que aconteceu nos dados que observamos?</p>
+<p><strong>Teoria da Probabilidade:</strong> se este é o mecanismo probabilístico, o que poderia acontecer e com quais probabilidades?</p>
+<p><strong>Inferência Estatística:</strong> o que os dados observados, junto com um modelo probabilístico, nos permitem aprender sobre o mecanismo que poderia tê-los produzido?</p>
 </blockquote>
-<p>No segundo:</p>
+<p>Essas três ideias não competem entre si. Na prática, um Data Scientist pode descrever e explorar os dados, construir ou avaliar um modelo e fazer inferência — muitas vezes indo e voltando entre essas etapas.</p>
+<p>Mas, conceitualmente, vale guardar a distinção:</p>
 <blockquote class="blockquote">
-<p><strong>dados observados <span class="math inline">\(\rightarrow\)</span> aprender sobre o modelo.</strong></p>
-</blockquote>
-<p>E os dois lados pertencem à mesma história.</p>
-<blockquote class="blockquote">
-<p><strong>Probabilidade constrói a linguagem matemática para representar mecanismos incertos. Inferência Estatística usa essa linguagem, junto com os dados observados, para aprender sobre aquilo que não conhecemos.</strong></p>
+<p><strong>descrever os dados não é a mesma coisa que inferir além deles.</strong></p>
 </blockquote>
 <p>Com esse mapa em mente, podemos voltar ao começo e fazer a primeira pergunta do curso:</p>
 <blockquote class="blockquote">

@@ -12,7 +12,7 @@ A ideia central deste curso é simples e pode ser vista a partir de duas perspec
 
 Quando _alguma característica desse mecanismo é desconhecida_ (tipo a "média" ou alguma outra característica de nosso interesse), usamos os dados observados para aprender sobre ela.
 
-É dessa relação entre **modelo** e **dados** que surgem as duas grandes ideias que vamos conectar ao longo do curso: **Probabilidade** e **Inferência Estatística**.
+É dessa relação entre **modelo** e **dados** que surgem as duas grandes ideias que vamos conectar ao longo do curso: [**Probabilidade**]{.conceito} e [**Inferência Estatística**]{.conceito}.
 
 ::: {.callout-note appearance="simple"}
 
@@ -35,7 +35,7 @@ Existe **incerteza no nível individual**, ou seja, se você realizar um ensaio 
 
 Mas incerteza não significa ausência completa de **estrutura**. 
 
-E ter _algum estrutura_ é algo **muito importante**, pois é ai que a matemática entra para entender e modelar o fenômeno.
+E ter _alguma estrutura_ é algo **muito importante**, pois é aí que a matemática entra para entender e modelar o fenômeno.
 
 Olha que interessante. Quando observamos muitas ocorrências de certos fenômenos, podem aparecer **regularidades no agregado**: alguns resultados aparecem mais frequentemente que outros, algumas proporções parecem se estabilizar e certos padrões reaparecem nos dados.
 
@@ -115,7 +115,7 @@ $$
 P(X=1)=P(X=0)=0.5.
 $$
 
-Neste exemplo, _a simetria física da moeda ajuda a justificar essa hipótese de modelagem_. Um cientista percebeu isso e criou um exemplo para quando $p=0.5$. Em outros problemas, as hipóteses podem vir de outras fontes.
+Neste exemplo, _a simetria física da moeda ajuda a justificar essa hipótese de modelagem_. Neste exemplo, a simetria física da moeda ajuda a justificar a hipótese de probabilidades iguais. Em outros problemas, as hipóteses podem vir de outras fontes.
 
 Agora imagine $100$ lançamentos:
 
@@ -183,7 +183,7 @@ Nesse caso, **infelizmente não existe aqui uma simetria física** que nos entre
 
 Sabemos uma maneira possível de representar probabilisticamente o fenômeno, mas **uma característica do modelo permanece desconhecida**.
 
-É aí que entram os dados (a a **Inferência Estatística**).
+É aí que entram os dados (e a **Inferência Estatística**).
 
 Se observarmos $n$ sessões, antes de vermos os resultados podemos representá-las por
 
@@ -248,7 +248,7 @@ $$
 Aqui começa a **Inferência Estatística**:
 
 > **partimos dos dados observados para aprender sobre características desconhecidas do modelo probabilístico;**
-> **mas continuamos usando matemática a a teoria da probabilidade para formalizar a ideia da inferência.**
+> **mas continuamos usando a matemática e a Teoria da Probabilidade para formalizar a ideia da inferência.**
 
 ::: {.callout-important title="A Probabilidade não desapareceu"}
 
@@ -259,6 +259,146 @@ Ela depende dela.
 Continuamos usando uma estrutura probabilística para representar o mecanismo que poderia ter gerado os dados. A diferença é que agora alguma parte dessa estrutura é desconhecida e precisa ser aprendida a partir das observações.
 
 :::
+
+## Mas e a Estatística Descritiva?
+
+Até aqui falamos de **Probabilidade** e **Inferência Estatística**. Mas existe um terceiro termo que aparece o tempo inteiro em livros, cursos e no trabalho com dados: [**Estatística Descritiva**]{.conceito}.
+
+A ideia é bem mais simples do que o nome pode sugerir.
+
+Depois que observamos os valores
+
+$$
+x_1,x_2,\ldots,x_n,
+$$
+
+e temos um **dataset em mãos**, podemos simplesmente perguntar:
+
+> **O que estes dados que eu observei mostram?**
+
+Por exemplo:
+
+- qual foi a taxa de conversão observada?
+- qual foi o gasto médio?
+- qual foi a mediana?
+- como os valores estão distribuídos?
+- existem valores muito distantes dos demais?
+- qual é a correlação observada entre duas colunas?
+
+Isso é o papel da **Estatística Descritiva**: **organizar, resumir e visualizar os dados que efetivamente observamos**.
+
+$$
+\begin{array}{c}
+\boxed{\text{dataset observado}} \\
+\Downarrow \\
+\boxed{\text{resumir e descrever o que aconteceu nos dados}}
+\end{array}
+$$
+
+Suponha, por exemplo, que observamos $1.000$ sessões de checkout e, em $120$ delas, houve compra.
+
+A taxa de conversão observada é
+
+$$
+\frac{120}{1000}=0.12.
+$$
+
+Dizer
+
+> **"12% das sessões deste dataset terminaram em compra"**
+
+é uma afirmação puramente **descritiva**. Estamos apenas resumindo aquilo que aconteceu nos dados que temos em mãos.
+
+Perceba que, para fazer essa afirmação, ainda não precisamos dizer que $0.12$ é a verdadeira probabilidade de conversão de todos os usuários, nem que esse número se repetirá em outro conjunto de sessões.
+
+Para tentar ir **além do dataset observado**, precisamos de algo a mais. É justamente aí que entram o **modelo probabilístico** e a **Inferência Estatística**.
+
+::: {.callout-note title="E onde entra o famoso EDA?"}
+
+[**EDA (_Exploratory Data Analysis_)**]{.conceito} **e Estatística Descritiva são muito próximos, mas não são exatamente sinônimos.**
+
+A Estatística Descritiva fornece várias das ferramentas que usamos para resumir os dados: médias, medianas, proporções, tabelas, distribuições, correlações e gráficos.
+
+O EDA é um processo mais amplo de **explorar o dataset**: entender sua estrutura, procurar padrões e relações, detectar problemas de qualidade, valores estranhos e levantar perguntas que podem orientar análises e modelos posteriores.
+
+Em outras palavras, **usamos Estatística Descritiva dentro de uma análise exploratória**.
+
+É por isso que livros e cursos costumam apresentá-la cedo: antes de tentar aprender algo sobre um mecanismo desconhecido, precisamos saber **descrever aquilo que efetivamente observamos**.
+
+:::
+
+## A confusão que quase ninguém explica
+
+Agora aparece uma sutileza que causa muita confusão em Estatística.
+
+Imagine que estamos interessados na **média** de alguma variável, como o gasto de um usuário.
+
+A palavra "média" pode estar se referindo a **objetos diferentes**, dependendo de onde estamos no mapa.
+
+### 1. A média no modelo probabilístico
+
+Se $X$ representa o gasto de um usuário no nosso modelo probabilístico, podemos definir
+
+$$
+\mu=E[X].
+$$
+
+Aqui, $\mu$ é uma **característica da distribuição probabilística de $X$**.
+
+Ela pertence ao modelo. Não é uma média que acabamos de calcular em um dataset.
+
+### 2. A média da amostra, antes de observarmos os dados
+
+Antes de observar os valores de $X_1,\ldots,X_n$, podemos definir
+
+$$
+\bar X=\frac{1}{n}\sum_{i=1}^{n}X_i.
+$$
+
+Como $X_1,\ldots,X_n$ ainda são variáveis aleatórias, $\bar X$ também é uma **variável aleatória**.
+
+Em Estatística, chamamos uma função da amostra como essa de uma **estatística**.
+
+### 3. A média calculada no dataset observado
+
+Depois que observamos
+
+$$
+x_1,x_2,\ldots,x_n,
+$$
+
+calculamos
+
+$$
+\bar x=\frac{1}{n}\sum_{i=1}^{n}x_i.
+$$
+
+Agora temos simplesmente **um número calculado a partir do dataset**.
+
+E aqui está a parte importante: esse mesmo número pode cumprir dois papéis diferentes.
+
+- **Descritivamente:** $\bar x$ resume os valores que observamos no dataset.
+- **Inferencialmente:** $\bar x$ pode ser usado como evidência para aprender sobre uma característica desconhecida do modelo, como $\mu=E[X]$.
+
+Portanto:
+
+$$
+\begin{array}{ccc}
+\boxed{\mu=E[X]}
+&\qquad&
+\boxed{\bar X=\frac{1}{n}\sum X_i}
+&\qquad&
+\boxed{\bar x=\frac{1}{n}\sum x_i}
+\\[0.2cm]
+\text{característica do modelo}
+&&
+\text{estatística aleatória}
+&&
+\text{número observado no dataset}
+\end{array}
+$$
+
+Essa distinção vai reaparecer várias vezes no curso. Palavras como **média, variância, desvio-padrão e correlação** podem ser usadas para objetos matematicamente relacionados, mas que vivem em lugares diferentes do nosso mapa.
 
 ## O mapa que queremos guardar
 
@@ -279,39 +419,63 @@ $$
 \end{array}
 $$
 
-Depois aparecem duas direções:
+Quando o modelo está completamente especificado, fazemos o caminho da **Probabilidade**:
 
 $$
-\begin{array}{ccc}
-\boxed{\text{modelo especificado}}
-&&
-\boxed{\text{parte do modelo desconhecida}}
-\\[0.15cm]
-\Downarrow && \Downarrow
-\\[0.15cm]
-\boxed{\text{o que ele implica?}}
-&&
-\boxed{\text{observamos dados}}
-\\[0.15cm]
-\Downarrow && \Downarrow
-\\[0.15cm]
-\boxed{\text{PROBABILIDADE}}
-&&
-\boxed{\text{INFERÊNCIA}}
+\boxed{\text{modelo probabilístico especificado}}
+\;\longrightarrow\;
+\boxed{\text{possíveis dados e suas probabilidades}}
+$$
+
+Quando parte do modelo é desconhecida, observamos uma amostra:
+
+$$
+\begin{array}{c}
+\boxed{X_1,\ldots,X_n} \\
+\Downarrow \\
+\boxed{\text{observamos}} \\
+\Downarrow \\
+\boxed{x_1,\ldots,x_n} \\
+\Downarrow \\
+\boxed{\text{dataset observado}}
 \end{array}
 $$
 
-No primeiro caso:
+E, a partir desse dataset, aparecem **duas perguntas diferentes**:
 
-> **modelo $\rightarrow$ possíveis dados.**
+$$
+\begin{array}{ccc}
+& \boxed{\text{dataset observado}} & \\
+& \boxed{x_1,\ldots,x_n} & \\
+& \swarrow \qquad \searrow & \\
+\boxed{\text{ESTATÍSTICA DESCRITIVA}}
+&&
+\boxed{\text{INFERÊNCIA ESTATÍSTICA}}
+\\[0.15cm]
+\Downarrow && \Downarrow
+\\[0.15cm]
+\boxed{\text{descrever o que observamos}}
+&&
+\boxed{\begin{array}{c}
+\text{usar dados + modelo probabilístico}\\
+\text{para aprender sobre o mecanismo}
+\end{array}}
+\end{array}
+$$
 
-No segundo:
+Em uma frase para cada parte:
 
-> **dados observados $\rightarrow$ aprender sobre o modelo.**
+> **Estatística Descritiva:** o que aconteceu nos dados que observamos?
+>
+> **Teoria da Probabilidade:** se este é o mecanismo probabilístico, o que poderia acontecer e com quais probabilidades?
+>
+> **Inferência Estatística:** o que os dados observados, junto com um modelo probabilístico, nos permitem aprender sobre o mecanismo que poderia tê-los produzido?
 
-E os dois lados pertencem à mesma história.
+Essas três ideias não competem entre si. Na prática, um Data Scientist pode descrever e explorar os dados, construir ou avaliar um modelo e fazer inferência — muitas vezes indo e voltando entre essas etapas.
 
-> **Probabilidade constrói a linguagem matemática para representar mecanismos incertos. Inferência Estatística usa essa linguagem, junto com os dados observados, para aprender sobre aquilo que não conhecemos.**
+Mas, conceitualmente, vale guardar a distinção:
+
+> **descrever os dados não é a mesma coisa que inferir além deles.**
 
 Com esse mapa em mente, podemos voltar ao começo e fazer a primeira pergunta do curso:
 
