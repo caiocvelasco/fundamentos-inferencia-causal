@@ -1,5 +1,5 @@
 ---
-title: "Formalização - Parte 1 de 2 - Espaço de Probabilidade"
+title: "[Formalização] Parte 1 de 3 - Espaço de Probabilidade"
 ---
 
 <!--
@@ -21,7 +21,7 @@ Bertsekas & Tsitsiklis:
 
 -->
 
-Antes de começarmos, vale dizer que este é o [**Coração**]{.atencao} de muita coisa que faremos em Data Science, Machine Learning, Estatística e Inferência Causal.
+Antes de começarmos, vale dizer que este é o [**coração**]{.atencao} de muita coisa que faremos em Data Science, Machine Learning, Estatística e Inferência Causal.
 
 ::: {.callout-note appearance="simple"}
 
@@ -916,11 +916,7 @@ Mas ainda não atribuímos nenhuma probabilidade.
 
 Antes disso, precisamos decidir quais **conjuntos de resultados** queremos tratar como objetos probabilísticos.
 
-É daí que nasce a segunda peça:
-
-$$
-\mathcal F.
-$$
+É daí que nasce a segunda peça: $\mathcal F$.
 
 ## 2. Família de eventos ($\mathcal F$)
 

@@ -1,0 +1,513 @@
+---
+title: "[Formalização] Parte 2 de 3 - Quando o Espaço Amostral é Contínuo"
+---
+
+No capítulo anterior construímos o espaço de probabilidade $(\Omega,\mathcal F,P)$ para formalizar **uma realização (incerta) de um ensaio de um experimento**.
+
+Até aqui, porém, escolhemos perguntas muito simples sobre o experimento, isto é, definimos o resultado que queríamos observar de forma bastante limitada. Por exemplo, se a única coisa que queremos registrar é **cara ou coroa**, podemos usar $\Omega=\{H,T\}$; se queremos observar apenas **compra ou não compra**, podemos usar $\Omega=\{\text{compra},\text{não compra}\}$.
+
+Agora aparece uma dificuldade nova.
+
+Muitas grandezas que usamos em Data Science — como tempo, duração, temperatura, distância ou gasto — são **modeladas como contínuas**. 
+
+Quando uma dessas grandezas passa a fazer parte do resultado que queremos representar, o espaço amostral pode deixar de ser _finito_ e até deixar de ser **enumerável**.
+
+## Primeiro: o experimento depende do que decidimos observar
+
+Considere uma sessão de checkout.
+
+Se nosso experimento for simplesmente
+
+> observar se a sessão termina em compra,
+
+então podemos usar
+
+$$
+\Omega=\{0,1\}.
+$$
+
+Esse espaço é discreto. Não há nada contínuo nele.
+
+Mas talvez nossa pergunta exija registrar também o **tempo de checkout**. Nesse caso, um resultado completo poderia ser
+
+$$
+\omega=(1,12.7),
+$$
+
+onde o primeiro componente indica compra ou não compra e o segundo registra o tempo. 
+
+E em qual conjunto esse elemento se encontra?
+
+Se modelarmos o tempo como contínuo e não negativo, podemos usar
+
+$$
+\Omega=\{0,1\}\times[0,\infty).
+$$
+
+Esse produto cartesiano significa que cada resultado do experimento é um par
+
+$$
+(\text{compra}, t), \qquad t\in[0,\infty),
+$$
+
+ou, de forma equivalente,
+
+$$
+(0,t) \quad \text{ou} \quad (1,t),
+$$
+
+com os primeiros exemplos sendo
+
+$$
+(0,0),\ (0,0.3),\ (0,1.7),\ \ldots
+$$
+
+$$
+(1,0),\ (1,2.4),\ (1,12.7),\ \ldots
+$$
+
+Em outras palavras, o primeiro componente indica compra/não compra e o segundo componente registra o tempo de checkout. Isso já mostra por que o espaço ganha uma parte contínua: o tempo pode assumir infinitos valores reais não negativos.
+
+Agora, perceba, $\Omega$ é **não enumerável**. Como vimos anteriormente, como um de seus componentes pode assumir qualquer valor de um intervalo contínuo, não conseguimos contar ou listar todos os seus elementos.
+
+::: {.callout-important title="O espaço amostral não é 'o mundo inteiro'"}
+
+O espaço amostral depende de **como definimos o experimento e quais diferenças entre resultados queremos representar**.
+
+Compra/não compra pode gerar um espaço binário.
+
+Compra + tempo pode gerar um espaço não enumerável.
+
+Portanto, não é o fato de o problema ser "do mundo real" ou "bastante complexo" que torna $\Omega$ contínuo. Isso acontece quando o modelo inclui resultados que tratamos como pertencentes a um contínuo.
+
+:::
+
+Essa é uma idealização matemática. Um relógio ou banco de dados registra tempo com precisão finita, mas frequentemente é útil modelá-lo como uma variável contínua.
+
+## Quando não conseguimos listar os resultados
+
+Para enxergar apenas a nova dificuldade, esqueça o checkout por um instante e considere
+
+$$
+\Omega=[0,1].
+$$
+
+Um conjunto é [**enumerável**]{.conceito} **quando conseguimos**, pelo menos em princípio, **organizar todos os seus elementos em uma lista** $\omega_1,\omega_2,\omega_3,\ldots$ **sem deixar nenhum de fora.** Essa é a intuição.
+
+- Os números naturais **são** enumeráveis. Os números reais de $[0,1]$ **não são**.
+
+> **Não existe uma lista $\omega_1,\omega_2,\ldots$ que contenha todos os números de $[0,1]$.**
+
+Não precisamos provar esse resultado aqui. O importante é entender **por que a existência — ou não — dessa ideia de _listar_** importa para Probabilidade.
+
+## O aparente paradoxo do contínuo
+
+Considere novamente $\Omega=[0,1]$.
+
+Antes de continuar, precisamos dar nome a um objeto simples que já apareceu várias vezes.
+
+Se $\omega\in\Omega$, então $\{\omega\}$ é o conjunto que contém **apenas aquele resultado**. Um conjunto com um único elemento é chamado de [**singleton**]{.conceito}.
+
+Por exemplo, se $\Omega=[0,1]$, então $\{0.5\}$ é o evento em que o resultado observado é exatamente $0.5$.
+
+Agora vamos atribuir uma lei de probabilidade bastante conhecida a esse espaço: o [**modelo uniforme**]{.conceito} em $[0,1]$.
+
+A ideia é simples: **intervalos recebem probabilidade de acordo com seu comprimento**. 
+
+_Parece fazer sentido, certo? Quanto maior o comprimento, maior a chance desse intervalo ocorrer._
+
+Assim, para $0\leq a\leq b\leq1$,
+
+$$
+P([a,b])=b-a.
+$$
+
+Por exemplo, $P([0.2,0.5])=0.3$.
+
+Isso também nos permite olhar para um único ponto. Como $\{\omega\}=[\omega,\omega]$, temos
+
+$$
+P(\{\omega\})=P([\omega,\omega])=\omega-\omega=0.
+$$
+
+Portanto, **cada singleton possui probabilidade zero** nesse modelo.
+
+Ao mesmo tempo, o espaço amostral inteiro possui probabilidade $1$, tanto pela normalização dos Axiomas de Kolmogorov quanto pela própria regra uniforme que acabamos de atribuir com a nossa lei de probabilidade escolhida:
+
+$$
+P([0,1])=1-0=1.
+$$
+
+Agora aparece a pergunta realmente estranha:
+
+> **se cada ponto individual tem probabilidade zero, como o intervalo formado por todos esses pontos pode ter probabilidade $1$?**
+
+Essa sensação de paradoxo é exatamente o que precisamos entender.
+
+## É justamente aqui que "conseguir listar" importa
+
+Lembra de quando introduzimos os [**Axiomas de Kolmogorov**]{.conceito}? Queríamos uma função $P:\mathcal F\to[0,1]$ que se comportasse de maneira coerente como uma medida de probabilidade.
+
+O terceiro axioma formaliza uma ideia bastante natural:
+
+> **se dividimos um conjunto em partes que não se sobrepõem, a medida do todo deve refletir a soma das medidas das partes.**
+
+Considerando $A$ e $B$ mutuamente exclusivos, podemos escrever:
+
+$$
+A\cap B=\varnothing
+\qquad\Longrightarrow\qquad
+P(A\cup B)=P(A)+P(B).
+$$
+
+De forma mais geral, se $A_1,A_2,A_3,\ldots$ é uma sequência de eventos mutuamente exclusivos, então
+
+$$
+A_1,A_2,A_3,\ldots \text{ mutuamente exclusivos}
+\qquad\Longrightarrow\qquad
+P\left(\bigcup_{i=1}^{\infty}A_i\right)
+=
+\sum_{i=1}^{\infty}P(A_i).
+$$
+
+Essa propriedade recebeu o nome de [**aditividade enumerável**]{.conceito}.
+
+Até agora, talvez a palavra mais importante parecesse ser **aditividade**: juntamos partes disjuntas e somamos suas probabilidades.
+
+Agora precisamos prestar atenção à outra palavra: **enumerável**.
+
+O axioma fala de uma sequência $A_1,A_2,A_3,\ldots$. Ou seja, está **implícito** que conseguimos **listar** os eventos usando os números naturais $1,2,3,\ldots$.
+
+::: {.callout-important title="Contar é associar aos números naturais"}
+
+Para a ideia que precisamos aqui, **contar ou listar** significa colocar os elementos de um conjunto em correspondência com os números naturais. 
+
+Essa forma de pensar costuma aparecer em cursos de **Matemática Discreta** e, mais formalmente, em **Análise Real**.
+
+Veja os casos abaixo:
+
+**Finito:** usamos apenas os primeiros naturais e a lista termina.
+
+$$
+\begin{array}{ccc}
+a & b & c \\
+\uparrow & \uparrow & \uparrow \\
+1 & 2 & 3
+\end{array}
+$$
+
+**Infinito enumerável:** a lista nunca termina, mas cada elemento aparece em alguma posição $1,2,3,\ldots$.
+
+$$
+\begin{array}{ccccc}
+a_1 & a_2 & a_3 & a_4 & \cdots \\
+\uparrow & \uparrow & \uparrow & \uparrow & \\
+1 & 2 & 3 & 4 & \cdots
+\end{array}
+$$
+
+**Não enumerável:** nenhuma lista indexada por $1,2,3,\ldots$ consegue incluir todos os elementos.
+
+$$
+\begin{array}{ccccc}
+\omega_1 & \omega_2 & \omega_3 & \omega_4 & \cdots \\
+\uparrow & \uparrow & \uparrow & \uparrow & \\
+1 & 2 & 3 & 4 & \cdots
+\end{array}
+\qquad
+\text{a lista não esgota }[0,1].
+$$
+
+Essa é a diferença essencial: **enumerável significa que conseguimos listar todos os elementos; não enumerável significa que nenhuma lista desse tipo consegue esgotar o conjunto.**
+
+:::
+
+Agora veja como isso se conecta à nossa pergunta.
+
+- **Finito:** se $A=\{a_1,a_2,a_3\}$, então $A=\{a_1\}\cup\{a_2\}\cup\{a_3\}=\displaystyle\bigcup_{i=1}^{3}\{a_i\}$.
+- **Infinito enumerável:** se $B=\{b_1,b_2,b_3,\ldots\}$, então $B=\{b_1\}\cup\{b_2\}\cup\{b_3\}\cup\cdots=\displaystyle\bigcup_{i=1}^{\infty}\{b_i\}$.
+
+Nos dois casos, cada elemento recebe uma posição $i=1,2,3,\ldots$.
+
+Agora faça, por um instante, a seguinte suposição:
+
+> **e se $[0,1]$ também pudesse ser listado dessa maneira?**
+
+Se isso fosse possível, poderíamos escrever seus pontos como $\omega_1,\omega_2,\omega_3,\ldots$ e, portanto,
+
+$$
+[0,1]
+=
+\{\omega_1\}\cup\{\omega_2\}\cup\{\omega_3\}\cup\cdots
+=
+\bigcup_{i=1}^{\infty}\{\omega_i\}.
+$$
+
+Como cada singleton tem probabilidade zero e esses eventos são mutuamente exclusivos, o terceiro axioma nos daria
+
+$$
+P([0,1])
+=
+\sum_{i=1}^{\infty}P(\{\omega_i\})
+=
+0.
+$$
+
+Mas pela normalização sabemos que $P(\Omega)=1$ e, como $\Omega=[0,1]$, temos $P([0,1])=1$.
+
+Chegamos então a uma contradição.
+
+O problema não está nos Axiomas de Kolmogorov. O problema está na suposição de que conseguiríamos colocar **todos** os pontos de $[0,1]$ em uma lista $\omega_1,\omega_2,\omega_3,\ldots$.
+
+Não conseguimos.
+
+Esse é justamente o significado de dizer que $[0,1]$ é [**não enumerável**]{.conceito}.
+
+::: {.callout-tip title="🎉 Você acabou de usar uma prova por contradição!"}
+
+Uma [**prova por contradição**]{.conceito} tem uma ideia simples: para mostrar que uma afirmação é verdadeira, **assumimos temporariamente o seu contrário** e investigamos suas consequências.
+
+Se essa suposição nos leva a algo incompatível com o que já sabemos, então ela deve estar errada.
+
+Queremos mostrar que **$[0,1]$ não é enumerável**. Então assumimos temporariamente o contrário:
+
+$$
+\begin{array}{lll}
+\text{Suposição temporária:} & H & \qquad ([0,1]\text{ é enumerável}) \\[4pt]
+\text{Consequência:} & Q & \qquad (P([0,1])=0) \\[4pt]
+\text{Mas sabemos:} & \neg Q & \qquad (\text{pela normalização: }P([0,1])=1) \\[4pt]
+\hline
+\text{Contradição:} & Q\land\neg Q & \\[4pt]
+\text{Conclusão:} & \therefore\ \neg H
+& \qquad ([0,1]\text{ não é enumerável})
+\end{array}
+$$
+
+Ou seja: **assumimos o contrário do que queríamos mostrar e essa suposição nos levou a algo impossível.** 😄
+
+:::
+
+## O terceiro axioma continua valendo no contínuo
+
+Alguns podem estar se perguntando:
+
+> **Ué, então o terceiro Axioma de Kolmogorov não funciona quando o espaço é contínuo?**
+
+Funciona, sim.
+
+A contradição acima **não mostrou que o terceiro axioma falhou**. Ela mostrou que tentamos aplicá-lo a uma lista contendo **todos os pontos individuais** de $[0,1]$ — isto é, todos os seus _singletons_ — mas essa lista não existe.
+
+O terceiro axioma continua dizendo exatamente a mesma coisa:
+
+> para qualquer coleção **enumerável** de eventos disjuntos, a probabilidade da união é a soma das probabilidades desses eventos.
+
+Então podemos fazer uma escolha matemática **mais inteligente**.
+
+Em vez de tentar decompor $[0,1]$ em todos os seus singletons,
+
+$$
+\{0\},\{0.1\},\{\sqrt{2}/2\},\ldots
+$$
+
+o que produziria uma coleção **não enumerável**, podemos **agrupar muitos pontos dentro de cada evento** e construir uma coleção que consiga ser _listada_.
+
+É por isso que usamos intervalos.
+
+Por exemplo,
+
+$A_1=(1/2,1]$, $A_2=(1/4,1/2]$, $A_3=(1/8,1/4],\ldots$
+
+Cada $A_i$ contém, ele próprio, **infinitos não enumeráveis pontos**, mas a coleção
+
+$$
+A_1,A_2,A_3,\ldots
+$$
+
+é enumerável.
+
+Essa é a sacada:
+
+> **um espaço não enumerável pode ser dividido em uma quantidade enumerável de eventos, mesmo que cada um desses eventos contenha não enumeravelmente muitos pontos.**
+
+No modelo uniforme, as probabilidades desses intervalos são seus comprimentos: $1/2,1/4,1/8,\ldots$. Assim,
+
+$$
+P\left(\bigcup_{i=1}^{\infty}A_i\right)
+=
+\frac12+\frac14+\frac18+\cdots
+=
+1.
+$$
+
+::: {.callout-note title="De onde vem esse 1?"}
+
+A soma $\frac12+\frac14+\frac18+\cdots$ é uma [**série geométrica**]{.conceito}: $\sum_{i=1}^{\infty}\left(\frac12\right)^i.$ (_Lembra de **Progressão Geométrica** da época de escola?_)
+
+Para uma série geométrica com razão $|r|<1$, temos $\sum_{i=1}^{\infty}r^i=\frac{r}{1-r}$
+
+Como aqui $r=\frac12$, então temos $\sum_{i=1}^{\infty}\left(\frac12\right)^i=\frac{1/2}{1-1/2}=1$
+
+:::
+
+A união desses intervalos é $(0,1]$. 
+
+Se acrescentarmos também o singleton $\{0\}$, continuamos com uma coleção enumerável de eventos e recuperamos todo o espaço $[0,1]$. 
+
+Como $P(\{0\})=0$, a probabilidade total continua sendo $1$.
+
+Não eliminamos a não enumerabilidade do espaço. **Mudamos a maneira de enxergá-lo:** em vez de tentar somar ponto por ponto, agrupamos os pontos em eventos que conseguimos enumerar.
+
+Essa é uma das belezas da abstração matemática: escolher uma representação que preserve aquilo que precisamos calcular.
+
+> **O espaço pode ser contínuo e o terceiro axioma continuar funcionando perfeitamente. O que precisa ser enumerável é a coleção de eventos que estamos somando — não o espaço amostral inteiro.**
+
+## Mas como pontos de probabilidade zero formam algo de probabilidade $1$?
+
+Talvez ainda reste uma sensação estranha:
+
+> **Tudo bem: não posso listar todos os pontos. Mas como cada ponto pode ter probabilidade zero e o intervalo inteiro ter probabilidade $1$?**
+
+Aqui está a mudança de perspectiva mais importante deste capítulo:
+
+> **não estamos somando uma quantidade gigantesca de zeros para obter $1$. Essa soma nunca foi definida pelo terceiro axioma.**
+
+A melhor analogia é o **comprimento**.
+
+Um ponto individual tem comprimento zero, mas o intervalo $[0,1]$ tem comprimento $1$.
+
+Isso não é um truque. O comprimento é uma **medida do conjunto inteiro**; ele não é construído somando, ponto a ponto, o comprimento de todos os reais do intervalo.
+
+A Probabilidade contínua funciona de forma análoga.
+
+No modelo uniforme, $P([a,b])=b-a$. Assim, $P([0.2,0.5])=0.3$, embora cada singleton $\{\omega\}$ dentro desse intervalo tenha probabilidade zero.
+
+::: {.callout-important title="O ponto central"}
+
+No caso discreto, muitas vezes podemos construir a probabilidade de um evento somando a **massa probabilística de seus pontos**.
+
+No caso contínuo, **essa intuição ponto a ponto deixa de funcionar!**.
+
+A probabilidade continua obedecendo aos mesmos Axiomas de Kolmogorov, mas passa a ser mais natural pensá-la como uma **medida atribuída a conjuntos**.
+
+Por isso, $P(\{\omega\})=0$ para cada ponto e $P([0,1])=1$ podem ser verdadeiros ao mesmo tempo.
+
+:::
+
+Essa mudança de perspectiva é justamente o que nos aproxima da [**Teoria da Medida**]{.conceito}.
+
+## Voltando ao $\mathcal F$, a casa onde $P$ funciona
+
+Resta uma última questão.
+
+Lembre: $\Omega$ contém **todos os resultados possíveis** do experimento.
+
+Já um **evento** é um subconjunto de $\Omega$ — um conjunto de resultados sobre o qual queremos fazer uma pergunta probabilística.
+
+Por exemplo, se $\Omega=\{1,2,3,4,5,6\}$, então $\{2,4,6\}$ é o evento “sair um número par”.
+
+A coleção $\mathcal F$ reúne justamente os eventos aos quais a função $P$ pode atribuir probabilidade.
+
+Então surge a pergunta:
+
+> **podemos simplesmente colocar todos os subconjuntos de $\Omega$ dentro de $\mathcal F$?**
+
+Em espaços finitos simples, frequentemente sim:
+
+$$
+\mathcal F=2^\Omega.
+$$
+
+Em espaços contínuos, porém, existem subconjuntos suficientemente irregulares para os quais não conseguimos definir probabilidades preservando todas as propriedades que queremos.
+
+Por isso, escolhemos uma coleção $\mathcal F$ de subconjuntos para os quais $P$ estará bem definida.
+
+Esses conjuntos são chamados de [**mensuráveis**]{.conceito}.
+
+> Um conjunto $A\subseteq\Omega$ é **mensurável** quando $A\in\mathcal F$ — isto é, quando ele pertence ao domínio sobre o qual nossa medida de probabilidade $P$ está definida.
+
+Ou seja, se um evento A está em $\mathcal F$, então a gente garante que ele é um conjunto onde $P$ vai funcionar direitinho.
+
+Mas $\mathcal F$ não pode ser uma coleção qualquer.
+
+Lembre da ideia de [**fechamento**]{.conceito}: se começamos com eventos válidos e fazemos operações naturais entre eles, o resultado também precisa continuar sendo um evento válido. Assim, conseguimos garantir que todas as possivéis perguntas a um experimento podem ser consideradas.
+
+Assim, queremos que:
+
+- se $A\in\mathcal F$, então seu complemento $A^c\in\mathcal F$;
+- se $A_1,A_2,A_3,\ldots\in\mathcal F$, então $\displaystyle\bigcup_{i=1}^{\infty}A_i\in\mathcal F$.
+
+A novidade importante agora é justamente a palavra **enumerável**: $\mathcal F$ precisa permanecer fechada mesmo quando fazemos uma união de uma sequência $A_1,A_2,A_3,\ldots$ de eventos.
+
+Uma família com essas propriedades — e que contém $\Omega$ — é chamada de [**$\sigma$-álgebra**]{.conceito}.
+
+A razão é operacional:
+
+> **se começamos com eventos aos quais conseguimos atribuir probabilidade, as operações probabilísticas que fazemos não podem nos levar para fora do domínio de $P$.**
+
+::: {.callout-note title="Da reta real à $\sigma$-álgebra de Borel"}
+
+Quando $\Omega\subseteq\mathbb R$, como em $\Omega=[0,1]$ (_que nada mais é do que um pedaço da **reta real**_), os objetos mais naturais para começar são os **intervalos da reta**:
+
+$[a,b]$, $(a,b)$, $(-\infty,a]$, etc.
+
+A [**$\sigma$-álgebra de Borel**]{.conceito} é, intuitivamente, **a menor coleção de subconjuntos de $\mathbb R$** que contém esses intervalos e continua **fechada pelas operações** que exigimos de uma $\sigma$-álgebra: complementos e uniões enumeráveis.
+
+Em outras palavras:
+
+> começamos com intervalos simples e permitimos construir, de forma consistente, conjuntos mais complexos a partir deles.
+
+Esses conjuntos são chamados de **conjuntos de Borel**.
+
+Isso aparece naturalmente em problemas reais porque muitas variáveis que modelamos — como tempo, temperatura, distância, preço ou gasto — assumem valores em subconjuntos **da reta real**.
+
+Então eventos como “tempo entre 2 e 5 segundos”, “temperatura acima de 30°C” ou “gasto menor que R$ 100” são justamente descritos por intervalos e combinações deles.
+
+Por isso, quando trabalhamos com grandezas contínuas, a $\sigma$-álgebra de Borel é uma escolha tão natural para representar os eventos aos quais queremos atribuir probabilidade.
+
+:::
+
+Não precisamos construir essa $\sigma$-álgebra nem estudar Teoria da Medida agora.
+
+Precisamos apenas entender **por que $\mathcal F$ existe e qual problema ela resolve**.
+
+## O que mudou?
+
+A estrutura continua sendo a mesma:
+
+$$
+\boxed{(\Omega,\mathcal F,P)}.
+$$
+
+Mas agora entendemos por que suas três peças continuam necessárias mesmo quando $\Omega$ não pode ser listado resultado por resultado:
+
+- $\Omega$: quais resultados podem ocorrer;
+- $\mathcal F$: quais conjuntos de resultados tratamos como eventos mensuráveis;
+- $P$: qual medida de probabilidade atribuímos a esses eventos.
+
+O salto conceitual deste capítulo é apenas este:
+
+$$
+\boxed{\text{discreto: massa nos pontos}}
+\;\longrightarrow\;
+\boxed{\text{contínuo: medida de conjuntos}}
+$$
+
+🎉 **Uhul! Fechamos uma parte extremamente importante.**
+
+Com isso, fechamos o que faltava na formalização de **uma realização de um ensaio de um experimento**.
+
+É verdade que, no dia a dia, _dificilmente vamos parar para pensar explicitamente em $\sigma$-álgebras, singletons ou conjuntos de Borel_. 
+
+Mas entender essas abstrações nos dá uma base muito mais poderosa para aprender Probabilidade **de verdade** e, depois, Inferência Estatística e Inferência Causal **sem depender apenas de fórmulas decoradas**.
+
+O próximo passo será voltar à terceira característica do experimento aleatório: **o que acontece quando o repetimos várias vezes?**
+
+## Antes de continuar
+
+1. Se observamos apenas **compra/não compra** em uma sessão, por que $\Omega=\{0,1\}$ pode ser suficiente? O que muda se também quisermos representar uma grandeza modelada como contínua, como o tempo?
+
+2. O que é um [**singleton**]{.conceito}? No modelo uniforme em $[0,1]$, por que cada singleton $\{\omega\}$ pode ter probabilidade zero enquanto o intervalo inteiro tem probabilidade $1$?
+
+3. Onde entra a ideia de [**enumerabilidade**]{.conceito}? Por que o terceiro Axioma de Kolmogorov continua válido no caso contínuo, mesmo que não possamos somar as probabilidades de todos os pontos de $[0,1]$?
+
+4. Qual problema $\mathcal F$ resolve? O que significa dizer que um evento é **mensurável** e por que exigimos que $\mathcal F$ seja fechada para complementos e uniões enumeráveis?
