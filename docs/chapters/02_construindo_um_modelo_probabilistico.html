@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Formalização - Parte 1 de 2 - Espaço de Probabilidade – Fundamentos para Inferência Causal</title>
+<title>[Formalização] Parte 1 de 3 - Espaço de Probabilidade – Fundamentos para Inferência Causal</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../chapters/03_quando_o_espaco_amostral_e_continuo.html" rel="next">
 <link href="../chapters/01_da_incerteza_a_probabilidade.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -111,7 +112,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/01_da_incerteza_a_probabilidade.html">Módulo 1 — Probabilidade</a></li><li class="breadcrumb-item"><a href="../chapters/02_construindo_um_modelo_probabilistico.html"><span class="chapter-title">Formalização - Parte 1 de 2 - Espaço de Probabilidade</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/01_da_incerteza_a_probabilidade.html">Módulo 1 — Probabilidade</a></li><li class="breadcrumb-item"><a href="../chapters/02_construindo_um_modelo_probabilistico.html"><span class="chapter-title">[Formalização] Parte 1 de 3 - Espaço de Probabilidade</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
@@ -172,7 +173,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/02_construindo_um_modelo_probabilistico.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Formalização - Parte 1 de 2 - Espaço de Probabilidade</span></a>
+  <a href="../chapters/02_construindo_um_modelo_probabilistico.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">[Formalização] Parte 1 de 3 - Espaço de Probabilidade</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/03_quando_o_espaco_amostral_e_continuo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">[Formalização] Parte 2 de 3 - Quando o Espaço Amostral é Contínuo</span></a>
   </div>
 </li>
       </ul>
@@ -232,9 +238,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/01_da_incerteza_a_probabilidade.html">Módulo 1 — Probabilidade</a></li><li class="breadcrumb-item"><a href="../chapters/02_construindo_um_modelo_probabilistico.html"><span class="chapter-title">Formalização - Parte 1 de 2 - Espaço de Probabilidade</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/01_da_incerteza_a_probabilidade.html">Módulo 1 — Probabilidade</a></li><li class="breadcrumb-item"><a href="../chapters/02_construindo_um_modelo_probabilistico.html"><span class="chapter-title">[Formalização] Parte 1 de 3 - Espaço de Probabilidade</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">Formalização - Parte 1 de 2 - Espaço de Probabilidade</span></h1>
+<h1 class="title"><span class="chapter-title">[Formalização] Parte 1 de 3 - Espaço de Probabilidade</span></h1>
 </div>
 
 
@@ -269,7 +275,7 @@ Bertsekas & Tsitsiklis:
 - 1.2 Probabilistic Models
 
 -->
-<p>Antes de começarmos, vale dizer que este é o <span class="atencao"><strong>Coração</strong></span> de muita coisa que faremos em Data Science, Machine Learning, Estatística e Inferência Causal.</p>
+<p>Antes de começarmos, vale dizer que este é o <span class="atencao"><strong>coração</strong></span> de muita coisa que faremos em Data Science, Machine Learning, Estatística e Inferência Causal.</p>
 <div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -1056,10 +1062,7 @@ $$
 <p>E vimos também que um resultado <span class="math inline">\(\omega\)</span> não precisa carregar apenas uma informação: quando o experimento exige várias, podemos construir espaços mais ricos usando estruturas como o <strong>produto cartesiano</strong>.</p>
 <p>Mas ainda não atribuímos nenhuma probabilidade.</p>
 <p>Antes disso, precisamos decidir quais <strong>conjuntos de resultados</strong> queremos tratar como objetos probabilísticos.</p>
-<p>É daí que nasce a segunda peça:</p>
-<p><span class="math display">\[
-\mathcal F.
-\]</span></p>
+<p>É daí que nasce a segunda peça: <span class="math inline">\(\mathcal F\)</span>.</p>
 </section>
 </section>
 <section id="família-de-eventos-mathcal-f" class="level2">
@@ -2282,6 +2285,9 @@ P:\mathcal F\longrightarrow[0,1]?
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../chapters/03_quando_o_espaco_amostral_e_continuo.html" class="pagination-link" aria-label="[Formalização] Parte 2 de 3 - Quando o Espaço Amostral é Contínuo">
+        <span class="nav-page-text"><span class="chapter-title">[Formalização] Parte 2 de 3 - Quando o Espaço Amostral é Contínuo</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
