@@ -22,7 +22,7 @@ book:
       chapters:
         - chapters/01_da_incerteza_a_probabilidade.qmd
         - chapters/02_construindo_um_modelo_probabilistico.qmd
-      #  - chapters/03_quando_o_espaco_amostral_e_continuo.qmd
+        - chapters/03_quando_o_espaco_amostral_e_continuo.qmd
 
 format:
   html:
