@@ -69,27 +69,13 @@ Podemos observar **compra** ou **não compra**.
 
 Existe, portanto, **incerteza sobre o resultado particular que será observado**.
 
-Esse é o tipo de situação que chamaremos de **fenômeno estocástico**. Mas **estocástico não significa ausência completa de estrutura**.
+Esse é o tipo de situação que chamaremos de [**fenômeno estocástico**]{.conceito}. Mas **estocástico não significa ausência completa de estrutura**.
 
 Essa será justamente a próxima ideia.
 
-::: {.callout-tip title="Onde isso aparece na prática?"}
-
-Essa distinção aparece imediatamente em **Machine Learning**.
-
-Um modelo pode receber dezenas de características de um usuário — histórico de compras, dispositivo, país, horário, origem da sessão — e ainda assim não ser capaz de determinar com certeza se ele comprará.
-
-Em muitos problemas, o que queremos aprender é algo como $P(\text{compra}\mid \text{informações do usuário})$, ou seja, _qual é a chance de um usuário realizar uma compra, dados suas características?_ (nós vamos aprender sobre essa notação, não se preocupe)
-
-Ou seja: o objetivo não é eliminar a incerteza, mas **representá-la e aprender sua estrutura**.
-
-Isso vale para problemas como **conversão**, **churn**, **fraude**, **default** e **retenção**.
-
-:::
-
 ## Incerteza
 
-A palavra *incerteza* será fundamental ao longo deste curso.
+A palavra *incerteza* será fundamental ao longo deste curso e existe quando estamos falando de um fenomeno estocástico.
 
 Por enquanto, podemos entendê-la de maneira simples:
 
@@ -131,13 +117,11 @@ Entretanto, existe uma **estrutura por trás** desses possíveis resultados.
 
 ### Existe uma estrutura por trás da incerteza
 
-Considere todas as maneiras pelas quais a soma dos dois dados pode ser obtida.
+Considere todas as maneiras pelas quais a soma dos dois dados pode ser obtida:
 
-A soma $2$ pode ocorrer de apenas uma maneira: $(1,1)$.
-
-A soma $3$ pode ocorrer de duas: $(1,2)$ e $(2,1)$.
-
-Já a soma $7$ pode ocorrer de seis maneiras: $(1,6)$, $(2,5)$, $(3,4)$, $(4,3)$, $(5,2)$ e $(6,1)$.
+- A soma $2$ pode ocorrer de apenas uma maneira: $(1,1)$.
+- A soma $3$ pode ocorrer de duas: $(1,2)$ e $(2,1)$.
+- Já a soma $7$ pode ocorrer de seis maneiras: $(1,6)$, $(2,5)$, $(3,4)$, $(4,3)$, $(5,2)$ e $(6,1)$.
 
 Depois disso, o número de possibilidades começa a diminuir novamente.
 
@@ -240,27 +224,16 @@ Não conseguimos determinar qual será o próximo resultado.
 
 Mas conseguimos identificar uma estrutura entre os possíveis resultados.
 
-::: {.callout-warning title="Ainda não estamos calculando probabilidades"}
-A tabela acima conta **possibilidades**.
+### Exemplo
 
-Contar possibilidades e calcular probabilidades não são, em geral, a mesma coisa.
+**_Por que a soma $7$ possui mais possibilidades do que a soma $2$?_**
 
-Mais adiante veremos que, sob uma determinada lei de probabilidade — por exemplo, quando certos resultados são considerados igualmente prováveis — essa estrutura de contagem poderá ser utilizada para calcular probabilidades.
-
-Essa distinção será muito importante.
-:::
-
-### Exemplo resolvido
-
-Por que a soma $7$ possui mais possibilidades do que a soma $2$?
-
-Para obter $2$, existe apenas uma combinação: $(1,1)$.
-
-Para obter $7$, existem seis: $(1,6)$, $(2,5)$, $(3,4)$, $(4,3)$, $(5,2)$ e $(6,1)$.
+- Para obter $2$, existe apenas uma combinação: $(1,1)$.
+- Para obter $7$, existem seis: $(1,6)$, $(2,5)$, $(3,4)$, $(4,3)$, $(5,2)$ e $(6,1)$.
 
 Logo, a própria estrutura dos possíveis resultados já distingue $7$ de $2$.
 
-Isso ainda não constitui, por si só, uma lei de probabilidade.
+Isso **ainda não constitui, por si só, uma lei de probabilidade**.
 
 Mas é uma primeira indicação de que o fenômeno possui uma **estrutura probabilística que precisamos formalizar**.
 
@@ -269,175 +242,123 @@ Mas é uma primeira indicação de que o fenômeno possui uma **estrutura probab
 
 ## A Ideia de Repetição
 
-Existe uma ideia que aparecerá repetidamente ao longo de todo o curso:
+Até aqui, olhamos principalmente para o que pode acontecer **individualmente**, ou seja, em um único ensaio de um experimento.
 
-> **imaginar que o mesmo experimento possa ser realizado muitas vezes sob as mesmas condições.**
+Agora, _imagine que o **mesmo experimento** possa ser realizado várias vezes sob as mesmas condições_.
 
-Para sermos precisos, vamos fixar a terminologia desde já.
+O nosso exemplo já nos traz alguns termos importantes que aparecerão mais a frente:
 
-Neste exemplo, chamaremos de **experimento** o procedimento de **lançar dois dados uma vez e registrar sua soma**.
+- **experimento:** lançar dois dados uma vez e registrar sua soma;
+- **ensaio** (*trial*): uma realização desse experimento;
+- **resultado:** a soma observada naquele ensaio.
 
-Cada realização desse mesmo experimento será chamada de **ensaio** (*trial*).
+Assim, podemos imaginar vários ensaios produzindo uma sequência como
 
-Portanto, não estamos imaginando vários experimentos diferentes. Estamos imaginando **vários ensaios do mesmo experimento**.
+$$
+7,\;4,\;10,\;6,\;7,\;9,\;3,\;8,\ldots
+$$
 
-Em um único ensaio, observamos apenas um resultado, por exemplo, $7$.
+Cada resultado individual **continua incerto**.
 
-Esse único resultado nos diz muito pouco sobre a estrutura do fenômeno.
-
-Agora imagine realizar o mesmo experimento muitas vezes. Se fizermos $n$ ensaios, podemos representá-los como $\text{Ensaio}_1,\text{Ensaio}_2,\ldots,\text{Ensaio}_n$.
-
-Cada ensaio produz um resultado particular, como $7,\;4,\;10,\;6,\;7,\;9,\;3,\;8,\ldots$.
-
-O resultado de cada ensaio continua sendo incerto.
-
-Mas agora temos algo que não existia quando olhávamos apenas para uma realização:
-
-> podemos observar **como os diferentes resultados se comportam ao longo de muitos ensaios do mesmo experimento**.
-
-Essa mudança de perspectiva será fundamental:
+Mas, quando observamos muitas realizações, **podemos começar a enxergar regularidades**:
 
 $$
 \begin{aligned}
 \text{um ensaio}
 &\longrightarrow
-\text{incerteza sobre um resultado particular}
-\\[0.5em]
-\text{muitos ensaios do mesmo experimento}
+\text{um resultado incerto}
+\\[0.4em]
+\text{muitos ensaios}
 &\longrightarrow
 \text{possibilidade de observar regularidades}
 \end{aligned}
 $$
 
-::: {.callout-important title="Uma ideia que voltará muitas vezes"}
-A noção de **realizar teoricamente muitos ensaios do mesmo experimento sob as mesmas condições** será utilizada diversas vezes ao longo do curso.
+### Frequência relativa e regularidade
 
-Mais adiante, ela nos ajudará a entender conceitos como:
-
-- probabilidade como frequência de longo prazo;
-- valor esperado;
-- Lei dos Grandes Números;
-- amostragem;
-- distribuição amostral;
-- Inferência Estatística.
-
-Por enquanto, precisamos apenas guardar duas ideias:
-
-- **o experimento é o mesmo; o que se repete são seus ensaios.**
-- **o resultado de cada ensaio pode permanecer incerto mesmo quando muitos ensaios revelam um padrão extremamente regular.**
-:::
-
-Neste momento estamos usando informalmente a expressão **"sob as mesmas condições"**.
-
-Mais adiante, veremos como essa ideia pode ser formalizada matematicamente através de conceitos como **independência** e **distribuição idêntica**.
-
-
-## Uma Lei Estável de Frequências Relativas
-
-Agora podemos entender melhor uma das regularidades mais importantes que aparecem quando realizamos muitos ensaios do mesmo experimento.
-
-Suponha que realizamos $n$ ensaios do mesmo experimento.
-
-Escolha algum resultado ou evento de interesse, que chamaremos simplesmente de $A$.
-
-Podemos perguntar:
-
-> Em qual proporção dos $n$ ensaios o evento $A$ ocorreu?
-
-Essa proporção é chamada de **frequência relativa** de $A$:
+Uma forma simples de enxergar regularidade em muitos ensaios é acompanhar a **frequência relativa** de algum evento $A$:
 
 $$
 \text{Frequência relativa de } A
 =
 \frac{\text{Número de ensaios em que } A \text{ ocorreu}}
-{\text{Número total de ensaios}}
+{\text{Número total de ensaios}}.
 $$
 
-Por exemplo, se realizarmos $100$ ensaios do experimento de lançar dois dados e a soma $7$ aparecer em $18$ deles, sua frequência relativa observada será $\frac{18}{100}=0{,}18$.
-
-Se realizarmos um novo conjunto de $100$ ensaios do mesmo experimento, não esperamos necessariamente obter exatamente a mesma frequência relativa.
-
-Podemos encontrar, por exemplo, $0{,}15$, $0{,}19$, $0{,}17$, $\ldots$.
-
-As frequências relativas **também apresentam variação**.
-
-Entretanto, quando o número de ensaios aumenta, algo notável tende a acontecer:
-
-> **as frequências relativas deixam de variar de maneira arbitrária e começam a se estabilizar em torno de determinados valores.**
-
-É essa regularidade que Spanos chama de uma *stable law of relative frequencies*, ou **lei estável de frequências relativas**.
-
-Temos, portanto, duas escalas diferentes:
+Se, em $100$ lançamentos dos dois dados, a soma $7$ aparecer $18$ vezes, sua frequência relativa observada será
 
 $$
-\underbrace{\text{resultado de um ensaio}}_{\text{incerto}}
-\qquad\text{e}\qquad
-\underbrace{\text{comportamento de muitos ensaios}}_{\text{regular}}
+\frac{18}{100}=0{,}18.
 $$
 
-Essa é uma das manifestações mais importantes da ideia de **acaso e regularidade**.
+Em outro conjunto de ensaios, podemos obter $0{,}15$, $0{,}19$, $0{,}17$, $\ldots$.
 
-::: {.callout-note title="Probabilidade e frequência relativa não são a mesma coisa"}
-Neste momento, ainda não definimos formalmente o que é uma probabilidade.
+Ou seja, **a frequência relativa também varia**.
 
-A frequência relativa é algo que **observamos nos dados** depois de realizar muitos ensaios do experimento.
+Entretanto, conforme observamos muitos ensaios, essas frequências podem apresentar uma estabilidade cada vez maior. É essa ideia que Spanos chama de *stable law of relative frequencies*, ou **lei estável de frequências relativas**.
 
-A probabilidade fará parte do **modelo matemático** que construiremos para representar o fenômeno.
+Temos novamente a combinação central deste capítulo:
 
-Mais adiante veremos por que essas duas ideias estão profundamente conectadas.
+$$
+\underbrace{\text{incerteza em cada realização}}_{\text{acaso}}
+\qquad+\qquad
+\underbrace{\text{regularidade no agregado}}_{\text{regularidade}}.
+$$
+
+::: {.callout-note title="Probabilidade não é frequência relativa"}
+
+A frequência relativa é uma quantidade **observada**.
+
+A probabilidade $P(A)$ fará parte do **modelo matemático** que ainda construiremos.
+
+Mais adiante, a **Lei dos Grandes Números** explicará por que, sob determinadas condições, a frequência relativa de $A$ tende a ficar próxima de $P(A)$ quando o número de ensaios cresce. Porém, ainda falta bastante coisa antes de chegarmos nesse ponto.
+
 :::
-
-
-### Um resultado que explicaremos mais tarde
-
-No final deste módulo, a **Lei dos Grandes Números** permitirá tornar essa história matematicamente precisa.
-
-Informalmente, veremos que, sob determinadas condições, $\text{frequência relativa de }A \approx P(A)$ quando o número de ensaios é grande.
-
-Ou, conceitualmente:
-
-$$
-\text{modelo probabilístico}
-\stackrel{\text{é a mesma ideia que}}{\longleftrightarrow}
-\text{regularidade observada em muitos ensaios}.
-$$
-
-Não precisamos demonstrar nem formalizar isso agora.
-
-Por enquanto, queremos apenas reconhecer o fenômeno que motivará a teoria.
 
 ![](/images/individual_agregado.png){.course-figure width="80%"}
 
-::: {.callout-tip title="O que vem a seguir"}
-Começamos com **incerteza sobre o resultado de um ensaio**.
-
-Ao imaginar muitos ensaios do mesmo experimento, descobrimos **regularidade nas frequências relativas**.
-
-A pergunta agora é:
-
-> **Como construir uma estrutura matemática capaz de representar simultaneamente essa incerteza e essa regularidade?**
-
-Essa estrutura será o **modelo probabilístico**.
-:::
-
-
-**Uma ideia para guardar (Introduzindo a famosa "DGP")**
-
-Se observamos resultados individuais incertos, mas regularidades persistentes quando olhamos muitos ensaios, é natural começar a imaginar que exista algum **mecanismo subjacente capaz de gerar esses dados**.
-
-Mais adiante, daremos um nome muito importante a essa ideia: **Processo Gerador dos Dados**, ou *Data Generating Process* (**DGP**).
-
-O DGP será uma das ideias centrais quando começarmos a conectar Probabilidade, Inferência Estatística e Inferência Causal.
-
-Mas calma: **o DGP vai ter bastante tempo de tela neste curso. Ainda não precisamos dele.**
 
 ## Do fenômeno aos dados
 
-Na prática, não observamos diretamente um mecanismo estocástico.
+Os exemplos com moedas e dados são úteis porque o mecanismo é simples e controlado.
 
-Observamos seus resultados.
+Agora podemos transportar a mesma ideia para um exemplo de **conversão**.
 
-Por exemplo, uma plataforma pode registrar:
+No mundo real, normalmente não observamos diretamente o **mecanismo estocástico**. Observamos **realizações** dele — isto é, observamos os **dados**.
+
+Quando reunimos $n$ observações, vamos representar o dataset observado por
+
+$$
+x=(x_1,\ldots,x_n).
+$$
+
+No exemplo de checkout, cada $x_i$ registra se a observação $i$ terminou ou não em compra.
+
+A mesma informação pode ser vista de duas formas:
+
+::: {.columns}
+
+::: {.column width="42%"}
+
+$$
+x=(x_1,\ldots,x_n)
+$$
+
+$$
+=(0,0,1,0,0,\ldots)
+$$
+
+:::
+
+::: {.column width="10%"}
+
+$$
+\Longleftrightarrow
+$$
+
+:::
+
+::: {.column width="48%"}
 
 ::: {.compact-table}
 
@@ -452,217 +373,351 @@ Por exemplo, uma plataforma pode registrar:
 
 :::
 
-Esses dados são uma **realização particular** do fenômeno que estamos estudando.
+:::
 
-Isso cria uma distinção que será importante durante todo o curso: 
+:::
 
-$$
-\text{mecanismo que gera os dados} \neq \text{dados que observamos}
-$$
+À esquerda, o dataset aparece em sua forma matemática, como um **vetor de observações**. À direita, como a **tabela** que normalmente vemos na prática.
 
-Os dados são aquilo que **vemos** ou, na linguagem mais usada na Estatística: é aquilo que **observamos**!.
-
-Nosso objetivo científico é aprender algo sobre a estrutura subjacente capaz de produzir esses dados.
-
-## Que regularidades podemos procurar?
-
-Spanos organiza parte importante dessa estrutura em três dimensões:
+Isso nos obriga a separar duas coisas:
 
 $$
-\boxed{\text{Distribuição}}
-\qquad
-\boxed{\text{Dependência}}
-\qquad
-\boxed{\text{Heterogeneidade}}
+\text{mecanismo que gera os dados}
+\neq
+\text{dados que observamos}.
 $$
 
-**ATENÇÃO!**  
-- Apesar de você estar lendo isso, esse conteúdo é muito importante e vai aparecer por trás de muita coisa no estudo de Probabilidade e Estatística Inferencial. Lá na frente, a gente vai aprender sobre Independência (por exemplo), e relembrar sobre o conceito de "Dependência" vai te ajudar a entender que isso veio de quando tentamos compreender essas tais **_regularidades_** presentes na _estrutura que observamos na natureza quando agregações ocorrem_.
+Os dados são aquilo que observamos. O **mecanismo** subjacente é aquilo que tentamos representar e, mais adiante, aprender a partir dos dados.
+
+::: {.callout-note title="Uma ideia para guardar: DGP"}
+
+Mais adiante chamaremos esse **mecanismo** subjacente de **Processo Gerador dos Dados**, ou *Data Generating Process* (**DGP**).
+
+Mas ainda não precisamos abrir essa caixa.
+
+:::
 
 
-### Distribuição
+### De uma linha ao dataset: ensaio, amostra e realização
 
-Quais resultados podem ocorrer e com que regularidade?
+Agora podemos voltar à ideia de **repetição** quando estamos olhando para dados.
 
-Por exemplo:
+Suponha que nossa unidade de observação seja:
 
-> Como se distribui o gasto mensal dos clientes?
+> **observar uma sessão de checkout e registrar se houve compra.**
+
+Cada linha da tabela registra **uma realização observada** desse fenômeno.
+
+Mais adiante, quando formalizarmos essa ideia, usaremos uma letra maiúscula, como $X_i$, para representar a observação **antes de conhecermos seu valor**, e a letra minúscula $x_i$ para representar o valor que efetivamente observamos.
+
+Depois de observar $n$ sessões, obtemos o dataset
+
+$$
+x=(x_1,\ldots,x_n).
+$$
+
+Esse dataset é uma **realização da amostra** que poderia ter sido observada. A distinção formal entre amostra e realização da amostra será construída mais adiante.
+
+Antes de seguir, uma ideia organiza toda essa discussão:
+
+$$
+\boxed{
+\begin{array}{c}
+\text{Primeiro aprenderemos a representar matematicamente}\\
+\text{a incerteza sobre o resultado de um ensaio.}\\[0.4em]
+\downarrow\\[0.4em]
+\text{Depois formalizaremos várias realizações}\\
+\text{que, juntas, formam uma amostra.}
+\end{array}
+}
+$$
 
 
-### Dependência
+#### Repetição do fenômeno — de um ensaio a uma amostra
 
-Observar uma informação nos ajuda a aprender algo sobre outra?
+O ponto central da repetição pode ser resumido assim:
 
-Por exemplo:
+$$
+\boxed{
+\begin{array}{c}
+\text{O espaço de probabilidade representará matematicamente}\\
+\text{a incerteza sobre o resultado de um ensaio}
+\end{array}
+}
+$$
 
-> Conhecer o tipo de dispositivo utilizado pelo usuário muda o que esperamos sobre sua conversão?
+$$
+\downarrow
+$$
+
+$$
+\boxed{\text{A repetição produz uma sequência de ensaios}}
+$$
+
+$$
+\downarrow
+$$
+
+$$
+\boxed{\text{Queremos modelar probabilisticamente a amostra inteira}}
+$$
+
+Isso não significa prever qual resultado ocorrerá em um ensaio.
+
+O resultado individual continua incerto. O que o [**espaço de probabilidade**]{.conceito} fará é organizar essa incerteza: especificar **quais resultados são possíveis**, **quais eventos queremos considerar** e **quais probabilidades atribuímos a esses eventos** antes de observar o resultado.
+
+Para uma única sessão de checkout, podemos representar a incerteza sobre compra ou não compra.
+
+Mas, depois de observar $n$ sessões, nosso objeto passa a ser
+
+$$
+X=(X_1,\ldots,X_n).
+$$
+
+Agora não queremos saber apenas o que pode acontecer em **cada observação isoladamente**.
+
+Queremos conseguir falar probabilisticamente sobre o **conjunto de observações**.
+
+Por exemplo, com três sessões, um dataset possível seria
+
+$$
+x=(1,0,1).
+$$
+
+Outro poderia ser
+
+$$
+x=(0,0,0).
+$$
+
+Ao formalizar a repetição, queremos construir uma estrutura que nos permita dizer quais datasets são possíveis e, depois de especificarmos como os ensaios se relacionam, atribuir probabilidades a esses diferentes resultados conjuntos.
+
+É aqui que a relação entre os ensaios se torna importante.
+
+Podemos perguntar:
+
+> **saber o que aconteceu em um ensaio muda aquilo que sabemos sobre outro?**
+
+Se
+
+$$
+P(X_2=1\mid X_1=1)=P(X_2=1),
+$$
+
+o primeiro resultado não trouxe informação sobre o segundo, nesse sentido.
+
+Se
+
+$$
+P(X_2=1\mid X_1=1)\neq P(X_2=1),
+$$
+
+há **dependência** entre os ensaios.
+
+Portanto, repetição não significa automaticamente independência.
+
+A repetição apenas cria uma sequência de ensaios. Depois precisamos especificar **qual é a estrutura probabilística dessa sequência**.
 
 
-### Heterogeneidade
+#### Por que isso é útil?
 
-O comportamento probabilístico permanece o mesmo entre diferentes indivíduos, grupos ou momentos?
+Porque muitas das perguntas que faremos depois não são sobre uma única observação, mas sobre o **dataset inteiro**.
 
-Por exemplo:
+Por exemplo, a taxa de conversão é calculada a partir de todas as observações:
 
-> A taxa de conversão é a mesma para todos os mercados e períodos?
+$$
+\hat p
+=
+\frac{X_1+\cdots+X_n}{n}.
+$$
 
-Não desenvolveremos essas três ideias agora.
+Se queremos perguntar
 
-Elas funcionam como um **mapa** para conceitos que aparecerão repetidamente ao longo do curso.
+> **qual é a probabilidade de observar uma taxa de conversão próxima de $5\%$ em $10.000$ usuários?**
+
+não basta conhecer apenas a probabilidade de compra de um usuário isolado.
+
+Precisamos ter uma estrutura probabilística para
+
+$$
+X=(X_1,\ldots,X_n).
+$$
+
+É isso que permitirá, mais adiante:
+
+- estudar frequências, médias e outras estatísticas calculadas sobre os dados;
+- entender quanto essas estatísticas podem variar;
+- construir distribuições amostrais, erros-padrão, intervalos de confiança e testes;
+- e, em Inferência Estatística, relacionar probabilisticamente o modelo ao dataset que efetivamente observamos.
+
+Em resumo:
+
+$$
+\boxed{\text{representar a incerteza sobre um ensaio}}
+$$
+
+$$
+\downarrow
+$$
+
+$$
+\boxed{\text{modelar probabilisticamente uma amostra}}
+$$
+
+$$
+\downarrow
+$$
+
+$$
+\boxed{\text{estudar funções e estatísticas calculadas sobre essa amostra}}
+$$
+
+É essa passagem que motiva a formalização do [**espaço de amostragem**]{.conceito}.
+
+
+::: {.callout-note title="Uma segunda ideia de repetição: repetir o processo amostral"}
+
+Depois que a amostra
+
+$$
+X=(X_1,\ldots,X_n)
+$$
+
+foi definida como um objeto aleatório, podemos imaginar diferentes realizações possíveis:
+
+$$
+x^{(1)},\;
+x^{(2)},\;
+x^{(3)},\ldots
+$$
+
+Cada uma representa um dataset que poderíamos ter observado.
+
+Uma estatística como $\hat p$ também assumiria valores diferentes:
+
+$$
+\hat p^{(1)},\;
+\hat p^{(2)},\;
+\hat p^{(3)},\ldots
+$$
+
+Essa é a **repetição teórica do processo amostral**.
+
+Ela não é um novo componente do espaço estatístico. Ela se torna possível justamente porque já modelamos probabilisticamente a amostra inteira.
+
+Mais adiante, essa ideia nos levará às **distribuições amostrais** e à **Inferência Estatística**.
+
+:::
 
 
 ## Por que Teoria das Probabilidades?
 
-Até aqui temos:
+Chegamos então ao problema central:
 
-1. fenômenos cujos resultados individuais são incertos;
-2. estrutura e regularidade apesar dessa incerteza;
-3. dados que representam realizações desses fenômenos.
+> **como representar matematicamente a incerteza e a regularidade de um fenômeno estocástico?**
 
-Precisamos agora de uma linguagem matemática que nos permita representar essa incerteza e sua estrutura de maneira **sistemática**.
+Precisamos de um framework que deixe claro:
 
-Mas o que significa, exatamente, pensar de maneira sistemática?
-
-
-### O que significa pensar sistematicamente?
-
-Uma teoria matemática não é simplesmente uma coleção de fórmulas.
-
-Ela estabelece um **framework**: definimos objetos, estabelecemos regras ou premissas e, a partir delas, usamos lógica para descobrir quais conclusões necessariamente seguem.
-
-A estrutura básica é:
-
-$$
-\text{premissas}
-\quad+\quad
-\text{regras}
-\quad\Longrightarrow\quad
-\text{consequências}.
-$$
-
-Ou, de maneira ainda mais abstrata, o famoso $P \Longrightarrow Q$:
-
-> **se aceitamos $P$ dentro do framework, então $Q$ deve seguir logicamente.**
-
-Considere um exemplo simples.
-
-Definimos $\text{Receita}=\text{Preço}\times\text{Quantidade}$ e assumimos que $\text{Preço}=50$ e $\text{Quantidade}=100$.
-
-Então segue necessariamente que $\text{Receita}=5.000$.
-
-A matemática não está afirmando que **toda empresa vende 100 unidades a R\$ 50**. Ela está dizendo:
-
-> **se essas são as premissas que adotamos, então essa conclusão segue delas.**
-
-Pensar sistematicamente significa justamente deixar explícito **de onde partimos**, quais regras estamos utilizando e **até onde elas nos permitem chegar**.
-
-
-::: {.callout-important title="A matemática não escolhe as premissas por nós"}
-
-Essa distinção será fundamental durante todo o curso.
-
-A matemática pode nos dizer corretamente:
-
-> **se estas premissas forem verdadeiras, então estas consequências seguem.**
-
-Mas ainda precisamos perguntar:
-
-> **essas premissas representam bem o fenômeno que estamos estudando?**
-
-Por exemplo, podemos construir um modelo supondo que todos os usuários de um site possuem a mesma probabilidade $p$ de comprar. A matemática nos dirá exatamente o que segue dessa hipótese.
-
-Mas se usuários de países, campanhas ou períodos diferentes tiverem comportamentos muito distintos, o problema não estará na matemática: estará na **premissa que escolhemos para representar o mundo**.
-
-Em resumo:
-
-> **a matemática garante a lógica das consequências; a modelagem precisa justificar as premissas.**
-
-:::
-
-
-É exatamente esse tipo de estrutura que construiremos para fenômenos estocásticos.
-
-Em vez de raciocinar informalmente sobre palavras como "chance", "sorte" ou "incerteza", vamos definir cuidadosamente objetos como **experimento**, **resultado**, **espaço amostral** e **evento**, e estabelecer regras que uma **lei de probabilidade** deve satisfazer.
-
-
-::: {.callout-tip title="Aplicar é necessário. Entender é outra camada."}
-
-É relativamente fácil aprender uma sequência de passos para aplicar uma técnica.
-
-Muito mais importante é conseguir perguntar:
-
-> **De onde isso vem? Quais premissas tornam isso válido? E o que realmente posso concluir?**
-
-Projetos práticos e atividades *hands-on* são importantes. O problema aparece quando substituem — em vez de complementar — os fundamentos.
-
-O objetivo aqui é justamente construir o framework que permite **não apenas aplicar uma técnica, mas entender, questionar e eventualmente criar dentro dela**.
-
-:::
-
-
-A partir daí, muitas propriedades não precisarão ser simplesmente decoradas: poderão ser **deduzidas dentro do framework**.
+- quais objetos estamos definindo;
+- quais premissas estamos assumindo;
+- e quais consequências seguem dessas premissas.
 
 Essa linguagem será a **Teoria das Probabilidades**.
 
-Podemos pensar no caminho que começaremos a construir como:
+
+É exatamente essa estrutura que começaremos a construir agora.
+
+Em vez de usar informalmente palavras como "chance", "sorte" ou "incerteza", vamos definir objetos e regras que nos permitam raciocinar sobre essas ideias de maneira precisa.
+
+
+## O que vamos formalizar nos próximos capítulos
+
+Agora fica mais claro o papel de cada etapa.
+
+Primeiro queremos representar matematicamente **a incerteza sobre o resultado de um ensaio**: quais resultados podem ocorrer e como atribuir probabilidades a eventos antes de sabermos qual resultado será observado.
+
+Depois precisamos dar um passo além:
+
+> **como representar probabilisticamente as várias observações que, juntas, formarão uma amostra?**
+
+É essa passagem de **uma observação** para **uma amostra inteira** que está por trás da terceira pergunta de Spanos.
+
+Ele organiza a ideia de **experimento aleatório** em três perguntas:
 
 $$
-\begin{gathered}
-\text{fenômeno estocástico}
-\\[-0.1em]
-\downarrow
-\\[-0.1em]
-\text{incerteza + estrutura}
-\\[-0.1em]
-\downarrow
-\\[-0.1em]
-\text{framework matemático}
-\\[-0.1em]
-\downarrow
-\\[-0.1em]
-\boxed{\text{modelo probabilístico}}
-\end{gathered}
+\begin{array}{@{}lcl@{}}
+\boxed{
+\begin{array}{l}
+\text{[a] Quais resultados}\\
+\text{são possíveis?}
+\end{array}
+}
+& \longrightarrow &
+\Omega
+\\[1.1em]
+\boxed{
+\begin{array}{l}
+\text{[b] Como representar a incerteza}\\
+\text{sobre o que ocorrerá?}
+\end{array}
+}
+& \longrightarrow &
+(\Omega,\mathcal F,P)
+\\[1.1em]
+\boxed{
+\begin{array}{l}
+\text{[c] O experimento pode ser repetido}\\
+\text{sob as mesmas condições?}
+\end{array}
+}
+& \longrightarrow &
+\mathcal G_n^{IID}
+\end{array}
 $$
 
-Na próxima seção (_Modelos Probabilísticos_) começaremos a construir esse framework.
-
-## No mundo real
-
-Considere uma empresa de e-commerce acompanhando milhares de visitas ao seu site.
-
-Para cada usuário individual, antes da visita terminar, não sabemos com certeza se ele irá comprar ou não.
-
-Alguns compram. Outros não.
-
-O comportamento individual é, portanto, **incerto**.
-
-Agora imagine que a empresa observa esse processo durante várias semanas.
-
-Ela pode começar a perceber certas regularidades:
-
-- uma fração relativamente estável dos usuários compra;
-- alguns períodos apresentam mais conversões do que outros;
-- determinados grupos de usuários parecem comprar com maior frequência.
-
-Ou seja:
+As duas primeiras perguntas nos levarão ao **espaço de probabilidade**:
 
 $$
-\text{incerteza no nível individual}
-\longrightarrow
-\text{regularidade quando observamos muitos casos}.
+\boxed{(\Omega,\mathcal F,P)}.
 $$
 
-Esse é exatamente o tipo de situação que motiva a Probabilidade.
+Ele não nos diz qual resultado ocorrerá. Ele organiza matematicamente a incerteza de **um ensaio**: os resultados possíveis, os eventos e as probabilidades atribuídas a esses eventos.
 
-A empresa não precisa saber antecipadamente o resultado de cada usuário para conseguir
-descrever, comparar e estudar o comportamento do conjunto.
+A terceira pergunta muda o foco: queremos formalizar **as várias realizações do mesmo mecanismo que, juntas, formam uma única amostra com $n$ observações**.
 
-::: {.callout-important title="O ponto principal"}
-A existência de incerteza individual não significa ausência de estrutura.
+Agora o objetivo é poder tratar
 
-Quando observamos muitas realizações de um fenômeno, podem surgir regularidades.
-É essa combinação de **incerteza + regularidade** que a Teoria da Probabilidade tentará formalizar.
-:::
+$$
+X=(X_1,\ldots,X_n)
+$$
+
+como um único objeto probabilístico: descrever os possíveis datasets e a estrutura probabilística entre os ensaios que os formam.
+
+É nessa passagem que ideias como **dependência** e **independência** ganharão uma definição precisa.
+
+Aqui ainda **não** estamos repetindo a amostra inteira. Estamos formalizando as várias observações que compõem uma amostra.
+
+É isso que nos levará ao **espaço de amostragem**.
+
+Mais adiante, essa estrutura permitirá representar a amostra como
+
+$$
+X=(X_1,\ldots,X_n),
+$$
+
+e o dataset observado como uma de suas possíveis realizações,
+
+$$
+x=(x_1,\ldots,x_n).
+$$
+
+Só depois de construirmos esse objeto fará sentido imaginar **outras realizações possíveis da mesma amostra** e estudar como estatísticas variariam entre elas. Essa segunda ideia de repetição pertence ao raciocínio de *repeated sampling* e será usada mais adiante; ela não é um novo bloco da formalização do espaço estatístico.
+
+Nos próximos três capítulos, faremos exatamente esse caminho:
+
+1. construiremos o espaço de probabilidade;
+2. veremos por que essa estrutura também precisa funcionar quando $\Omega$ é contínuo;
+3. formalizaremos as várias realizações que formam uma amostra e chegaremos ao espaço de amostragem.
 
 ## Antes de finalizarmos: Feynman e o *framework*
 
@@ -691,70 +746,22 @@ O objetivo deste curso não é nivelar a discussão por baixo. É ajudá-lo a **
 </div>
 ```
 
-## O que vem a seguir
-
-Nas próximas seções, introduziremos gradualmente:
-
-$$
-\begin{gathered}
-\text{Experimento}
-\\[-0.1em]
-\downarrow
-\\[-0.1em]
-\text{Resultado}
-\\[-0.1em]
-\downarrow
-\\[-0.1em]
-\text{Espaço amostral}
-\\[-0.1em]
-\downarrow
-\\[-0.1em]
-\text{Eventos}
-\\[-0.1em]
-\downarrow
-\\[-0.1em]
-\text{Lei de probabilidade}
-\\[-0.1em]
-\downarrow
-\\[-0.1em]
-\boxed{\text{Modelo probabilístico}}
-\end{gathered}
-$$
-
-Mais adiante, **variáveis aleatórias** permitirão transformar os resultados desses experimentos em quantidades numéricas como:
-
-- conversão;
-- receita;
-- gasto;
-- tempo;
-- retenção.
-
-E, finalmente, a **Inferência Estatística** utilizará os dados observados para aprender sobre o mecanismo probabilístico que os gerou.
-
 ## Antes de continuar
 
 Tente responder, sem recorrer às definições acima:
 
 1. Qual é a principal diferença entre um fenômeno determinístico e um fenômeno estocástico?
 
-2. Por que um fenômeno estocástico não significa simplesmente um fenômeno sem estrutura ou completamente desordenado?
+2. O que significa a expressão **acaso e regularidade**?
 
-3. O que significa dizer que existe acaso no nível individual e regularidade no agregado?
+3. Por que o exemplo dos dois dados mostra estrutura antes mesmo de termos definido formalmente uma probabilidade?
 
-4. O exemplo dos dois dados mostra que existe estrutura mesmo antes de definirmos formalmente probabilidades. Que estrutura é essa?
+4. Qual é a diferença entre **experimento**, **ensaio** e **resultado**?
 
-5. Por que contar possibilidades ainda não é necessariamente o mesmo que calcular probabilidades?
+5. Qual é a diferença entre uma **frequência relativa observada** e uma **probabilidade** do modelo?
 
-6. No exemplo dos dois dados, qual é a diferença entre o **experimento**, um **ensaio** e o **resultado** de um ensaio?
+6. Por que um dataset com milhares de observações não deve ser automaticamente interpretado como milhares de repetições literais do mesmo experimento sob condições idênticas?
 
-7. Por que imaginar muitos ensaios do mesmo experimento é importante para compreender a ideia de frequência relativa?
+7. Qual é a diferença entre o mecanismo que gera os dados e os dados que efetivamente observamos?
 
-8. Qual é a diferença entre o mecanismo que gera os dados e os dados que efetivamente observamos?
-
-9. Por que observar frequências relativas aproximadamente estáveis sugere que existe alguma estrutura por trás dos resultados individuais?
-
-10. Uma empresa observa milhares de visitas ao seu site. Por que o fato de não sabermos se um usuário individual irá comprar não impede que apareçam regularidades quando observamos muitos usuários?
-
-11. Qual é a semelhança entre repetir o lançamento de um dado e observar muitos casos de um mesmo tipo de fenômeno em um contexto real, como compras em um site?
-
-12. Se uma empresa observa uma taxa de conversão relativamente estável ao longo do tempo, isso significa que ela consegue prever com certeza o comportamento de cada usuário? Explique.
+8. Nas três perguntas de Spanos, o que será formalizado por $\Omega$, por $(\Omega,\mathcal F,P)$ e pelo espaço de amostragem?

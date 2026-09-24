@@ -193,16 +193,11 @@ window.Quarto = {
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#por-que-construímos-modelos-probabilísticos" id="toc-por-que-construímos-modelos-probabilísticos" class="nav-link active" data-scroll-target="#por-que-construímos-modelos-probabilísticos">Por que construímos modelos probabilísticos?</a></li>
+  <li><a href="#teoria-da-probabilidade-por-que-construímos-modelos-probabilísticos" id="toc-teoria-da-probabilidade-por-que-construímos-modelos-probabilísticos" class="nav-link active" data-scroll-target="#teoria-da-probabilidade-por-que-construímos-modelos-probabilísticos">1. Teoria da Probabilidade: por que construímos modelos probabilísticos?</a></li>
+  <li><a href="#inferência-estatística-quando-o-modelo-encontra-os-dados" id="toc-inferência-estatística-quando-o-modelo-encontra-os-dados" class="nav-link" data-scroll-target="#inferência-estatística-quando-o-modelo-encontra-os-dados">2. Inferência Estatística: quando o modelo encontra os dados</a></li>
   <li><a href="#caso-1-o-modelo-está-completamente-especificado" id="toc-caso-1-o-modelo-está-completamente-especificado" class="nav-link" data-scroll-target="#caso-1-o-modelo-está-completamente-especificado">Caso 1 — o modelo está completamente especificado</a></li>
   <li><a href="#caso-2-parte-do-modelo-é-desconhecida" id="toc-caso-2-parte-do-modelo-é-desconhecida" class="nav-link" data-scroll-target="#caso-2-parte-do-modelo-é-desconhecida">Caso 2 — parte do modelo é desconhecida</a></li>
   <li><a href="#mas-e-a-estatística-descritiva" id="toc-mas-e-a-estatística-descritiva" class="nav-link" data-scroll-target="#mas-e-a-estatística-descritiva">Mas e a Estatística Descritiva?</a></li>
-  <li><a href="#a-confusão-que-quase-ninguém-explica" id="toc-a-confusão-que-quase-ninguém-explica" class="nav-link" data-scroll-target="#a-confusão-que-quase-ninguém-explica">A confusão que quase ninguém explica</a>
-  <ul class="collapse">
-  <li><a href="#a-média-no-modelo-probabilístico" id="toc-a-média-no-modelo-probabilístico" class="nav-link" data-scroll-target="#a-média-no-modelo-probabilístico">1. A média no modelo probabilístico</a></li>
-  <li><a href="#a-média-da-amostra-antes-de-observarmos-os-dados" id="toc-a-média-da-amostra-antes-de-observarmos-os-dados" class="nav-link" data-scroll-target="#a-média-da-amostra-antes-de-observarmos-os-dados">2. A média da amostra, antes de observarmos os dados</a></li>
-  <li><a href="#a-média-calculada-no-dataset-observado" id="toc-a-média-calculada-no-dataset-observado" class="nav-link" data-scroll-target="#a-média-calculada-no-dataset-observado">3. A média calculada no dataset observado</a></li>
-  </ul></li>
   <li><a href="#o-mapa-que-queremos-guardar" id="toc-o-mapa-que-queremos-guardar" class="nav-link" data-scroll-target="#o-mapa-que-queremos-guardar">O mapa que queremos guardar</a></li>
   </ul>
 </nav>
@@ -230,12 +225,12 @@ window.Quarto = {
 
 
 <p>Antes de começarmos, quero deixar claro <strong>onde estamos indo</strong>.</p>
-<p>A ideia central deste curso é simples e pode ser vista a partir de duas perspectivas distintas, mas profundamente conectadas:</p>
-<ul>
-<li><p><strong>O mundo (ou a “natureza”) produz dados, mas não observamos diretamente o mecanismo que os gerou. A partir dos dados observados, queremos aprender — ou inferir — características desse mecanismo.</strong></p></li>
-<li><p><strong>Motivados pelas regularidades que observamos na natureza, desenvolvemos a Teoria da Probabilidade como uma linguagem matemática para representar esse mecanismo incerto que poderia ter produzido os dados.</strong></p></li>
-</ul>
-<p>Quando <em>alguma característica desse mecanismo é desconhecida</em> (tipo a “média” ou alguma outra característica de nosso interesse), usamos os dados observados para aprender sobre ela.</p>
+<p>A ideia central deste curso é simples e pode ser vista a partir de dois movimentos distintos, mas profundamente conectados:</p>
+<ol type="1">
+<li><p><strong><span class="conceito">Teoria da Probabilidade</span> — começando do mecanismo e indo para os possíveis dados:</strong> motivados pelas regularidades que observamos na natureza, construímos uma linguagem matemática para representar o mecanismo incerto que poderia produzir os dados e estudar o que esse modelo implica.</p></li>
+<li><p><strong><span class="conceito">Inferência Estatística</span> — começando nos dados observados e indo para o mecanismo:</strong> o mundo (ou a “natureza”) produz dados, mas não observamos diretamente todas as características do mecanismo que os gerou (pois para isso teríamos que ter todos os dados). Usamos então os dados observados (a <em>amostra</em>) para aprender — ou inferir — essas características desconhecidas.</p></li>
+</ol>
+<p>Quando <em>alguma característica desse mecanismo é desconhecida</em> — como uma média, uma probabilidade de conversão ou outra quantidade de interesse — usamos os dados observados para aprender sobre ela.</p>
 <p>É dessa relação entre <strong>modelo</strong> e <strong>dados</strong> que surgem as duas grandes ideias que vamos conectar ao longo do curso: <span class="conceito"><strong>Probabilidade</strong></span> e <span class="conceito"><strong>Inferência Estatística</strong></span>.</p>
 <div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
@@ -248,8 +243,8 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<section id="por-que-construímos-modelos-probabilísticos" class="level2">
-<h2 class="anchored" data-anchor-id="por-que-construímos-modelos-probabilísticos">Por que construímos modelos probabilísticos?</h2>
+<section id="teoria-da-probabilidade-por-que-construímos-modelos-probabilísticos" class="level2">
+<h2 class="anchored" data-anchor-id="teoria-da-probabilidade-por-que-construímos-modelos-probabilísticos">1. Teoria da Probabilidade: por que construímos modelos probabilísticos?</h2>
 <p>No mundo real existem fenômenos cujo resultado individual não conseguimos determinar antecipadamente com certeza.</p>
 <ul>
 <li>Um usuário vai comprar?</li>
@@ -287,23 +282,39 @@ window.Quarto = {
 \boxed{\text{MODELO PROBABILÍSTICO}}
 \end{array}
 \]</span></p>
-<div class="callout callout-style-default callout-important callout-titled" title="Um cuidado importante">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Um cuidado importante
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Uma <strong>frequência observada nos dados</strong> não é a mesma coisa que uma <strong>probabilidade no modelo</strong>.</p>
-<p>Se, em um conjunto de observações, <span class="math inline">\(16\%\)</span> dos resultados foram iguais a <span class="math inline">\(6\)</span>, esse <span class="math inline">\(16\%\)</span> é uma frequência observada.</p>
-<p>Já uma afirmação como <span class="math inline">\(P(X=6)=1/6\)</span> pertence a um modelo probabilístico construído depois de perceber como o mundo parece funcionar.</p>
-<p>Os dados podem motivar, informar e posteriormente permitir avaliar um modelo. Mas <strong>dados e modelo são objetos diferentes</strong>.</p>
-</div>
-</div>
-<p>Uma vez que temos um modelo probabilístico, ou seja, <em>depois que temos uma boa ideia de como a estrutura de fenômenos incertos pode ser representada</em>, <strong>surgem duas situações fundamentais</strong>.</p>
+<p>Esse é o primeiro movimento do nosso mapa:</p>
+<p><span class="math display">\[
+\begin{array}{c}
+\boxed{\text{fenômeno incerto}} \\
+\Downarrow \\
+\boxed{\text{representação matemática}} \\
+\Downarrow \\
+\boxed{\text{modelo probabilístico}} \\
+\Downarrow \\
+\boxed{\text{estudar o que esse modelo implica}}
+\end{array}
+\]</span></p>
+</section>
+<section id="inferência-estatística-quando-o-modelo-encontra-os-dados" class="level2">
+<h2 class="anchored" data-anchor-id="inferência-estatística-quando-o-modelo-encontra-os-dados">2. Inferência Estatística: quando o modelo encontra os dados</h2>
+<p>Na prática, porém, raramente conhecemos todas as características do mecanismo que estamos tentando representar.</p>
+<p>Podemos saber <strong>como</strong> representar probabilisticamente um fenômeno, mas ainda desconhecer alguma quantidade importante do modelo: uma média, uma variância, uma probabilidade de conversão, entre outras.</p>
+<p>É aí que aparece o segundo movimento do nosso mapa.</p>
+<p>Em vez de partir de um modelo completamente especificado e perguntar apenas o que ele implica, observamos dados e perguntamos:</p>
+<blockquote class="blockquote">
+<p><strong>O que esses dados nos permitem aprender sobre as características desconhecidas do mecanismo probabilístico que poderia tê-los produzido?</strong></p>
+</blockquote>
+<p><span class="math display">\[
+\begin{array}{c}
+\boxed{\text{modelo probabilístico com algo desconhecido}} \\
++ \\
+\boxed{\text{dados observados}} \\
+\Downarrow \\
+\boxed{\text{aprender sobre o mecanismo}}
+\end{array}
+\]</span></p>
+<p>Aqui nasce a <strong>Inferência Estatística</strong>. Ela não abandona a Probabilidade: usa justamente a estrutura probabilística do modelo para conectar aquilo que observamos àquilo que queremos aprender.</p>
+<p>Com esses dois movimentos em mente, podemos comparar duas situações simples.</p>
 </section>
 <section id="caso-1-o-modelo-está-completamente-especificado" class="level2">
 <h2 class="anchored" data-anchor-id="caso-1-o-modelo-está-completamente-especificado">Caso 1 — o modelo está completamente especificado</h2>
@@ -326,7 +337,7 @@ X\sim\operatorname{Bernoulli}(0.5).
 <p><span class="math display">\[
 P(X=1)=P(X=0)=0.5.
 \]</span></p>
-<p>Neste exemplo, <em>a simetria física da moeda ajuda a justificar essa hipótese de modelagem</em>. Neste exemplo, a simetria física da moeda ajuda a justificar a hipótese de probabilidades iguais. Em outros problemas, as hipóteses podem vir de outras fontes.</p>
+<p>Neste exemplo, <em>a simetria física da moeda ajuda a justificar a hipótese de probabilidades iguais</em>. Em outros problemas, as hipóteses podem vir de outras fontes.</p>
 <p>Agora imagine <span class="math inline">\(100\)</span> lançamentos:</p>
 <p><span class="math display">\[
 X_1,X_2,\ldots,X_{100}.
@@ -428,33 +439,21 @@ x_1,x_2,\ldots,x_n.
 </tbody>
 </table>
 </div>
-<p>Essa é uma conexão importante entre a linguagem da teoria e aquilo que vemos no dia a dia:</p>
+<p>Essa é uma conexão importante entre a linguagem da teoria e aquilo que vemos no dia a dia. No nosso exemplo, todo o caminho pode ser visto de uma vez:</p>
 <p><span class="math display">\[
 \begin{array}{c}
-\boxed{X_1,\ldots,X_n} \\
+\boxed{X\sim\operatorname{Bernoulli}(p),\quad p\text{ desconhecido}} \\
+\Downarrow \\
+\boxed{X_1,\ldots,X_n\quad \text{(a amostra, antes de observarmos)}} \\
 \Downarrow \\
 \boxed{\text{observamos seus valores}} \\
 \Downarrow \\
-\boxed{x_1,\ldots,x_n} \\
+\boxed{x_1,\ldots,x_n\quad \text{(dataset observado)}} \\
 \Downarrow \\
-\boxed{\text{dataset observado}}
+\boxed{\text{usamos os dados para aprender sobre }p}
 \end{array}
 \]</span></p>
-<p>Agora usamos aquilo que observamos para aprender sobre aquilo que não conhecemos.</p>
-<p>No nosso exemplo:</p>
-<p><span class="math display">\[
-\begin{array}{c}
-\boxed{X\sim\operatorname{Bernoulli}(p)} \\
-\Downarrow \\
-\boxed{p\text{ desconhecido}} \\
-\Downarrow \\
-\boxed{\text{observamos dados (a famosa "amostra")}} \\
-\Downarrow \\
-\boxed{x_1,\ldots,x_n} \\
-\Downarrow \\
-\boxed{\text{aprender sobre }p}
-\end{array}
-\]</span></p>
+<p>Ou seja: aquilo que na teoria escrevemos como <span class="math inline">\(X_1,\ldots,X_n\)</span> se transforma, depois da observação, nos valores concretos <span class="math inline">\(x_1,\ldots,x_n\)</span> que encontramos em um dataset. A partir daí, usamos aquilo que observamos para aprender sobre aquilo que não conhecemos.</p>
 <p>Aqui começa a <strong>Inferência Estatística</strong>:</p>
 <blockquote class="blockquote">
 <p><strong>partimos dos dados observados para aprender sobre características desconhecidas do modelo probabilístico;</strong> <strong>mas continuamos usando a matemática e a Teoria da Probabilidade para formalizar a ideia da inferência.</strong></p>
@@ -516,86 +515,11 @@ x_1,x_2,\ldots,x_n,
 <p>é uma afirmação puramente <strong>descritiva</strong>. Estamos apenas resumindo aquilo que aconteceu nos dados que temos em mãos.</p>
 <p>Perceba que, para fazer essa afirmação, ainda não precisamos dizer que <span class="math inline">\(0.12\)</span> é a verdadeira probabilidade de conversão de todos os usuários, nem que esse número se repetirá em outro conjunto de sessões.</p>
 <p>Para tentar ir <strong>além do dataset observado</strong>, precisamos de algo a mais. É justamente aí que entram o <strong>modelo probabilístico</strong> e a <strong>Inferência Estatística</strong>.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="E onde entra o famoso EDA?">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-E onde entra o famoso EDA?
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><span class="conceito"><strong>EDA (<em>Exploratory Data Analysis</em>)</strong></span> <strong>e Estatística Descritiva são muito próximos, mas não são exatamente sinônimos.</strong></p>
-<p>A Estatística Descritiva fornece várias das ferramentas que usamos para resumir os dados: médias, medianas, proporções, tabelas, distribuições, correlações e gráficos.</p>
-<p>O EDA é um processo mais amplo de <strong>explorar o dataset</strong>: entender sua estrutura, procurar padrões e relações, detectar problemas de qualidade, valores estranhos e levantar perguntas que podem orientar análises e modelos posteriores.</p>
-<p>Em outras palavras, <strong>usamos Estatística Descritiva dentro de uma análise exploratória</strong>.</p>
-<p>É por isso que livros e cursos costumam apresentá-la cedo: antes de tentar aprender algo sobre um mecanismo desconhecido, precisamos saber <strong>descrever aquilo que efetivamente observamos</strong>.</p>
-</div>
-</div>
-</section>
-<section id="a-confusão-que-quase-ninguém-explica" class="level2">
-<h2 class="anchored" data-anchor-id="a-confusão-que-quase-ninguém-explica">A confusão que quase ninguém explica</h2>
-<p>Agora aparece uma sutileza que causa muita confusão em Estatística.</p>
-<p>Imagine que estamos interessados na <strong>média</strong> de alguma variável, como o gasto de um usuário.</p>
-<p>A palavra “média” pode estar se referindo a <strong>objetos diferentes</strong>, dependendo de onde estamos no mapa.</p>
-<section id="a-média-no-modelo-probabilístico" class="level3">
-<h3 class="anchored" data-anchor-id="a-média-no-modelo-probabilístico">1. A média no modelo probabilístico</h3>
-<p>Se <span class="math inline">\(X\)</span> representa o gasto de um usuário no nosso modelo probabilístico, podemos definir</p>
-<p><span class="math display">\[
-\mu=E[X].
-\]</span></p>
-<p>Aqui, <span class="math inline">\(\mu\)</span> é uma <strong>característica da distribuição probabilística de <span class="math inline">\(X\)</span></strong>.</p>
-<p>Ela pertence ao modelo. Não é uma média que acabamos de calcular em um dataset.</p>
-</section>
-<section id="a-média-da-amostra-antes-de-observarmos-os-dados" class="level3">
-<h3 class="anchored" data-anchor-id="a-média-da-amostra-antes-de-observarmos-os-dados">2. A média da amostra, antes de observarmos os dados</h3>
-<p>Antes de observar os valores de <span class="math inline">\(X_1,\ldots,X_n\)</span>, podemos definir</p>
-<p><span class="math display">\[
-\bar X=\frac{1}{n}\sum_{i=1}^{n}X_i.
-\]</span></p>
-<p>Como <span class="math inline">\(X_1,\ldots,X_n\)</span> ainda são variáveis aleatórias, <span class="math inline">\(\bar X\)</span> também é uma <strong>variável aleatória</strong>.</p>
-<p>Em Estatística, chamamos uma função da amostra como essa de uma <strong>estatística</strong>.</p>
-</section>
-<section id="a-média-calculada-no-dataset-observado" class="level3">
-<h3 class="anchored" data-anchor-id="a-média-calculada-no-dataset-observado">3. A média calculada no dataset observado</h3>
-<p>Depois que observamos</p>
-<p><span class="math display">\[
-x_1,x_2,\ldots,x_n,
-\]</span></p>
-<p>calculamos</p>
-<p><span class="math display">\[
-\bar x=\frac{1}{n}\sum_{i=1}^{n}x_i.
-\]</span></p>
-<p>Agora temos simplesmente <strong>um número calculado a partir do dataset</strong>.</p>
-<p>E aqui está a parte importante: esse mesmo número pode cumprir dois papéis diferentes.</p>
-<ul>
-<li><strong>Descritivamente:</strong> <span class="math inline">\(\bar x\)</span> resume os valores que observamos no dataset.</li>
-<li><strong>Inferencialmente:</strong> <span class="math inline">\(\bar x\)</span> pode ser usado como evidência para aprender sobre uma característica desconhecida do modelo, como <span class="math inline">\(\mu=E[X]\)</span>.</li>
-</ul>
-<p>Portanto:</p>
-<p><span class="math display">\[
-\begin{array}{ccc}
-\boxed{\mu=E[X]}
-&amp;\qquad&amp;
-\boxed{\bar X=\frac{1}{n}\sum X_i}
-&amp;\qquad&amp;
-\boxed{\bar x=\frac{1}{n}\sum x_i}
-\\[0.2cm]
-\text{característica do modelo}
-&amp;&amp;
-\text{estatística aleatória}
-&amp;&amp;
-\text{número observado no dataset}
-\end{array}
-\]</span></p>
-<p>Essa distinção vai reaparecer várias vezes no curso. Palavras como <strong>média, variância, desvio-padrão e correlação</strong> podem ser usadas para objetos matematicamente relacionados, mas que vivem em lugares diferentes do nosso mapa.</p>
-</section>
 </section>
 <section id="o-mapa-que-queremos-guardar" class="level2">
 <h2 class="anchored" data-anchor-id="o-mapa-que-queremos-guardar">O mapa que queremos guardar</h2>
 <p>Tudo deste prelúdio pode ser resumido em um único mapa.</p>
-<p>Primeiro, o mundo real motiva a construção de modelos probabilísticos:</p>
+<p>O primeiro movimento é o da <strong>Teoria da Probabilidade</strong>: o mundo real motiva a construção de uma representação matemática para fenômenos incertos.</p>
 <p><span class="math display">\[
 \begin{array}{c}
 \boxed{\text{fenômeno real incerto}} \\
@@ -608,13 +532,13 @@ x_1,x_2,\ldots,x_n,
 \end{array}}
 \end{array}
 \]</span></p>
-<p>Quando o modelo está completamente especificado, fazemos o caminho da <strong>Probabilidade</strong>:</p>
+<p>Quando o modelo está completamente especificado, seguimos a direção da <strong>Teoria da Probabilidade</strong>:</p>
 <p><span class="math display">\[
 \boxed{\text{modelo probabilístico especificado}}
 \;\longrightarrow\;
 \boxed{\text{possíveis dados e suas probabilidades}}
 \]</span></p>
-<p>Quando parte do modelo é desconhecida, observamos uma amostra:</p>
+<p>O segundo movimento é o da <strong>Inferência Estatística</strong>. Quando alguma característica do modelo é desconhecida, observamos uma amostra:</p>
 <p><span class="math display">\[
 \begin{array}{c}
 \boxed{X_1,\ldots,X_n} \\
@@ -642,7 +566,8 @@ x_1,x_2,\ldots,x_n,
 &amp;&amp;
 \boxed{\begin{array}{c}
 \text{usar dados + modelo probabilístico}\\
-\text{para aprender sobre o mecanismo}
+\text{para aprender sobre características}\\
+\text{desconhecidas do mecanismo}
 \end{array}}
 \end{array}
 \]</span></p>
