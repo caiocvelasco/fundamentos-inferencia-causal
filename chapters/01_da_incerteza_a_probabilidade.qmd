@@ -464,7 +464,7 @@ $$
 
 Isso não significa prever qual resultado ocorrerá em um ensaio.
 
-O resultado individual continua incerto. O que o [**espaço de probabilidade**]{.conceito} fará é organizar essa incerteza: especificar **quais resultados são possíveis**, **quais eventos queremos considerar** e **quais probabilidades atribuímos a esses eventos** antes de observar o resultado.
+O resultado individual continua incerto. O que o espaço de probabilidade fará é organizar essa incerteza: especificar **quais resultados são possíveis**, **quais eventos queremos considerar** e **quais probabilidades atribuímos a esses eventos** antes de observar o resultado.
 
 Para uma única sessão de checkout, podemos representar a incerteza sobre compra ou não compra.
 
@@ -548,7 +548,7 @@ $$
 - estudar frequências, médias e outras estatísticas calculadas sobre os dados;
 - entender quanto essas estatísticas podem variar;
 - construir distribuições amostrais, erros-padrão, intervalos de confiança e testes;
-- e, em Inferência Estatística, relacionar probabilisticamente o modelo ao dataset que efetivamente observamos.
+- e, finalmente, usar os dados observados para aprender sobre características desconhecidas do modelo.
 
 Em resumo:
 
@@ -569,10 +569,20 @@ $$
 $$
 
 $$
-\boxed{\text{estudar funções e estatísticas calculadas sobre essa amostra}}
+\boxed{\text{usar o dataset para aprender sobre o modelo}}
 $$
 
-É essa passagem que motiva a formalização do [**espaço de amostragem**]{.conceito}.
+Essa é uma das pontes fundamentais entre **Teoria das Probabilidades** e **Inferência Estatística**.
+
+Na Probabilidade, partimos de um modelo probabilístico e perguntamos:
+
+> **se este é o modelo, que dados poderíamos observar?**
+
+Na Inferência Estatística, teremos os dados em mãos e faremos o caminho inverso:
+
+> **dado o que observamos, o que podemos aprender sobre o modelo que gerou esses dados?**
+
+Por isso, o espaço de amostragem não entra apenas porque “repetimos o experimento”. Ele começa a construir a estrutura matemática necessária para conectar o **modelo probabilístico** ao **dataset observado**.
 
 
 ::: {.callout-note title="Uma segunda ideia de repetição: repetir o processo amostral"}

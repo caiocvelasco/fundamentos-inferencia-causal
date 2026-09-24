@@ -667,7 +667,7 @@ x=(x_1,\ldots,x_n).
 \boxed{\text{Queremos modelar probabilisticamente a amostra inteira}}
 \]</span></p>
 <p>Isso não significa prever qual resultado ocorrerá em um ensaio.</p>
-<p>O resultado individual continua incerto. O que o <span class="conceito"><strong>espaço de probabilidade</strong></span> fará é organizar essa incerteza: especificar <strong>quais resultados são possíveis</strong>, <strong>quais eventos queremos considerar</strong> e <strong>quais probabilidades atribuímos a esses eventos</strong> antes de observar o resultado.</p>
+<p>O resultado individual continua incerto. O que o espaço de probabilidade fará é organizar essa incerteza: especificar <strong>quais resultados são possíveis</strong>, <strong>quais eventos queremos considerar</strong> e <strong>quais probabilidades atribuímos a esses eventos</strong> antes de observar o resultado.</p>
 <p>Para uma única sessão de checkout, podemos representar a incerteza sobre compra ou não compra.</p>
 <p>Mas, depois de observar <span class="math inline">\(n\)</span> sessões, nosso objeto passa a ser</p>
 <p><span class="math display">\[
@@ -725,7 +725,7 @@ X=(X_1,\ldots,X_n).
 <li>estudar frequências, médias e outras estatísticas calculadas sobre os dados;</li>
 <li>entender quanto essas estatísticas podem variar;</li>
 <li>construir distribuições amostrais, erros-padrão, intervalos de confiança e testes;</li>
-<li>e, em Inferência Estatística, relacionar probabilisticamente o modelo ao dataset que efetivamente observamos.</li>
+<li>e, finalmente, usar os dados observados para aprender sobre características desconhecidas do modelo.</li>
 </ul>
 <p>Em resumo:</p>
 <p><span class="math display">\[
@@ -741,9 +741,18 @@ X=(X_1,\ldots,X_n).
 \downarrow
 \]</span></p>
 <p><span class="math display">\[
-\boxed{\text{estudar funções e estatísticas calculadas sobre essa amostra}}
+\boxed{\text{usar o dataset para aprender sobre o modelo}}
 \]</span></p>
-<p>É essa passagem que motiva a formalização do <span class="conceito"><strong>espaço de amostragem</strong></span>.</p>
+<p>Essa é uma das pontes fundamentais entre <strong>Teoria das Probabilidades</strong> e <strong>Inferência Estatística</strong>.</p>
+<p>Na Probabilidade, partimos de um modelo probabilístico e perguntamos:</p>
+<blockquote class="blockquote">
+<p><strong>se este é o modelo, que dados poderíamos observar?</strong></p>
+</blockquote>
+<p>Na Inferência Estatística, teremos os dados em mãos e faremos o caminho inverso:</p>
+<blockquote class="blockquote">
+<p><strong>dado o que observamos, o que podemos aprender sobre o modelo que gerou esses dados?</strong></p>
+</blockquote>
+<p>Por isso, o espaço de amostragem não entra apenas porque “repetimos o experimento”. Ele começa a construir a estrutura matemática necessária para conectar o <strong>modelo probabilístico</strong> ao <strong>dataset observado</strong>.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Uma segunda ideia de repetição: repetir o processo amostral">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
