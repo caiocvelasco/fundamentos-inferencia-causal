@@ -31,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../chapters/02_construindo_um_modelo_probabilistico.html" rel="next">
-<link href="../chapters/00-2_preludio.html" rel="prev">
+<link href="../chapters/00-2_preludio_03.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -152,20 +152,41 @@ window.Quarto = {
   <a href="../chapters/00-1_pre_requisitos_matematicos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Pré-requisitos Matemáticos</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../chapters/00-2_preludio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Prelúdio - O Mapa da Probabilidade e da Inferência</span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Módulo 1 — Probabilidade</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar seção">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Prelúdio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Alternar seção">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/00-2_preludio_01.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1. O Mapa da Probabilidade e da Inferência</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/00-2_preludio_02.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2. Empirical Modeling: do Mundo Real ao Modelo Estatístico</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/00-2_preludio_03.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3. Onde Queremos Chegar: do Experimento Aleatório ao Modelo Estatístico</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Módulo 1 — Probabilidade</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/01_da_incerteza_a_probabilidade.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Da Incerteza à Probabilidade</span></a>
@@ -174,11 +195,6 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/02_construindo_um_modelo_probabilistico.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">[Formalização] Parte 1 de 3 - Espaço de Probabilidade</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../chapters/03_quando_o_espaco_amostral_e_continuo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">[Formalização] Parte 2 de 3 - Quando o Espaço Amostral é Contínuo</span></a>
   </div>
 </li>
       </ul>
@@ -255,7 +271,7 @@ Bertsekas & Tsitsiklis:
 - abertura do capítulo
 - início de 1.2 Probabilistic Models
 -->
-<p>No prelúdio, vimos o mapa geral: fenômenos do mundo real produzem dados, e usamos a Probabilidade para construir uma representação matemática do mecanismo capaz de gerá-los.</p>
+<p>No prelúdio, vimos o mapa geral: fenômenos do mundo real produzem dados, e usamos a Probabilidade para construir uma <strong>representação matemática</strong> do mecanismo capaz de gerá-los.</p>
 <p>Agora vamos voltar <em>ao início dessa história</em>.</p>
 <p>Antes de aprender a calcular probabilidades, queremos responder uma pergunta anterior:</p>
 <blockquote class="blockquote">
@@ -1312,8 +1328,8 @@ x=(x_1,\ldots,x_n).
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/00-2_preludio.html" class="pagination-link" aria-label="Prelúdio - O Mapa da Probabilidade e da Inferência">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Prelúdio - O Mapa da Probabilidade e da Inferência</span></span>
+      <a href="../chapters/00-2_preludio_03.html" class="pagination-link" aria-label="3. Onde Queremos Chegar: do Experimento Aleatório ao Modelo Estatístico">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">3. Onde Queremos Chegar: do Experimento Aleatório ao Modelo Estatístico</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

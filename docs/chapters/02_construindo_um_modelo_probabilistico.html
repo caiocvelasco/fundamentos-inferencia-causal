@@ -30,7 +30,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapters/03_quando_o_espaco_amostral_e_continuo.html" rel="next">
 <link href="../chapters/01_da_incerteza_a_probabilidade.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -152,20 +151,41 @@ window.Quarto = {
   <a href="../chapters/00-1_pre_requisitos_matematicos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Pré-requisitos Matemáticos</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../chapters/00-2_preludio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Prelúdio - O Mapa da Probabilidade e da Inferência</span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Módulo 1 — Probabilidade</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar seção">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Prelúdio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Alternar seção">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/00-2_preludio_01.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1. O Mapa da Probabilidade e da Inferência</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/00-2_preludio_02.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2. Empirical Modeling: do Mundo Real ao Modelo Estatístico</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/00-2_preludio_03.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3. Onde Queremos Chegar: do Experimento Aleatório ao Modelo Estatístico</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Módulo 1 — Probabilidade</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/01_da_incerteza_a_probabilidade.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Da Incerteza à Probabilidade</span></a>
@@ -174,11 +194,6 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/02_construindo_um_modelo_probabilistico.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">[Formalização] Parte 1 de 3 - Espaço de Probabilidade</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../chapters/03_quando_o_espaco_amostral_e_continuo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">[Formalização] Parte 2 de 3 - Quando o Espaço Amostral é Contínuo</span></a>
   </div>
 </li>
       </ul>
@@ -197,15 +212,14 @@ window.Quarto = {
   <li><a href="#espaço-amostral-omega" id="toc-espaço-amostral-omega" class="nav-link" data-scroll-target="#espaço-amostral-omega">1. Espaço amostral (<span class="math inline">\(\Omega\)</span>)</a>
   <ul class="collapse">
   <li><a href="#o-experimento" id="toc-o-experimento" class="nav-link" data-scroll-target="#o-experimento">O experimento</a></li>
-  <li><a href="#experimento-e-ensaio" id="toc-experimento-e-ensaio" class="nav-link" data-scroll-target="#experimento-e-ensaio">Experimento e ensaio</a></li>
+  <li><a href="#a-fronteira-do-experimento" id="toc-a-fronteira-do-experimento" class="nav-link" data-scroll-target="#a-fronteira-do-experimento">A fronteira do experimento</a></li>
   <li><a href="#os-resultados-possíveis" id="toc-os-resultados-possíveis" class="nav-link" data-scroll-target="#os-resultados-possíveis">Os resultados possíveis</a></li>
-  <li><a href="#definindo-o-espaço-amostral" id="toc-definindo-o-espaço-amostral" class="nav-link" data-scroll-target="#definindo-o-espaço-amostral">Definindo o espaço amostral</a></li>
   <li><a href="#exemplo-um-dado" id="toc-exemplo-um-dado" class="nav-link" data-scroll-target="#exemplo-um-dado">Exemplo: um dado</a></li>
-  <li><a href="#quando-um-resultado-precisa-guardar-mais-de-uma-informação" id="toc-quando-um-resultado-precisa-guardar-mais-de-uma-informação" class="nav-link" data-scroll-target="#quando-um-resultado-precisa-guardar-mais-de-uma-informação">Quando um resultado precisa guardar mais de uma informação</a></li>
   <li><a href="#exemplo-dois-dados" id="toc-exemplo-dois-dados" class="nav-link" data-scroll-target="#exemplo-dois-dados">Exemplo: dois dados</a></li>
+  <li><a href="#o-produto-cartesiano-é-uma-ferramenta-não-uma-interpretação" id="toc-o-produto-cartesiano-é-uma-ferramenta-não-uma-interpretação" class="nav-link" data-scroll-target="#o-produto-cartesiano-é-uma-ferramenta-não-uma-interpretação">O produto cartesiano é uma ferramenta, não uma interpretação</a></li>
   <li><a href="#espaços-amostrais-podem-ter-tamanhos-diferentes" id="toc-espaços-amostrais-podem-ter-tamanhos-diferentes" class="nav-link" data-scroll-target="#espaços-amostrais-podem-ter-tamanhos-diferentes">Espaços amostrais podem ter tamanhos diferentes</a></li>
+  <li><a href="#o-espaço-amostral-precisa-ser-completo-e-sem-ambiguidade" id="toc-o-espaço-amostral-precisa-ser-completo-e-sem-ambiguidade" class="nav-link" data-scroll-target="#o-espaço-amostral-precisa-ser-completo-e-sem-ambiguidade">O espaço amostral precisa ser completo e sem ambiguidade</a></li>
   <li><a href="#o-espaço-amostral-depende-da-pergunta" id="toc-o-espaço-amostral-depende-da-pergunta" class="nav-link" data-scroll-target="#o-espaço-amostral-depende-da-pergunta">O espaço amostral depende da pergunta</a></li>
-  <li><a href="#o-espaço-amostral-precisa-cobrir-todas-as-possibilidades" id="toc-o-espaço-amostral-precisa-cobrir-todas-as-possibilidades" class="nav-link" data-scroll-target="#o-espaço-amostral-precisa-cobrir-todas-as-possibilidades">O espaço amostral precisa cobrir todas as possibilidades</a></li>
   <li><a href="#fechando-a-primeira-peça" id="toc-fechando-a-primeira-peça" class="nav-link" data-scroll-target="#fechando-a-primeira-peça">Fechando a primeira peça</a></li>
   </ul></li>
   <li><a href="#família-de-eventos-mathcal-f" id="toc-família-de-eventos-mathcal-f" class="nav-link" data-scroll-target="#família-de-eventos-mathcal-f">2. Família de eventos (<span class="math inline">\(\mathcal F\)</span>)</a>
@@ -222,7 +236,11 @@ window.Quarto = {
   <li><a href="#uma-função-cujas-entradas-são-conjuntos" id="toc-uma-função-cujas-entradas-são-conjuntos" class="nav-link" data-scroll-target="#uma-função-cujas-entradas-são-conjuntos">Uma função cujas entradas são conjuntos</a></li>
   <li><a href="#por-que-pensar-em-probabilidade-como-uma-medida" id="toc-por-que-pensar-em-probabilidade-como-uma-medida" class="nav-link" data-scroll-target="#por-que-pensar-em-probabilidade-como-uma-medida">Por que pensar em probabilidade como uma “medida”?</a></li>
   <li><a href="#mas-qualquer-função-serve" id="toc-mas-qualquer-função-serve" class="nav-link" data-scroll-target="#mas-qualquer-função-serve">Mas qualquer função serve?</a></li>
-  <li><a href="#os-axiomas-de-kolmogorov" id="toc-os-axiomas-de-kolmogorov" class="nav-link" data-scroll-target="#os-axiomas-de-kolmogorov">Os Axiomas de Kolmogorov</a></li>
+  <li><a href="#primeiro-três-regras-muito-naturais" id="toc-primeiro-três-regras-muito-naturais" class="nav-link" data-scroll-target="#primeiro-três-regras-muito-naturais">Primeiro: três regras muito naturais</a></li>
+  <li><a href="#mas-o-infinito-cria-uma-sutileza-nova" id="toc-mas-o-infinito-cria-uma-sutileza-nova" class="nav-link" data-scroll-target="#mas-o-infinito-cria-uma-sutileza-nova">Mas o infinito cria uma sutileza nova</a></li>
+  <li><a href="#por-que-aparece-uma-sequência-a_1a_2a_3ldots" id="toc-por-que-aparece-uma-sequência-a_1a_2a_3ldots" class="nav-link" data-scroll-target="#por-que-aparece-uma-sequência-a_1a_2a_3ldots">Por que aparece uma sequência <span class="math inline">\(A_1,A_2,A_3,\ldots\)</span>?</a></li>
+  <li><a href="#aditividade-enumerável" id="toc-aditividade-enumerável" class="nav-link" data-scroll-target="#aditividade-enumerável">Aditividade enumerável</a></li>
+  <li><a href="#agora-sim-os-axiomas-de-kolmogorov" id="toc-agora-sim-os-axiomas-de-kolmogorov" class="nav-link" data-scroll-target="#agora-sim-os-axiomas-de-kolmogorov">Agora sim: os Axiomas de Kolmogorov</a></li>
   <li><a href="#três-axiomas-muitas-consequências" id="toc-três-axiomas-muitas-consequências" class="nav-link" data-scroll-target="#três-axiomas-muitas-consequências">Três axiomas, muitas consequências</a></li>
   </ul></li>
   <li><a href="#o-espaço-de-probabilidade-está-completo" id="toc-o-espaço-de-probabilidade-está-completo" class="nav-link" data-scroll-target="#o-espaço-de-probabilidade-está-completo">O espaço de probabilidade está completo</a></li>
@@ -274,6 +292,17 @@ Bertsekas & Tsitsiklis:
 - 1.1 Sets
 - 1.2 Probabilistic Models
 
+Robert Ash:
+- Chapter 1 — Basic Concepts
+- Chapter 2 — Random Variables
+- Exemplos de experimentos com múltiplos componentes e espaços amostrais formados por pares
+
+Referências complementares consultadas:
+- Berkeley Statistics — Measure Theory Basics
+- David Aldous (Berkeley) — What is the significance of the Kolmogorov axioms?
+- Penn State STAT 414 — Properties of Probability
+- OpenStax — Sample spaces, outcomes and mutually exclusive events
+
 -->
 <p>Antes de começarmos, vale dizer que este é o <span class="atencao"><strong>coração</strong></span> de muita coisa que faremos em Data Science, Machine Learning, Estatística e Inferência Causal.</p>
 <div class="callout callout-style-simple callout-note">
@@ -317,30 +346,30 @@ Bertsekas & Tsitsiklis:
 </div>
 </div>
 </div><div class="column" style="width:48%;">
-<div class="callout callout-style-default callout-note callout-titled" title="2 — Formalizar repetições">
+<div class="callout callout-style-default callout-note callout-titled" title="2 — Formalizar vários ensaios">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-2 — Formalizar repetições
+2 — Formalizar vários ensaios
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Depois perguntaremos:</p>
+<p>Depois manteremos fixo o experimento básico e perguntaremos:</p>
 <blockquote class="blockquote">
-<p><strong>o que acontece quando observamos várias realizações desse mesmo experimento?</strong></p>
+<p><strong>como representar probabilisticamente vários ensaios desse experimento em conjunto?</strong></p>
 </blockquote>
-<p>Essa será a próxima etapa da formalização e começará a nos aproximar da ideia de <strong>dados gerados por repetições</strong>.</p>
+<p>Essa será uma nova etapa da formalização. Ainda estaremos construindo a estrutura probabilística; a conexão formal com uma <strong>amostra</strong> virá depois, quando introduzirmos variáveis aleatórias.</p>
 </div>
 </div>
 </div>
 </div>
-<p>Em resumo:</p>
+<p>Em resumo, nossa direção geral é:</p>
 <p><span class="math display">\[
-\boxed{\text{formalizar uma realização}}
+\boxed{\text{formalizar um ensaio}}
 \qquad\longrightarrow\qquad
-\boxed{\text{formalizar repetições}}
+\boxed{\text{formalizar vários ensaios conjuntamente}}
 \]</span></p>
 <div class="callout callout-style-default callout-important callout-titled" title="O que significa um ensaio?">
 <div class="callout-header d-flex align-content-center">
@@ -352,8 +381,11 @@ O que significa um ensaio?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Um <strong>ensaio</strong> é uma realização completa do experimento que definimos.</p>
-<p>Se o experimento for “lançar uma moeda duas vezes e registrar a ordem”, por exemplo, <span class="math inline">\(HT\)</span> é <strong>um único resultado de um ensaio desse experimento</strong>.</p>
+<p>Um <strong>ensaio</strong> é uma execução completa do experimento <strong>tal como ele foi definido</strong>.</p>
+<p>Isso significa que a fronteira do experimento importa.</p>
+<p>Se definirmos o experimento como “lançar uma moeda uma vez”, um ensaio termina depois de um lançamento.</p>
+<p>Se definirmos o experimento como “lançar uma moeda duas vezes e registrar a ordem”, um ensaio termina somente depois dos dois lançamentos, e <span class="math inline">\((H,T)\)</span> é <strong>um único resultado desse ensaio</strong>.</p>
+<p>Neste capítulo, construiremos sempre o espaço de probabilidade correspondente a <strong>um ensaio completo do experimento definido</strong>.</p>
 </div>
 </div>
 <p>Neste capítulo, portanto, ficaremos <strong>somente na primeira caixa</strong>.</p>
@@ -399,10 +431,11 @@ A ideia é construir, não decorar
 <p>Vamos construir uma peça de cada vez. Quando chegarmos ao final, a notação terá surgido naturalmente porque cada objeto resolve uma pergunta diferente.</p>
 </div>
 </div>
-<p>Ao final deste capítulo teremos, portanto, formalizado matematicamente <strong>uma realização do experimento</strong>.</p>
-<p>No próximo, daremos o segundo passo:</p>
+<p>Ao final deste capítulo teremos construído a estrutura básica para representar matematicamente <strong>um ensaio completo do experimento</strong>.</p>
+<p>No próximo capítulo ainda permaneceremos nessa primeira etapa: veremos o que precisa ser ajustado quando o espaço amostral é contínuo.</p>
+<p>Só depois passaremos à pergunta seguinte:</p>
 <blockquote class="blockquote">
-<p><strong>como representar várias realizações desse experimento e começar a construir a ponte entre Probabilidade e dados observados?</strong></p>
+<p><strong>como representar probabilisticamente vários ensaios desse mesmo experimento em conjunto?</strong></p>
 </blockquote>
 </section>
 <section id="espaço-amostral-omega" class="level2">
@@ -421,219 +454,171 @@ Etapa 1 de 3
 <p>Nosso primeiro objetivo é construir <span class="math inline">\(\Omega\)</span>.</p>
 </div>
 </div>
+<p>Antes de começar, vamos fixar uma notação que aparecerá o tempo todo. Usaremos a letra grega minúscula <span class="math inline">\(\omega\)</span> para representar <strong>um resultado possível</strong>. Quando o espaço amostral estiver definido, escreveremos</p>
+<p><span class="math display">\[
+\boxed{\omega\in\Omega}.
+\]</span></p>
+<p>Ainda vamos construir <span class="math inline">\(\Omega\)</span> com cuidado. Por enquanto, guarde apenas: <span class="math inline">\(\omega\)</span> é um resultado; <span class="math inline">\(\Omega\)</span> será o conjunto que reúne todos os resultados possíveis.</p>
 <section id="o-experimento" class="level3">
 <h3 class="anchored" data-anchor-id="o-experimento">O experimento</h3>
 <p>Para transformar um fenômeno incerto em um objeto matemático, precisamos primeiro dizer exatamente:</p>
 <blockquote class="blockquote">
-<p><strong>Qual é o procedimento cujo resultado queremos observar?</strong></p>
+<p><strong>Qual é o procedimento completo cujo resultado queremos observar?</strong></p>
 </blockquote>
 <p>Chamaremos esse procedimento de <strong>experimento</strong>.</p>
 <p>Por exemplo:</p>
 <blockquote class="blockquote">
-<p>lançar uma moeda uma vez e observar a face que aparece.</p>
+<p>lançar um dado uma vez e observar a face superior.</p>
 </blockquote>
-<p>Quando realizamos esse experimento, observamos exatamente um resultado: <span class="math inline">\(H\)</span> ou <span class="math inline">\(T\)</span>.</p>
-<p>Da mesma forma, podemos definir o experimento:</p>
-<blockquote class="blockquote">
-<p>lançar dois dados uma vez e registrar os números obtidos.</p>
-</blockquote>
-<p>Uma possível realização produz <span class="math inline">\((2,5)\)</span>. Outra pode produzir <span class="math inline">\((6,1)\)</span>. Outra, <span class="math inline">\((3,3)\)</span>.</p>
+<p>Quando executamos esse procedimento uma vez, realizamos um <strong>ensaio</strong> (<em>trial</em>).</p>
+<p>O ensaio termina quando o procedimento definido termina, e então observamos <strong>um resultado</strong> <span class="math inline">\(\omega\)</span>.</p>
+<p>Se a face observada for <span class="math inline">\(4\)</span>, por exemplo, escrevemos <span class="math inline">\(\omega=4\)</span>.</p>
 </section>
-<section id="experimento-e-ensaio" class="level3">
-<h3 class="anchored" data-anchor-id="experimento-e-ensaio">Experimento e ensaio</h3>
-<p>Vamos manter uma terminologia importante que já apareceu no capítulo anterior.</p>
-<p>O <strong>experimento</strong> é o procedimento que definimos.</p>
-<p>Por exemplo: lançar dois dados e observar o resultado.</p>
-<p>Cada vez que realizamos esse mesmo procedimento temos um <strong>ensaio</strong> (<em>trial</em>).</p>
-<p>Assim, podemos pensar em um mesmo experimento sendo realizado em vários ensaios:</p>
-<p><span class="math inline">\(\text{Ensaio}_1,\text{Ensaio}_2,\text{Ensaio}_3,\ldots\)</span></p>
-<p>Cada ensaio produz exatamente <strong>um resultado</strong>.</p>
-<p>Por exemplo: <span class="math inline">\((2,5)\)</span>, <span class="math inline">\((6,1)\)</span>, <span class="math inline">\((3,3)\)</span>, <span class="math inline">\(\ldots\)</span></p>
-<p>O experimento descreve <strong>o que será feito</strong>.</p>
-<p>O ensaio é <strong>uma realização desse experimento</strong>.</p>
-<p>O resultado é <strong>aquilo que observamos nessa realização</strong>.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Uma distinção importante">
+<section id="a-fronteira-do-experimento" class="level3">
+<h3 class="anchored" data-anchor-id="a-fronteira-do-experimento">A fronteira do experimento</h3>
+<p>Antes de construir o espaço amostral, existe uma decisão conceitual importante:</p>
+<blockquote class="blockquote">
+<p><strong>onde começa e onde termina um ensaio do experimento que queremos modelar?</strong></p>
+</blockquote>
+<p>Essa fronteira determina o que precisa estar contido em um único resultado <span class="math inline">\(\omega\)</span>.</p>
+<p>Considere duas definições diferentes.</p>
+<section id="exemplo-uma-moeda-um-lançamento" class="level4">
+<h4 class="anchored" data-anchor-id="exemplo-uma-moeda-um-lançamento">Exemplo: uma moeda, um lançamento</h4>
+<p>Defina o experimento como:</p>
+<blockquote class="blockquote">
+<p>lançar uma moeda uma vez e registrar a face.</p>
+</blockquote>
+<p>Um ensaio termina depois desse lançamento e produz um resultado como <span class="math inline">\(\omega=H\)</span>.</p>
+</section>
+<section id="exemplo-uma-moeda-dois-lançamentos-dentro-do-mesmo-experimento" class="level4">
+<h4 class="anchored" data-anchor-id="exemplo-uma-moeda-dois-lançamentos-dentro-do-mesmo-experimento">Exemplo: uma moeda, dois lançamentos dentro do mesmo experimento</h4>
+<p>Agora defina outro experimento:</p>
+<blockquote class="blockquote">
+<p>lançar uma moeda duas vezes e registrar, na ordem, as duas faces.</p>
+</blockquote>
+<p>Um ensaio desse novo experimento só termina depois dos dois lançamentos e pode produzir, por exemplo, <span class="math inline">\(\omega=(H,T)\)</span>.</p>
+<p>Nos dois exemplos temos <strong>um ensaio</strong> e <strong>um resultado</strong>.</p>
+<p>O que mudou foi a definição do experimento e, consequentemente, a quantidade de informação que um único resultado precisa carregar.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Um resultado pode ter várias coordenadas">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Uma distinção importante
+Um resultado pode ter várias coordenadas
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Tudo depende de como definimos o experimento.</p>
-<p>Se o experimento for</p>
-<blockquote class="blockquote">
-<p>lançar uma moeda uma vez e observar a face,</p>
-</blockquote>
-<p>um resultado é simplesmente</p>
-<p><span class="math inline">\(H\)</span> ou <span class="math inline">\(T\)</span>.</p>
-<p>Mas suponha que o experimento seja</p>
-<blockquote class="blockquote">
-<p>lançar uma moeda três vezes e registrar, na ordem, os três resultados.</p>
-</blockquote>
-<p>Agora, um único resultado precisa guardar <strong>três informações</strong>:</p>
-<ul>
-<li>o resultado do primeiro lançamento;</li>
-<li>o resultado do segundo;</li>
-<li>o resultado do terceiro.</li>
-</ul>
-<p>Por exemplo,</p>
-<p><span class="math display">\[
-(H,T,H)
-\]</span></p>
-<p>é <strong>um único resultado de um único ensaio desse experimento</strong>.</p>
-<p>Os três lançamentos fazem parte da definição do experimento. Não são, nesse caso, três experimentos diferentes.</p>
+<p>A frase “um ensaio produz um resultado” não significa que esse resultado precise ser um único número ou uma única categoria.</p>
+<p>Um resultado pode ser uma tupla como <span class="math inline">\((2,5)\)</span>, <span class="math inline">\((H,T)\)</span> ou <span class="math inline">\((\text{compra},3.8\text{ s})\)</span>.</p>
+<p>O que importa é que a tupla inteira descreva <strong>o resultado completo de um ensaio do experimento que definimos</strong>.</p>
 </div>
 </div>
+<p><span class="atencao"><strong>Atenção à notação:</strong> quando um resultado tiver várias coordenadas, neste curso preferiremos escrever explicitamente <span class="math inline">\(\omega=(H,T)\)</span>. Em muitos livros você também encontrará a forma compacta <span class="math inline">\(\omega=HT\)</span>. Nesse contexto, <span class="math inline">\(HT\)</span> é apenas uma abreviação para a mesma informação ordenada: primeira coordenada <span class="math inline">\(H\)</span>, segunda coordenada <span class="math inline">\(T\)</span>. Não significa multiplicação e, por si só, não significa que estamos modelando vários ensaios.</span></p>
+</section>
 </section>
 <section id="os-resultados-possíveis" class="level3">
 <h3 class="anchored" data-anchor-id="os-resultados-possíveis">Os resultados possíveis</h3>
-<p>Antes de realizar um experimento, não sabemos qual resultado particular será observado.</p>
-<p>Mas precisamos saber <strong>quais resultados são possíveis</strong>.</p>
-<p>Considere novamente:</p>
-<blockquote class="blockquote">
-<p>lançar uma moeda uma vez.</p>
-</blockquote>
-<p>Antes de realizar o experimento, sabemos que o resultado será <span class="math inline">\(H\)</span> ou <span class="math inline">\(T\)</span>.</p>
-<p>Não sabemos <strong>qual</strong> ocorrerá.</p>
-<p>Mas sabemos <strong>quais podem ocorrer</strong>.</p>
-<p>Essa distinção é fundamental: o <strong>resultado observado</strong> é desconhecido antes do ensaio, enquanto o <strong>conjunto dos resultados possíveis</strong> é especificado pelo modelo.</p>
-</section>
-<section id="definindo-o-espaço-amostral" class="level3">
-<h3 class="anchored" data-anchor-id="definindo-o-espaço-amostral">Definindo o espaço amostral</h3>
-<p>Chamamos o conjunto de todos os resultados possíveis de um experimento de <strong>espaço amostral</strong> (<em>sample space</em>).</p>
-<p>Vamos representá-lo por <span class="math inline">\(\Omega\)</span>.</p>
-<p>No lançamento de uma moeda,</p>
+<p>Antes de realizar um ensaio, não sabemos qual resultado particular <span class="math inline">\(\omega\)</span> será observado.</p>
+<p>Mas precisamos especificar <strong>quais valores <span class="math inline">\(\omega\)</span> pode assumir</strong>.</p>
+<p>Chamamos o conjunto de todos os resultados possíveis de um experimento de <span class="conceito"><strong>espaço amostral</strong></span> (<em>sample space</em>) e o representamos por <span class="math inline">\(\Omega\)</span>.</p>
+<p>Assim, cada possível resultado completo de um ensaio satisfaz</p>
 <p><span class="math display">\[
-\Omega=\{H,T\}.
+\boxed{\omega\in\Omega}.
 \]</span></p>
-<p>Cada elemento de <span class="math inline">\(\Omega\)</span> representa um possível resultado do experimento.</p>
-<p>Costumamos representar um resultado particular pela letra grega minúscula <span class="math inline">\(\omega\)</span>.</p>
-<p>Portanto,</p>
-<p><span class="math display">\[
-\omega\in\Omega.
-\]</span></p>
-<p>Antes do experimento, sabemos que algum elemento de <span class="math inline">\(\Omega\)</span> será observado.</p>
-<p>Não sabemos qual.</p>
-<p>Depois que o experimento é realizado, um determinado <span class="math inline">\(\omega\)</span> se realiza.</p>
+<p>Depois que o ensaio é realizado, um desses elementos de <span class="math inline">\(\Omega\)</span> é o resultado observado.</p>
 </section>
 <section id="exemplo-um-dado" class="level3">
 <h3 class="anchored" data-anchor-id="exemplo-um-dado">Exemplo: um dado</h3>
 <p>Considere o experimento:</p>
 <blockquote class="blockquote">
-<p>lançar um dado de seis faces e observar o número da face superior.</p>
+<p>lançar um dado de seis faces uma vez e observar a face superior.</p>
 </blockquote>
-<p>O espaço amostral é</p>
+<p>Um ensaio produz uma única informação: o número observado.</p>
+<p>Portanto,</p>
 <p><span class="math display">\[
 \Omega=\{1,2,3,4,5,6\}.
 \]</span></p>
-<p>Se o dado for lançado e observarmos <span class="math inline">\(\omega=4\)</span>, então <span class="math inline">\(4\)</span> foi o resultado realizado.</p>
-<p>Mas antes do lançamento nosso modelo precisava contemplar todos os resultados possíveis.</p>
+<p>Se observarmos <span class="math inline">\(4\)</span>, então <span class="math inline">\(\omega=4\)</span> e, naturalmente, <span class="math inline">\(4\in\Omega\)</span>.</p>
+<p>Aqui o resultado possui apenas uma coordenada.</p>
 </section>
-<section id="quando-um-resultado-precisa-guardar-mais-de-uma-informação" class="level3">
-<h3 class="anchored" data-anchor-id="quando-um-resultado-precisa-guardar-mais-de-uma-informação">Quando um resultado precisa guardar mais de uma informação</h3>
-<p>Até agora, em exemplos como uma moeda ou um dado, cada resultado carregava apenas <strong>uma informação</strong>.</p>
-<p>Mas um resultado também pode precisar registrar várias coisas ao mesmo tempo.</p>
-<p>Considere o experimento:</p>
+<section id="exemplo-dois-dados" class="level3">
+<h3 class="anchored" data-anchor-id="exemplo-dois-dados">Exemplo: dois dados</h3>
+<p>Agora considere um experimento diferente:</p>
 <blockquote class="blockquote">
-<p>lançar uma moeda duas vezes e registrar, na ordem, o resultado dos dois lançamentos.</p>
+<p>lançar <strong>dois dados distinguíveis uma vez</strong> e registrar a face de cada dado.</p>
 </blockquote>
-<p>Cada lançamento possui as possibilidades</p>
+<p>Esse continua sendo <strong>um único experimento</strong>, e uma execução completa dele continua sendo <strong>um único ensaio</strong>.</p>
+<p>Mas agora o resultado precisa guardar duas informações: a face do dado 1 e a face do dado 2.</p>
+<p>Podemos escrever um resultado como <span class="math inline">\(\omega=(\omega_{\text{dado 1}},\omega_{\text{dado 2}})\)</span>. Por exemplo, <span class="math inline">\(\omega=(2,5)\)</span>.</p>
+<p>Cada coordenada possui seu próprio conjunto de possibilidades: <span class="math inline">\(\Omega_{\text{dado 1}}=\{1,2,3,4,5,6\}\)</span> e <span class="math inline">\(\Omega_{\text{dado 2}}=\{1,2,3,4,5,6\}\)</span>.</p>
+<p>Para construir o conjunto de todos os resultados completos possíveis, combinamos as possibilidades das duas coordenadas. É aqui que aparece o <span class="conceito"><strong>produto cartesiano</strong></span>.</p>
+<p>Dados dois conjuntos <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span>, o produto cartesiano <span class="math inline">\(A\times B\)</span> é o conjunto de todos os pares ordenados <span class="math inline">\((a,b)\)</span> com <span class="math inline">\(a\in A\)</span> e <span class="math inline">\(b\in B\)</span>.</p>
+<p>No experimento dos dois dados:</p>
 <p><span class="math display">\[
-\{H,T\}.
-\]</span></p>
-<p>Como precisamos registrar <strong>o primeiro e o segundo lançamento</strong>, combinamos as possibilidades dos dois.</p>
-<p>É aqui que aparece o <span class="conceito"><strong>produto cartesiano</strong></span>.</p>
-<p>Dados dois conjuntos <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span>, o produto cartesiano</p>
-<p><span class="math display">\[
-A\times B
-\]</span></p>
-<p>é o conjunto de todos os <strong>pares ordenados</strong> em que o primeiro elemento vem de <span class="math inline">\(A\)</span> e o segundo vem de <span class="math inline">\(B\)</span>.</p>
-<p>No nosso exemplo:</p>
-<p><span class="math display">\[
+\boxed{
 \Omega
 =
-\{H,T\}\times\{H,T\}.
+\Omega_{\text{dado 1}}
+\times
+\Omega_{\text{dado 2}}
+}
 \]</span></p>
-<p>Portanto,</p>
-<p><span class="math display">\[
-\Omega
-=
-\{
-(H,H),(H,T),(T,H),(T,T)
-\}.
-\]</span></p>
-<p>Perceba o que aconteceu.</p>
-<p>Com um lançamento, um resultado poderia ser simplesmente</p>
-<p><span class="math display">\[
-\omega=H.
-\]</span></p>
-<p>Com dois lançamentos, precisamos registrar duas informações:</p>
-<p><span class="math display">\[
-\omega=(H,T).
-\]</span></p>
-<p>O espaço amostral ganhou uma estrutura adicional porque <strong>o próprio resultado do experimento passou a ter mais de um componente</strong>.</p>
-<p>Isso também explica por que</p>
-<p><span class="math display">\[
-(H,T)\neq(T,H).
-\]</span></p>
-<p>Como os pares são ordenados, <span class="math inline">\((H,T)\)</span> significa cara no primeiro lançamento e coroa no segundo, enquanto <span class="math inline">\((T,H)\)</span> significa exatamente o contrário.</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="A ideia por trás do produto cartesiano">
+<p>ou, explicitamente, <span class="math inline">\(\Omega=\{1,2,3,4,5,6\}\times\{1,2,3,4,5,6\}\)</span>.</p>
+<p>Cada elemento de <span class="math inline">\(\Omega\)</span> é <strong>um resultado completo de um único ensaio</strong>, como <span class="math inline">\((2,5)\)</span>, <span class="math inline">\((6,1)\)</span> ou <span class="math inline">\((3,3)\)</span>. Como existem seis possibilidades para cada coordenada, <span class="math inline">\(|\Omega|=6\times6=36\)</span>.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Aqui não estamos repetindo o experimento">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-A ideia por trás do produto cartesiano
+Aqui não estamos repetindo o experimento
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Quando um resultado precisa registrar mais de uma informação, podemos combinar os conjuntos de possibilidades de cada componente:</p>
+<p>No resultado <span class="math inline">\(\omega=(2,5)\)</span>, a primeira coordenada descreve o <strong>dado 1</strong> e a segunda descreve o <strong>dado 2</strong>.</p>
+<p>Elas são duas coordenadas <strong>dentro do mesmo resultado</strong> de <strong>um único ensaio</strong>.</p>
+<p>Mais adiante aparecerá uma tupla visualmente parecida, <span class="math inline">\((\omega_1,\ldots,\omega_n)\)</span>, em que cada coordenada representará o resultado de <strong>um ensaio diferente</strong> de um experimento básico.</p>
+<p>A ferramenta matemática será novamente um produto cartesiano, mas a interpretação será outra.</p>
 <p><span class="math display">\[
 \boxed{
-\text{possibilidades do primeiro componente}
-\times
-\text{possibilidades do segundo componente}
+\text{várias coordenadas de um resultado}
+\;\neq\;
+\text{vários ensaios}
 }
 \]</span></p>
-<p>O produto cartesiano constrói <strong>todas as combinações possíveis</strong>.</p>
-<p>Essa mesma ideia aparecerá várias vezes ao longo do curso.</p>
 </div>
 </div>
 </section>
-<section id="exemplo-dois-dados" class="level3">
-<h3 class="anchored" data-anchor-id="exemplo-dois-dados">Exemplo: dois dados</h3>
-<p>Agora considere:</p>
+<section id="o-produto-cartesiano-é-uma-ferramenta-não-uma-interpretação" class="level3">
+<h3 class="anchored" data-anchor-id="o-produto-cartesiano-é-uma-ferramenta-não-uma-interpretação">O produto cartesiano é uma ferramenta, não uma interpretação</h3>
+<p>O produto cartesiano resolve uma necessidade matemática geral:</p>
 <blockquote class="blockquote">
-<p>lançar dois dados e observar o resultado de cada dado.</p>
+<p><strong>construir objetos com várias coordenadas.</strong></p>
 </blockquote>
-<p>Cada dado possui como possíveis resultados</p>
-<p><span class="math display">\[
-\{1,2,3,4,5,6\}.
-\]</span></p>
-<p>Como precisamos registrar o resultado <strong>do primeiro e do segundo dado</strong>, construímos</p>
-<p><span class="math display">\[
-\Omega
-=
-\{1,2,3,4,5,6\}
-\times
-\{1,2,3,4,5,6\}.
-\]</span></p>
-<p>Cada elemento de <span class="math inline">\(\Omega\)</span> é um par ordenado</p>
-<p><span class="math display">\[
-\omega=(i,j),
-\]</span></p>
-<p>onde <span class="math inline">\(i\)</span> é o resultado do primeiro dado e <span class="math inline">\(j\)</span> o resultado do segundo.</p>
-<p>Por exemplo,</p>
-<p><span class="math display">\[
-(2,5),\qquad(6,1),\qquad(3,3).
-\]</span></p>
-<p>Como existem <span class="math inline">\(6\)</span> possibilidades para o primeiro componente e <span class="math inline">\(6\)</span> para o segundo,</p>
-<p><span class="math display">\[
-|\Omega|=6\times6=36.
-\]</span></p>
+<p>A razão pela qual existem várias coordenadas depende do experimento que definimos.</p>
+<p>No exemplo dos dois dados, <span class="math inline">\(\omega=(\omega_{\text{dado 1}},\omega_{\text{dado 2}})\)</span> tem duas coordenadas porque queremos registrar duas partes do resultado de <strong>um mesmo ensaio</strong>.</p>
+<p>Também poderíamos selecionar uma pessoa e registrar altura e peso. Um resultado teria a forma <span class="math inline">\(\omega=(\text{altura},\text{peso})\)</span>.</p>
+<p>Ou poderíamos definir como experimento “lançar uma moeda três vezes e registrar a sequência”. Nesse caso, um único ensaio poderia produzir <span class="math inline">\(\omega=(H,T,H)\)</span>, e o espaço amostral seria <span class="math inline">\(\{H,T\}^3\)</span>.</p>
+<p>O produto cartesiano, portanto, não significa “repetição”. Ele apenas nos fornece uma maneira de organizar <strong>componentes de um objeto</strong>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="A mesma ferramenta aparecerá novamente">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+A mesma ferramenta aparecerá novamente
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Quando mais adiante fixarmos um experimento básico e quisermos representar <strong>vários ensaios conjuntamente</strong>, o produto cartesiano aparecerá outra vez.</p>
+<p>A diferença será conceitual:</p>
+<ul>
+<li>aqui, as coordenadas pertencem ao <strong>resultado de um único ensaio</strong>;</li>
+<li>lá, cada coordenada corresponderá ao <strong>resultado de um ensaio diferente</strong>.</li>
+</ul>
+</div>
+</div>
 </section>
 <section id="espaços-amostrais-podem-ter-tamanhos-diferentes" class="level3">
 <h3 class="anchored" data-anchor-id="espaços-amostrais-podem-ter-tamanhos-diferentes">Espaços amostrais podem ter tamanhos diferentes</h3>
@@ -767,28 +752,92 @@ Onde isso vai aparecer na prática?
 <p>A ideia importante é apenas perceber que o conjunto de resultados possíveis pode ter estruturas muito diferentes — e que essa estrutura terá consequências para a forma como representaremos probabilidades mais adiante.</p>
 </section>
 </section>
+<section id="o-espaço-amostral-precisa-ser-completo-e-sem-ambiguidade" class="level3">
+<h3 class="anchored" data-anchor-id="o-espaço-amostral-precisa-ser-completo-e-sem-ambiguidade">O espaço amostral precisa ser completo e sem ambiguidade</h3>
+<p>Se <span class="math inline">\(\Omega\)</span> pretende representar os resultados possíveis de um ensaio, queremos duas coisas muito simples:</p>
+<ul>
+<li><span class="conceito"><strong>coletivamente exaustivos</strong></span>: não importa o que aconteça no experimento, <strong>algum resultado de <span class="math inline">\(\Omega\)</span> precisa acontecer</strong>. Não podemos esquecer nenhuma possibilidade;</li>
+<li><span class="conceito"><strong>mutuamente exclusivos</strong></span>: se um resultado aconteceu, <strong>nenhum outro resultado elementar pode ter acontecido ao mesmo tempo</strong>.</li>
+</ul>
+<p>Juntas, essas duas ideias dizem algo ainda mais simples:</p>
+<blockquote class="blockquote">
+<p><strong>ao final de um ensaio, devemos conseguir apontar para exatamente um <span class="math inline">\(\omega\in\Omega\)</span> e dizer: “foi isso que aconteceu”.</strong></p>
+</blockquote>
+<section id="um-exemplo-simples" class="level4">
+<h4 class="anchored" data-anchor-id="um-exemplo-simples">Um exemplo simples</h4>
+<p>Considere o experimento:</p>
+<blockquote class="blockquote">
+<p>lançar uma moeda duas vezes e registrar a ordem dos resultados.</p>
+</blockquote>
+<p>Então,</p>
+<p><span class="math display">\[
+\Omega=\{(H,H),(H,T),(T,H),(T,T)\}.
+\]</span></p>
+<p>Esse espaço é <strong>coletivamente exaustivo</strong> porque qualquer sequência possível de dois lançamentos aparece na lista.</p>
+<p>E seus resultados são <strong>mutuamente exclusivos</strong> porque, em um mesmo ensaio, não podemos observar simultaneamente <span class="math inline">\((H,T)\)</span> e <span class="math inline">\((T,H)\)</span>: ou o primeiro lançamento foi <span class="math inline">\(H\)</span> e o segundo <span class="math inline">\(T\)</span>, ou ocorreu o contrário.</p>
+<p>Isso também mostra por que <span class="math inline">\((H,T)\)</span> e <span class="math inline">\((T,H)\)</span> precisam aparecer como resultados diferentes: <strong>o resultado elementar deve descrever completamente aquilo que decidimos observar</strong>.</p>
+<p>Se retirássemos <span class="math inline">\((T,H)\)</span>, teríamos esquecido uma possibilidade e o espaço deixaria de ser exaustivo.</p>
+<p>Essas duas propriedades dizem <strong>quando um espaço amostral está bem definido</strong>.</p>
+<p>Mas ainda falta uma pergunta importante:</p>
+<blockquote class="blockquote">
+<p><strong>quanto detalhe devemos colocar em cada resultado?</strong></p>
+</blockquote>
+</section>
+</section>
 <section id="o-espaço-amostral-depende-da-pergunta" class="level3">
 <h3 class="anchored" data-anchor-id="o-espaço-amostral-depende-da-pergunta">O espaço amostral depende da pergunta</h3>
-<p>Existe aqui uma ideia muito mais importante do que pode parecer inicialmente:</p>
+<p>O espaço amostral não vem pronto da realidade. Ele depende do que decidimos preservar no modelo.</p>
+<p>Considere o experimento mais simples possível: lançar uma moeda uma vez.</p>
+<p>Se queremos registrar apenas a face observada, basta</p>
+<p><span class="math display">\[
+\Omega_1=\{H,T\}.
+\]</span></p>
+<p>Esse espaço já é mutuamente exclusivo e coletivamente exaustivo.</p>
+<p>Mas imagine que, por algum motivo, acreditamos que o <strong>clima</strong> também seja relevante para o fenômeno. Podemos construir um modelo mais detalhado:</p>
+<p><span class="math display">\[
+\Omega_2=
+\{
+(H,\text{chove}),
+(H,\text{não chove}),
+(T,\text{chove}),
+(T,\text{não chove})
+\}.
+\]</span></p>
+<p>Esse espaço também pode ser construído de forma mutuamente exclusiva e coletivamente exaustiva.</p>
+<p>Então qual dos dois está “certo”?</p>
+<p>Os dois podem estar.</p>
+<p>A diferença é <strong>o que escolhemos guardar no modelo</strong>.</p>
+<p>Se o clima não tem qualquer papel na pergunta que queremos responder, incluí-lo apenas adiciona detalhe desnecessário. Se acreditamos que ele pode importar, talvez precisemos preservá-lo.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Formalizar não é apenas escrever símbolos">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Formalizar não é apenas escrever símbolos
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>O mundo real contém uma quantidade enorme de detalhes.</p>
+<p>Ao construir um modelo, precisamos decidir <strong>quais detalhes manter e quais ignorar</strong>.</p>
+<p>Essa escolha exige contexto, julgamento e conhecimento do problema:</p>
 <blockquote class="blockquote">
-<p><strong>o espaço amostral não é simplesmente uma lista que “vem pronta” da realidade.</strong></p>
+<p><strong>formalizar é também uma decisão de modelagem.</strong></p>
 </blockquote>
-<p>Ele faz parte da forma como decidimos representar o problema.</p>
-<p><strong>→ Considere um usuário chegando ao checkout de um e-commerce.</strong></p>
-<p>Se nossa pergunta for apenas:</p>
+</div>
+</div>
+<section id="trazendo-para-um-problema-real-checkout" class="level4">
+<h4 class="anchored" data-anchor-id="trazendo-para-um-problema-real-checkout">Trazendo para um problema real: checkout</h4>
+<p>Considere agora um usuário chegando ao checkout de um e-commerce.</p>
+<p>Se nossa pergunta for apenas</p>
 <blockquote class="blockquote">
-<p><strong>O usuário realizará uma compra?</strong></p>
+<p><strong>o usuário realizará uma compra?</strong></p>
 </blockquote>
-<p>podemos construir um espaço amostral simples:</p>
+<p>podemos trabalhar com</p>
 <p><span class="math display">\[
 \Omega=\{\text{compra},\text{não compra}\}.
 \]</span></p>
-<p>Agora imagine que queremos registrar mais informação:</p>
-<blockquote class="blockquote">
-<p><strong>Se houver uma compra, qual será a forma de pagamento utilizada?</strong></p>
-</blockquote>
-<p>O resultado precisa agora distinguir diferentes possibilidades de compra.</p>
-<p>Podemos definir:</p>
+<p>Se também quisermos registrar <strong>como</strong> a compra foi feita, precisaremos preservar mais informação:</p>
 <p><span class="math display">\[
 \Omega=
 \{
@@ -798,257 +847,10 @@ Onde isso vai aparecer na prática?
 (\text{não compra})
 \}.
 \]</span></p>
-<p>A situação real pode ser exatamente a mesma.</p>
-<p>O que mudou foi <strong>a informação que decidimos registrar</strong> e, consequentemente, nossa <strong>representação matemática</strong> do fenômeno.</p>
-<p>Perceba que isso é uma versão da mesma ideia que vimos com duas moedas e dois dados: quando queremos guardar mais informação sobre o resultado, precisamos enriquecer a estrutura de <span class="math inline">\(\omega\)</span> e, consequentemente, de <span class="math inline">\(\Omega\)</span>.</p>
-<hr>
-<p><strong>→ Agora considere um problema extremamente comum em Data Science: churn.</strong></p>
-<p>Suponha que acompanhamos um cliente durante determinado período e queremos registrar apenas uma coisa:</p>
+<p>A situação real não mudou. Mudou <strong>a pergunta que queremos responder</strong> e, com ela, a resolução do nosso modelo.</p>
+<p>O princípio é:</p>
 <blockquote class="blockquote">
-<p><strong>O cliente cancelará ou permanecerá ativo?</strong></p>
-</blockquote>
-<p>Um espaço amostral possível é simplesmente</p>
-<p><span class="math display">\[
-\Omega=\{\text{churn},\text{não churn}\}.
-\]</span></p>
-<p>Temos apenas dois resultados possíveis. Portanto, estamos novamente diante de um espaço amostral <strong>finito e discreto</strong>.</p>
-<p>Esse exemplo extremamente simples está por trás de problemas muito familiares na indústria.</p>
-<p>Mais adiante, quando introduzirmos <strong>variáveis aleatórias</strong>, poderemos representar esses dois resultados numericamente, por exemplo:</p>
-<p><span class="math display">\[
-Y=1
-\]</span></p>
-<p>para churn e</p>
-<p><span class="math display">\[
-Y=0
-\]</span></p>
-<p>para não churn.</p>
-<p>E quando estudarmos modelos estatísticos, poderemos fazer uma pergunta ainda mais interessante:</p>
-<blockquote class="blockquote">
-<p><strong>Qual é a probabilidade de churn para um cliente com determinadas características?</strong></p>
-</blockquote>
-<p>É exatamente o tipo de problema em que aparece, por exemplo, a <strong>regressão logística</strong> (<em>logistic regression</em>).</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="Do espaço amostral ao Machine Learning">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Do espaço amostral ao Machine Learning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>É interessante perceber a sequência.</p>
-<p>Começamos com algo aparentemente elementar:</p>
-<p><span class="math display">\[
-\Omega=\{\text{churn},\text{não churn}\}.
-\]</span></p>
-<p>Mais adiante, esses resultados poderão ser representados por uma variável <span class="math inline">\(Y\in\{0,1\}\)</span> e poderemos modelar a probabilidade de observar <span class="math inline">\(Y=1\)</span> dadas determinadas características do cliente.</p>
-<p>É daí que surgem muitos problemas que, na prática, chamamos de <strong>classificação binária</strong> (<em>binary classification</em>).</p>
-<p>Problemas de <em>churn prediction</em>, conversão, fraude ou inadimplência não começam no algoritmo.</p>
-<p>Antes de qualquer modelo, existe uma pergunta muito mais básica:</p>
-<blockquote class="blockquote">
-<p><strong>quais são os resultados possíveis do fenômeno que estamos tentando representar?</strong></p>
-</blockquote>
-</div>
-</div>
-<div class="callout callout-style-default callout-important callout-titled" title="Modelar significa escolher o que representar">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Modelar significa escolher o que representar
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Um bom espaço amostral deve distinguir os resultados necessários para responder às perguntas que queremos fazer — sem carregar detalhes que não importam para o problema.</p>
-<p>Portanto, antes mesmo de atribuir probabilidades, já estamos tomando uma decisão de modelagem:</p>
-<blockquote class="blockquote">
-<p><strong>Que aspectos da realidade precisamos representar?</strong></p>
-</blockquote>
-</div>
-</div>
-</section>
-<section id="o-espaço-amostral-precisa-cobrir-todas-as-possibilidades" class="level3">
-<h3 class="anchored" data-anchor-id="o-espaço-amostral-precisa-cobrir-todas-as-possibilidades">O espaço amostral precisa cobrir todas as possibilidades</h3>
-<p>São duas as condições importantes nessa construção:</p>
-<ul>
-<li><strong>coletivamente exaustivo:</strong> todos os resultados que podem ocorrer estão representados em <span class="math inline">\(\Omega\)</span>; nenhum resultado possível ficou de fora;</li>
-<li><strong>mutuamente exclusivo:</strong> em cada realização do experimento, apenas um desses resultados ocorre.</li>
-</ul>
-<section id="coletivamente-exaustivo" class="level4">
-<h4 class="anchored" data-anchor-id="coletivamente-exaustivo">Coletivamente exaustivo</h4>
-<p>Existe uma condição importante na construção de <span class="math inline">\(\Omega\)</span>:</p>
-<blockquote class="blockquote">
-<p><strong>Depois que o experimento for realizado, o resultado observado precisa necessariamente estar dentro do espaço amostral que definimos.</strong></p>
-</blockquote>
-<p>Quando isso acontece, dizemos que os resultados em <span class="math inline">\(\Omega\)</span> são <strong>coletivamente exaustivos</strong>.</p>
-<p>“Coletivamente exaustivos” significa simplesmente:</p>
-<blockquote class="blockquote">
-<p><strong>juntos, eles esgotam todas as possibilidades.</strong></p>
-</blockquote>
-<p>Considere o experimento:</p>
-<blockquote class="blockquote">
-<p>lançar uma moeda duas vezes e registrar, na ordem, o resultado dos dois lançamentos.</p>
-</blockquote>
-<p>Já vimos que</p>
-<p><span class="math display">\[
-\Omega
-=
-\{H,T\}\times\{H,T\}
-=
-\{
-(H,H),(H,T),(T,H),(T,T)
-\}.
-\]</span></p>
-<p>Por que precisamos tanto de <span class="math inline">\((H,T)\)</span> quanto de <span class="math inline">\((T,H)\)</span>?</p>
-<p>Porque eles representam resultados diferentes:</p>
-<ul>
-<li><span class="math inline">\((H,T)\)</span>: primeiro saiu cara e depois coroa;</li>
-<li><span class="math inline">\((T,H)\)</span>: primeiro saiu coroa e depois cara.</li>
-</ul>
-<p>Se definíssemos</p>
-<p><span class="math display">\[
-\Omega=
-\{
-(H,H),(H,T),(T,T)
-\},
-\]</span></p>
-<p>o espaço amostral estaria incompleto.</p>
-<p>Se o experimento produzisse primeiro <span class="math inline">\(T\)</span> e depois <span class="math inline">\(H\)</span>, teríamos observado um resultado possível que <strong>não existe em <span class="math inline">\(\Omega\)</span></strong>.</p>
-<p>Portanto, esse espaço amostral não seria coletivamente exaustivo.</p>
-<div class="callout callout-style-default callout-warning callout-titled" title="O erro que essa ideia evita">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-O erro que essa ideia evita
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>A exaustividade funciona como uma checagem de sanidade do modelo:</p>
-<blockquote class="blockquote">
-<p><strong>existe alguma coisa que pode acontecer no mundo, mas que nosso espaço amostral esqueceu de representar?</strong></p>
-</blockquote>
-<p>No exemplo das moedas, esquecer <span class="math inline">\((T,H)\)</span> produz exatamente esse problema.</p>
-<p>Em dados reais, a mesma falha aparece quando criamos categorias para um processo e deixamos de fora um estado que pode realmente ocorrer.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled" title="Mas $(H,T)$ e $(T,H)$ precisam sempre ser separados?">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Mas <span class="math inline">\((H,T)\)</span> e <span class="math inline">\((T,H)\)</span> precisam sempre ser separados?
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Não.</p>
-<p>Tudo depende do que definimos como resultado do experimento.</p>
-<p>Se nosso experimento for</p>
-<blockquote class="blockquote">
-<p>lançar uma moeda duas vezes e registrar a sequência,</p>
-</blockquote>
-<p>então <span class="math inline">\((H,T)\)</span> e <span class="math inline">\((T,H)\)</span> são resultados diferentes e precisamos de</p>
-<p><span class="math display">\[
-\Omega
-=
-\{
-(H,H),(H,T),(T,H),(T,T)
-\}.
-\]</span></p>
-<p>Mas suponha que nosso experimento seja</p>
-<blockquote class="blockquote">
-<p>lançar uma moeda duas vezes e registrar apenas o número de caras.</p>
-</blockquote>
-<p>Agora não nos interessa a ordem.</p>
-<p>Os possíveis resultados são simplesmente</p>
-<p><span class="math display">\[
-\Omega=\{0,1,2\}.
-\]</span></p>
-<p>Tanto <span class="math inline">\((H,T)\)</span> quanto <span class="math inline">\((T,H)\)</span> correspondem ao mesmo resultado nessa nova representação:</p>
-<p><span class="math display">\[
-1\text{ cara}.
-\]</span></p>
-<p>Os dois espaços amostrais são válidos.</p>
-<p>Eles representam aspectos diferentes do mesmo fenômeno.</p>
-</div>
-</div>
-<p>Isso reforça uma ideia que vimos anteriormente:</p>
-<blockquote class="blockquote">
-<p><strong>o espaço amostral depende daquilo que escolhemos observar e das perguntas que queremos responder.</strong></p>
-</blockquote>
-<p>Há ainda uma segunda condição.</p>
-</section>
-<section id="mutuamente-exclusivo" class="level4">
-<h4 class="anchored" data-anchor-id="mutuamente-exclusivo">Mutuamente exclusivo</h4>
-<p>Os elementos de <span class="math inline">\(\Omega\)</span> devem ser definidos de maneira que, ao realizar o experimento, possamos identificar <strong>um único resultado</strong>.</p>
-<p>Dizemos que os resultados são <strong>mutuamente exclusivos</strong>.</p>
-<p>No experimento em que registramos a sequência das duas moedas, se observamos</p>
-<p><span class="math display">\[
-(H,T),
-\]</span></p>
-<p>não observamos simultaneamente</p>
-<p><span class="math display">\[
-(H,H),\qquad(T,H)\qquad\text{ou}\qquad(T,T).
-\]</span></p>
-<p>Assim:</p>
-<ul>
-<li><strong>coletivamente exaustivos:</strong> todos os resultados que podem ocorrer estão representados em <span class="math inline">\(\Omega\)</span>; nenhum resultado possível ficou de fora;</li>
-<li><strong>mutuamente exclusivos:</strong> apenas um deles ocorre em cada realização.</li>
-</ul>
-<p>Juntas, as duas ideias nos dão:</p>
-<p><span class="math display">\[
-\boxed{\text{em cada realização do experimento, exatamente um } \omega\in\Omega \text{ ocorre}.}
-\]</span></p>
-<div class="callout callout-style-default callout-tip callout-titled" title="Teste seu entendimento">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Teste seu entendimento
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Lançamos uma moeda duas vezes e queremos registrar <strong>apenas se as duas faces foram iguais ou diferentes</strong>.</p>
-<p>Qual dos seguintes espaços amostrais representa corretamente esse experimento?</p>
-<ol type="1">
-<li><p><span class="math inline">\(\Omega=\{(H,H),(H,T),(T,H),(T,T)\}\)</span></p></li>
-<li><p><span class="math inline">\(\Omega=\{\text{iguais},\text{diferentes}\}\)</span></p></li>
-<li><p><span class="math inline">\(\Omega=\{(H,H),(H,T),(T,T)\}\)</span></p></li>
-</ol>
-<p>O segundo é suficiente para a pergunta que escolhemos responder.</p>
-<p>O primeiro também contém informação suficiente, mas registra mais detalhes do que precisamos.</p>
-<p>O terceiro não é válido se estivermos registrando a sequência completa, pois deixou de fora o resultado possível <span class="math inline">\((T,H)\)</span>.</p>
-</div>
-</div>
-<p><strong>Podemos resumir as duas condições assim:</strong></p>
-$$
-<span class="math display">\[\begin{gathered}
-
-\underbrace{\text{pelo menos um resultado ocorre}}_{\text{exaustividade}}
-
-\;+\;
-
-\underbrace{\text{no máximo um resultado ocorre}}_{\text{exclusividade}}
-
-\qquad \Longrightarrow
-
-\\[0.8em]
-
-\Longrightarrow \qquad
-
-\underbrace{\text{exatamente um resultado ocorre}}_{\text{as duas juntas}}
-
-\end{gathered}\]</span>
-<p>$$</p>
-<p>Veja como a matemática vem justamente para <strong>esclarecer coisas que, intuitivamente, às vezes podem parecer óbvias ou até confusas</strong>.</p>
-<p>Quando dizemos que os resultados são coletivamente exaustivos e mutuamente exclusivos, estamos transformando em condições precisas uma ideia muito simples:</p>
-<blockquote class="blockquote">
-<p>ao realizar o experimento, nenhum resultado possível pode ter sido esquecido e não pode haver ambiguidade sobre qual resultado ocorreu.</p>
+<p><strong>os resultados precisam ser mutuamente exclusivos, coletivamente exaustivos e detalhados o suficiente para responder à pergunta que queremos fazer — sem preservar informação que não precisamos.</strong></p>
 </blockquote>
 </section>
 </section>
@@ -1085,59 +887,34 @@ Etapa 2 de 3
 </div>
 <section id="eventos-transformando-perguntas-reais-em-conjuntos" class="level3">
 <h3 class="anchored" data-anchor-id="eventos-transformando-perguntas-reais-em-conjuntos">Eventos: transformando perguntas reais em conjuntos</h3>
-<p>Olha que nuance interessante:</p>
-<ul>
-<li>quando realizamos um experimento (ou um ensaio desse experimento), observamos apenas <strong>um único resultado</strong> <span class="math inline">\(\omega\in\Omega\)</span>;</li>
-<li>mas, na prática, queremos calcular probabilidades de perguntas muito mais amplas do que simplesmente <strong>qual resultado específico será observado</strong>.</li>
-</ul>
-<p>Por exemplo, em vez de perguntar apenas:</p>
-<blockquote class="blockquote">
-<p><strong>Qual é a probabilidade de observar exatamente <span class="math inline">\(HT\)</span>?</strong></p>
-</blockquote>
-<p>queremos responder perguntas como:</p>
-<blockquote class="blockquote">
-<p><strong>Qual é a probabilidade de sair pelo menos uma cara em dois lançamentos?</strong></p>
-</blockquote>
-<blockquote class="blockquote">
-<p><strong>Qual é a probabilidade de um usuário realizar uma compra, independentemente da forma de pagamento?</strong></p>
-</blockquote>
-<blockquote class="blockquote">
-<p><strong>Qual é a probabilidade de um cliente cancelar sua assinatura nos próximos 30 dias?</strong></p>
-</blockquote>
-<p>Como representamos matematicamente perguntas desse tipo?</p>
-<p>É justamente para isso que introduzimos os <strong>eventos</strong>, pois a matemática representa essas perguntas por meio de <strong>eventos</strong>.</p>
-<p>Considere o experimento de lançar uma moeda duas vezes:</p>
-<p><span class="math inline">\(\Omega=\{HH,HT,TH,TT\}\)</span>.</p>
-<p>A pergunta</p>
+<p>Quando realizamos um ensaio, observamos <strong>um único resultado</strong> <span class="math inline">\(\omega\in\Omega\)</span>.</p>
+<p>Mas normalmente queremos fazer perguntas mais amplas do que “qual resultado específico ocorreu?”.</p>
+<p>Considere novamente um único ensaio do experimento com duas moedas distinguíveis A e B. Como definimos como <strong>um único ensaio</strong>, sabemos que um possível elemento é o <span class="math inline">\(w = (H, T)\)</span>.</p>
+<p>Isso nos leva a definir o espaço amostral garantindo as suas duas propriedades (mutuamente exclusivo e coletivamente exaustivo). Temos, então:</p>
+<p><span class="math display">\[
+\Omega=\{(H,H),(H,T),(T,H),(T,T)\}.
+\]</span></p>
+<p>Podemos perguntar, por exemplo:</p>
 <blockquote class="blockquote">
 <p><strong>Saiu exatamente uma cara?</strong></p>
 </blockquote>
-<p>é satisfeita pelos resultados <span class="math inline">\(HT\)</span> e <span class="math inline">\(TH\)</span>.</p>
-<p>Podemos reuni-los no conjunto <span class="math inline">\(A=\{HT,TH\}\)</span>.</p>
-<p>Esse conjunto é um <strong>evento</strong>:</p>
-<ul>
-<li>um subconjunto de <span class="math inline">\(\Omega\)</span> que representa alguma possível afirmação ou possível pergunta sobre o experimento.</li>
-</ul>
+<p>Essa afirmação é verdadeira para dois resultados possíveis: <span class="math inline">\((H,T)\)</span> e <span class="math inline">\((T,H)\)</span>.</p>
+<p>Reunimos então esses resultados no conjunto</p>
+<p><span class="math display">\[
+A=\{(H,T),(T,H)\}.
+\]</span></p>
+<p>Esse conjunto é um <span class="conceito"><strong>evento</strong></span>: um subconjunto de <span class="math inline">\(\Omega\)</span> que representa uma pergunta ou afirmação sobre o resultado do experimento.</p>
 <p><span class="math display">\[
 \boxed{
-\text{pergunta mais interessante}
+\text{pergunta sobre o experimento}
 \longrightarrow
-\text{evento }A
-\longrightarrow
-A\subseteq\Omega
-\text{ (contexto de possíveis resultados)}
+\text{evento }A\subseteq\Omega
 }
 \]</span></p>
 <p><img src="../images/espaco_amostral.png" class="course-figure img-fluid" style="width:50.0%"></p>
-<p>Quando realizamos o experimento, observamos um único resultado <span class="math inline">\(\omega\)</span>.</p>
-<p>Se <span class="math inline">\(\omega\in A\)</span>, dizemos que <strong>o evento <span class="math inline">\(A\)</span> ocorreu</strong>.</p>
-<p>Por exemplo, se</p>
-<p><span class="math inline">\(A=\{HT,TH\}\)</span></p>
-<p>representa a pergunta</p>
-<blockquote class="blockquote">
-<p><strong>Saiu exatamente uma cara?</strong></p>
-</blockquote>
-<p>e observamos <span class="math inline">\(\omega=HT\)</span>, então <span class="math inline">\(\omega\in A\)</span> e dizemos que o evento <span class="math inline">\(A\)</span> ocorreu.</p>
+<p>Quando realizamos o ensaio e observamos <span class="math inline">\(\omega\)</span>, dizemos que o evento <span class="math inline">\(A\)</span> ocorreu exatamente quando <span class="math inline">\(\omega\in A\)</span>.</p>
+<p>Por exemplo, se observamos <span class="math inline">\(\omega=(H,T)\)</span>, então <span class="math inline">\(\omega\in A\)</span> e a resposta para “saiu exatamente uma cara?” é sim.</p>
+<p><span class="atencao"><strong>Lembrete de notação:</strong> manteremos os pares explícitos, como <span class="math inline">\((H,T)\)</span>, porque eles deixam visível qual informação pertence a cada coordenada. Se alguma fonte escrever <span class="math inline">\(HT\)</span>, leia essa forma apenas como uma abreviação de <span class="math inline">\((H,T)\)</span> neste tipo de experimento.</span></p>
 <div class="callout callout-style-default callout-important callout-titled" title="Resultado e evento não são a mesma coisa">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1148,57 +925,57 @@ Resultado e evento não são a mesma coisa
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>O <strong>resultado</strong> é aquilo que observamos em uma realização do experimento.</p>
-<p>O <strong>evento</strong> é um conjunto de resultados que representa alguma pergunta ou acontecimento de interesse.</p>
-<p>Por isso, observar <span class="math inline">\(HT\)</span> não significa que <span class="math inline">\(HT\)</span> e <span class="math inline">\(TH\)</span> ocorreram ao mesmo tempo. Significa apenas que o resultado observado pertence ao conjunto</p>
-<p><span class="math inline">\(A=\{HT,TH\}\)</span>.</p>
-<p>Essa linguagem é importante porque conecta a matemática ao experimento real:</p>
-<blockquote class="blockquote">
-<p>dizer que <strong><span class="math inline">\(A\)</span> ocorreu</strong> significa simplesmente que o resultado observado pertence a <span class="math inline">\(A\)</span>.</p>
-</blockquote>
-<p>E é justamente sobre eventos que queremos fazer perguntas probabilísticas:</p>
-<blockquote class="blockquote">
-<p><strong>Qual é a probabilidade de o evento <span class="math inline">\(A\)</span> ocorrer?</strong></p>
-</blockquote>
+<p>O <strong>resultado</strong> é um único elemento <span class="math inline">\(\omega\in\Omega\)</span> observado em um ensaio.</p>
+<p>O <strong>evento</strong> é um conjunto de resultados, isto é, <span class="math inline">\(A\subseteq\Omega\)</span>.</p>
+<p>Assim, observar <span class="math inline">\(\omega=(H,T)\)</span> não significa que <span class="math inline">\((H,T)\)</span> e <span class="math inline">\((T,H)\)</span> ocorreram ao mesmo tempo. Significa que o único resultado observado, <span class="math inline">\((H,T)\)</span>, pertence ao evento</p>
+<p><span class="math inline">\(A=\{(H,T),(T,H)\}\)</span>.</p>
+<p>Dizer que <strong><span class="math inline">\(A\)</span> ocorreu</strong> significa simplesmente que <span class="math inline">\(\omega\in A\)</span>.</p>
 </div>
 </div>
 </section>
 <section id="combinando-perguntas" class="level3">
 <h3 class="anchored" data-anchor-id="combinando-perguntas">Combinando perguntas</h3>
-<blockquote class="blockquote">
-<p>E se quisermos fazer perguntas ainda mais complexas?</p>
-</blockquote>
-<p>A estrutura matemática que essa formalização está construindo, precisa se capaz de permitir isso.</p>
-<p>Como eventos são conjuntos, operações entre conjuntos permitem representar perguntas mais complexas.</p>
-<p>Se</p>
-<p><span class="math inline">\(A=\)</span> “a primeira moeda é cara” e<br>
-<span class="math inline">\(B=\)</span> “a segunda moeda é cara”,</p>
-<p>então:</p>
+<p>Como eventos são conjuntos, operações entre conjuntos nos permitem combinar perguntas sobre o mesmo ensaio.</p>
+<p>Defina</p>
+<p><span class="math inline">\(A=\)</span> “a moeda A mostra cara” e<br>
+<span class="math inline">\(B=\)</span> “a moeda B mostra cara”.</p>
+<p>Então:</p>
 <ul>
-<li><span class="math inline">\(A\cap B\)</span>: <strong><span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> ocorrem</strong>;</li>
-<li><span class="math inline">\(A\cup B\)</span>: <strong><span class="math inline">\(A\)</span> ou <span class="math inline">\(B\)</span> ocorre</strong>;</li>
-<li><span class="math inline">\(A^c\)</span>: <strong><span class="math inline">\(A\)</span> não ocorre</strong>.</li>
+<li><span class="math inline">\(A\cap B\)</span>: <strong>A e B ocorrem</strong>;</li>
+<li><span class="math inline">\(A\cup B\)</span>: <strong>A ou B ocorre</strong>;</li>
+<li><span class="math inline">\(A^c\)</span>: <strong>A não ocorre</strong>.</li>
 </ul>
-<p>É por isso que a Teoria dos Conjuntos aparece aqui:</p>
-<ul>
-<li>ela fornece uma linguagem precisa para combinar perguntas sobre o experimento.</li>
-</ul>
-<p>Um único resultado também pode fazer vários eventos ocorrerem.</p>
-<p>Se <span class="math inline">\(\omega=HH\)</span>, por exemplo, então <span class="math inline">\(\omega\in A\)</span> e <span class="math inline">\(\omega\in B\)</span>. Portanto, <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> ocorreram.</p>
-<p>Ou seja:</p>
-<ul>
-<li><span class="math inline">\(HH\in A\)</span>: a resposta para <strong>“a primeira moeda é cara?”</strong> é sim;</li>
-<li><span class="math inline">\(HH\in B\)</span>: a resposta para <strong>“a segunda moeda é cara?”</strong> também é sim.</li>
-</ul>
-<p>Portanto, dizemos que <strong>os eventos <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> ocorreram</strong>.</p>
+<p>É por isso que a Teoria dos Conjuntos aparece aqui: ela fornece uma linguagem precisa para combinar afirmações sobre o resultado do experimento.</p>
+<p>Um único resultado pode fazer <strong>vários eventos</strong> ocorrerem.</p>
+<p>Se <span class="math inline">\(\omega=(H,H)\)</span>, por exemplo, então <span class="math inline">\(\omega\in A\)</span> e <span class="math inline">\(\omega\in B\)</span>. Portanto, os dois eventos ocorreram.</p>
+<p>Isso não contradiz a exclusividade dos resultados elementares: houve apenas <strong>um resultado</strong>, <span class="math inline">\((H,H)\)</span>, mas esse mesmo resultado pode pertencer a vários conjuntos-eventos.</p>
 </section>
 <section id="dois-eventos-especiais" class="level3">
 <h3 class="anchored" data-anchor-id="dois-eventos-especiais">Dois eventos especiais</h3>
-<p>A própria estrutura dos conjuntos na matemática nos dá ainda dois eventos interessantes.</p>
-<ul>
-<li><p>Como um conjunto por ser subconjunto de si mesmo (<span class="math inline">\(\Omega\subseteq\Omega\)</span>), o próprio <span class="math inline">\(\Omega\)</span> é um possível evento. Chamamos esse caso de <strong>evento certo</strong> (<em>certain event</em>), pois algum resultado de <span class="math inline">\(\Omega\)</span> necessariamente ocorre em toda realização do experimento. Por isso, mais adiante veremos que <span class="math inline">\(P(\Omega)=1\)</span>: ou seja, o espaço amostral inteiro tem <strong>100% de probabilidade de ocorrer</strong>.</p></li>
-<li><p>E como <span class="math inline">\(\varnothing\subseteq\Omega\)</span>, o conjunto vazio também é um evento: o <strong>evento impossível</strong> (<em>impossible event</em>), pois nenhum resultado possível do experimento pertence a ele. Por isso, mais adiante veremos que <span class="math inline">\(P(\varnothing)=0\)</span>: ou seja, o evento impossível tem <strong>0% de probabilidade de ocorrer</strong>.</p></li>
-</ul>
+<p>A própria estrutura dos conjuntos nos fornece dois eventos que aparecerão o tempo todo.</p>
+<p>Considere um dado comum, com <span class="math inline">\(\Omega=\{1,2,3,4,5,6\}\)</span>.</p>
+<section id="evento-certo-omega" class="level4">
+<h4 class="anchored" data-anchor-id="evento-certo-omega">Evento certo: <span class="math inline">\(\Omega\)</span></h4>
+<p>Pergunte:</p>
+<blockquote class="blockquote">
+<p><strong>O resultado foi algum número entre 1 e 6?</strong></p>
+</blockquote>
+<p>Qualquer possível resultado do experimento torna essa afirmação verdadeira. O evento correspondente é o próprio <span class="math inline">\(\Omega\)</span>.</p>
+<p>Por isso ele é chamado de <span class="conceito"><strong>evento certo</strong></span> (<em>certain event</em>). Mais adiante teremos <span class="math inline">\(P(\Omega)=1\)</span>.</p>
+</section>
+<section id="evento-impossível-varnothing" class="level4">
+<h4 class="anchored" data-anchor-id="evento-impossível-varnothing">Evento impossível: <span class="math inline">\(\varnothing\)</span></h4>
+<p>Agora pergunte:</p>
+<blockquote class="blockquote">
+<p><strong>O resultado do dado foi 7?</strong></p>
+</blockquote>
+<p>Nenhum elemento de <span class="math inline">\(\Omega\)</span> satisfaz essa afirmação. O conjunto de resultados que a tornariam verdadeira não contém elemento algum:</p>
+<p><span class="math display">\[
+\varnothing.
+\]</span></p>
+<p>Por isso <span class="math inline">\(\varnothing\)</span> é o <span class="conceito"><strong>evento impossível</strong></span> (<em>impossible event</em>). Mais adiante teremos <span class="math inline">\(P(\varnothing)=0\)</span>.</p>
+<p>Esses exemplos podem parecer óbvios, mas mostram a lógica dos eventos com clareza: <strong>uma pergunta é representada pelo conjunto de todos os resultados que fariam a resposta ser “sim”.</strong></p>
+</section>
 </section>
 <section id="de-eventos-para-uma-família-de-eventos" class="level3">
 <h3 class="anchored" data-anchor-id="de-eventos-para-uma-família-de-eventos">De eventos para uma família de eventos</h3>
@@ -1428,6 +1205,27 @@ f(x).
 <p><span class="math display">\[
 P:\mathcal F\longrightarrow[0,1].
 \]</span></p>
+<div class="callout callout-style-default callout-important callout-titled" title="O que entra dentro de $P(\cdot)$?">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+O que entra dentro de <span class="math inline">\(P(\cdot)\)</span>?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Até este ponto do curso, a resposta é simples:</p>
+<blockquote class="blockquote">
+<p><strong>eventos.</strong></p>
+</blockquote>
+<p>Formalmente, escrevemos <span class="math inline">\(P(A)\)</span> porque <span class="math inline">\(A\in\mathcal F\)</span>, e cada <span class="math inline">\(A\)</span> é um <strong>conjunto de resultados possíveis</strong>.</p>
+<p>Mais adiante aparecerão notações que visualmente parecem colocar outros objetos dentro de <span class="math inline">\(P(\cdot)\)</span>. Quando chegarmos lá, veremos que por trás delas continua existindo um evento. Por enquanto, mantenha a regra:</p>
+<p><span class="math display">\[
+\boxed{A\in\mathcal F\quad\longmapsto\quad P(A)}.
+\]</span></p>
+</div>
+</div>
 <p>Compare com o que acabamos de ver:</p>
 <p><span class="math display">\[
 x
@@ -1504,70 +1302,63 @@ P(\{H\})
 </section>
 <section id="por-que-pensar-em-probabilidade-como-uma-medida" class="level3">
 <h3 class="anchored" data-anchor-id="por-que-pensar-em-probabilidade-como-uma-medida">Por que pensar em probabilidade como uma “medida”?</h3>
-<p>Até aqui chegamos a uma função</p>
-<p><span class="math display">\[
-P:\mathcal F\longrightarrow[0,1],
-\]</span></p>
-<p>que atribui um número a cada evento.</p>
-<p>Mas surge uma pergunta natural:</p>
+<p>Até aqui chegamos a uma função <span class="math inline">\(P:\mathcal F\to[0,1]\)</span> que atribui números a eventos.</p>
+<p>Mas por que a matemática moderna decidiu tratar probabilidade justamente como uma <strong>medida</strong>?</p>
+<p>A motivação fica mais clara se pensarmos no problema que precisava ser resolvido.</p>
+<p>Em situações finitas, podemos imaginar que cada resultado recebe uma parcela de probabilidade e que a probabilidade de um evento é obtida somando essas parcelas.</p>
+<p>Mas essa intuição começa a ficar insuficiente quando o espaço amostral é infinito — especialmente quando é contínuo.</p>
+<p>Em um intervalo contínuo existem incontáveis pontos. Podemos ter cada ponto individual com probabilidade zero e, ainda assim, um intervalo inteiro com probabilidade positiva.</p>
+<p>Então a pergunta deixa de ser apenas</p>
 <blockquote class="blockquote">
-<p><strong>que tipo de função deve ser essa?</strong></p>
+<p><strong>quanto vale a probabilidade de cada ponto?</strong></p>
 </blockquote>
-<p>É aqui que entra uma ideia importante da Matemática: a de <strong>medida</strong>.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="A ideia de medida">
+<p>e passa a ser</p>
+<blockquote class="blockquote">
+<p><strong>como atribuir, de maneira consistente, um tamanho a conjuntos inteiros de resultados?</strong></p>
+</blockquote>
+<p>Essa pergunta já havia aparecido em outra área da Matemática.</p>
+<p>Matemáticos que estudavam comprimento, área e volume também precisavam responder:</p>
+<blockquote class="blockquote">
+<p><strong>como atribuir um tamanho consistente a conjuntos, inclusive quando eles envolvem infinitos pontos e operações de limite?</strong></p>
+</blockquote>
+<p>Foi para problemas desse tipo que a <strong>Teoria da Medida</strong> se desenvolveu no fim do século XIX e início do século XX, com ideias associadas, entre outros, a Borel e Lebesgue.</p>
+<p>A grande sacada para a Probabilidade foi perceber que a estrutura necessária era praticamente a mesma.</p>
+<p>Em vez de medir <strong>comprimento</strong> ou <strong>área</strong> de conjuntos, poderíamos medir o seu <strong>tamanho probabilístico</strong>.</p>
+<p>Essa conexão foi consolidada na axiomatização moderna da Probabilidade em 1933: uma probabilidade pode ser tratada matematicamente como um caso especial de medida, com uma escala específica em que o espaço inteiro possui medida <span class="math inline">\(1\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="A dor matemática que a ideia de medida resolve">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-A ideia de medida
+A dor matemática que a ideia de medida resolve
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>A <strong>Teoria da Medida</strong> (<em>Measure Theory</em>) estuda, de forma geral, como atribuir um “tamanho” a conjuntos de maneira consistente.</p>
-<p>Dependendo do problema, esse tamanho pode representar comprimento, área, volume ou alguma outra noção de “quanto” existe naquele conjunto.</p>
-<p>Mas não podemos atribuir esses tamanhos de qualquer maneira. Esperamos algumas propriedades naturais. Por exemplo:</p>
+<p>Queremos uma regra para medir conjuntos que continue coerente mesmo quando saímos de exemplos finitos simples e entramos em espaços infinitos e contínuos.</p>
+<p>A estrutura de medida nos dá exatamente isso:</p>
 <ul>
-<li><strong>tamanhos não podem ser negativos</strong>;</li>
-<li><strong>um conjunto sem nenhum elemento deve naturalmente ter tamanho zero</strong>;</li>
-<li><strong>se juntamos conjuntos que não se sobrepõem, o tamanho total deve refletir a soma dos tamanhos das partes</strong>.</li>
+<li>tamanhos não negativos;</li>
+<li>adição coerente para conjuntos que não se sobrepõem;</li>
+<li>uma extensão coerente quando passamos de um número finito para uma sequência infinita de conjuntos;</li>
+<li>no caso da Probabilidade, tamanho total normalizado para <span class="math inline">\(1\)</span>.</li>
 </ul>
-<p>Foi justamente essa estrutura que permitiu a Kolmogorov construir a Teoria da Probabilidade moderna:</p>
-<blockquote class="blockquote">
-<p><strong>tratar probabilidade como um caso particular de medida.</strong></p>
-</blockquote>
 </div>
 </div>
-<p>Em Probabilidade, os conjuntos que queremos medir são os <strong>eventos</strong>.</p>
-<p>Assim, <span class="math inline">\(P(A)\)</span> pode ser interpretado como o <strong>tamanho probabilístico</strong> do evento <span class="math inline">\(A\)</span>.</p>
-<p>Ou, em linguagem mais natural:</p>
-<blockquote class="blockquote">
-<p><strong>quão provável é que o resultado do experimento caia dentro de <span class="math inline">\(A\)</span>?</strong></p>
-</blockquote>
-<p>Podemos imaginar uma massa total igual a <span class="math inline">\(1\)</span> distribuída sobre o espaço amostral <span class="math inline">\(\Omega\)</span>.</p>
-<p>Então:</p>
-<ul>
-<li><span class="math inline">\(P(\Omega)=1\)</span>: toda a massa probabilística está em <span class="math inline">\(\Omega\)</span>;</li>
-<li><span class="math inline">\(P(A)\)</span>: mede quanto dessa massa está associado ao evento <span class="math inline">\(A\)</span>.</li>
-</ul>
-<p>Por exemplo, para uma moeda justa,</p>
+<p>Em Probabilidade, os conjuntos que medimos são os <strong>eventos</strong>.</p>
+<p>Assim, <span class="math inline">\(P(A)\)</span> pode ser interpretado como o tamanho probabilístico do conjunto <span class="math inline">\(A\)</span>: quanto da massa probabilística total está associado àquele evento.</p>
+<p>Podemos imaginar uma massa total igual a <span class="math inline">\(1\)</span> distribuída sobre <span class="math inline">\(\Omega\)</span>. Então <span class="math inline">\(P(\Omega)=1\)</span>, enquanto <span class="math inline">\(P(A)\)</span> mede quanto dessa massa está associado a <span class="math inline">\(A\)</span>.</p>
+<p>Para uma moeda justa, por exemplo, <span class="math inline">\(P(\{H\})=0.5\)</span> e <span class="math inline">\(P(\{T\})=0.5\)</span>.</p>
+<p>A ideia central é:</p>
 <p><span class="math display">\[
-P(\{H\})=0.5,
-\qquad
-P(\{T\})=0.5.
+\boxed{
+\text{probabilidade}
+=
+\text{uma medida sobre eventos, com }P(\Omega)=1
+}
 \]</span></p>
-<p>Metade da massa está associada a cada resultado.</p>
-<p>Existe ainda uma particularidade importante da Probabilidade:</p>
-<ul>
-<li>sem nem perceber, escolhemos uma <em>escala</em> em que <strong>o espaço inteiro tem tamanho igual a <span class="math inline">\(1\)</span></strong>.</li>
-</ul>
-<p>Ou seja, ao fazermos o paralelo com a Teoria da Medida, podemos dizer que:</p>
-<blockquote class="blockquote">
-<p><strong>Probabilidade nada mais é que uma medida sobre eventos, normalizada de forma que <span class="math inline">\(\Omega\)</span> tenha tamanho probabilístico igual a <span class="math inline">\(1\)</span>.</strong></p>
-</blockquote>
-<p>Essa visão será especialmente útil quando voltarmos aos espaços amostrais <strong>infinitos e não enumeráveis</strong> (<em>lembra?</em>).</p>
-<p>Nesses casos, pensar apenas em “<em>dar uma probabilidade para cada resultado individual</em>” deixa de funcionar tão bem.</p>
-<p>Continuamos, porém, podendo atribuir probabilidades (ou seja, <em>medidas</em>, ou ainda melhor, <strong><em>funções</em></strong>) a <strong>conjuntos de resultados</strong> — isto é, a <strong>eventos</strong>.</p>
+<p>Isso explica por que a linguagem de conjuntos que construímos antes não era um detalhe formal desnecessário.</p>
+<p>Quando chegamos a espaços contínuos, nem sempre faz sentido tentar construir a teoria atribuindo probabilidades ponto a ponto. A estrutura correta é atribuir uma medida a <strong>eventos</strong>, isto é, a conjuntos adequados de resultados.</p>
 </section>
 <section id="mas-qualquer-função-serve" class="level3">
 <h3 class="anchored" data-anchor-id="mas-qualquer-função-serve">Mas qualquer função serve?</h3>
@@ -1576,88 +1367,38 @@ P(\{T\})=0.5.
 <p><span class="math display">\[
 P:\mathcal F\longrightarrow[0,1].
 \]</span></p>
-<p>Queremos que <span class="math inline">\(P\)</span> se comporte como uma <strong>medida de probabilidade</strong> (<em>probability measure</em>).</p>
-<p>Ou seja, os “tamanhos probabilísticos” atribuídos aos eventos precisam obedecer a algumas regras para serem coerentes entre si. Regras essas bem parecidas com a que vimos na Teoria da Medida.</p>
-<p>Por exemplo, imagine que uma função atribuísse</p>
-<p><span class="math inline">\(P(\Omega)=0.4\)</span>.</p>
-<p>O número <span class="math inline">\(0.4\)</span> pertence ao intervalo <span class="math inline">\([0,1]\)</span>, então a função estaria respeitando seu contradomínio.</p>
-<p>Mas probabilisticamente isso não faria sentido: <span class="math inline">\(\Omega\)</span> representa <strong>tudo o que pode acontecer</strong>.</p>
-<p>Foi justamente esse problema que <span class="conceito">Kolmogorov</span> formalizou:</p>
-<blockquote class="blockquote">
-<p><strong>quais propriedades uma função <span class="math inline">\(P\)</span> precisa satisfazer para realmente representar probabilidades?</strong></p>
-</blockquote>
-<p>A resposta são os famosos <span class="conceito"><strong>Axiomas de Kolmogorov</strong></span> (<em>Kolmogorov Axioms</em>) 😉.</p>
-<p>Talvez você se lembre deles <em>da escola ou da graduação</em>. Muitas aulas de Probabilidade começam praticamente daqui (olha quanta coisa você perdeu!):</p>
-<p><span class="math display">\[
-P(\Omega)=1,\qquad P(A)\geq0,\qquad\ldots
-\]</span></p>
-<blockquote class="blockquote">
-<p>Só que agora sabemos <strong>de onde essas regras vieram e qual problema elas estão resolvendo (da Teoria da Medida…)</strong>.</p>
-</blockquote>
+<p>Queremos que os números atribuídos aos eventos sejam <strong>coerentes entre si</strong>.</p>
+<p>Por exemplo, se alguém propusesse <span class="math inline">\(P(\Omega)=0.4\)</span>, o valor estaria dentro de <span class="math inline">\([0,1]\)</span>, mas não faria sentido probabilisticamente: <span class="math inline">\(\Omega\)</span> representa <strong>tudo o que pode acontecer</strong>.</p>
+<p>Então precisamos estabelecer algumas regras.</p>
+<p>Para enxergar de onde elas vêm, vamos começar pelo caso mais simples — <strong>um número finito de eventos</strong> — e só depois veremos a sutileza que aparece quando há infinitos.</p>
 </section>
-<section id="os-axiomas-de-kolmogorov" class="level3">
-<h3 class="anchored" data-anchor-id="os-axiomas-de-kolmogorov">Os Axiomas de Kolmogorov</h3>
-<p>A ideia é elegante: começamos com poucas regras fundamentais e, a partir delas, deduzimos várias outras propriedades da Probabilidade.</p>
+<section id="primeiro-três-regras-muito-naturais" class="level3">
+<h3 class="anchored" data-anchor-id="primeiro-três-regras-muito-naturais">Primeiro: três regras muito naturais</h3>
 <section id="não-negatividade" class="level4">
 <h4 class="anchored" data-anchor-id="não-negatividade">1. Não-negatividade</h4>
 <p>Para qualquer evento <span class="math inline">\(A\in\mathcal F\)</span>,</p>
 <p><span class="math display">\[
 \boxed{P(A)\geq0}.
 \]</span></p>
-<p>Isso corresponde diretamente à ideia de medida que acabamos de discutir:</p>
-<blockquote class="blockquote">
-<p><strong>um tamanho não pode ser negativo.</strong></p>
-</blockquote>
-<p>Não faria sentido, por exemplo, dizer que a probabilidade de um cliente cancelar é <span class="math inline">\(-0.2\)</span>.</p>
+<p>Probabilidade representa um tamanho. Portanto, não pode ser negativa.</p>
 </section>
 <section id="normalização" class="level4">
 <h4 class="anchored" data-anchor-id="normalização">2. Normalização</h4>
-<p>O espaço amostral <span class="math inline">\(\Omega\)</span> reúne <strong>tudo o que pode acontecer</strong> no experimento.</p>
-<p>Na Probabilidade, escolhemos uma escala em que o tamanho probabilístico de todo o espaço é igual a <span class="math inline">\(1\)</span>:</p>
+<p>Como <span class="math inline">\(\Omega\)</span> reúne <strong>tudo o que pode acontecer</strong>,</p>
 <p><span class="math display">\[
 \boxed{P(\Omega)=1}.
 \]</span></p>
-<p>Ou seja, temos <span class="math inline">\(100\%\)</span> de probabilidade de que o resultado observado pertença a <span class="math inline">\(\Omega\)</span>.</p>
-<p>Isso formaliza matematicamente a ideia de <strong>evento certo</strong> que vimos anteriormente.</p>
+<p>Temos <span class="math inline">\(100\%\)</span> de probabilidade de que o resultado do ensaio pertença ao espaço amostral que definimos.</p>
 </section>
-<section id="aditividade-enumerável" class="level4">
-<h4 class="anchored" data-anchor-id="aditividade-enumerável">3. Aditividade enumerável</h4>
-<p>Agora recuperamos outra propriedade natural da ideia de medida.</p>
-<p>Suponha que <span class="math inline">\(A_1,A_2,A_3,\ldots\)</span> sejam eventos <strong>mutuamente exclusivos</strong>: eles não se sobrepõem.</p>
-<p>Então,</p>
+<section id="aditividade-por-enquanto-para-dois-eventos" class="level4">
+<h4 class="anchored" data-anchor-id="aditividade-por-enquanto-para-dois-eventos">3. Aditividade — por enquanto, para dois eventos</h4>
+<p>Se <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> são mutuamente exclusivos, isto é, <span class="math inline">\(A\cap B=\varnothing\)</span>, então</p>
 <p><span class="math display">\[
 \boxed{
-P\left(\bigcup_{i=1}^{\infty}A_i\right)
-=
-\sum_{i=1}^{\infty}P(A_i)
+P(A\cup B)=P(A)+P(B)
 }.
 \]</span></p>
-<p>A notação parece mais complicada do que a ideia.</p>
-<p>Ela diz simplesmente:</p>
-<blockquote class="blockquote">
-<p><strong>se juntamos eventos que não se sobrepõem, o tamanho probabilístico do conjunto total é a soma dos tamanhos probabilísticos das partes.</strong></p>
-</blockquote>
-<p>No caso de apenas dois eventos mutuamente exclusivos,</p>
-<p><span class="math display">\[
-A\cap B=\varnothing
-\qquad\Longrightarrow\qquad
-P(A\cup B)=P(A)+P(B).
-\]</span></p>
-<p>Por exemplo, em um lançamento de moeda,</p>
-<p><span class="math inline">\(A=\{H\}\)</span> e <span class="math inline">\(B=\{T\}\)</span></p>
-<p>são mutuamente exclusivos.</p>
-<p>Se a moeda é justa,</p>
-<p><span class="math display">\[
-P(A\cup B)
-=
-P(A)+P(B)
-=
-0.5+0.5
-=
-1.
-\]</span></p>
-<p>E faz sentido:</p>
-<p><span class="math inline">\(A\cup B=\Omega\)</span>.</p>
+<p>A intuição é a mesma de uma medida: se duas partes não se sobrepõem, o tamanho do conjunto formado pelas duas é a soma dos tamanhos de cada parte.</p>
 <div class="callout callout-style-default callout-important callout-titled" title="Por que não pode haver sobreposição?">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1668,14 +1409,174 @@ Por que não pode haver sobreposição?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Se <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> tiverem resultados em comum, simplesmente somar <span class="math inline">\(P(A)+P(B)\)</span> contaria essa parte compartilhada duas vezes.</p>
-<p>Quando</p>
-<p><span class="math inline">\(A\cap B=\varnothing\)</span>,</p>
-<p>não existe sobreposição e podemos simplesmente somar as probabilidades.</p>
-<p>Mais adiante veremos como calcular <span class="math inline">\(P(A\cup B)\)</span> quando os eventos <strong>podem</strong> ocorrer juntos.</p>
+<p>Se <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> tiverem resultados em comum, somar <span class="math inline">\(P(A)+P(B)\)</span> contaria essa parte compartilhada duas vezes.</p>
+<p>Quando <span class="math inline">\(A\cap B=\varnothing\)</span>, isso não acontece.</p>
+</div>
+</div>
+<p>Até aqui, essas três regras já nos permitem trabalhar perfeitamente com qualquer <strong>quantidade finita</strong> de eventos disjuntos.</p>
+<p>Por exemplo, para três eventos disjuntos,</p>
+<p><span class="math display">\[
+P(A\cup B\cup C)
+=
+P(A)+P(B)+P(C),
+\]</span></p>
+<p>porque podemos aplicar a regra duas vezes.</p>
+<p>O mesmo raciocínio funciona para <span class="math inline">\(10\)</span>, <span class="math inline">\(100\)</span> ou qualquer número <strong>finito</strong> de eventos.</p>
+<p>Assim, se</p>
+<p><span class="math display">\[
+A=\{\omega_1,\omega_2,\ldots,\omega_k\},
+\]</span></p>
+<p>podemos escrever</p>
+<p><span class="math display">\[
+A
+=
+\{\omega_1\}\cup\{\omega_2\}\cup\cdots\cup\{\omega_k\}
+\]</span></p>
+<p>e concluir que</p>
+<p><span class="math display">\[
+P(A)
+=
+\sum_{i=1}^{k}P(\{\omega_i\}).
+\]</span></p>
+<p>No caso finito, portanto, a ideia de distribuir massa entre os resultados individuais e depois somar funciona naturalmente.</p>
+</section>
+</section>
+<section id="mas-o-infinito-cria-uma-sutileza-nova" class="level3">
+<h3 class="anchored" data-anchor-id="mas-o-infinito-cria-uma-sutileza-nova">Mas o infinito cria uma sutileza nova</h3>
+<p>Agora considere outro experimento:</p>
+<blockquote class="blockquote">
+<p>lançar uma moeda repetidamente até aparecer a primeira cara.</p>
+</blockquote>
+<p>Um resultado possível é <span class="math inline">\(1\)</span>: a primeira cara apareceu imediatamente.</p>
+<p>Outro é <span class="math inline">\(2\)</span>: primeiro veio coroa e depois cara.</p>
+<p>E assim por diante:</p>
+<p><span class="math display">\[
+\Omega=\{1,2,3,\ldots\}.
+\]</span></p>
+<p>Suponha que a lei de probabilidade nos diga que</p>
+<p><span class="math display">\[
+P(\{n\})=\frac{1}{2^n}.
+\]</span></p>
+<p>Não precisamos derivar essa fórmula agora. O ponto é outro.</p>
+<p>Considere o evento</p>
+<p><span class="math display">\[
+A=\{2,4,6,\ldots\},
+\]</span></p>
+<p>isto é, “a primeira cara apareceu em um número par de lançamentos”.</p>
+<p>Intuitivamente, gostaríamos de escrever</p>
+<p><span class="math display">\[
+P(A)
+=
+P(\{2\})+P(\{4\})+P(\{6\})+\cdots.
+\]</span></p>
+<p>Mas repare no salto que acabamos de fazer.</p>
+<p>A regra anterior nos autorizava a somar <strong>dois eventos</strong> e, repetindo o argumento, qualquer quantidade <strong>finita</strong> deles.</p>
+<p>Agora estamos tentando somar uma quantidade <strong>infinita</strong> de eventos.</p>
+<p>Aplicar uma regra finita muitas vezes continua sendo apenas aplicá-la um número finito de vezes. Isso, sozinho, não justifica passar para</p>
+<p><span class="math display">\[
+P(A)
+=
+\frac14+\frac1{16}+\frac1{64}+\cdots.
+\]</span></p>
+<p>Precisamos de uma regra adicional — ou, mais precisamente, de uma versão <strong>mais forte</strong> da aditividade.</p>
+</section>
+<section id="por-que-aparece-uma-sequência-a_1a_2a_3ldots" class="level3">
+<h3 class="anchored" data-anchor-id="por-que-aparece-uma-sequência-a_1a_2a_3ldots">Por que aparece uma sequência <span class="math inline">\(A_1,A_2,A_3,\ldots\)</span>?</h3>
+<p>Aqui existe uma sutileza importante.</p>
+<p>Uma soma infinita como</p>
+<p><span class="math display">\[
+a_1+a_2+a_3+\cdots
+\]</span></p>
+<p>é construída matematicamente a partir da sequência de somas finitas</p>
+<p><span class="math display">\[
+a_1,\qquad
+a_1+a_2,\qquad
+a_1+a_2+a_3,\qquad\ldots
+\]</span></p>
+<p>e de seu limite.</p>
+<p>Por isso, quando queremos estender a aditividade para infinitos eventos, precisamos conseguir organizá-los como uma <strong>sequência</strong>:</p>
+<p><span class="math display">\[
+A_1,A_2,A_3,\ldots
+\]</span></p>
+<p>ou seja, como primeiro evento, segundo evento, terceiro evento, e assim por diante.</p>
+<p>Essa é exatamente a ideia de uma coleção <span class="conceito"><strong>enumerável</strong></span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Uma palavra que ficará importante no próximo capítulo">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Uma palavra que ficará importante no próximo capítulo
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Por enquanto, pense apenas assim:</p>
+<blockquote class="blockquote">
+<p><strong>enumerável = conseguimos colocar os elementos em uma lista <span class="math inline">\(1,2,3,\ldots\)</span> sem deixar nenhum de fora.</strong></p>
+</blockquote>
+<p>No próximo capítulo, quando entrarmos em espaços contínuos e não enumeráveis, veremos por que essa palavra aparentemente inocente se torna uma sutileza fundamental.</p>
 </div>
 </div>
 </section>
+<section id="aditividade-enumerável" class="level3">
+<h3 class="anchored" data-anchor-id="aditividade-enumerável">Aditividade enumerável</h3>
+<p>Agora fortalecemos a terceira regra.</p>
+<p>Se <span class="math inline">\(A_1,A_2,A_3,\ldots\)</span> são eventos mutuamente exclusivos, então exigimos que</p>
+<p><span class="math display">\[
+\boxed{
+P\left(\bigcup_{i=1}^{\infty}A_i\right)
+=
+\sum_{i=1}^{\infty}P(A_i)
+}.
+\]</span></p>
+<p>Essa propriedade é chamada de <span class="conceito"><strong>aditividade enumerável</strong></span> (<em>countable additivity</em>).</p>
+<p>Ela contém o caso finito anterior como um caso particular, mas agora também nos permite trabalhar com sequências infinitas de eventos.</p>
+<p>Voltando ao exemplo,</p>
+<p><span class="math display">\[
+A=\{2,4,6,\ldots\},
+\]</span></p>
+<p>podemos finalmente justificar</p>
+<p><span class="math display">\[
+P(A)
+=
+\frac14+\frac1{16}+\frac1{64}+\cdots
+=
+\frac13.
+\]</span></p>
+<p>O resultado numérico vem da soma de uma série geométrica. O ponto probabilístico, porém, é anterior:</p>
+<blockquote class="blockquote">
+<p><strong>a aditividade enumerável é o que nos autoriza a transformar aquela união infinita de eventos em uma soma infinita de probabilidades.</strong></p>
+</blockquote>
+</section>
+<section id="agora-sim-os-axiomas-de-kolmogorov" class="level3">
+<h3 class="anchored" data-anchor-id="agora-sim-os-axiomas-de-kolmogorov">Agora sim: os Axiomas de Kolmogorov</h3>
+<p>Aqui vale uma precisão importante.</p>
+<p>As três regras iniciais — não-negatividade, normalização e <strong>aditividade finita</strong> — capturam a intuição básica, mas ainda não são suficientes para a formulação moderna completa.</p>
+<p>Nos <span class="conceito"><strong>Axiomas de Kolmogorov</strong></span>, a terceira propriedade é justamente a versão mais forte que acabamos de construir: <strong>aditividade enumerável</strong>.</p>
+<p>Assim, a forma completa é:</p>
+<p><span class="math display">\[
+\boxed{
+\begin{aligned}
+P(A)&amp;\geq0
+&amp;&amp;\text{(não-negatividade)}\\[3pt]
+P(\Omega)&amp;=1
+&amp;&amp;\text{(normalização)}\\[3pt]
+P\left(\bigcup_{i=1}^{\infty}A_i\right)
+&amp;=
+\sum_{i=1}^{\infty}P(A_i)
+&amp;&amp;\text{para }A_i\text{ mutuamente exclusivos.}
+\end{aligned}
+}
+\]</span></p>
+<p>A progressão é importante:</p>
+<p><span class="math display">\[
+\boxed{\text{somar duas partes}}
+\longrightarrow
+\boxed{\text{somar qualquer número finito}}
+\longrightarrow
+\boxed{\text{somar uma sequência infinita}}
+\]</span></p>
+<p>Foi essa última passagem que exigiu uma nova sutileza matemática.</p>
 </section>
 <section id="três-axiomas-muitas-consequências" class="level3">
 <h3 class="anchored" data-anchor-id="três-axiomas-muitas-consequências">Três axiomas, muitas consequências</h3>
@@ -1712,58 +1613,45 @@ P(A^c)=1-P(A).
 <h2 class="anchored" data-anchor-id="o-espaço-de-probabilidade-está-completo">O espaço de probabilidade está completo</h2>
 <p>Agora temos as três peças da nossa formalização:</p>
 <p><span class="math display">\[
-(\Omega,\mathcal F,P).
+\boxed{(\Omega,\mathcal F,P)}.
 \]</span></p>
 <p><span class="math inline">\(\Omega\)</span> descreve <strong>o que pode acontecer</strong>, <span class="math inline">\(\mathcal F\)</span> organiza <strong>os eventos sobre os quais queremos fazer perguntas</strong>, e <span class="math inline">\(P\)</span> atribui a esses eventos um <strong>tamanho probabilístico coerente</strong>.</p>
-<p>Esse conjunto de três objetos é chamado de <strong>espaço de probabilidade</strong> (<em>probability space</em>).</p>
-<p>Com isso, completamos a primeira etapa da nossa formalização:</p>
-<div class="columns">
-<div class="column" style="width:48%;">
-<div class="callout callout-style-default callout-note callout-titled" title="1 — Formalizar uma realização">
+<p>Esse conjunto de três objetos é chamado de <span class="conceito"><strong>espaço de probabilidade</strong></span> (<em>probability space</em>).</p>
+<p>Com isso, construímos a estrutura básica necessária para representar <strong>um ensaio completo do experimento e a incerteza associada ao seu resultado</strong>.</p>
+<p>Mas ainda não terminamos completamente essa primeira etapa.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="O próximo capítulo ainda está dentro de um ensaio">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-1 — Formalizar uma realização
+O próximo capítulo ainda está dentro de um ensaio
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Já fizemos:</p>
-<p><span class="math display">\[
-\boxed{(\Omega,\mathcal F,P)}
-\]</span></p>
-<p>Temos agora uma estrutura matemática para representar <strong>um ensaio completo do experimento</strong> e a incerteza associada a ele.</p>
+<p>Até aqui trabalhamos principalmente com exemplos em que os resultados podiam ser listados com facilidade.</p>
+<p>No próximo capítulo continuaremos olhando para <strong>um único ensaio</strong>, mas perguntaremos o que muda quando <span class="math inline">\(\Omega\)</span> é contínuo e possui incontáveis resultados possíveis.</p>
+<p>A estrutura continuará sendo <span class="math inline">\((\Omega,\mathcal F,P)\)</span>; o que precisaremos entender melhor é como <span class="math inline">\(\mathcal F\)</span> e <span class="math inline">\(P\)</span> funcionam nesse cenário.</p>
 </div>
 </div>
-</div><div class="column" style="width:48%;">
-<div class="callout callout-style-default callout-note callout-titled" title="2 — Formalizar repetições">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-2 — Formalizar repetições
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Agora vem a próxima pergunta:</p>
+<p>Somente depois de fechar essa lacuna mudaremos de pergunta.</p>
+<p>Em vez de perguntar</p>
 <blockquote class="blockquote">
-<p><strong>o que acontece quando observamos várias realizações desse mesmo experimento?</strong></p>
+<p><strong>como representar a incerteza sobre o resultado de um ensaio?</strong></p>
 </blockquote>
-<p>Essa será a próxima etapa da nossa formalização.</p>
-</div>
-</div>
-</div>
-</div>
-<p>Em resumo:</p>
+<p>passaremos a perguntar</p>
+<blockquote class="blockquote">
+<p><strong>como representar probabilisticamente vários ensaios desse mesmo experimento em conjunto?</strong></p>
+</blockquote>
+<p>Essa mudança exigirá uma estrutura conjunta e nos levará ao <strong>espaço de amostragem (<em>sampling space</em>)</strong>.</p>
+<p>A sequência didática, portanto, é:</p>
 <p><span class="math display">\[
-\boxed{\text{formalizar uma realização}}
-\qquad\longrightarrow\qquad
-\boxed{\text{formalizar repetições}}
+\boxed{\text{um ensaio: }(\Omega,\mathcal F,P)}
+\longrightarrow
+\boxed{\text{caso contínuo}}
+\longrightarrow
+\boxed{\text{vários ensaios conjuntamente}}
 \]</span></p>
-<p>Neste capítulo, concluímos a <strong>primeira caixa</strong>.</p>
-<p>A seguir, começaremos a construir a segunda — e, com isso, daremos um passo importante em direção à ideia de <strong>dados produzidos por várias realizações de um fenômeno aleatório</strong>.</p>
 </section>
 <section id="antes-de-continuar" class="level2">
 <h2 class="anchored" data-anchor-id="antes-de-continuar">Antes de continuar</h2>
@@ -1777,7 +1665,7 @@ P(A^c)=1-P(A).
 <p>lançar uma moeda duas vezes e <strong>registrar a ordem</strong> em que as faces aparecem.</p>
 </blockquote>
 <p>Construa o espaço amostral <span class="math inline">\(\Omega\)</span>.</p>
-<p>Depois explique: por que <span class="math inline">\(HT\)</span> e <span class="math inline">\(TH\)</span> precisam aparecer como <strong>dois resultados distintos</strong> nesse experimento?</p></li>
+<p>Depois explique: por que <span class="math inline">\((H,T)\)</span> e <span class="math inline">\((T,H)\)</span> precisam aparecer como <strong>dois resultados distintos</strong> nesse experimento?</p></li>
 <li><p>Um usuário chega ao checkout de um e-commerce. Se queremos registrar apenas se houve compra, proponha um espaço amostral. Como ele mudaria se também quiséssemos registrar a forma de pagamento?</p></li>
 <li><p>Classifique cada espaço como <strong>finito</strong>, <strong>infinito enumerável</strong> ou <strong>infinito não enumerável</strong>:</p>
 <ul>
@@ -1795,11 +1683,11 @@ P(A^c)=1-P(A).
 <blockquote class="blockquote">
 <p><strong>Saiu exatamente uma cara?</strong></p>
 </blockquote></li>
-<li><p>Se o resultado observado for <span class="math inline">\(\omega=HT\)</span>, o evento <span class="math inline">\(A\)</span> da pergunta anterior ocorreu? Explique usando <span class="math inline">\(\omega\in A\)</span>.</p></li>
+<li><p>Se o resultado observado for <span class="math inline">\(\omega=(H,T)\)</span>, o evento <span class="math inline">\(A\)</span> da pergunta anterior ocorreu? Explique usando <span class="math inline">\(\omega\in A\)</span>.</p></li>
 <li><p>Considere:</p>
 <ul>
-<li><span class="math inline">\(A=\)</span> “a primeira moeda é cara”;</li>
-<li><span class="math inline">\(B=\)</span> “a segunda moeda é cara”.</li>
+<li><span class="math inline">\(A=\)</span> “a moeda A mostra cara”;</li>
+<li><span class="math inline">\(B=\)</span> “a moeda B mostra cara”.</li>
 </ul>
 <p>O que representam <span class="math inline">\(A\cap B\)</span>, <span class="math inline">\(A\cup B\)</span> e <span class="math inline">\(A^c\)</span> em linguagem comum?</p></li>
 <li><p>Explique a diferença entre</p>
@@ -1871,7 +1759,8 @@ P:\mathcal F\longrightarrow[0,1]?
    \]</span></p>
 <p>Perceba o ponto: começamos apenas com <strong>poucas regras básicas</strong> e já conseguimos deduzir outras propriedades familiares da Probabilidade.</p>
 <ol start="17" type="1">
-<li>Por que os Axiomas de Kolmogorov são mais do que uma lista de fórmulas? Qual é o papel deles na definição do que pode ser considerado uma <strong>medida de probabilidade válida</strong>?</li>
+<li><p>Por que a <strong>aditividade finita</strong> não é suficiente, sozinha, para justificar uma soma como <span class="math inline">\(P(A_1)+P(A_2)+P(A_3)+\cdots\)</span>? O que a aditividade enumerável acrescenta?</p></li>
+<li><p>Por que os Axiomas de Kolmogorov são mais do que uma lista de fórmulas? Qual é o papel deles na definição do que pode ser considerado uma <strong>medida de probabilidade válida</strong>?</p></li>
 </ol>
 
 
@@ -2285,9 +2174,6 @@ P:\mathcal F\longrightarrow[0,1]?
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/03_quando_o_espaco_amostral_e_continuo.html" class="pagination-link" aria-label="[Formalização] Parte 2 de 3 - Quando o Espaço Amostral é Contínuo">
-        <span class="nav-page-text"><span class="chapter-title">[Formalização] Parte 2 de 3 - Quando o Espaço Amostral é Contínuo</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

@@ -1,0 +1,425 @@
+---
+title: "2. Empirical Modeling: do Mundo Real ao Modelo Estatístico"
+---
+
+<!--
+OBJETIVO DESTE PRELÚDIO
+
+Apresentar empirical modeling como o processo mais amplo dentro do qual construímos,
+estimamos, avaliamos e revisamos modelos estatísticos para aprender com dados.
+
+Este prelúdio NÃO deve ensinar tecnicamente specification, estimation,
+misspecification testing ou respecification. O objetivo é mostrar por que os fundamentos
+de Probabilidade, Estatística e modelagem que virão depois são necessários.
+
+FONTE PRINCIPAL
+
+Aris Spanos — Probability Theory and Statistical Inference:
+- Chapter 1 — An Introduction to Empirical Modeling
+- 1.3 Chance Regularity and Statistical Models
+- 1.4 Statistical Adequacy
+- 1.5 Statistical versus Theory Information
+- 1.6 Observed Data
+- 1.7 Looking Ahead
+
+IDEIA CENTRAL
+
+Empirical modeling é o processo mais amplo.
+O statistical model é um dos principais objetos utilizados nesse processo.
+O random experiment será introduzido no próximo prelúdio como o caso simples usado
+para motivar a construção probabilística do statistical model.
+
+RECORTE DO CURSO
+
+A linguagem deste prelúdio é especialmente natural para Statistical Modeling,
+Econometrics e Causal Inference, sobretudo com dados observacionais.
+
+Em Machine Learning preditivo há paralelos claros:
+- specification -> escolha da representação/modelo/features/loss
+- estimation -> training/fitting
+- checking -> validation/diagnostics
+- respecification -> revisão do pipeline/modelo
+
+Mas o vocabulário e os objetivos não são idênticos, e misspecification testing no sentido
+formal de Spanos não é necessariamente o centro de um workflow preditivo de ML.
+
+Não transformar essa ressalva em uma discussão longa.
+-->
+
+No primeiro prelúdio, vimos o **mapa geral** que conecta Probabilidade, dados e Inferência Estatística.
+
+Agora vamos subir um nível.
+
+Antes de perguntar como construir um espaço de probabilidade, uma variável aleatória ou uma distribuição, vale perguntar:
+
+> **Para que queremos construir tudo isso?**
+
+Uma resposta útil é: para fazer [**empirical modeling**]{.conceito} — isto é, construir e usar modelos para aprender, de forma disciplinada, sobre fenômenos observados no mundo real a partir de dados.
+
+::: {.callout-important title="A ideia principal"}
+
+O objetivo final não é aprender $\Omega$, $\mathcal F$, $P$, regressões ou estimadores isoladamente.
+
+Esses objetos fazem parte de uma arquitetura maior:
+
+$$
+\boxed{\text{fenômeno do mundo real}}
+\longrightarrow
+\boxed{\text{modelo estatístico}}
+\longrightarrow
+\boxed{\text{dados}}
+\longrightarrow
+\boxed{\text{aprendizado empírico}}
+$$
+
+:::
+
+## O modelo estatístico dentro de um processo maior
+
+Um [**modelo estatístico**]{.conceito} (*statistical model*) é uma representação probabilística do fenômeno que queremos estudar.
+
+Mas construir um modelo não encerra o trabalho.
+
+No empirical modeling, o modelo entra em um processo maior:
+
+$$
+\begin{array}{c}
+\boxed{\textbf{MUNDO REAL}}\\
+\Downarrow\\
+\boxed{\text{fenômeno estocástico}}\\
+\Downarrow\\
+\boxed{
+\begin{array}{c}
+\textbf{EMPIRICAL MODELING}\\[0.4em]
+\text{especificar}\\
+\Downarrow\\
+\text{estimar}\\
+\Downarrow\\
+\text{confrontar com os dados}\\
+\Downarrow\\
+\text{revisar quando necessário}
+\end{array}}
+\end{array}
+$$
+
+## As quatro etapas
+
+Na organização que seguiremos, esse processo pode ser pensado em quatro movimentos.
+
+$$
+\boxed{\textbf{1. SPECIFICATION}}
+$$
+
+Escolhemos uma representação probabilística para o fenômeno.
+
+Isso envolve perguntas como:
+
+- o que queremos explicar ou medir?
+- quais variáveis entram?
+- que tipo de relação estamos assumindo?
+- quais hipóteses probabilísticas estamos fazendo?
+
+$$
+\Downarrow
+$$
+
+$$
+\boxed{\textbf{2. ESTIMATION}}
+$$
+
+Usamos os dados observados para aprender valores desconhecidos do modelo.
+
+É aqui que aparecem ideias como parâmetros, estimadores e procedimentos de ajuste.
+
+$$
+\Downarrow
+$$
+
+$$
+\boxed{\textbf{3. MISSPECIFICATION CHECKING}}
+$$
+
+Perguntamos se o modelo que postulamos é compatível com aspectos relevantes dos dados.
+
+Em linguagem mais próxima do dia a dia de Data Science, aqui aparecem ideias como:
+
+- diagnostics;
+- residual analysis;
+- assumption checking;
+- validation;
+- model checking.
+
+$$
+\Downarrow
+$$
+
+$$
+\boxed{\textbf{4. RESPECIFICATION}}
+$$
+
+Se o modelo não captura adequadamente a estrutura observada, nós o revisamos.
+
+Podemos mudar variáveis, relações, distribuições, hipóteses ou até a classe inteira do modelo.
+
+::: {.callout-note appearance="simple"}
+
+Não precisamos dominar nenhuma dessas etapas agora.
+
+O objetivo é perceber que **especificar um modelo é apenas o começo**.
+
+Mais adiante, precisaremos saber construir, estimar, avaliar e, quando necessário, revisar modelos.
+
+:::
+
+## Um exemplo simples: regressão
+
+Imagine que queremos estudar o **gasto de clientes** usando algumas características observadas.
+
+Podemos começar **especificando** algo como
+
+$$
+Y_i
+=
+\beta_0
++
+\beta_1X_{1i}
++
+\beta_2X_{2i}
++
+\varepsilon_i
+$$
+
+onde $Y_i$ representa o gasto e os $X$ representam características dos clientes.
+
+Mesmo antes de calcular qualquer coisa, já fizemos várias escolhas.
+
+### 1. Specification
+
+Nesta primeira etapa, escolhemos:
+
+- qual é a variável de interesse;
+- quais variáveis usar para representá-la;
+- uma forma funcional;
+- e uma estrutura probabilística para o problema.
+
+Ou seja, antes de ajustar qualquer modelo, já precisamos decidir **como vamos representar o fenômeno**.
+
+### 2. Estimation
+
+Depois usamos os dados para obter valores como
+
+$$
+\hat\beta_0,\hat\beta_1,\hat\beta_2.
+$$
+
+É aqui que o modelo encontra os dados: usamos a amostra observada para aprender valores desconhecidos do modelo.
+
+### 3. Model checking
+
+Mas o trabalho ainda não terminou.
+
+Depois de estimar, podemos descobrir que:
+
+- os resíduos possuem estrutura;
+- a relação não parece linear;
+- grupos diferentes se comportam de maneiras distintas;
+- ou alguma hipótese do modelo parece pouco plausível.
+
+Em outras palavras, precisamos perguntar se o modelo que escolhemos parece compatível com os dados observados.
+
+### 4. Respecification
+
+Se a resposta for “não completamente”, talvez precisemos:
+
+- adicionar uma interação;
+- transformar uma variável;
+- incluir novos preditores;
+- ou até escolher outra representação para o problema.
+
+Ou seja, o modelo pode precisar ser revisado.
+
+::: {.callout-tip title="Leia este exemplo como um ciclo"}
+
+$$
+\boxed{\text{1. Specification}}
+\longrightarrow
+\boxed{\text{2. Estimation}}
+\longrightarrow
+\boxed{\text{3. Model\ Checking}}
+\longrightarrow
+\boxed{\text{4. Respecification}}
+$$
+
+Mesmo uma regressão aparentemente simples já participa desse ciclo.
+
+:::
+
+
+## E em Inferência Causal?
+
+A mesma lógica aparece de forma ainda mais explícita quando queremos responder uma pergunta causal.
+
+Imagine que queremos estudar:
+
+> **qual é o efeito de uma campanha sobre o gasto dos clientes?**
+
+### 1. Specification
+
+Antes de estimar qualquer efeito, precisamos especificar o problema.
+
+Isso envolve perguntas como:
+
+- qual é o tratamento?
+- qual é o outcome?
+- qual é a população?
+- qual efeito queremos estimar?
+- quais hipóteses tornam essa comparação causal?
+
+Ou seja, antes de qualquer cálculo, precisamos deixar claro **qual é a pergunta causal e sob quais condições ela pode ser respondida**.
+
+### 2. Estimation
+
+Depois usamos os dados para estimar o efeito de interesse.
+
+Dependendo do problema, isso pode envolver regressão, matching, weighting, Difference-in-Differences, experimentos ou outros métodos.
+
+### 3. Model checking
+
+Em seguida, precisamos avaliar se as hipóteses relevantes parecem plausíveis e se o procedimento está funcionando como esperado.
+
+Podem aparecer verificações como:
+
+- balance;
+- overlap;
+- pre-trends;
+- residual diagnostics;
+- placebo tests;
+- sensitivity checks.
+
+### 4. Respecification
+
+Se alguma hipótese ou aspecto importante do modelo não parecer adequado, precisamos revisar a estratégia.
+
+Isso pode significar:
+
+- mudar a especificação;
+- ajustar o conjunto de covariáveis;
+- trocar o método;
+- redefinir a população;
+- ou reformular a própria pergunta causal.
+
+::: {.callout-tip title="O mesmo ciclo aparece novamente"}
+
+$$
+\boxed{\text{1. Specification}}
+\longrightarrow
+\boxed{\text{2. Estimation}}
+\longrightarrow
+\boxed{\text{3. Model\ Checking}}
+\longrightarrow
+\boxed{\text{4. Respecification}}
+$$
+
+A diferença é que, em Inferência Causal, as hipóteses necessárias para interpretar o resultado causalmente ganham um papel central.
+
+:::
+
+Novamente, não precisamos aprender essas ferramentas agora.
+
+O ponto é perceber **para onde os fundamentos deste curso estão nos levando**.
+
+
+## E Machine Learning?
+
+Existe uma relação clara, mas não é uma equivalência perfeita.
+
+Em um problema preditivo de Machine Learning também escolhemos uma representação, ajustamos o modelo, avaliamos seu desempenho e iteramos:
+
+$$
+\boxed{\text{escolher}}
+\longrightarrow
+\boxed{\text{treinar}}
+\longrightarrow
+\boxed{\text{validar}}
+\longrightarrow
+\boxed{\text{revisar}}
+$$
+
+Portanto, a lógica geral continua útil.
+
+Mas o foco deste curso está mais próximo de **Statistical Modeling, Econometrics, Experimentation e Causal Inference**, onde entender explicitamente a estrutura probabilística e as hipóteses do modelo será especialmente importante.
+
+::: {.callout-tip title="Por que isso importa para um Data Scientist?"}
+
+Porque saber executar
+
+```python
+model.fit(X, y)
+```
+
+é apenas uma parte do problema.
+
+Antes do `fit`, alguém precisou decidir **o que está sendo modelado, sob quais hipóteses e com qual estrutura**.
+
+Depois do `fit`, alguém ainda precisa decidir **se aquilo que foi estimado responde à pergunta original e se o modelo é compatível com os dados**.
+
+:::
+
+## Onde estamos indo?
+
+Podemos agora colocar toda a arquitetura em uma única figura:
+
+$$
+\begin{array}{c}
+\boxed{\textbf{MUNDO REAL}}\\
+\Downarrow\\
+\boxed{\text{fenômeno estocástico}}\\
+\Downarrow\\
+\boxed{
+\begin{array}{c}
+\textbf{EMPIRICAL MODELING}\\[0.3em]
+\text{especificar}\\
+\rightarrow
+\text{estimar}\\
+\rightarrow
+\text{checar}\\
+\rightarrow
+\text{revisar}
+\end{array}}
+\\
+\Uparrow\\[-0.2em]
+\textit{usa}\\
+\Uparrow\\
+\boxed{\textbf{STATISTICAL MODEL}}\\
+\Uparrow\\[-0.2em]
+\textit{mas como construímos esse objeto?}\\
+\Uparrow\\
+\boxed{\text{começaremos pelo caso mais simples}}\\
+\Uparrow\\
+\boxed{\textbf{RANDOM EXPERIMENT}}
+\end{array}
+$$
+
+Essa última pergunta será o tema do próximo prelúdio.
+
+Para entender de onde vem um modelo estatístico, voltaremos ao começo e construiremos, passo a passo, a estrutura probabilística do caso mais simples.
+
+::: {.callout-important title="O próximo passo"}
+
+No próximo prelúdio, desceremos um nível nessa arquitetura:
+
+$$
+\boxed{\text{random experiment}}
+\longrightarrow
+\boxed{\text{probability theory}}
+\longrightarrow
+\boxed{\text{statistical space}}
+\longrightarrow
+\boxed{\text{random variables}}
+\longrightarrow
+\boxed{\text{statistical model}}
+$$
+
+Depois disso, começaremos a construir cada peça de verdade.
+
+:::

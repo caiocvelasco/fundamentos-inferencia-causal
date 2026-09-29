@@ -17,7 +17,7 @@ Bertsekas & Tsitsiklis:
 - início de 1.2 Probabilistic Models
 -->
 
-No prelúdio, vimos o mapa geral: fenômenos do mundo real produzem dados, e usamos a Probabilidade para construir uma representação matemática do mecanismo capaz de gerá-los.
+No prelúdio, vimos o mapa geral: fenômenos do mundo real produzem dados, e usamos a Probabilidade para construir uma **representação matemática** do mecanismo capaz de gerá-los.
 
 Agora vamos voltar _ao início dessa história_.
 

@@ -1,0 +1,441 @@
+---
+title: "3. Onde Queremos Chegar: do Experimento Aleatório ao Modelo Estatístico"
+---
+
+<!--
+OBJETIVO DESTE PRELÚDIO
+
+Mostrar, antes dos detalhes técnicos, a arquitetura matemática que será construída nos próximos capítulos.
+
+Este arquivo é um MAPA. Não deve ensinar profundamente nenhum dos objetos abaixo.
+
+ARCO PRINCIPAL
+
+mundo real
+→ fenômeno estocástico / chance regularity
+→ experimento aleatório
+→ formalização abstrata
+→ espaço estatístico
+→ variáveis aleatórias
+→ modelos numéricos
+→ dados / inferência
+
+DISTINÇÃO CENTRAL
+
+AGORA:
+- espaços abstratos
+- Ω, F, P, G_n
+- statistical space
+
+MAIS ADIANTE:
+- random variables
+- probability model
+- sampling model / random sample
+- statistical model
+
+FONTES PRINCIPAIS
+
+Spanos:
+- Chapter 2 — Probability Theory: A Modeling Framework
+- 2.4 Random Experiments
+- 2.5 Formalizing Condition [a]
+- 2.6 Formalizing Condition [b]
+- 2.7 Formalizing Condition [c]: Random Trials
+- 2.8 Statistical Space
+- 2.9 A Look Forward
+- Chapter 3 — The Notion of a Probability Model
+- Chapter 4 — The Notion of a Random Sample
+
+REFERÊNCIAS AUXILIARES
+
+Bertsekas & Tsitsiklis — Introduction to Probability
+Robert Ash — Basic Probability Theory
+
+CUIDADOS
+
+- experimento = mecanismo/procedimento definido
+- ensaio = uma execução completa do experimento
+- resultado = ω
+- espaço amostral = Ω = sample space
+- espaço de amostragem = G_n = sampling space
+- produto cartesiano não implica repetição
+- G_n pode ser geral; IID é hipótese adicional
+- conditional probability não depende de repetição
+- random sample só será definido depois de random variables
+- (Ω,F,P) é probability space, não probability model, neste arco pedagógico
+-->
+
+Nos dois prelúdios anteriores, construímos o contexto mais amplo desta jornada.
+
+Primeiro vimos o **mapa geral** que conecta Probabilidade, dados e Inferência Estatística.
+
+Depois vimos que esses objetos fazem parte de um processo maior de **empirical modeling**: especificar modelos, estimá-los, confrontá-los com os dados e revisá-los quando necessário.
+
+Agora vamos descer mais um nível na arquitetura:
+
+> **de onde vem o statistical model que será usado nesse processo?**
+
+Para responder, começaremos pela estrutura matemática mais simples que usaremos para representar um fenômeno estocástico: o **experimento aleatório** (*random experiment*).
+
+Essa pergunta organiza boa parte do caminho que vem a seguir.
+
+A estratégia será começar pelo caso mais simples possível, entender sua arquitetura com precisão e, só depois, ampliar essa arquitetura para fenômenos mais realistas.
+
+Isso é importante porque, nos próximos capítulos, começaremos a trabalhar com símbolos como $\Omega$, $\mathcal F$, $P$, produtos cartesianos e sequências de ensaios. Se olharmos apenas para cada peça isoladamente, é fácil perder de vista **o que estamos construindo e por quê**.
+
+A ideia deste prelúdio é enxergar primeiro a floresta. Depois entraremos nas árvores.
+
+::: {.callout-note appearance="simple"}
+
+Não tente memorizar as fórmulas desta página.
+
+Elas aparecem apenas para mostrar **onde cada conceito que aprenderemos se encaixa**.
+
+:::
+
+## Do fenômeno estocástico ao experimento aleatório
+
+Começamos no mundo real com um [**fenômeno estocástico**]{.conceito}: um fenômeno no qual existe incerteza sobre realizações individuais, mas podem aparecer regularidades quando observamos muitas ocorrências.
+
+É a combinação que já chamamos de **chance regularity**:
+
+$$
+\boxed{\text{incerteza individual}}
+\qquad + \qquad
+\boxed{\text{regularidade no agregado}}
+$$
+
+Mas fenômenos estocásticos podem ter estruturas muito diferentes. Por isso, em vez de tentar começar pelo caso mais geral, começaremos por uma classe particularmente simples.
+
+A ideia é representar um fenômeno que possa ser pensado como um [**experimento aleatório**]{.conceito} (*random experiment*).
+
+Aqui, **experimento aleatório não significa apenas “algo incerto que acontece”**. Ele é um mecanismo de chance com três características específicas:
+
+1. **[a] Os possíveis resultados são conhecidos a priori.**
+2. **[b] O resultado de um ensaio particular não é conhecido a priori, mas existe uma regularidade de ocorrência associada aos resultados.**
+3. **[c] O experimento pode ser repetido sob condições idênticas.**
+
+Exemplos simples conseguem se encaixar bem nessa ideia: lançar uma moeda, medir a vida útil de uma lâmpada ou contar quantas ligações chegam a uma central telefônica durante um intervalo de tempo.
+
+A última situação já parece muito mais próxima de dados reais. Ainda assim, se conseguimos imaginar a contagem sendo observada repetidamente sob condições suficientemente semelhantes, ela pode ser tratada inicialmente dentro dessa estrutura simples.
+
+::: {.callout-important title="Por que começar por um caso tão simples?"}
+
+Porque ele nos permite construir, sem complicações desnecessárias, a arquitetura fundamental da teoria.
+
+Primeiro matematizamos uma forma simples de fenômeno estocástico. Depois veremos quais hipóteses precisam ser modificadas quando o fenômeno real é mais complexo.
+
+:::
+
+Nem todo fenômeno estocástico, porém, cabe nessa estrutura.
+
+Pense, por exemplo, em uma série temporal de **taxas de câmbio**. Os possíveis valores podem ser descritos e o próximo valor é incerto, mas a condição **[c]** é problemática: as circunstâncias mudam ao longo do tempo e o valor de hoje pode estar relacionado ao de ontem. O fenômeno continua sendo estocástico e pode exibir *chance regularity*, mas a estrutura simples do experimento aleatório já não é suficiente para capturá-lo.
+
+Ou seja,
+
+$$
+\boxed{\text{fenômeno estocástico}}
+\quad \not\Rightarrow \quad
+\boxed{\text{experimento aleatório simples}}
+$$
+
+Esse contraste é importante para entender a estratégia do curso:
+
+> **começaremos construindo com precisão o modelo do caso simples; depois teremos uma base sobre a qual introduzir dependência, heterogeneidade e estruturas mais realistas.**
+
+### As três condições serão nosso roteiro
+
+A formalização matemática seguirá diretamente as três características do experimento aleatório:
+
+$$
+\begin{array}{rcl}
+\textbf{[a]} & \text{quais resultados são possíveis?} & \longrightarrow \Omega \\[0.8em]
+\textbf{[b]} & \text{como representar a incerteza?} & \longrightarrow (\Omega,\mathcal F,P) \\[0.8em]
+\textbf{[c]} & \text{como representar suas repetições?} & \longrightarrow \mathcal G_n
+\end{array}
+$$
+
+Esse é o fio condutor dos próximos capítulos.
+
+Em outras palavras, estamos tentando **matematizar o experimento aleatório**. A primeira forma completa dessa formalização será um **espaço estatístico**. Depois, com variáveis aleatórias, chegaremos à forma numérica que chamaremos de **modelo estatístico**.
+
+## Primeiro destino: construir os espaços abstratos
+
+A primeira pergunta nos levará ao conjunto dos resultados possíveis:
+
+$$
+\boxed{\Omega}
+$$
+
+Depois construiremos os eventos que queremos representar e uma função capaz de atribuir probabilidades a eles:
+
+$$
+\boxed{(\Omega,\mathcal F,P)}
+$$
+
+Esse objeto será chamado de [**espaço de probabilidade**]{.conceito} (*probability space*).
+
+Ele representa matematicamente a incerteza associada ao resultado de **um ensaio completo** do experimento que definimos.
+
+Mas nossa história não termina em um ensaio.
+
+Se executarmos o experimento várias vezes,
+
+$$
+T_1,T_2,\ldots,T_n,
+$$
+
+precisaremos representar conjuntamente os possíveis resultados dessas execuções e a estrutura probabilística que existe entre elas.
+
+Isso nos levará a um espaço probabilístico conjunto,
+
+$$
+(\Omega^{(n)},\mathcal F^{(n)},P^{(n)}),
+$$
+
+e ao [**espaço de amostragem**]{.conceito} (*sampling space*)
+
+$$
+\mathcal G_n.
+$$
+
+Juntando essas peças, chegaremos ao nosso primeiro grande destino:
+
+$$
+\boxed{
+\left[
+(\Omega^{(n)},\mathcal F^{(n)},P^{(n)}),
+\mathcal G_n
+\right]
+}
+$$
+
+que chamaremos de [**espaço estatístico**]{.conceito} (*statistical space*).
+
+::: {.callout-important title="O que estamos construindo até aqui?"}
+
+Uma estrutura matemática **abstrata** capaz de representar:
+
+- a incerteza de um ensaio;
+- várias execuções do experimento;
+- e a relação probabilística entre essas execuções.
+
+Ainda estamos trabalhando com **espaços, eventos e funções de probabilidade** — não com os dados numéricos que aparecerão depois.
+
+:::
+
+### E onde entra IID?
+
+Na construção simples que está motivando essa história, a expressão “repetir sob condições idênticas” acabará levando ao caso IID.
+
+No nosso curso, porém, faremos uma pequena generalização pedagógica: primeiro construiremos um espaço de amostragem $\mathcal G_n$ **geral** e só depois especializaremos para o caso em que os ensaios são modelados como:
+
+- **[I]** sendo _independentes_;
+- **[ID]** _identicamente distribuídos_, isto é, com a mesma estrutura probabilística.
+
+Nesse caso chegaremos à estrutura simples
+
+$$
+\boxed{
+\left[
+(\Omega,\mathcal F,P)^n,
+\mathcal G_n^{IID}
+\right]
+}
+$$
+
+que será chamada de [**espaço estatístico simples**]{.conceito}.
+
+Não precisamos entender IID agora.
+
+O importante é guardar apenas isto:
+
+> **IID não aparece porque existem vários dados. É uma hipótese adicional sobre como modelamos a relação entre os ensaios.**
+
+Mais adiante veremos que formalizar precisamente a ideia de que _“saber o que aconteceu em um ensaio não altera as probabilidades dos demais”_ exigirá uma ferramenta nova: **probabilidade condicional**.
+
+[**Atenção:** probabilidade condicional é um conceito geral e não depende de repetição de ensaios. Ela aparece aqui na nossa narrativa porque será uma ferramenta natural para definir independência.]{.atencao}
+
+## Espaços agora, modelos depois
+
+Aqui está uma distinção que será fundamental para não misturarmos etapas diferentes da construção:
+
+$$
+\boxed{\textbf{SPACE} \neq \textbf{MODEL}}
+$$
+
+Até o final dessa primeira parte, estaremos construindo **espaços abstratos**.
+
+Só depois introduziremos [**variáveis aleatórias**]{.conceito}. Elas permitirão levar essa estrutura abstrata para objetos numéricos definidos sobre a reta real.
+
+Podemos visualizar a transformação assim:
+
+$$
+\begin{array}{ccc}
+\boxed{
+\begin{array}{c}
+\textbf{AGORA}\\[0.3em]
+\text{espaço de probabilidade}\\
+(\Omega,\mathcal F,P)\\[0.6em]
++\\[0.6em]
+\text{espaço de amostragem}\\
+\mathcal G_n\\[0.6em]
+\Downarrow\\
+\textbf{espaço estatístico}
+\end{array}}
+&
+\quad \xrightarrow{\quad \text{variáveis aleatórias} \quad} \quad
+&
+\boxed{
+\begin{array}{c}
+\textbf{MAIS ADIANTE}\\[0.3em]
+\text{modelo probabilístico}\\
+\textit{(probability model)}\\[0.6em]
++\\[0.6em]
+\text{modelo de amostragem}\\
+\textit{(sampling model)}\\[0.6em]
+\Downarrow\\
+\textbf{modelo estatístico}
+\end{array}}
+\end{array}
+$$
+
+A ideia é simples:
+
+$$
+\boxed{\text{estrutura abstrata}}
+\quad\longrightarrow\quad
+\boxed{\text{representação numérica}}
+$$
+
+O [**espaço de probabilidade**]{.conceito} $(\Omega,\mathcal F,P)$ será levado, por meio de variáveis aleatórias, a um [**modelo probabilístico**]{.conceito} (*probability model*).
+
+Da mesma maneira, a estrutura dos ensaios será levada a um [**modelo de amostragem**]{.conceito} (*sampling model*).
+
+Os dois lados formarão então um [**modelo estatístico**]{.conceito} (*statistical model*).
+
+::: {.callout-note title="Mas já usamos a palavra modelo no prelúdio anterior..."}
+
+Sim — e isso foi proposital.
+
+Primeiro mostramos **o destino** para construir uma intuição geral. Agora começaremos a distinguir com mais precisão as etapas da estrada.
+
+Nos próximos capítulos, $(\Omega,\mathcal F,P)$ será chamado de **espaço de probabilidade**. O **modelo probabilístico**, no sentido mais específico que adotaremos depois, aparecerá somente após introduzirmos variáveis aleatórias e distribuições.
+
+:::
+
+## O mapa completo da construção
+
+Podemos agora olhar toda a história de uma vez:
+
+$$
+\begin{array}{c}
+\boxed{\text{MUNDO REAL}}\\
+\Downarrow\\
+\boxed{\text{fenômeno estocástico}}\\
+\Downarrow\\[-0.2em]
+\textit{começamos pelo caso mais simples}\\
+\Downarrow\\
+\boxed{\text{experimento aleatório: [a], [b], [c]}}\\
+\Downarrow\\[-0.2em]
+\text{formalização matemática}\\
+\Downarrow\\
+\boxed{
+\begin{array}{c}
+\Omega,\ \mathcal F,\ P,\ \mathcal G_n\\[0.3em]
+\textbf{ESPAÇO ESTATÍSTICO}
+\end{array}}
+\\[1em]
+\textit{mais adiante}\\[-0.2em]
+\Downarrow\\
+\boxed{\text{variáveis aleatórias}}\\
+\Downarrow\\
+\boxed{\textbf{MODELO ESTATÍSTICO}}\\
+\Downarrow\\
+\boxed{\text{dados observados e inferência}}
+\end{array}
+$$
+
+Perceba que o **experimento aleatório não é um conjunto contendo esses espaços**.
+
+Ele é o mecanismo conceitual que estamos tentando representar. Os espaços aparecem como parte de sua **formalização matemática**.
+
+## Onde os dados aparecerão?
+
+Quando chegarmos às variáveis aleatórias, os ensaios
+
+$$
+T_1,T_2,\ldots,T_n
+$$
+
+poderão ser associados a objetos numéricos
+
+$$
+X_1,X_2,\ldots,X_n.
+$$
+
+Depois que os ensaios realmente acontecerem, observaremos valores concretos
+
+$$
+x_1,x_2,\ldots,x_n.
+$$
+
+É aí que começaremos a reconhecer aquilo que, no mundo real, armazenamos como **dados**.
+
+Por exemplo, imagine que o nosso interesse seja observar o gasto de diferentes clientes em uma compra. Depois de observarmos os clientes, poderíamos terminar com algo assim:
+
+::: {.compact-table}
+
+| observação | cliente | gasto |
+|:---:|:---:|:---:|
+| $x_1 \rightarrow$ | 1 | 42,90 |
+| $x_2 \rightarrow$ | 2 | 18,50 |
+| $x_3 \rightarrow$ | 3 | 76,20 |
+| $x_4 \rightarrow$ | 4 | 31,00 |
+| $\vdots$ | $\vdots$ | $\vdots$ |
+| $x_n \rightarrow$ | $n$ | 54,70 |
+
+:::
+
+Nesse exemplo,
+
+$$
+x_1 = 42{,}90,\qquad
+x_2 = 18{,}50,\qquad
+x_3 = 76{,}20,\qquad
+x_4 = 31{,}00,\qquad \ldots
+$$
+
+Cada $x_i$ é, portanto, um **valor observado**: aquilo que efetivamente apareceu depois que o ensaio correspondente aconteceu.
+
+É justamente a coleção desses valores observados que começamos a reconhecer, no dia a dia de Data Science, como um **dataset**.
+
+Assim, a ideia geral é:
+
+$$
+\boxed{
+T_1,\ldots,T_n
+\quad\longrightarrow\quad
+X_1,\ldots,X_n
+\quad\longrightarrow\quad
+x_1,\ldots,x_n
+\quad\longrightarrow\quad
+\text{dataset observado}
+}
+$$
+
+Mais adiante, veremos com cuidado como passamos de cada ensaio $T_i$ para uma variável aleatória $X_i$, e de $X_i$ para o valor observado $x_i$.
+
+Mas ainda não precisamos formalizar essa passagem.
+
+Por enquanto, basta saber **onde ela aparecerá**.
+
+::: {.callout-tip title="Leia este mapa assim"}
+
+**Começamos pela matematização da forma mais simples do fenômeno estocástico: o experimento aleatório.**
+
+Primeiro construiremos sua estrutura abstrata. Depois usaremos variáveis aleatórias para transformá-la em objetos numéricos. Só então estaremos prontos para conectar essa estrutura aos dados — e, mais adiante, ampliar o modelo quando o mundo real exigir dependência, heterogeneidade e outras formas de complexidade.
+
+:::
+
+Nos próximos capítulos, faremos exatamente esse caminho — uma peça por vez.

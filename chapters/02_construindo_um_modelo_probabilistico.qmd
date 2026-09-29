@@ -19,6 +19,17 @@ Bertsekas & Tsitsiklis:
 - 1.1 Sets
 - 1.2 Probabilistic Models
 
+Robert Ash:
+- Chapter 1 — Basic Concepts
+- Chapter 2 — Random Variables
+- Exemplos de experimentos com múltiplos componentes e espaços amostrais formados por pares
+
+Referências complementares consultadas:
+- Berkeley Statistics — Measure Theory Basics
+- David Aldous (Berkeley) — What is the significance of the Kolmogorov axioms?
+- Penn State STAT 414 — Properties of Probability
+- OpenStax — Sample spaces, outcomes and mutually exclusive events
+
 -->
 
 Antes de começarmos, vale dizer que este é o [**coração**]{.atencao} de muita coisa que faremos em Data Science, Machine Learning, Estatística e Inferência Causal.
@@ -65,33 +76,39 @@ Primeiro queremos representar matematicamente **um ensaio do experimento**:
 
 ::: {.column width="48%"}
 
-::: {.callout-note title="2 — Formalizar repetições"}
+::: {.callout-note title="2 — Formalizar vários ensaios"}
 
-Depois perguntaremos:
+Depois manteremos fixo o experimento básico e perguntaremos:
 
-> **o que acontece quando observamos várias realizações desse mesmo experimento?**
+> **como representar probabilisticamente vários ensaios desse experimento em conjunto?**
 
-Essa será a próxima etapa da formalização e começará a nos aproximar da ideia de **dados gerados por repetições**.
-
-:::
+Essa será uma nova etapa da formalização. Ainda estaremos construindo a estrutura probabilística; a conexão formal com uma **amostra** virá depois, quando introduzirmos variáveis aleatórias.
 
 :::
 
 :::
 
-Em resumo:
+:::
+
+Em resumo, nossa direção geral é:
 
 $$
-\boxed{\text{formalizar uma realização}}
+\boxed{\text{formalizar um ensaio}}
 \qquad\longrightarrow\qquad
-\boxed{\text{formalizar repetições}}
+\boxed{\text{formalizar vários ensaios conjuntamente}}
 $$
 
 ::: {.callout-important title="O que significa um ensaio?"}
 
-Um **ensaio** é uma realização completa do experimento que definimos.
+Um **ensaio** é uma execução completa do experimento **tal como ele foi definido**.
 
-Se o experimento for "lançar uma moeda duas vezes e registrar a ordem", por exemplo, $HT$ é **um único resultado de um ensaio desse experimento**.
+Isso significa que a fronteira do experimento importa.
+
+Se definirmos o experimento como “lançar uma moeda uma vez”, um ensaio termina depois de um lançamento.
+
+Se definirmos o experimento como “lançar uma moeda duas vezes e registrar a ordem”, um ensaio termina somente depois dos dois lançamentos, e $(H,T)$ é **um único resultado desse ensaio**.
+
+Neste capítulo, construiremos sempre o espaço de probabilidade correspondente a **um ensaio completo do experimento definido**.
 
 :::
 
@@ -140,11 +157,13 @@ Vamos construir uma peça de cada vez. Quando chegarmos ao final, a notação te
 
 :::
 
-Ao final deste capítulo teremos, portanto, formalizado matematicamente **uma realização do experimento**.
+Ao final deste capítulo teremos construído a estrutura básica para representar matematicamente **um ensaio completo do experimento**.
 
-No próximo, daremos o segundo passo:
+No próximo capítulo ainda permaneceremos nessa primeira etapa: veremos o que precisa ser ajustado quando o espaço amostral é contínuo.
 
-> **como representar várias realizações desse experimento e começar a construir a ponte entre Probabilidade e dados observados?**
+Só depois passaremos à pergunta seguinte:
+
+> **como representar probabilisticamente vários ensaios desse mesmo experimento em conjunto?**
 
 ## 1. Espaço amostral ($\Omega$)
 
@@ -156,275 +175,188 @@ Nosso primeiro objetivo é construir $\Omega$.
 
 :::
 
+Antes de começar, vamos fixar uma notação que aparecerá o tempo todo. Usaremos a letra grega minúscula $\omega$ para representar **um resultado possível**. Quando o espaço amostral estiver definido, escreveremos
+
+$$
+\boxed{\omega\in\Omega}.
+$$
+
+Ainda vamos construir $\Omega$ com cuidado. Por enquanto, guarde apenas: $\omega$ é um resultado; $\Omega$ será o conjunto que reúne todos os resultados possíveis.
+
 ### O experimento
 
 Para transformar um fenômeno incerto em um objeto matemático, precisamos primeiro dizer exatamente:
 
-> **Qual é o procedimento cujo resultado queremos observar?**
+> **Qual é o procedimento completo cujo resultado queremos observar?**
 
 Chamaremos esse procedimento de **experimento**.
 
 Por exemplo:
 
-> lançar uma moeda uma vez e observar a face que aparece.
+> lançar um dado uma vez e observar a face superior.
 
-Quando realizamos esse experimento, observamos exatamente um resultado: $H$ ou $T$.
+Quando executamos esse procedimento uma vez, realizamos um **ensaio** (*trial*).
 
-Da mesma forma, podemos definir o experimento:
+O ensaio termina quando o procedimento definido termina, e então observamos **um resultado** $\omega$.
 
-> lançar dois dados uma vez e registrar os números obtidos.
+Se a face observada for $4$, por exemplo, escrevemos $\omega=4$.
 
-Uma possível realização produz $(2,5)$. Outra pode produzir $(6,1)$. Outra, $(3,3)$.
+### A fronteira do experimento
 
-### Experimento e ensaio
+Antes de construir o espaço amostral, existe uma decisão conceitual importante:
 
-Vamos manter uma terminologia importante que já apareceu no capítulo anterior.
+> **onde começa e onde termina um ensaio do experimento que queremos modelar?**
 
-O **experimento** é o procedimento que definimos.
+Essa fronteira determina o que precisa estar contido em um único resultado $\omega$.
 
-Por exemplo: lançar dois dados e observar o resultado.
+Considere duas definições diferentes.
 
-Cada vez que realizamos esse mesmo procedimento temos um **ensaio** (*trial*).
+#### Exemplo: uma moeda, um lançamento
 
-Assim, podemos pensar em um mesmo experimento sendo realizado em vários ensaios:
+Defina o experimento como:
 
-$\text{Ensaio}_1,\text{Ensaio}_2,\text{Ensaio}_3,\ldots$
+> lançar uma moeda uma vez e registrar a face.
 
-Cada ensaio produz exatamente **um resultado**.
+Um ensaio termina depois desse lançamento e produz um resultado como $\omega=H$.
 
-Por exemplo: $(2,5)$, $(6,1)$, $(3,3)$, $\ldots$
+#### Exemplo: uma moeda, dois lançamentos dentro do mesmo experimento
 
-O experimento descreve **o que será feito**.
+Agora defina outro experimento:
 
-O ensaio é **uma realização desse experimento**.
+> lançar uma moeda duas vezes e registrar, na ordem, as duas faces.
 
-O resultado é **aquilo que observamos nessa realização**.
+Um ensaio desse novo experimento só termina depois dos dois lançamentos e pode produzir, por exemplo, $\omega=(H,T)$.
 
-::: {.callout-note title="Uma distinção importante"}
+Nos dois exemplos temos **um ensaio** e **um resultado**.
 
-Tudo depende de como definimos o experimento.
+O que mudou foi a definição do experimento e, consequentemente, a quantidade de informação que um único resultado precisa carregar.
 
-Se o experimento for
+::: {.callout-important title="Um resultado pode ter várias coordenadas"}
 
-> lançar uma moeda uma vez e observar a face,
+A frase “um ensaio produz um resultado” não significa que esse resultado precise ser um único número ou uma única categoria.
 
-um resultado é simplesmente
+Um resultado pode ser uma tupla como $(2,5)$, $(H,T)$ ou $(\text{compra},3.8\text{ s})$.
 
-$H$ ou $T$.
-
-Mas suponha que o experimento seja
-
-> lançar uma moeda três vezes e registrar, na ordem, os três resultados.
-
-Agora, um único resultado precisa guardar **três informações**:
-
-- o resultado do primeiro lançamento;
-- o resultado do segundo;
-- o resultado do terceiro.
-
-Por exemplo,
-
-$$
-(H,T,H)
-$$
-
-é **um único resultado de um único ensaio desse experimento**.
-
-Os três lançamentos fazem parte da definição do experimento. Não são, nesse caso, três experimentos diferentes.
+O que importa é que a tupla inteira descreva **o resultado completo de um ensaio do experimento que definimos**.
 
 :::
 
+[**Atenção à notação:** quando um resultado tiver várias coordenadas, neste curso preferiremos escrever explicitamente $\omega=(H,T)$. Em muitos livros você também encontrará a forma compacta $\omega=HT$. Nesse contexto, $HT$ é apenas uma abreviação para a mesma informação ordenada: primeira coordenada $H$, segunda coordenada $T$. Não significa multiplicação e, por si só, não significa que estamos modelando vários ensaios.]{.atencao}
+
 ### Os resultados possíveis
 
-Antes de realizar um experimento, não sabemos qual resultado particular será observado.
+Antes de realizar um ensaio, não sabemos qual resultado particular $\omega$ será observado.
 
-Mas precisamos saber **quais resultados são possíveis**.
+Mas precisamos especificar **quais valores $\omega$ pode assumir**.
 
-Considere novamente:
+Chamamos o conjunto de todos os resultados possíveis de um experimento de [**espaço amostral**]{.conceito} (*sample space*) e o representamos por $\Omega$.
 
-> lançar uma moeda uma vez.
-
-Antes de realizar o experimento, sabemos que o resultado será $H$ ou $T$.
-
-Não sabemos **qual** ocorrerá.
-
-Mas sabemos **quais podem ocorrer**.
-
-Essa distinção é fundamental: o **resultado observado** é desconhecido antes do ensaio, enquanto o **conjunto dos resultados possíveis** é especificado pelo modelo.
-
-### Definindo o espaço amostral
-
-Chamamos o conjunto de todos os resultados possíveis de um experimento de **espaço amostral** (*sample space*).
-
-Vamos representá-lo por $\Omega$.
-
-No lançamento de uma moeda,
+Assim, cada possível resultado completo de um ensaio satisfaz
 
 $$
-\Omega=\{H,T\}.
+\boxed{\omega\in\Omega}.
 $$
 
-Cada elemento de $\Omega$ representa um possível resultado do experimento.
-
-Costumamos representar um resultado particular pela letra grega minúscula $\omega$.
-
-Portanto,
-
-$$
-\omega\in\Omega.
-$$
-
-Antes do experimento, sabemos que algum elemento de $\Omega$ será observado.
-
-Não sabemos qual.
-
-Depois que o experimento é realizado, um determinado $\omega$ se realiza.
+Depois que o ensaio é realizado, um desses elementos de $\Omega$ é o resultado observado.
 
 ### Exemplo: um dado
 
 Considere o experimento:
 
-> lançar um dado de seis faces e observar o número da face superior.
+> lançar um dado de seis faces uma vez e observar a face superior.
 
-O espaço amostral é
+Um ensaio produz uma única informação: o número observado.
+
+Portanto,
 
 $$
 \Omega=\{1,2,3,4,5,6\}.
 $$
 
-Se o dado for lançado e observarmos $\omega=4$, então $4$ foi o resultado realizado.
+Se observarmos $4$, então $\omega=4$ e, naturalmente, $4\in\Omega$.
 
-Mas antes do lançamento nosso modelo precisava contemplar todos os resultados possíveis.
-
-### Quando um resultado precisa guardar mais de uma informação
-
-Até agora, em exemplos como uma moeda ou um dado, cada resultado carregava apenas **uma informação**.
-
-Mas um resultado também pode precisar registrar várias coisas ao mesmo tempo.
-
-Considere o experimento:
-
-> lançar uma moeda duas vezes e registrar, na ordem, o resultado dos dois lançamentos.
-
-Cada lançamento possui as possibilidades
-
-$$
-\{H,T\}.
-$$
-
-Como precisamos registrar **o primeiro e o segundo lançamento**, combinamos as possibilidades dos dois.
-
-É aqui que aparece o [**produto cartesiano**]{.conceito}.
-
-Dados dois conjuntos $A$ e $B$, o produto cartesiano
-
-$$
-A\times B
-$$
-
-é o conjunto de todos os **pares ordenados** em que o primeiro elemento vem de $A$ e o segundo vem de $B$.
-
-No nosso exemplo:
-
-$$
-\Omega
-=
-\{H,T\}\times\{H,T\}.
-$$
-
-Portanto,
-
-$$
-\Omega
-=
-\{
-(H,H),(H,T),(T,H),(T,T)
-\}.
-$$
-
-Perceba o que aconteceu.
-
-Com um lançamento, um resultado poderia ser simplesmente
-
-$$
-\omega=H.
-$$
-
-Com dois lançamentos, precisamos registrar duas informações:
-
-$$
-\omega=(H,T).
-$$
-
-O espaço amostral ganhou uma estrutura adicional porque **o próprio resultado do experimento passou a ter mais de um componente**.
-
-Isso também explica por que
-
-$$
-(H,T)\neq(T,H).
-$$
-
-Como os pares são ordenados, $(H,T)$ significa cara no primeiro lançamento e coroa no segundo, enquanto $(T,H)$ significa exatamente o contrário.
-
-::: {.callout-tip title="A ideia por trás do produto cartesiano"}
-
-Quando um resultado precisa registrar mais de uma informação, podemos combinar os conjuntos de possibilidades de cada componente:
-
-$$
-\boxed{
-\text{possibilidades do primeiro componente}
-\times
-\text{possibilidades do segundo componente}
-}
-$$
-
-O produto cartesiano constrói **todas as combinações possíveis**.
-
-Essa mesma ideia aparecerá várias vezes ao longo do curso.
-
-:::
+Aqui o resultado possui apenas uma coordenada.
 
 ### Exemplo: dois dados
 
-Agora considere:
+Agora considere um experimento diferente:
 
-> lançar dois dados e observar o resultado de cada dado.
+> lançar **dois dados distinguíveis uma vez** e registrar a face de cada dado.
 
-Cada dado possui como possíveis resultados
+Esse continua sendo **um único experimento**, e uma execução completa dele continua sendo **um único ensaio**.
+
+Mas agora o resultado precisa guardar duas informações: a face do dado 1 e a face do dado 2.
+
+Podemos escrever um resultado como $\omega=(\omega_{\text{dado 1}},\omega_{\text{dado 2}})$. Por exemplo, $\omega=(2,5)$.
+
+Cada coordenada possui seu próprio conjunto de possibilidades: $\Omega_{\text{dado 1}}=\{1,2,3,4,5,6\}$ e $\Omega_{\text{dado 2}}=\{1,2,3,4,5,6\}$.
+
+Para construir o conjunto de todos os resultados completos possíveis, combinamos as possibilidades das duas coordenadas. É aqui que aparece o [**produto cartesiano**]{.conceito}.
+
+Dados dois conjuntos $A$ e $B$, o produto cartesiano $A\times B$ é o conjunto de todos os pares ordenados $(a,b)$ com $a\in A$ e $b\in B$.
+
+No experimento dos dois dados:
 
 $$
-\{1,2,3,4,5,6\}.
-$$
-
-Como precisamos registrar o resultado **do primeiro e do segundo dado**, construímos
-
-$$
+\boxed{
 \Omega
 =
-\{1,2,3,4,5,6\}
+\Omega_{\text{dado 1}}
 \times
-\{1,2,3,4,5,6\}.
+\Omega_{\text{dado 2}}
+}
 $$
 
-Cada elemento de $\Omega$ é um par ordenado
+ou, explicitamente, $\Omega=\{1,2,3,4,5,6\}\times\{1,2,3,4,5,6\}$.
+
+Cada elemento de $\Omega$ é **um resultado completo de um único ensaio**, como $(2,5)$, $(6,1)$ ou $(3,3)$. Como existem seis possibilidades para cada coordenada, $|\Omega|=6\times6=36$.
+
+::: {.callout-important title="Aqui não estamos repetindo o experimento"}
+
+No resultado $\omega=(2,5)$, a primeira coordenada descreve o **dado 1** e a segunda descreve o **dado 2**.
+
+Elas são duas coordenadas **dentro do mesmo resultado** de **um único ensaio**.
+
+Mais adiante aparecerá uma tupla visualmente parecida, $(\omega_1,\ldots,\omega_n)$, em que cada coordenada representará o resultado de **um ensaio diferente** de um experimento básico.
+
+A ferramenta matemática será novamente um produto cartesiano, mas a interpretação será outra.
 
 $$
-\omega=(i,j),
+\boxed{
+\text{várias coordenadas de um resultado}
+\;\neq\;
+\text{vários ensaios}
+}
 $$
 
-onde $i$ é o resultado do primeiro dado e $j$ o resultado do segundo.
+:::
 
-Por exemplo,
+### O produto cartesiano é uma ferramenta, não uma interpretação
 
-$$
-(2,5),\qquad(6,1),\qquad(3,3).
-$$
+O produto cartesiano resolve uma necessidade matemática geral:
 
-Como existem $6$ possibilidades para o primeiro componente e $6$ para o segundo,
+> **construir objetos com várias coordenadas.**
 
-$$
-|\Omega|=6\times6=36.
-$$
+A razão pela qual existem várias coordenadas depende do experimento que definimos.
+
+No exemplo dos dois dados, $\omega=(\omega_{\text{dado 1}},\omega_{\text{dado 2}})$ tem duas coordenadas porque queremos registrar duas partes do resultado de **um mesmo ensaio**.
+
+Também poderíamos selecionar uma pessoa e registrar altura e peso. Um resultado teria a forma $\omega=(\text{altura},\text{peso})$.
+
+Ou poderíamos definir como experimento “lançar uma moeda três vezes e registrar a sequência”. Nesse caso, um único ensaio poderia produzir $\omega=(H,T,H)$, e o espaço amostral seria $\{H,T\}^3$.
+
+O produto cartesiano, portanto, não significa “repetição”. Ele apenas nos fornece uma maneira de organizar **componentes de um objeto**.
+
+::: {.callout-note title="A mesma ferramenta aparecerá novamente"}
+
+Quando mais adiante fixarmos um experimento básico e quisermos representar **vários ensaios conjuntamente**, o produto cartesiano aparecerá outra vez.
+
+A diferença será conceitual:
+
+- aqui, as coordenadas pertencem ao **resultado de um único ensaio**;
+- lá, cada coordenada corresponderá ao **resultado de um ensaio diferente**.
+
+:::
 
 ### Espaços amostrais podem ter tamanhos diferentes
 
@@ -590,33 +522,106 @@ Por enquanto, não precisamos desenvolver nenhuma teoria adicional.
 
 A ideia importante é apenas perceber que o conjunto de resultados possíveis pode ter estruturas muito diferentes — e que essa estrutura terá consequências para a forma como representaremos probabilidades mais adiante.
 
+### O espaço amostral precisa ser completo e sem ambiguidade
+
+Se $\Omega$ pretende representar os resultados possíveis de um ensaio, queremos duas coisas muito simples:
+
+- [**coletivamente exaustivos**]{.conceito}: não importa o que aconteça no experimento, **algum resultado de $\Omega$ precisa acontecer**. Não podemos esquecer nenhuma possibilidade;
+- [**mutuamente exclusivos**]{.conceito}: se um resultado aconteceu, **nenhum outro resultado elementar pode ter acontecido ao mesmo tempo**.
+
+Juntas, essas duas ideias dizem algo ainda mais simples:
+
+> **ao final de um ensaio, devemos conseguir apontar para exatamente um $\omega\in\Omega$ e dizer: “foi isso que aconteceu”.**
+
+#### Um exemplo simples
+
+Considere o experimento:
+
+> lançar uma moeda duas vezes e registrar a ordem dos resultados.
+
+Então,
+
+$$
+\Omega=\{(H,H),(H,T),(T,H),(T,T)\}.
+$$
+
+Esse espaço é **coletivamente exaustivo** porque qualquer sequência possível de dois lançamentos aparece na lista.
+
+E seus resultados são **mutuamente exclusivos** porque, em um mesmo ensaio, não podemos observar simultaneamente $(H,T)$ e $(T,H)$: ou o primeiro lançamento foi $H$ e o segundo $T$, ou ocorreu o contrário.
+
+Isso também mostra por que $(H,T)$ e $(T,H)$ precisam aparecer como resultados diferentes: **o resultado elementar deve descrever completamente aquilo que decidimos observar**.
+
+Se retirássemos $(T,H)$, teríamos esquecido uma possibilidade e o espaço deixaria de ser exaustivo.
+
+Essas duas propriedades dizem **quando um espaço amostral está bem definido**.
+
+Mas ainda falta uma pergunta importante:
+
+> **quanto detalhe devemos colocar em cada resultado?**
+
 ### O espaço amostral depende da pergunta
 
-Existe aqui uma ideia muito mais importante do que pode parecer inicialmente:
+O espaço amostral não vem pronto da realidade. Ele depende do que decidimos preservar no modelo.
 
-> **o espaço amostral não é simplesmente uma lista que "vem pronta" da realidade.**
+Considere o experimento mais simples possível: lançar uma moeda uma vez.
 
-Ele faz parte da forma como decidimos representar o problema.
+Se queremos registrar apenas a face observada, basta
 
-**→ Considere um usuário chegando ao checkout de um e-commerce.**
+$$
+\Omega_1=\{H,T\}.
+$$
 
-Se nossa pergunta for apenas:
+Esse espaço já é mutuamente exclusivo e coletivamente exaustivo.
 
-> **O usuário realizará uma compra?**
+Mas imagine que, por algum motivo, acreditamos que o **clima** também seja relevante para o fenômeno. Podemos construir um modelo mais detalhado:
 
-podemos construir um espaço amostral simples:
+$$
+\Omega_2=
+\{
+(H,\text{chove}),
+(H,\text{não chove}),
+(T,\text{chove}),
+(T,\text{não chove})
+\}.
+$$
+
+Esse espaço também pode ser construído de forma mutuamente exclusiva e coletivamente exaustiva.
+
+Então qual dos dois está “certo”?
+
+Os dois podem estar.
+
+A diferença é **o que escolhemos guardar no modelo**.
+
+Se o clima não tem qualquer papel na pergunta que queremos responder, incluí-lo apenas adiciona detalhe desnecessário. Se acreditamos que ele pode importar, talvez precisemos preservá-lo.
+
+::: {.callout-important title="Formalizar não é apenas escrever símbolos"}
+
+O mundo real contém uma quantidade enorme de detalhes.
+
+Ao construir um modelo, precisamos decidir **quais detalhes manter e quais ignorar**.
+
+Essa escolha exige contexto, julgamento e conhecimento do problema:
+
+> **formalizar é também uma decisão de modelagem.**
+
+:::
+
+#### Trazendo para um problema real: checkout
+
+Considere agora um usuário chegando ao checkout de um e-commerce.
+
+Se nossa pergunta for apenas
+
+> **o usuário realizará uma compra?**
+
+podemos trabalhar com
 
 $$
 \Omega=\{\text{compra},\text{não compra}\}.
 $$
 
-Agora imagine que queremos registrar mais informação:
-
-> **Se houver uma compra, qual será a forma de pagamento utilizada?**
-
-O resultado precisa agora distinguir diferentes possibilidades de compra.
-
-Podemos definir:
+Se também quisermos registrar **como** a compra foi feita, precisaremos preservar mais informação:
 
 $$
 \Omega=
@@ -628,277 +633,11 @@ $$
 \}.
 $$
 
-A situação real pode ser exatamente a mesma.
+A situação real não mudou. Mudou **a pergunta que queremos responder** e, com ela, a resolução do nosso modelo.
 
-O que mudou foi **a informação que decidimos registrar** e, consequentemente, nossa **representação matemática** do fenômeno.
+O princípio é:
 
-Perceba que isso é uma versão da mesma ideia que vimos com duas moedas e dois dados: quando queremos guardar mais informação sobre o resultado, precisamos enriquecer a estrutura de $\omega$ e, consequentemente, de $\Omega$.
-
----
-
-**→ Agora considere um problema extremamente comum em Data Science: churn.**
-
-Suponha que acompanhamos um cliente durante determinado período e queremos registrar apenas uma coisa:
-
-> **O cliente cancelará ou permanecerá ativo?**
-
-Um espaço amostral possível é simplesmente
-
-$$
-\Omega=\{\text{churn},\text{não churn}\}.
-$$
-
-Temos apenas dois resultados possíveis. Portanto, estamos novamente diante de um espaço amostral **finito e discreto**.
-
-Esse exemplo extremamente simples está por trás de problemas muito familiares na indústria.
-
-Mais adiante, quando introduzirmos **variáveis aleatórias**, poderemos representar esses dois resultados numericamente, por exemplo:
-
-$$
-Y=1
-$$
-
-para churn e
-
-$$
-Y=0
-$$
-
-para não churn.
-
-E quando estudarmos modelos estatísticos, poderemos fazer uma pergunta ainda mais interessante:
-
-> **Qual é a probabilidade de churn para um cliente com determinadas características?**
-
-É exatamente o tipo de problema em que aparece, por exemplo, a **regressão logística** (*logistic regression*).
-
-::: {.callout-tip title="Do espaço amostral ao Machine Learning"}
-
-É interessante perceber a sequência.
-
-Começamos com algo aparentemente elementar:
-
-$$
-\Omega=\{\text{churn},\text{não churn}\}.
-$$
-
-Mais adiante, esses resultados poderão ser representados por uma variável $Y\in\{0,1\}$ e poderemos modelar a probabilidade de observar $Y=1$ dadas determinadas características do cliente.
-
-É daí que surgem muitos problemas que, na prática, chamamos de **classificação binária** (*binary classification*).
-
-Problemas de *churn prediction*, conversão, fraude ou inadimplência não começam no algoritmo.
-
-Antes de qualquer modelo, existe uma pergunta muito mais básica:
-
-> **quais são os resultados possíveis do fenômeno que estamos tentando representar?**
-
-:::
-
-::: {.callout-important title="Modelar significa escolher o que representar"}
-
-Um bom espaço amostral deve distinguir os resultados necessários para responder às perguntas que queremos fazer — sem carregar detalhes que não importam para o problema.
-
-Portanto, antes mesmo de atribuir probabilidades, já estamos tomando uma decisão de modelagem:
-
-> **Que aspectos da realidade precisamos representar?**
-
-:::
-
-### O espaço amostral precisa cobrir todas as possibilidades
-
-São duas as condições importantes nessa construção:
-
-- **coletivamente exaustivo:** todos os resultados que podem ocorrer estão representados em $\Omega$; nenhum resultado possível ficou de fora;
-- **mutuamente exclusivo:** em cada realização do experimento, apenas um desses resultados ocorre.
-
-#### Coletivamente exaustivo
-
-Existe uma condição importante na construção de $\Omega$:
-
-> **Depois que o experimento for realizado, o resultado observado precisa necessariamente estar dentro do espaço amostral que definimos.**
-
-Quando isso acontece, dizemos que os resultados em $\Omega$ são **coletivamente exaustivos**.
-
-"Coletivamente exaustivos" significa simplesmente:
-
-> **juntos, eles esgotam todas as possibilidades.**
-
-Considere o experimento:
-
-> lançar uma moeda duas vezes e registrar, na ordem, o resultado dos dois lançamentos.
-
-Já vimos que
-
-$$
-\Omega
-=
-\{H,T\}\times\{H,T\}
-=
-\{
-(H,H),(H,T),(T,H),(T,T)
-\}.
-$$
-
-Por que precisamos tanto de $(H,T)$ quanto de $(T,H)$?
-
-Porque eles representam resultados diferentes:
-
-- $(H,T)$: primeiro saiu cara e depois coroa;
-- $(T,H)$: primeiro saiu coroa e depois cara.
-
-Se definíssemos
-
-$$
-\Omega=
-\{
-(H,H),(H,T),(T,T)
-\},
-$$
-
-o espaço amostral estaria incompleto.
-
-Se o experimento produzisse primeiro $T$ e depois $H$, teríamos observado um resultado possível que **não existe em $\Omega$**.
-
-Portanto, esse espaço amostral não seria coletivamente exaustivo.
-
-::: {.callout-warning title="O erro que essa ideia evita"}
-
-A exaustividade funciona como uma checagem de sanidade do modelo:
-
-> **existe alguma coisa que pode acontecer no mundo, mas que nosso espaço amostral esqueceu de representar?**
-
-No exemplo das moedas, esquecer $(T,H)$ produz exatamente esse problema.
-
-Em dados reais, a mesma falha aparece quando criamos categorias para um processo e deixamos de fora um estado que pode realmente ocorrer.
-
-:::
-
-::: {.callout-note title="Mas $(H,T)$ e $(T,H)$ precisam sempre ser separados?"}
-
-Não.
-
-Tudo depende do que definimos como resultado do experimento.
-
-Se nosso experimento for
-
-> lançar uma moeda duas vezes e registrar a sequência,
-
-então $(H,T)$ e $(T,H)$ são resultados diferentes e precisamos de
-
-$$
-\Omega
-=
-\{
-(H,H),(H,T),(T,H),(T,T)
-\}.
-$$
-
-Mas suponha que nosso experimento seja
-
-> lançar uma moeda duas vezes e registrar apenas o número de caras.
-
-Agora não nos interessa a ordem.
-
-Os possíveis resultados são simplesmente
-
-$$
-\Omega=\{0,1,2\}.
-$$
-
-Tanto $(H,T)$ quanto $(T,H)$ correspondem ao mesmo resultado nessa nova representação:
-
-$$
-1\text{ cara}.
-$$
-
-Os dois espaços amostrais são válidos.
-
-Eles representam aspectos diferentes do mesmo fenômeno.
-
-:::
-
-Isso reforça uma ideia que vimos anteriormente:
-
-> **o espaço amostral depende daquilo que escolhemos observar e das perguntas que queremos responder.**
-
-Há ainda uma segunda condição.
-
-#### Mutuamente exclusivo
-
-Os elementos de $\Omega$ devem ser definidos de maneira que, ao realizar o experimento, possamos identificar **um único resultado**.
-
-Dizemos que os resultados são **mutuamente exclusivos**.
-
-No experimento em que registramos a sequência das duas moedas, se observamos
-
-$$
-(H,T),
-$$
-
-não observamos simultaneamente
-
-$$
-(H,H),\qquad(T,H)\qquad\text{ou}\qquad(T,T).
-$$
-
-Assim:
-
-- **coletivamente exaustivos:** todos os resultados que podem ocorrer estão representados em $\Omega$; nenhum resultado possível ficou de fora;
-- **mutuamente exclusivos:** apenas um deles ocorre em cada realização.
-
-Juntas, as duas ideias nos dão:
-
-$$
-\boxed{\text{em cada realização do experimento, exatamente um } \omega\in\Omega \text{ ocorre}.}
-$$
-
-::: {.callout-tip title="Teste seu entendimento"}
-
-Lançamos uma moeda duas vezes e queremos registrar **apenas se as duas faces foram iguais ou diferentes**.
-
-Qual dos seguintes espaços amostrais representa corretamente esse experimento?
-
-1. $\Omega=\{(H,H),(H,T),(T,H),(T,T)\}$
-
-2. $\Omega=\{\text{iguais},\text{diferentes}\}$
-
-3. $\Omega=\{(H,H),(H,T),(T,T)\}$
-
-O segundo é suficiente para a pergunta que escolhemos responder.
-
-O primeiro também contém informação suficiente, mas registra mais detalhes do que precisamos.
-
-O terceiro não é válido se estivermos registrando a sequência completa, pois deixou de fora o resultado possível $(T,H)$.
-
-:::
-
-**Podemos resumir as duas condições assim:**
-
-$$
-\begin{gathered}
-
-\underbrace{\text{pelo menos um resultado ocorre}}_{\text{exaustividade}}
-
-\;+\;
-
-\underbrace{\text{no máximo um resultado ocorre}}_{\text{exclusividade}}
-
-\qquad \Longrightarrow
-
-\\[0.8em]
-
-\Longrightarrow \qquad
-
-\underbrace{\text{exatamente um resultado ocorre}}_{\text{as duas juntas}}
-
-\end{gathered}
-$$
-
-Veja como a matemática vem justamente para **esclarecer coisas que, intuitivamente, às vezes podem parecer óbvias ou até confusas**.
-
-Quando dizemos que os resultados são coletivamente exaustivos e mutuamente exclusivos, estamos transformando em condições precisas uma ideia muito simples:
-
-> ao realizar o experimento, nenhum resultado possível pode ter sido esquecido e não pode haver ambiguidade sobre qual resultado ocorreu.
+> **os resultados precisam ser mutuamente exclusivos, coletivamente exaustivos e detalhados o suficiente para responder à pergunta que queremos fazer — sem preservar informação que não precisamos.**
 
 ### Fechando a primeira peça
 
@@ -934,131 +673,116 @@ Esses objetos são os **eventos**.
 
 ### Eventos: transformando perguntas reais em conjuntos
 
-Olha que nuance interessante:
+Quando realizamos um ensaio, observamos **um único resultado** $\omega\in\Omega$.
 
-- quando realizamos um experimento (ou um ensaio desse experimento), observamos apenas **um único resultado** $\omega\in\Omega$;
-- mas, na prática, queremos calcular probabilidades de perguntas muito mais amplas do que simplesmente **qual resultado específico será observado**.
+Mas normalmente queremos fazer perguntas mais amplas do que “qual resultado específico ocorreu?”.
 
-Por exemplo, em vez de perguntar apenas:
+Considere novamente um único ensaio do experimento com duas moedas distinguíveis A e B. Como definimos como **um único ensaio**, sabemos que um possível elemento é o $w = (H, T)$. 
 
-> **Qual é a probabilidade de observar exatamente $HT$?**
+Isso nos leva a definir o espaço amostral garantindo as suas duas propriedades (mutuamente exclusivo e coletivamente exaustivo). Temos, então:
 
-queremos responder perguntas como:
+$$
+\Omega=\{(H,H),(H,T),(T,H),(T,T)\}.
+$$
 
-> **Qual é a probabilidade de sair pelo menos uma cara em dois lançamentos?**
-
-> **Qual é a probabilidade de um usuário realizar uma compra, independentemente da forma de pagamento?**
-
-> **Qual é a probabilidade de um cliente cancelar sua assinatura nos próximos 30 dias?**
-
-Como representamos matematicamente perguntas desse tipo?
-
-É justamente para isso que introduzimos os **eventos**, pois a matemática representa essas perguntas por meio de **eventos**.
-
-Considere o experimento de lançar uma moeda duas vezes:
-
-$\Omega=\{HH,HT,TH,TT\}$.
-
-A pergunta
+Podemos perguntar, por exemplo:
 
 > **Saiu exatamente uma cara?**
 
-é satisfeita pelos resultados $HT$ e $TH$.
+Essa afirmação é verdadeira para dois resultados possíveis: $(H,T)$ e $(T,H)$.
 
-Podemos reuni-los no conjunto $A=\{HT,TH\}$.
+Reunimos então esses resultados no conjunto
 
-Esse conjunto é um **evento**:
+$$
+A=\{(H,T),(T,H)\}.
+$$
 
-- um subconjunto de $\Omega$ que representa alguma possível afirmação ou possível pergunta sobre o experimento.
+Esse conjunto é um [**evento**]{.conceito}: um subconjunto de $\Omega$ que representa uma pergunta ou afirmação sobre o resultado do experimento.
 
 $$
 \boxed{
-\text{pergunta mais interessante}
+\text{pergunta sobre o experimento}
 \longrightarrow
-\text{evento }A
-\longrightarrow
-A\subseteq\Omega
-\text{ (contexto de possíveis resultados)}
+\text{evento }A\subseteq\Omega
 }
 $$
 
 ![](../images/espaco_amostral.png){.course-figure width="50%"}
 
-Quando realizamos o experimento, observamos um único resultado $\omega$.
+Quando realizamos o ensaio e observamos $\omega$, dizemos que o evento $A$ ocorreu exatamente quando $\omega\in A$.
 
-Se $\omega\in A$, dizemos que **o evento $A$ ocorreu**.
+Por exemplo, se observamos $\omega=(H,T)$, então $\omega\in A$ e a resposta para “saiu exatamente uma cara?” é sim.
 
-Por exemplo, se
-
-$A=\{HT,TH\}$
-
-representa a pergunta
-
-> **Saiu exatamente uma cara?**
-
-e observamos $\omega=HT$, então $\omega\in A$ e dizemos que o evento $A$ ocorreu.
+[**Lembrete de notação:** manteremos os pares explícitos, como $(H,T)$, porque eles deixam visível qual informação pertence a cada coordenada. Se alguma fonte escrever $HT$, leia essa forma apenas como uma abreviação de $(H,T)$ neste tipo de experimento.]{.atencao}
 
 ::: {.callout-important title="Resultado e evento não são a mesma coisa"}
 
-O **resultado** é aquilo que observamos em uma realização do experimento.
+O **resultado** é um único elemento $\omega\in\Omega$ observado em um ensaio.
 
-O **evento** é um conjunto de resultados que representa alguma pergunta ou acontecimento de interesse.
+O **evento** é um conjunto de resultados, isto é, $A\subseteq\Omega$.
 
-Por isso, observar $HT$ não significa que $HT$ e $TH$ ocorreram ao mesmo tempo. Significa apenas que o resultado observado pertence ao conjunto
+Assim, observar $\omega=(H,T)$ não significa que $(H,T)$ e $(T,H)$ ocorreram ao mesmo tempo. Significa que o único resultado observado, $(H,T)$, pertence ao evento
 
-$A=\{HT,TH\}$.
+$A=\{(H,T),(T,H)\}$.
 
-Essa linguagem é importante porque conecta a matemática ao experimento real:
-
-> dizer que **$A$ ocorreu** significa simplesmente que o resultado observado pertence a $A$.
-
-E é justamente sobre eventos que queremos fazer perguntas probabilísticas:
-
-> **Qual é a probabilidade de o evento $A$ ocorrer?**
+Dizer que **$A$ ocorreu** significa simplesmente que $\omega\in A$.
 
 :::
 
 ### Combinando perguntas
 
-> E se quisermos fazer perguntas ainda mais complexas? 
+Como eventos são conjuntos, operações entre conjuntos nos permitem combinar perguntas sobre o mesmo ensaio.
 
-A estrutura matemática que essa formalização está construindo, precisa se capaz de permitir isso.
+Defina
 
-Como eventos são conjuntos, operações entre conjuntos permitem representar perguntas mais complexas.
+$A=$ “a moeda A mostra cara” e  
+$B=$ “a moeda B mostra cara”.
 
-Se
+Então:
 
-$A=$ "a primeira moeda é cara" e  
-$B=$ "a segunda moeda é cara",
+- $A\cap B$: **A e B ocorrem**;
+- $A\cup B$: **A ou B ocorre**;
+- $A^c$: **A não ocorre**.
 
-então:
+É por isso que a Teoria dos Conjuntos aparece aqui: ela fornece uma linguagem precisa para combinar afirmações sobre o resultado do experimento.
 
-- $A\cap B$: **$A$ e $B$ ocorrem**;
-- $A\cup B$: **$A$ ou $B$ ocorre**;
-- $A^c$: **$A$ não ocorre**.
+Um único resultado pode fazer **vários eventos** ocorrerem.
 
-É por isso que a Teoria dos Conjuntos aparece aqui: 
+Se $\omega=(H,H)$, por exemplo, então $\omega\in A$ e $\omega\in B$. Portanto, os dois eventos ocorreram.
 
-- ela fornece uma linguagem precisa para combinar perguntas sobre o experimento.
-
-Um único resultado também pode fazer vários eventos ocorrerem.
-
-Se $\omega=HH$, por exemplo, então $\omega\in A$ e $\omega\in B$. Portanto, $A$ e $B$ ocorreram. 
-
-Ou seja:
-
-- $HH\in A$: a resposta para **"a primeira moeda é cara?"** é sim;
-- $HH\in B$: a resposta para **"a segunda moeda é cara?"** também é sim.
-
-Portanto, dizemos que **os eventos $A$ e $B$ ocorreram**.
+Isso não contradiz a exclusividade dos resultados elementares: houve apenas **um resultado**, $(H,H)$, mas esse mesmo resultado pode pertencer a vários conjuntos-eventos.
 
 ### Dois eventos especiais
 
-A própria estrutura dos conjuntos na matemática nos dá ainda dois eventos interessantes.
+A própria estrutura dos conjuntos nos fornece dois eventos que aparecerão o tempo todo.
 
-- Como um conjunto por ser subconjunto de si mesmo ($\Omega\subseteq\Omega$), o próprio $\Omega$ é um possível evento. Chamamos esse caso de **evento certo** (*certain event*), pois algum resultado de $\Omega$ necessariamente ocorre em toda realização do experimento. Por isso, mais adiante veremos que $P(\Omega)=1$: ou seja, o espaço amostral inteiro tem **100% de probabilidade de ocorrer**.
+Considere um dado comum, com $\Omega=\{1,2,3,4,5,6\}$.
 
-- E como $\varnothing\subseteq\Omega$, o conjunto vazio também é um evento: o **evento impossível** (*impossible event*), pois nenhum resultado possível do experimento pertence a ele. Por isso, mais adiante veremos que $P(\varnothing)=0$: ou seja, o evento impossível tem **0% de probabilidade de ocorrer**.
+#### Evento certo: $\Omega$
+
+Pergunte:
+
+> **O resultado foi algum número entre 1 e 6?**
+
+Qualquer possível resultado do experimento torna essa afirmação verdadeira. O evento correspondente é o próprio $\Omega$.
+
+Por isso ele é chamado de [**evento certo**]{.conceito} (*certain event*). Mais adiante teremos $P(\Omega)=1$.
+
+#### Evento impossível: $\varnothing$
+
+Agora pergunte:
+
+> **O resultado do dado foi 7?**
+
+Nenhum elemento de $\Omega$ satisfaz essa afirmação. O conjunto de resultados que a tornariam verdadeira não contém elemento algum:
+
+$$
+\varnothing.
+$$
+
+Por isso $\varnothing$ é o [**evento impossível**]{.conceito} (*impossible event*). Mais adiante teremos $P(\varnothing)=0$.
+
+Esses exemplos podem parecer óbvios, mas mostram a lógica dos eventos com clareza: **uma pergunta é representada pelo conjunto de todos os resultados que fariam a resposta ser “sim”.**
 
 ### De eventos para uma família de eventos
 
@@ -1329,6 +1053,23 @@ $$
 P:\mathcal F\longrightarrow[0,1].
 $$
 
+::: {.callout-important title="O que entra dentro de $P(\cdot)$?"}
+
+Até este ponto do curso, a resposta é simples:
+
+> **eventos.**
+
+Formalmente, escrevemos $P(A)$ porque $A\in\mathcal F$, e cada $A$ é um **conjunto de resultados possíveis**.
+
+Mais adiante aparecerão notações que visualmente parecem colocar outros objetos dentro de $P(\cdot)$. Quando chegarmos lá, veremos que por trás delas continua existindo um evento. Por enquanto, mantenha a regra:
+
+$$
+\boxed{A\in\mathcal F\quad\longmapsto\quad P(A)}.
+$$
+
+:::
+
+
 Compare com o que acabamos de ver:
 
 $$
@@ -1422,76 +1163,74 @@ $$
 
 ### Por que pensar em probabilidade como uma "medida"?
 
-Até aqui chegamos a uma função
+Até aqui chegamos a uma função $P:\mathcal F\to[0,1]$ que atribui números a eventos.
 
-$$
-P:\mathcal F\longrightarrow[0,1],
-$$
+Mas por que a matemática moderna decidiu tratar probabilidade justamente como uma **medida**?
 
-que atribui um número a cada evento.
+A motivação fica mais clara se pensarmos no problema que precisava ser resolvido.
 
-Mas surge uma pergunta natural:
+Em situações finitas, podemos imaginar que cada resultado recebe uma parcela de probabilidade e que a probabilidade de um evento é obtida somando essas parcelas.
 
-> **que tipo de função deve ser essa?**
+Mas essa intuição começa a ficar insuficiente quando o espaço amostral é infinito — especialmente quando é contínuo.
 
-É aqui que entra uma ideia importante da Matemática: a de **medida**.
+Em um intervalo contínuo existem incontáveis pontos. Podemos ter cada ponto individual com probabilidade zero e, ainda assim, um intervalo inteiro com probabilidade positiva.
 
-::: {.callout-note title="A ideia de medida"}
+Então a pergunta deixa de ser apenas
 
-A **Teoria da Medida** (*Measure Theory*) estuda, de forma geral, como atribuir um "tamanho" a conjuntos de maneira consistente.
+> **quanto vale a probabilidade de cada ponto?**
 
-Dependendo do problema, esse tamanho pode representar comprimento, área, volume ou alguma outra noção de "quanto" existe naquele conjunto.
+ e passa a ser
 
-Mas não podemos atribuir esses tamanhos de qualquer maneira. Esperamos algumas propriedades naturais. Por exemplo:
+> **como atribuir, de maneira consistente, um tamanho a conjuntos inteiros de resultados?**
 
-- **tamanhos não podem ser negativos**;
-- **um conjunto sem nenhum elemento deve naturalmente ter tamanho zero**;
-- **se juntamos conjuntos que não se sobrepõem, o tamanho total deve refletir a soma dos tamanhos das partes**.
+Essa pergunta já havia aparecido em outra área da Matemática.
 
-Foi justamente essa estrutura que permitiu a Kolmogorov construir a Teoria da Probabilidade moderna:
+Matemáticos que estudavam comprimento, área e volume também precisavam responder:
 
-> **tratar probabilidade como um caso particular de medida.**
+> **como atribuir um tamanho consistente a conjuntos, inclusive quando eles envolvem infinitos pontos e operações de limite?**
+
+Foi para problemas desse tipo que a **Teoria da Medida** se desenvolveu no fim do século XIX e início do século XX, com ideias associadas, entre outros, a Borel e Lebesgue.
+
+A grande sacada para a Probabilidade foi perceber que a estrutura necessária era praticamente a mesma.
+
+Em vez de medir **comprimento** ou **área** de conjuntos, poderíamos medir o seu **tamanho probabilístico**.
+
+Essa conexão foi consolidada na axiomatização moderna da Probabilidade em 1933: uma probabilidade pode ser tratada matematicamente como um caso especial de medida, com uma escala específica em que o espaço inteiro possui medida $1$.
+
+::: {.callout-note title="A dor matemática que a ideia de medida resolve"}
+
+Queremos uma regra para medir conjuntos que continue coerente mesmo quando saímos de exemplos finitos simples e entramos em espaços infinitos e contínuos.
+
+A estrutura de medida nos dá exatamente isso:
+
+- tamanhos não negativos;
+- adição coerente para conjuntos que não se sobrepõem;
+- uma extensão coerente quando passamos de um número finito para uma sequência infinita de conjuntos;
+- no caso da Probabilidade, tamanho total normalizado para $1$.
 
 :::
 
-Em Probabilidade, os conjuntos que queremos medir são os **eventos**.
+Em Probabilidade, os conjuntos que medimos são os **eventos**.
 
-Assim, $P(A)$ pode ser interpretado como o **tamanho probabilístico** do evento $A$.
+Assim, $P(A)$ pode ser interpretado como o tamanho probabilístico do conjunto $A$: quanto da massa probabilística total está associado àquele evento.
 
-Ou, em linguagem mais natural:
+Podemos imaginar uma massa total igual a $1$ distribuída sobre $\Omega$. Então $P(\Omega)=1$, enquanto $P(A)$ mede quanto dessa massa está associado a $A$.
 
-> **quão provável é que o resultado do experimento caia dentro de $A$?**
+Para uma moeda justa, por exemplo, $P(\{H\})=0.5$ e $P(\{T\})=0.5$.
 
-Podemos imaginar uma massa total igual a $1$ distribuída sobre o espaço amostral $\Omega$.
-
-Então:
-
-- $P(\Omega)=1$: toda a massa probabilística está em $\Omega$;
-- $P(A)$: mede quanto dessa massa está associado ao evento $A$.
-
-Por exemplo, para uma moeda justa,
+A ideia central é:
 
 $$
-P(\{H\})=0.5,
-\qquad
-P(\{T\})=0.5.
+\boxed{
+\text{probabilidade}
+=
+\text{uma medida sobre eventos, com }P(\Omega)=1
+}
 $$
 
-Metade da massa está associada a cada resultado.
+Isso explica por que a linguagem de conjuntos que construímos antes não era um detalhe formal desnecessário.
 
-Existe ainda uma particularidade importante da Probabilidade: 
-
-- sem nem perceber, escolhemos uma _escala_ em que **o espaço inteiro tem tamanho igual a $1$**.
-
-Ou seja, ao fazermos o paralelo com a Teoria da Medida, podemos dizer que:
-
-> **Probabilidade nada mais é que uma medida sobre eventos, normalizada de forma que $\Omega$ tenha tamanho probabilístico igual a $1$.**
-
-Essa visão será especialmente útil quando voltarmos aos espaços amostrais **infinitos e não enumeráveis** (_lembra?_).
-
-Nesses casos, pensar apenas em "_dar uma probabilidade para cada resultado individual_" deixa de funcionar tão bem.
-
-Continuamos, porém, podendo atribuir probabilidades (ou seja, _medidas_, ou ainda melhor, **_funções_**) a **conjuntos de resultados** — isto é, a **eventos**.
+Quando chegamos a espaços contínuos, nem sempre faz sentido tentar construir a teoria atribuindo probabilidades ponto a ponto. A estrutura correta é atribuir uma medida a **eventos**, isto é, a conjuntos adequados de resultados.
 
 ### Mas qualquer função serve?
 
@@ -1503,35 +1242,15 @@ $$
 P:\mathcal F\longrightarrow[0,1].
 $$
 
-Queremos que $P$ se comporte como uma **medida de probabilidade** (*probability measure*).
+Queremos que os números atribuídos aos eventos sejam **coerentes entre si**.
 
-Ou seja, os "tamanhos probabilísticos" atribuídos aos eventos precisam obedecer a algumas regras para serem coerentes entre si. Regras essas bem parecidas com a que vimos na Teoria da Medida.
+Por exemplo, se alguém propusesse $P(\Omega)=0.4$, o valor estaria dentro de $[0,1]$, mas não faria sentido probabilisticamente: $\Omega$ representa **tudo o que pode acontecer**.
 
-Por exemplo, imagine que uma função atribuísse
+Então precisamos estabelecer algumas regras.
 
-$P(\Omega)=0.4$.
+Para enxergar de onde elas vêm, vamos começar pelo caso mais simples — **um número finito de eventos** — e só depois veremos a sutileza que aparece quando há infinitos.
 
-O número $0.4$ pertence ao intervalo $[0,1]$, então a função estaria respeitando seu contradomínio.
-
-Mas probabilisticamente isso não faria sentido: $\Omega$ representa **tudo o que pode acontecer**.
-
-Foi justamente esse problema que [Kolmogorov]{.conceito} formalizou:
-
-> **quais propriedades uma função $P$ precisa satisfazer para realmente representar probabilidades?**
-
-A resposta são os famosos [**Axiomas de Kolmogorov**]{.conceito} (*Kolmogorov Axioms*) 😉.
-
-Talvez você se lembre deles _da escola ou da graduação_. Muitas aulas de Probabilidade começam praticamente daqui (olha quanta coisa você perdeu!):
-
-$$
-P(\Omega)=1,\qquad P(A)\geq0,\qquad\ldots
-$$
-
-> Só que agora sabemos **de onde essas regras vieram e qual problema elas estão resolvendo (da Teoria da Medida...)**.
-
-### Os Axiomas de Kolmogorov
-
-A ideia é elegante: começamos com poucas regras fundamentais e, a partir delas, deduzimos várias outras propriedades da Probabilidade.
+### Primeiro: três regras muito naturais
 
 #### 1. Não-negatividade
 
@@ -1541,33 +1260,177 @@ $$
 \boxed{P(A)\geq0}.
 $$
 
-Isso corresponde diretamente à ideia de medida que acabamos de discutir:
-
-> **um tamanho não pode ser negativo.**
-
-Não faria sentido, por exemplo, dizer que a probabilidade de um cliente cancelar é $-0.2$.
+Probabilidade representa um tamanho. Portanto, não pode ser negativa.
 
 #### 2. Normalização
 
-O espaço amostral $\Omega$ reúne **tudo o que pode acontecer** no experimento.
-
-Na Probabilidade, escolhemos uma escala em que o tamanho probabilístico de todo o espaço é igual a $1$:
+Como $\Omega$ reúne **tudo o que pode acontecer**,
 
 $$
 \boxed{P(\Omega)=1}.
 $$
 
-Ou seja, temos $100\%$ de probabilidade de que o resultado observado pertença a $\Omega$.
+Temos $100\%$ de probabilidade de que o resultado do ensaio pertença ao espaço amostral que definimos.
 
-Isso formaliza matematicamente a ideia de **evento certo** que vimos anteriormente.
+#### 3. Aditividade — por enquanto, para dois eventos
 
-#### 3. Aditividade enumerável
+Se $A$ e $B$ são mutuamente exclusivos, isto é, $A\cap B=\varnothing$, então
 
-Agora recuperamos outra propriedade natural da ideia de medida.
+$$
+\boxed{
+P(A\cup B)=P(A)+P(B)
+}.
+$$
 
-Suponha que $A_1,A_2,A_3,\ldots$ sejam eventos **mutuamente exclusivos**: eles não se sobrepõem.
+A intuição é a mesma de uma medida: se duas partes não se sobrepõem, o tamanho do conjunto formado pelas duas é a soma dos tamanhos de cada parte.
 
-Então,
+::: {.callout-important title="Por que não pode haver sobreposição?"}
+
+Se $A$ e $B$ tiverem resultados em comum, somar $P(A)+P(B)$ contaria essa parte compartilhada duas vezes.
+
+Quando $A\cap B=\varnothing$, isso não acontece.
+
+:::
+
+Até aqui, essas três regras já nos permitem trabalhar perfeitamente com qualquer **quantidade finita** de eventos disjuntos.
+
+Por exemplo, para três eventos disjuntos,
+
+$$
+P(A\cup B\cup C)
+=
+P(A)+P(B)+P(C),
+$$
+
+porque podemos aplicar a regra duas vezes.
+
+O mesmo raciocínio funciona para $10$, $100$ ou qualquer número **finito** de eventos.
+
+Assim, se
+
+$$
+A=\{\omega_1,\omega_2,\ldots,\omega_k\},
+$$
+
+podemos escrever
+
+$$
+A
+=
+\{\omega_1\}\cup\{\omega_2\}\cup\cdots\cup\{\omega_k\}
+$$
+
+e concluir que
+
+$$
+P(A)
+=
+\sum_{i=1}^{k}P(\{\omega_i\}).
+$$
+
+No caso finito, portanto, a ideia de distribuir massa entre os resultados individuais e depois somar funciona naturalmente.
+
+### Mas o infinito cria uma sutileza nova
+
+Agora considere outro experimento:
+
+> lançar uma moeda repetidamente até aparecer a primeira cara.
+
+Um resultado possível é $1$: a primeira cara apareceu imediatamente.
+
+Outro é $2$: primeiro veio coroa e depois cara.
+
+E assim por diante:
+
+$$
+\Omega=\{1,2,3,\ldots\}.
+$$
+
+Suponha que a lei de probabilidade nos diga que
+
+$$
+P(\{n\})=\frac{1}{2^n}.
+$$
+
+Não precisamos derivar essa fórmula agora. O ponto é outro.
+
+Considere o evento
+
+$$
+A=\{2,4,6,\ldots\},
+$$
+
+isto é, “a primeira cara apareceu em um número par de lançamentos”.
+
+Intuitivamente, gostaríamos de escrever
+
+$$
+P(A)
+=
+P(\{2\})+P(\{4\})+P(\{6\})+\cdots.
+$$
+
+Mas repare no salto que acabamos de fazer.
+
+A regra anterior nos autorizava a somar **dois eventos** e, repetindo o argumento, qualquer quantidade **finita** deles.
+
+Agora estamos tentando somar uma quantidade **infinita** de eventos.
+
+Aplicar uma regra finita muitas vezes continua sendo apenas aplicá-la um número finito de vezes. Isso, sozinho, não justifica passar para
+
+$$
+P(A)
+=
+\frac14+\frac1{16}+\frac1{64}+\cdots.
+$$
+
+Precisamos de uma regra adicional — ou, mais precisamente, de uma versão **mais forte** da aditividade.
+
+### Por que aparece uma sequência $A_1,A_2,A_3,\ldots$?
+
+Aqui existe uma sutileza importante.
+
+Uma soma infinita como
+
+$$
+a_1+a_2+a_3+\cdots
+$$
+
+é construída matematicamente a partir da sequência de somas finitas
+
+$$
+a_1,\qquad
+a_1+a_2,\qquad
+a_1+a_2+a_3,\qquad\ldots
+$$
+
+e de seu limite.
+
+Por isso, quando queremos estender a aditividade para infinitos eventos, precisamos conseguir organizá-los como uma **sequência**:
+
+$$
+A_1,A_2,A_3,\ldots
+$$
+
+ou seja, como primeiro evento, segundo evento, terceiro evento, e assim por diante.
+
+Essa é exatamente a ideia de uma coleção [**enumerável**]{.conceito}.
+
+::: {.callout-note title="Uma palavra que ficará importante no próximo capítulo"}
+
+Por enquanto, pense apenas assim:
+
+> **enumerável = conseguimos colocar os elementos em uma lista $1,2,3,\ldots$ sem deixar nenhum de fora.**
+
+No próximo capítulo, quando entrarmos em espaços contínuos e não enumeráveis, veremos por que essa palavra aparentemente inocente se torna uma sutileza fundamental.
+
+:::
+
+### Aditividade enumerável
+
+Agora fortalecemos a terceira regra.
+
+Se $A_1,A_2,A_3,\ldots$ são eventos mutuamente exclusivos, então exigimos que
 
 $$
 \boxed{
@@ -1577,55 +1440,66 @@ P\left(\bigcup_{i=1}^{\infty}A_i\right)
 }.
 $$
 
-A notação parece mais complicada do que a ideia.
+Essa propriedade é chamada de [**aditividade enumerável**]{.conceito} (*countable additivity*).
 
-Ela diz simplesmente:
+Ela contém o caso finito anterior como um caso particular, mas agora também nos permite trabalhar com sequências infinitas de eventos.
 
-> **se juntamos eventos que não se sobrepõem, o tamanho probabilístico do conjunto total é a soma dos tamanhos probabilísticos das partes.**
-
-No caso de apenas dois eventos mutuamente exclusivos,
+Voltando ao exemplo,
 
 $$
-A\cap B=\varnothing
-\qquad\Longrightarrow\qquad
-P(A\cup B)=P(A)+P(B).
+A=\{2,4,6,\ldots\},
 $$
 
-Por exemplo, em um lançamento de moeda,
-
-$A=\{H\}$ e $B=\{T\}$
-
-são mutuamente exclusivos.
-
-Se a moeda é justa,
+podemos finalmente justificar
 
 $$
-P(A\cup B)
+P(A)
 =
-P(A)+P(B)
+\frac14+\frac1{16}+\frac1{64}+\cdots
 =
-0.5+0.5
-=
-1.
+\frac13.
 $$
 
-E faz sentido:
+O resultado numérico vem da soma de uma série geométrica. O ponto probabilístico, porém, é anterior:
 
-$A\cup B=\Omega$.
+> **a aditividade enumerável é o que nos autoriza a transformar aquela união infinita de eventos em uma soma infinita de probabilidades.**
 
-::: {.callout-important title="Por que não pode haver sobreposição?"}
+### Agora sim: os Axiomas de Kolmogorov
 
-Se $A$ e $B$ tiverem resultados em comum, simplesmente somar $P(A)+P(B)$ contaria essa parte compartilhada duas vezes.
+Aqui vale uma precisão importante.
 
-Quando
+As três regras iniciais — não-negatividade, normalização e **aditividade finita** — capturam a intuição básica, mas ainda não são suficientes para a formulação moderna completa.
 
-$A\cap B=\varnothing$,
+Nos [**Axiomas de Kolmogorov**]{.conceito}, a terceira propriedade é justamente a versão mais forte que acabamos de construir: **aditividade enumerável**.
 
-não existe sobreposição e podemos simplesmente somar as probabilidades.
+Assim, a forma completa é:
 
-Mais adiante veremos como calcular $P(A\cup B)$ quando os eventos **podem** ocorrer juntos.
+$$
+\boxed{
+\begin{aligned}
+P(A)&\geq0
+&&\text{(não-negatividade)}\\[3pt]
+P(\Omega)&=1
+&&\text{(normalização)}\\[3pt]
+P\left(\bigcup_{i=1}^{\infty}A_i\right)
+&=
+\sum_{i=1}^{\infty}P(A_i)
+&&\text{para }A_i\text{ mutuamente exclusivos.}
+\end{aligned}
+}
+$$
 
-:::
+A progressão é importante:
+
+$$
+\boxed{\text{somar duas partes}}
+\longrightarrow
+\boxed{\text{somar qualquer número finito}}
+\longrightarrow
+\boxed{\text{somar uma sequência infinita}}
+$$
+
+Foi essa última passagem que exigiu uma nova sutileza matemática.
 
 ### Três axiomas, muitas consequências
 
@@ -1669,60 +1543,48 @@ Ou seja, propriedades que parecem "óbvias" não precisam ser novos axiomas: ela
 Agora temos as três peças da nossa formalização:
 
 $$
-(\Omega,\mathcal F,P).
+\boxed{(\Omega,\mathcal F,P)}.
 $$
 
 $\Omega$ descreve **o que pode acontecer**, $\mathcal F$ organiza **os eventos sobre os quais queremos fazer perguntas**, e $P$ atribui a esses eventos um **tamanho probabilístico coerente**.
 
-Esse conjunto de três objetos é chamado de **espaço de probabilidade** (*probability space*).
+Esse conjunto de três objetos é chamado de [**espaço de probabilidade**]{.conceito} (*probability space*).
 
-Com isso, completamos a primeira etapa da nossa formalização:
+Com isso, construímos a estrutura básica necessária para representar **um ensaio completo do experimento e a incerteza associada ao seu resultado**.
 
-::: {.columns}
+Mas ainda não terminamos completamente essa primeira etapa.
 
-::: {.column width="48%"}
+::: {.callout-note title="O próximo capítulo ainda está dentro de um ensaio"}
 
-::: {.callout-note title="1 — Formalizar uma realização"}
+Até aqui trabalhamos principalmente com exemplos em que os resultados podiam ser listados com facilidade.
 
-Já fizemos:
+No próximo capítulo continuaremos olhando para **um único ensaio**, mas perguntaremos o que muda quando $\Omega$ é contínuo e possui incontáveis resultados possíveis.
+
+A estrutura continuará sendo $(\Omega,\mathcal F,P)$; o que precisaremos entender melhor é como $\mathcal F$ e $P$ funcionam nesse cenário.
+
+:::
+
+Somente depois de fechar essa lacuna mudaremos de pergunta.
+
+Em vez de perguntar
+
+> **como representar a incerteza sobre o resultado de um ensaio?**
+
+passaremos a perguntar
+
+> **como representar probabilisticamente vários ensaios desse mesmo experimento em conjunto?**
+
+Essa mudança exigirá uma estrutura conjunta e nos levará ao **espaço de amostragem (*sampling space*)**.
+
+A sequência didática, portanto, é:
 
 $$
-\boxed{(\Omega,\mathcal F,P)}
+\boxed{\text{um ensaio: }(\Omega,\mathcal F,P)}
+\longrightarrow
+\boxed{\text{caso contínuo}}
+\longrightarrow
+\boxed{\text{vários ensaios conjuntamente}}
 $$
-
-Temos agora uma estrutura matemática para representar **um ensaio completo do experimento** e a incerteza associada a ele.
-
-:::
-
-:::
-
-::: {.column width="48%"}
-
-::: {.callout-note title="2 — Formalizar repetições"}
-
-Agora vem a próxima pergunta:
-
-> **o que acontece quando observamos várias realizações desse mesmo experimento?**
-
-Essa será a próxima etapa da nossa formalização.
-
-:::
-
-:::
-
-:::
-
-Em resumo:
-
-$$
-\boxed{\text{formalizar uma realização}}
-\qquad\longrightarrow\qquad
-\boxed{\text{formalizar repetições}}
-$$
-
-Neste capítulo, concluímos a **primeira caixa**.
-
-A seguir, começaremos a construir a segunda — e, com isso, daremos um passo importante em direção à ideia de **dados produzidos por várias realizações de um fenômeno aleatório**.
 
 ## Antes de continuar
 
@@ -1738,7 +1600,7 @@ Tente responder sem recorrer às definições acima. A ideia aqui é testar prin
 
    Construa o espaço amostral $\Omega$.
 
-   Depois explique: por que $HT$ e $TH$ precisam aparecer como **dois resultados distintos** nesse experimento?
+   Depois explique: por que $(H,T)$ e $(T,H)$ precisam aparecer como **dois resultados distintos** nesse experimento?
 
 3. Um usuário chega ao checkout de um e-commerce. Se queremos registrar apenas se houve compra, proponha um espaço amostral. Como ele mudaria se também quiséssemos registrar a forma de pagamento?
 
@@ -1756,12 +1618,12 @@ Tente responder sem recorrer às definições acima. A ideia aqui é testar prin
 
    > **Saiu exatamente uma cara?**
 
-7. Se o resultado observado for $\omega=HT$, o evento $A$ da pergunta anterior ocorreu? Explique usando $\omega\in A$.
+7. Se o resultado observado for $\omega=(H,T)$, o evento $A$ da pergunta anterior ocorreu? Explique usando $\omega\in A$.
 
 8. Considere:
 
-   - $A=$ "a primeira moeda é cara";
-   - $B=$ "a segunda moeda é cara".
+   - $A=$ "a moeda A mostra cara";
+   - $B=$ "a moeda B mostra cara".
 
    O que representam $A\cap B$, $A\cup B$ e $A^c$ em linguagem comum?
 
@@ -1855,4 +1717,6 @@ Qual é o domínio? Qual é o contradomínio? Que tipo de objeto entra na funç�
 
    Perceba o ponto: começamos apenas com **poucas regras básicas** e já conseguimos deduzir outras propriedades familiares da Probabilidade.
 
-17. Por que os Axiomas de Kolmogorov são mais do que uma lista de fórmulas? Qual é o papel deles na definição do que pode ser considerado uma **medida de probabilidade válida**?
+17. Por que a **aditividade finita** não é suficiente, sozinha, para justificar uma soma como $P(A_1)+P(A_2)+P(A_3)+\cdots$? O que a aditividade enumerável acrescenta?
+
+18. Por que os Axiomas de Kolmogorov são mais do que uma lista de fórmulas? Qual é o papel deles na definição do que pode ser considerado uma **medida de probabilidade válida**?

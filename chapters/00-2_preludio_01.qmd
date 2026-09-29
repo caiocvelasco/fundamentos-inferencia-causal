@@ -1,5 +1,5 @@
 ---
-title: "Prelúdio - O Mapa da Probabilidade e da Inferência"
+title: "1. O Mapa da Probabilidade e da Inferência"
 ---
 
 Antes de começarmos, quero deixar claro **onde estamos indo**.
