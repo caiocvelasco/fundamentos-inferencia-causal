@@ -21,7 +21,7 @@ book:
     - index.qmd
     - conteudo.qmd
     - chapters/motivacao.qmd
-    - chapters/00-1_pre_requisitos_matematicos.qmd
+  #  - chapters/00-1_pre_requisitos_matematicos.qmd
 
     - part: "Prelúdio"
       chapters:
