@@ -1,0 +1,894 @@
+---
+title: "O que queremos aprender com os dados?"
+subtitle: "Um mapa mental para Previsão, Inferência Estatística e Inferência Causal"
+---
+
+## Antes de escolher um modelo
+
+Quando pensamos em Data Science, é comum pensar em estudar os modelos mais famosos de _Machine Learning_:
+
+- regressão, random forest, XGBoost, redes neurais, etc
+
+Mas essa não deveria ser a primeira pergunta.
+
+Antes de perguntar: _"Qual modelo devemos usar?"_
+
+Precisamos perguntar: **_O que queremos aprender com os dados?_**
+
+
+Aqui, nosso objetivo é mostrar que o objetivo na vida real **depende da decisão que se busca tomar**. Essa decisão, por sua vez, precisa responder essa seguinte pergunta: _O que queremos aprender com os dados._ 
+
+Com isso em mente, a figura abaixo consegue esclarecer o que veremos nesse capítulo.
+
+```text
+                                DADOS
+                                  │
+          ┌───────────────────────┼───────────────────────┐
+          │                       │                       │
+          │                       │                       │
+     Prediction        Inferência Estatística     Inferência Causal
+          │                       │                       │
+          │                       │                       │
+"O que provavelmente   "O que podemos aprender    "O que aconteceria
+  vai acontecer?"      sobre a população e com     se intervíssemos?"
+                       qual incerteza?"
+          │                       │                       │
+          └───────────────────────┼───────────────────────┘
+                                  │
+                                  │
+                               Decisão
+                                  │
+                           Ação no negócio
+```
+
+Uma mesma empresa, usando os mesmos dados, pode estar interessada em perguntas **completamente diferentes**.
+
+Imagine uma empresa preocupada com **churn**:
+
+- **Quem provavelmente vai cancelar?**
+- **Qual é a taxa de churn dos nossos clientes e com que precisão conseguimos estimá-la?**
+- **Se oferecermos um benefício, quanto o churn diminuirá por causa dessa intervenção?**
+
+As três perguntas envolvem dados. As três podem envolver modelos. Mas são problemas **completamente diferentes**.
+
+Este capítulo apresenta um mapa mental simples para reconhecer **três dos principais tipos de problemas** encontrados em **Data Science**:
+
+1. **Previsão:** _o que provavelmente vai acontecer?_
+2. **Inferência Estatística:** _o que podemos aprender sobre uma população ou fenômeno, e com qual incerteza?_
+3. **Inferência Causal:** _o que aconteceria se fizéssemos alguma coisa?_
+
+A pergunta vem **antes** do modelo.
+
+## 1. Previsão: o que provavelmente vai acontecer?
+
+### A pergunta
+
+Em problemas preditivos, queremos antecipar um resultado ainda desconhecido.
+
+Por exemplo:
+
+- Esse cliente vai cancelar?
+- Essa transação é fraude?
+- Esse usuário provavelmente vai comprar?
+- Quanto vamos vender no próximo mês?
+- Quanto tempo essa entrega vai levar?
+- Qual lead provavelmente vai converter?
+- Qual produto devemos recomendar para esse usuário?
+- Qual é a probabilidade de inadimplência desse cliente?
+
+O objetivo em problemas preditivos é aprender (ou *estimar*)[^1], a partir dos dados observados, uma função $f$ capaz de transformar informações disponíveis ($X$) em uma boa previsão de $Y$ para casos novos.
+
+Uma forma geral de representar essa relação é:
+
+$$
+Y = f(X) + \epsilon
+$$
+
+onde $f$ representa a relação sistemática entre $X$ e $Y$, enquanto $\epsilon$ representa a parte aleatória de $Y$ que não é explicada pelas informações contidas em $X$.
+
+[^1]: James, G., Witten, D., Hastie, T., & Tibshirani, R. (2021). *An Introduction to Statistical Learning: with Applications in R* (2nd ed.). Springer.
+
+Quando o objetivo é **previsão**, não precisamos necessariamente interpretar o significado de cada parâmetro ou componente do modelo. O principal é que a função estimada **produza boas previsões** e **generalize** para novos dados.
+
+Ou seja:
+
+> quando chegarem novas observações de $X$, conseguiremos prever bem seus respectivos valores de $Y$?
+
+### Por que uma empresa quer prever algo?
+
+Porque antecipar um acontecimento permite agir antes que ele ocorra.
+
+- Se conseguimos prever quem tem grande probabilidade de churn, podemos priorizar esses clientes.
+- Se conseguimos prever fraude, podemos identificar transações que merecem bloqueio ou revisão.
+- Se conseguimos prever demanda, podemos organizar estoque e operação antes que os pedidos ocorram.
+- Se conseguimos prever quais produtos interessam a determinado usuário, podemos personalizar sua experiência.
+
+**Previsão** é especialmente valioso quando uma empresa precisa tomar muitas decisões repetidamente.
+
+### O que a empresa pode fazer com a resposta dessa previsão?
+
+Alguns exemplos:
+
+**Churn**
+
+Previsão:
+
+> "Este cliente possui alta probabilidade de cancelar."
+
+Possíveis ações:
+
+- priorizar o cliente para o time de retenção;
+- antecipar um contato ao cliente;
+- criar uma fila de atendimento baseada em risco.
+
+**Fraude**
+
+Previsão:
+
+> "Esta transação possui alta probabilidade de ser fraudulenta."
+
+Possíveis ações:
+
+- bloquear automaticamente;
+- pedir autenticação adicional;
+- enviar para revisão humana.
+
+**Demanda**
+
+Previsão:
+
+> "Esperamos aproximadamente esta demanda na próxima semana."
+
+Possíveis ações:
+
+- comprar estoque;
+- dimensionar equipe;
+- organizar logística;
+- planejar caixa.
+
+**Lead scoring**
+
+Previsão:
+
+> "Estes leads possuem maior probabilidade de conversão."
+
+Possíveis ações:
+
+- priorizar o trabalho dos vendedores;
+- definir filas de contato;
+- distribuir esforço comercial.
+
+**Recomendação**
+
+Previsão:
+
+> "Estes são os itens que esse usuário provavelmente terá maior interesse em consumir."
+
+Possíveis ações:
+
+- ordenar produtos;
+- recomendar filmes;
+- selecionar anúncios;
+- personalizar uma home page.
+
+### O que precisamos aprender para resolver esses problemas?
+
+Prediction normalmente nos leva para o campo de **Statistical Learning e Machine Learning**.
+
+Entre os principais fundamentos estão:
+
+- **Teoria da Probabilidade** (variáveis aleatórias, distribuições, probabilidade condicional, esperança, variância, etc.);
+- álgebra linear;
+- cálculo e otimização;
+- loss functions;
+- train, validation e test;
+- generalização;
+- overfitting e regularização;
+- cross-validation;
+- métricas de performance;
+- algoritmos de Machine Learning.
+
+**Probabilidade** continua sendo fundamental.
+
+A diferença é que, em problemas puramente preditivos, o objetivo principal não é estimar uma quantidade populacional e quantificar sua incerteza, mas construir uma função que **generalize bem para novos dados**.
+
+Por isso, **Inferência Estatística** não é, em geral, um pré-requisito para construir um bom modelo preditivo.
+
+Ela volta a ser necessária quando mudamos a pergunta e passamos a querer saber **o que podemos concluir para além da amostra observada e com qual incerteza**.
+
+Mas, **olhe que interessante**. Suponha que usamos ML para um certo problema de predição. Porém, depois de finalizado, **percebemos uma necessidade diferente**.
+
+Por exemplo, suponha que dois modelos de churn tenham AUCs de 0,81 e 0,83 na mesma amostra de teste.
+
+Se perguntamos:
+
+> **Qual modelo teve melhor performance observada?**
+
+estamos em um problema preditivo.
+
+Mas, se perguntamos:
+
+> **Essa diferença de 0,02 provavelmente se mantém para a população de casos futuros ou pode ser apenas resultado da amostra utilizada?**
+
+entramos em um problema de **Inferência Estatística**.
+
+Podemos então quantificar essa incerteza usando, por exemplo, bootstrap, intervalos de confiança ou testes específicos para comparação de AUCs.
+
+A ponte fica clara:
+
+- **ML preditivo:** qual modelo teve melhor generalização observada?
+- **Inferência Estatística (em cima de ML):** quanta incerteza existe nessa diferença?
+
+As AUCs 0,81 e 0,83 são estatísticas calculadas a partir de muitas observações. A ideia inferencial é imaginar como essa diferença variaria se repetíssemos o processo de amostragem.
+
+Isso nos leva à **distribuição amostral** e, a partir dela, a conceitos como erro padrão, intervalos de confiança e testes de hipóteses. Ou seja, novamente, **a estatística inferêncial aparece como necessário** mesmo durante um problema de Machine Learning.
+
+::: {.callout-note}
+## Ideia principal
+
+Previsão cria valor quando **antecipar corretamente um acontecimento permite à empresa agir melhor antes que ele ocorra**.
+:::
+
+## 2. Inferência Estatística: o que podemos aprender sobre o mundo?
+
+### A pergunta
+
+Agora a pergunta muda.
+
+Não queremos necessariamente **prever** o resultado de uma nova observação.
+
+Queremos aprender alguma quantidade desconhecida **sobre uma população ou sobre o fenômeno** que estamos estudando e, ao mesmo tempo, quantificar a incerteza dessa conclusão.
+
+Por exemplo:
+
+- Qual é a taxa de churn dos nossos clientes?
+- Qual é a conversão média do nosso produto?
+- Qual é a receita média por cliente?
+- Qual é a diferença de conversão entre dois grupos?
+- A taxa de churn realmente aumentou ou estamos observando uma flutuação amostral?
+- Com que precisão conseguimos estimar determinado KPI?
+
+Aqui aparece um problema fundamental:
+
+> **temos uma amostra, mas queremos aprender algo para além dos valores observados nessa amostra.**
+
+Se calculássemos apenas a taxa de churn dos clientes presentes no nosso _dataset_, estaríamos fazendo **Estatística Descritiva**: estaríamos apenas resumindo aquilo que efetivamente observamos.
+
+Isso é perfeitamente válido. O problema aparece quando damos um passo além e queremos **generalizar essa informação para o todo**, para outros períodos ou para novas amostras. Nesse momento, precisamos levar em conta que outra amostra poderia produzir outro resultado.
+
+Suponha que observamos uma taxa de churn de 8%. O número 8% descreve os dados observados.
+
+Mas podemos querer responder:
+
+> Qual é a taxa de churn da população da qual esses dados foram gerados?
+
+E, tão importante quanto:
+
+> Quanta incerteza existe nessa estimativa?
+
+É essa passagem — **da amostra observada para uma quantidade desconhecida da população** — que nos leva à **Inferência Estatística**.
+
+### Por que uma empresa quer fazer inferência?
+
+Porque métricas variam. Conversão muda de uma semana para outra. Churn muda de um mês para outro. Receita média muda entre amostras. Segmentos apresentam resultados diferentes.
+
+Se tratarmos toda variação observada como uma mudança real do negócio, podemos tomar decisões ruins.
+
+Uma função importante da Inferência Estatística é nos ajudar a distinguir:
+
+> **sinal de ruído.**
+
+Ou, de forma mais precisa: 
+
+> avaliar quanto da diferença que observamos pode refletir uma diferença real na população e quanto pode ser explicado pela variabilidade inerente ao processo de amostragem e geração dos dados.
+
+### O que a empresa pode fazer com a resposta?
+
+Imagine que a conversão caiu de 10% para 9,7%.
+
+Sem pensar estatisticamente, alguém pode imediatamente concluir:
+
+> "Alguma coisa deu errado."
+
+Mas talvez essa diferença seja perfeitamente compatível com a variabilidade esperada nos dados.
+
+Nesse caso, entender a incerteza **pode evitar**:
+
+- redesenhar o produto desnecessariamente;
+- interromper uma campanha que continua funcionando;
+- culpar uma equipe por uma oscilação aleatória;
+- mover orçamento prematuramente;
+- alterar metas com base em ruído.
+
+Agora imagine que a evidência de fato sugira uma mudança relevante.
+
+A empresa pode:
+
+- investigar o funil;
+- procurar bugs;
+- investigar mudanças no comportamento dos usuários;
+- rever pricing;
+- revisar campanhas;
+- alterar processos;
+- redefinir metas.
+
+Outro exemplo:
+
+> "O churn parece muito maior entre clientes pequenos."
+
+Uma análise inferencial pode ajudar a estimar **o tamanho dessa diferença** e **a incerteza associada a ela**.
+
+A empresa pode então:
+
+- criar um onboarding específico;
+- mudar a estratégia de Customer Success;
+- alterar pricing;
+- criar segmentos diferentes;
+- rever CAC aceitável;
+- melhorar previsões financeiras.
+
+Outro exemplo:
+
+> "Qual é nossa taxa média de churn?"
+
+Uma estimativa acompanhada de sua incerteza pode contribuir para:
+
+- projeções de receita;
+- análise de risco;
+- planejamento financeiro;
+- definição de metas;
+- comparação entre períodos;
+- cálculo de cenários.
+
+Portanto, Inferência Estatística não serve apenas para produzir um _p-value_ ou um _intervalo de confiança_.
+
+Ela ajuda a empresa a responder perguntas como:
+
+> **essa diferença merece uma reação ou estamos apenas observando uma flutuação compatível com a variabilidade dos dados?**
+
+### O que precisamos aprender para fazer Inferência Estatística?
+
+Aqui a **Teoria da Probabilidade** passa a ocupar um **papel central**, pois ela fornece a linguagem matemática para representar incerteza e raciocinar sobre _o que poderia acontecer se repetíssemos o processo de geração e amostragem dos dados_ (essa frase é o cerne da inferência estatística e vamos aprender sobre isso).
+
+É justamente essa base que construiremos neste curso.
+
+Isso envolve conceitos como:
+
+- experimentos aleatórios;
+- modelos probabilísticos;
+- variáveis aleatórias;
+- distribuições de probabilidade;
+- distribuições conjuntas;
+- independência;
+- probabilidade condicional;
+- esperança;
+- variância;
+- covariância.
+
+Depois precisamos entender como uma amostra se relaciona com uma população.
+
+Entram então:
+
+- amostragem;
+- estatísticas e estimadores;
+- distribuições amostrais;
+- Lei dos Grandes Números;
+- Teorema Central do Limite;
+- erro padrão;
+- estimação;
+- propriedades de estimadores;
+- intervalos de confiança;
+- testes de hipóteses;
+- p-values;
+- erros Tipo I e Tipo II.
+
+É essa construção que nos permite transformar:
+
+> "observamos este número"
+
+em algo como:
+
+> "com base nesta amostra e nas hipóteses que estamos fazendo sobre o processo gerador dos dados, nossa melhor estimativa da quantidade de interesse é esta, acompanhada desta incerteza."
+
+### Previsão versus Inferência Estatística
+
+Compare:
+
+**Previsão**
+
+> Qual cliente vai cancelar?
+
+Queremos prever um resultado ainda desconhecido para um novo caso.
+
+**Inferência Estatística**
+
+> Qual é a taxa de churn dos nossos clientes e com que precisão conseguimos estimá-la?
+
+Queremos aprender uma quantidade sobre a população a partir de uma amostra e quantificar a incerteza dessa conclusão.
+
+::: {.callout-note}
+## Ideia principal
+
+Inferência Estatística cria valor quando precisamos **aprender algo para além da amostra observada sem tratar cada número calculado como uma verdade exata sobre o todo**.
+:::
+
+
+## 3. Inferência Causal: o que aconteceria se fizéssemos alguma coisa?
+
+### A pergunta
+
+Agora a pergunta muda novamente. 
+
+Empresas não querem apenas observar ou prever o mundo. Elas querem **agir sobre ele**.
+
+Elas:
+
+- mudam preços;
+- lançam features;
+- enviam campanhas;
+- oferecem descontos;
+- alteram interfaces;
+- mudam processos;
+- criam políticas;
+- modificam algoritmos.
+
+E então surge uma pergunta diferente:
+
+> O que mudou **por causa** da nossa ação?
+
+Exemplos:
+
+- Se oferecermos um cupom, quanto aumentam as compras?
+- Se mudarmos a tela de checkout, quanto aumenta a conversão?
+- Se aumentarmos o preço, quanto muda a demanda?
+- Essa campanha aumentou a receita?
+- Esse novo onboarding reduziu churn?
+- Essa funcionalidade aumentou retenção?
+- Esse contato comercial realmente gerou vendas adicionais?
+
+A expressão fundamental aqui é:
+
+> **por causa de.**
+
+Não queremos saber simplesmente se duas coisas aparecem juntas, _mas sim se mudar uma delas **provoca** uma mudança na outra_.
+
+### Associação não é intervenção
+
+Imagine que clientes que recebem cupons compram mais.
+
+Isso não significa necessariamente que:
+
+> os cupons fizeram esses clientes comprarem mais.
+
+Talvez a empresa ofereça cupons justamente aos seus melhores clientes, _que provavelmente já comprariam mais mesmo sem os cupons_.
+
+Da mesma forma:
+
+> usuários que utilizam determinada feature possuem maior retenção.
+
+Isso não significa necessariamente que:
+
+> fazer um usuário utilizar essa feature aumentará sua retenção.
+
+Talvez usuários naturalmente mais engajados _sejam justamente aqueles que utilizam a feature_.
+
+**Inferência Causal** tenta responder:
+
+> O que teria acontecido com essas mesmas unidades se a intervenção tivesse sido diferente?
+
+Essa é a ideia do **contrafactual**.
+
+### Por que uma empresa quer causalidade?
+
+Porque praticamente **toda estratégia empresarial envolve alguma intervenção**.
+
+Se a empresa gasta dinheiro com uma ação, ela quer saber se aquela ação gera algum resultado incremental.
+
+Não queremos apenas saber:
+
+> "quem compra?"
+
+Queremos saber:
+
+> "quem comprará **por causa da campanha**?"
+
+Não queremos apenas saber:
+
+> "quem vai churnar?"
+
+Podemos querer saber:
+
+> "para quem uma intervenção realmente reduzirá churn?"
+
+### O que a empresa pode fazer com a resposta?
+
+**Campanhas**
+
+Pergunta causal:
+
+> "Essa campanha realmente aumentou vendas?"
+
+A empresa pode:
+
+- aumentar investimento se houver retorno incremental;
+- reduzir investimento se os clientes comprariam de qualquer forma;
+- redistribuir orçamento entre canais.
+
+**Produto**
+
+Pergunta causal:
+
+> "Essa nova experiência aumentou conversão?"
+
+A empresa pode:
+
+- lançar a nova versão;
+- abandonar a mudança;
+- testar outra alternativa.
+
+**Pricing**
+
+Pergunta causal:
+
+> "Quanto a demanda muda quando alteramos o preço?"
+
+A empresa pode:
+
+- rever preços;
+- segmentar estratégias;
+- estimar trade-offs entre margem e volume.
+
+**Retenção**
+
+Pergunta causal:
+
+> "Oferecer esse benefício reduz churn?"
+
+A empresa pode:
+
+- decidir se a intervenção vale seu custo;
+- selecionar quais clientes devem recebê-la;
+- evitar gastar dinheiro com clientes cujo comportamento não mudará.
+
+### Previsão não é Inferência Causal
+
+Imagine dois clientes.
+
+Cliente A:
+
+- 90% de probabilidade prevista de churn;
+- praticamente nenhuma resposta a uma intervenção de retenção.
+
+Cliente B:
+
+- 40% de probabilidade prevista de churn;
+- sua probabilidade poderia cair para 10% se recebesse a intervenção.
+
+Se a empresa olhar _apenas para previsão_, provavelmente priorizará A.
+
+Mas, se a pergunta for:
+
+> "Em quem essa intervenção terá maior impacto?"
+
+**B pode ser o cliente mais interessante**.
+
+Portanto:
+
+> **alto risco previsto não significa alto efeito causal.**
+
+### O que precisamos aprender para fazer Inferência Causal?
+
+Inferência Causal não substitui Inferência Estatística, ela se apoia nela e acrescenta uma nova camada.
+
+Primeiro precisamos dos fundamentos da **Teoria da Probabilidade**:
+
+- variáveis aleatórias;
+- distribuições;
+- esperança;
+- variância;
+- probabilidade condicional;
+- independência.
+
+Depois precisamos dos fundamentos de **Inferência Estatística**:
+
+- amostragem;
+- estimadores;
+- distribuições amostrais;
+- erro padrão;
+- intervalos de confiança;
+- testes de hipóteses;
+- regressão.
+
+E então aparecem os conceitos especificamente **causais**:
+
+- treatment;
+- outcome;
+- potential outcomes;
+- counterfactual;
+- treatment effect;
+- randomização;
+- confounding;
+- identification;
+- selection bias;
+- experiments e A/B tests;
+- dados observacionais;
+- Difference-in-Differences;
+- Instrumental Variables;
+- Regression Discontinuity;
+- matching e weighting;
+- heterogeneous treatment effects;
+- Causal Machine Learning.
+
+Há uma distinção particularmente importante:
+
+**Inferência Estatística**
+
+ajuda a responder:
+
+> "Com que precisão estimamos esta quantidade?"
+
+**Inferência Causal**
+
+precisa primeiro responder:
+
+> "Esta quantidade pode ser interpretada como efeito causal?"
+
+Só depois estimamos esse efeito e quantificamos sua incerteza.
+
+::: {.callout-important}
+## Identificação vem antes da estimação
+
+Um intervalo de confiança extremamente preciso em torno da quantidade errada continua não respondendo à pergunta causal.
+
+Inferência Causal exige não apenas estimar bem, mas justificar por que a quantidade estimada representa o efeito da intervenção que queremos conhecer.
+:::
+
+::: {.callout-note}
+## Ideia principal
+
+Inferência Causal cria valor quando precisamos descobrir **quais ações realmente provocam mudanças nos resultados que importam para a empresa**.
+:::
+
+
+## Os três problemas usando os mesmos dados
+
+Imagine novamente uma empresa com dados de clientes.
+
+### Previsão
+
+Pergunta:
+
+> Quem vai cancelar?
+
+Objetivo: _Antecipar churn individual_.
+
+Possível ação: _Priorizar clientes para atendimento_.
+
+### Inferência Estatística
+
+Pergunta:
+
+> Qual é nossa taxa de churn e com que precisão conseguimos estimá-la?
+
+Objetivo: _Aprender sobre o nível de churn da população e sua incerteza_.
+
+Possíveis ações:
+
+- planejamento financeiro;
+- definição de metas;
+- comparação entre segmentos;
+- investigação de mudanças.
+
+---
+
+### Inferência Causal
+
+Pergunta:
+
+> Oferecer determinado benefício reduz churn?
+
+Objetivo: _Estimar o efeito da intervenção_.
+
+Possíveis ações:
+
+- decidir se o benefício vale seu custo;
+- escalar ou interromper a estratégia;
+- descobrir para quais clientes ela funciona melhor.
+
+---
+
+## Um mapa mental
+
+Quando você se deparar com um novo problema de Data Science, tente começar por estas perguntas:
+
+### Quero antecipar um resultado?
+
+> O que provavelmente vai acontecer?
+
+**Previsão**
+
+---
+
+### Quero aprender uma quantidade sobre uma população e saber quão incerta é minha conclusão?
+
+> O que os dados me permitem afirmar sobre o mundo?
+
+**Inferência Estatística**
+
+---
+
+### Quero saber o efeito de mudar alguma coisa?
+
+> O que aconteceria se eu interviesse?
+
+**Inferência Causal**
+
+---
+
+E somente depois pergunte:
+
+> Qual método ou modelo devo utilizar?
+
+---
+
+## O modelo não define a pergunta
+
+É importante não associar automaticamente determinados algoritmos a determinados paradigmas.
+
+Por exemplo:
+
+> regressão = Inferência Estatística
+
+ou
+
+> XGBoost = Previsão.
+
+Uma regressão pode ser utilizada para **previsão**, para **Inferência Estatística**, ou aparecer dentro de uma **análise causal**.
+
+**Machine Learning** também pode ser utilizado dentro de Inferência Causal.
+
+Portanto:
+
+> **o algoritmo não define o problema. A pergunta define o problema.**
+
+O modelo é uma ferramenta escolhida depois que sabemos o que queremos aprender.
+
+---
+
+## E onde entra Bayesian Statistics?
+
+Bayesian Statistics não constitui uma quarta categoria paralela às três anteriores.
+
+Ela oferece outra maneira de representar e atualizar incerteza a partir de dados.
+
+Métodos bayesianos podem ser utilizados em:
+
+- Previsão;
+- Inferência Estatística;
+- Inferência Causal;
+- decision making.
+
+Neste momento, basta guardar que:
+
+> "Bayesian" e "Frequentist" dizem respeito a frameworks de inferência, e não substituem a distinção entre prever, inferir e estimar efeitos causais.
+
+Voltaremos a essas ideias posteriormente. Porém, não entraremos em Bayesian Statistics nesse curso.
+
+---
+
+## Isso depende da empresa ser B2B, B2C ou uma empresa enorme?
+
+Não necessariamente.
+
+Grandes empresas digitais frequentemente possuem condições particularmente favoráveis:
+
+- muitos usuários;
+- muitas interações;
+- muitas decisões repetidas;
+- boa instrumentação;
+- infraestrutura de experimentação.
+
+Por isso vemos empresas como iFood, Nubank, Amazon, Uber, Booking e Netflix utilizando intensamente **Machine Learning, Experimentação e Inferência Causal**.
+
+Mas o tamanho da empresa não determina sozinho quais perguntas podem ser feitas. Uma empresa pequena pode possuir milhões de observações, e uma empresa enorme pode ter poucos dados para determinada pergunta.
+
+Também é importante lembrar:
+
+> **número N de linhas não é necessariamente o tamanho efetivo da amostra.**
+
+Uma base pode conter 20 milhões de eventos produzidos por apenas algumas centenas de empresas.
+
+Se a intervenção acontece _no nível da empresa_, o número relevante de unidades pode ser muito menor que 20 milhões.
+
+O que importa é a combinação entre:
+
+- pergunta de negócio;
+- unidade de análise;
+- unidade de intervenção;
+- quantidade de informação independente;
+- qualidade dos dados;
+- capacidade de medir outcomes;
+- valor econômico da resposta.
+
+---
+
+## Onde este curso se encaixa?
+
+Este curso **não é um curso de Machine Learning preditivo**.
+
+Não vamos construir nosso caminho principalmente em torno de:
+
+- Random Forest;
+- XGBoost;
+- redes neurais;
+- forecasting;
+- recommendation systems;
+- predictive modeling.
+
+Essas são ferramentas extremamente importantes em Data Science, mas respondem principalmente ao primeiro ramo do nosso mapa:
+
+> **Previsão.**
+
+Nosso caminho será direcionado principalmente aos outros dois:
+
+> **Inferência Estatística e Inferência Causal.**
+
+Para chegar até eles, precisamos construir as fundações.
+
+Começaremos com **Matemática e Teoria da Probabilidade**, porque precisamos de uma linguagem rigorosa para representar incerteza.
+
+Depois estudaremos **Inferência Estatística**, aprendendo como uma amostra pode ser utilizada para aprender sobre uma população e como quantificar a incerteza das nossas conclusões.
+
+Estudaremos **Regressão**, uma das ferramentas mais importantes para modelar relações entre variáveis e que será também uma ponte fundamental para Inferência Causal.
+
+Finalmente chegaremos à **Inferência Causal**, onde adicionaremos uma nova pergunta:
+
+> O que aconteceria se intervíssemos no mundo?
+
+O caminho do curso será, portanto:
+
+**Matemática**
+
+↓
+
+**Teoria da Probabilidade**
+
+↓
+
+**Inferência Estatística**
+
+↓
+
+**Regressão**
+
+↓
+
+**Inferência Causal**
+
+---
+
+## Para guardar
+
+Antes de escolher qualquer modelo, pergunte:
+
+> **O que queremos aprender com os dados?**
+
+**Previsão**
+
+O que provavelmente vai acontecer?
+
+→ Ajuda a empresa a **antecipar**.
+
+**Inferência Estatística**
+
+O que podemos aprender sobre uma população e com qual incerteza?
+
+→ Ajuda a empresa a **medir sem confundir sinal com ruído**.
+
+**Inferência Causal**
+
+O que aconteceria se fizéssemos alguma coisa?
+
+→ Ajuda a empresa a **descobrir quais ações realmente mudam resultados**.
+
+Modelos vêm depois. **Primeiro vem a pergunta**.

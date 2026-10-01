@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.28">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>O que queremos aprender com os dados? – Fundamentos para Inferência Causal</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/00-1_pre_requisitos_matematicos.html" rel="next">
+<link href="../conteudo.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-b719d3d4935f2b08311a76135e2bf442.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-c756783dfb0358d45b59639da55b8c80.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Procurar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/motivacao.html"><span class="chapter-title">O que queremos aprender com os dados?</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Fundamentos para Inferência Causal</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Procurar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Fundamentos para Inferência Causal</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../conteudo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Conteúdo</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/motivacao.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">O que queremos aprender com os dados?</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/00-1_pre_requisitos_matematicos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Pré-requisitos Matemáticos</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Prelúdio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/00-2_preludio_01.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1. O Mapa da Probabilidade e da Inferência</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/00-2_preludio_02.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2. Empirical Modeling: do Mundo Real ao Modelo Estatístico</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/00-2_preludio_03.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3. Onde Queremos Chegar: do Experimento Aleatório ao Modelo Estatístico</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Módulo 1 — Probabilidade</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/01_da_incerteza_a_probabilidade.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Da Incerteza à Probabilidade</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/02_construindo_um_modelo_probabilistico.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">[Formalização] Parte 1 de 3 - Espaço de Probabilidade</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Índice</h2>
+   
+  <ul>
+  <li><a href="#antes-de-escolher-um-modelo" id="toc-antes-de-escolher-um-modelo" class="nav-link active" data-scroll-target="#antes-de-escolher-um-modelo">Antes de escolher um modelo</a></li>
+  <li><a href="#previsão-o-que-provavelmente-vai-acontecer" id="toc-previsão-o-que-provavelmente-vai-acontecer" class="nav-link" data-scroll-target="#previsão-o-que-provavelmente-vai-acontecer">1. Previsão: o que provavelmente vai acontecer?</a>
+  <ul class="collapse">
+  <li><a href="#a-pergunta" id="toc-a-pergunta" class="nav-link" data-scroll-target="#a-pergunta">A pergunta</a></li>
+  <li><a href="#por-que-uma-empresa-quer-prever-algo" id="toc-por-que-uma-empresa-quer-prever-algo" class="nav-link" data-scroll-target="#por-que-uma-empresa-quer-prever-algo">Por que uma empresa quer prever algo?</a></li>
+  <li><a href="#o-que-a-empresa-pode-fazer-com-a-resposta-dessa-previsão" id="toc-o-que-a-empresa-pode-fazer-com-a-resposta-dessa-previsão" class="nav-link" data-scroll-target="#o-que-a-empresa-pode-fazer-com-a-resposta-dessa-previsão">O que a empresa pode fazer com a resposta dessa previsão?</a></li>
+  <li><a href="#o-que-precisamos-aprender-para-resolver-esses-problemas" id="toc-o-que-precisamos-aprender-para-resolver-esses-problemas" class="nav-link" data-scroll-target="#o-que-precisamos-aprender-para-resolver-esses-problemas">O que precisamos aprender para resolver esses problemas?</a></li>
+  </ul></li>
+  <li><a href="#inferência-estatística-o-que-podemos-aprender-sobre-o-mundo" id="toc-inferência-estatística-o-que-podemos-aprender-sobre-o-mundo" class="nav-link" data-scroll-target="#inferência-estatística-o-que-podemos-aprender-sobre-o-mundo">2. Inferência Estatística: o que podemos aprender sobre o mundo?</a>
+  <ul class="collapse">
+  <li><a href="#a-pergunta-1" id="toc-a-pergunta-1" class="nav-link" data-scroll-target="#a-pergunta-1">A pergunta</a></li>
+  <li><a href="#por-que-uma-empresa-quer-fazer-inferência" id="toc-por-que-uma-empresa-quer-fazer-inferência" class="nav-link" data-scroll-target="#por-que-uma-empresa-quer-fazer-inferência">Por que uma empresa quer fazer inferência?</a></li>
+  <li><a href="#o-que-a-empresa-pode-fazer-com-a-resposta" id="toc-o-que-a-empresa-pode-fazer-com-a-resposta" class="nav-link" data-scroll-target="#o-que-a-empresa-pode-fazer-com-a-resposta">O que a empresa pode fazer com a resposta?</a></li>
+  <li><a href="#o-que-precisamos-aprender-para-fazer-inferência-estatística" id="toc-o-que-precisamos-aprender-para-fazer-inferência-estatística" class="nav-link" data-scroll-target="#o-que-precisamos-aprender-para-fazer-inferência-estatística">O que precisamos aprender para fazer Inferência Estatística?</a></li>
+  <li><a href="#previsão-versus-inferência-estatística" id="toc-previsão-versus-inferência-estatística" class="nav-link" data-scroll-target="#previsão-versus-inferência-estatística">Previsão versus Inferência Estatística</a></li>
+  </ul></li>
+  <li><a href="#inferência-causal-o-que-aconteceria-se-fizéssemos-alguma-coisa" id="toc-inferência-causal-o-que-aconteceria-se-fizéssemos-alguma-coisa" class="nav-link" data-scroll-target="#inferência-causal-o-que-aconteceria-se-fizéssemos-alguma-coisa">3. Inferência Causal: o que aconteceria se fizéssemos alguma coisa?</a>
+  <ul class="collapse">
+  <li><a href="#a-pergunta-2" id="toc-a-pergunta-2" class="nav-link" data-scroll-target="#a-pergunta-2">A pergunta</a></li>
+  <li><a href="#associação-não-é-intervenção" id="toc-associação-não-é-intervenção" class="nav-link" data-scroll-target="#associação-não-é-intervenção">Associação não é intervenção</a></li>
+  <li><a href="#por-que-uma-empresa-quer-causalidade" id="toc-por-que-uma-empresa-quer-causalidade" class="nav-link" data-scroll-target="#por-que-uma-empresa-quer-causalidade">Por que uma empresa quer causalidade?</a></li>
+  <li><a href="#o-que-a-empresa-pode-fazer-com-a-resposta-1" id="toc-o-que-a-empresa-pode-fazer-com-a-resposta-1" class="nav-link" data-scroll-target="#o-que-a-empresa-pode-fazer-com-a-resposta-1">O que a empresa pode fazer com a resposta?</a></li>
+  <li><a href="#previsão-não-é-inferência-causal" id="toc-previsão-não-é-inferência-causal" class="nav-link" data-scroll-target="#previsão-não-é-inferência-causal">Previsão não é Inferência Causal</a></li>
+  <li><a href="#o-que-precisamos-aprender-para-fazer-inferência-causal" id="toc-o-que-precisamos-aprender-para-fazer-inferência-causal" class="nav-link" data-scroll-target="#o-que-precisamos-aprender-para-fazer-inferência-causal">O que precisamos aprender para fazer Inferência Causal?</a></li>
+  </ul></li>
+  <li><a href="#os-três-problemas-usando-os-mesmos-dados" id="toc-os-três-problemas-usando-os-mesmos-dados" class="nav-link" data-scroll-target="#os-três-problemas-usando-os-mesmos-dados">Os três problemas usando os mesmos dados</a>
+  <ul class="collapse">
+  <li><a href="#previsão" id="toc-previsão" class="nav-link" data-scroll-target="#previsão">Previsão</a></li>
+  <li><a href="#inferência-estatística" id="toc-inferência-estatística" class="nav-link" data-scroll-target="#inferência-estatística">Inferência Estatística</a></li>
+  <li><a href="#inferência-causal" id="toc-inferência-causal" class="nav-link" data-scroll-target="#inferência-causal">Inferência Causal</a></li>
+  </ul></li>
+  <li><a href="#um-mapa-mental" id="toc-um-mapa-mental" class="nav-link" data-scroll-target="#um-mapa-mental">Um mapa mental</a>
+  <ul class="collapse">
+  <li><a href="#quero-antecipar-um-resultado" id="toc-quero-antecipar-um-resultado" class="nav-link" data-scroll-target="#quero-antecipar-um-resultado">Quero antecipar um resultado?</a></li>
+  <li><a href="#quero-aprender-uma-quantidade-sobre-uma-população-e-saber-quão-incerta-é-minha-conclusão" id="toc-quero-aprender-uma-quantidade-sobre-uma-população-e-saber-quão-incerta-é-minha-conclusão" class="nav-link" data-scroll-target="#quero-aprender-uma-quantidade-sobre-uma-população-e-saber-quão-incerta-é-minha-conclusão">Quero aprender uma quantidade sobre uma população e saber quão incerta é minha conclusão?</a></li>
+  <li><a href="#quero-saber-o-efeito-de-mudar-alguma-coisa" id="toc-quero-saber-o-efeito-de-mudar-alguma-coisa" class="nav-link" data-scroll-target="#quero-saber-o-efeito-de-mudar-alguma-coisa">Quero saber o efeito de mudar alguma coisa?</a></li>
+  </ul></li>
+  <li><a href="#o-modelo-não-define-a-pergunta" id="toc-o-modelo-não-define-a-pergunta" class="nav-link" data-scroll-target="#o-modelo-não-define-a-pergunta">O modelo não define a pergunta</a></li>
+  <li><a href="#e-onde-entra-bayesian-statistics" id="toc-e-onde-entra-bayesian-statistics" class="nav-link" data-scroll-target="#e-onde-entra-bayesian-statistics">E onde entra Bayesian Statistics?</a></li>
+  <li><a href="#isso-depende-da-empresa-ser-b2b-b2c-ou-uma-empresa-enorme" id="toc-isso-depende-da-empresa-ser-b2b-b2c-ou-uma-empresa-enorme" class="nav-link" data-scroll-target="#isso-depende-da-empresa-ser-b2b-b2c-ou-uma-empresa-enorme">Isso depende da empresa ser B2B, B2C ou uma empresa enorme?</a></li>
+  <li><a href="#onde-este-curso-se-encaixa" id="toc-onde-este-curso-se-encaixa" class="nav-link" data-scroll-target="#onde-este-curso-se-encaixa">Onde este curso se encaixa?</a></li>
+  <li><a href="#para-guardar" id="toc-para-guardar" class="nav-link" data-scroll-target="#para-guardar">Para guardar</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">O que queremos aprender com os dados?</span></h1>
+<p class="subtitle lead">Um mapa mental para Previsão, Inferência Estatística e Inferência Causal</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="antes-de-escolher-um-modelo" class="level2">
+<h2 class="anchored" data-anchor-id="antes-de-escolher-um-modelo">Antes de escolher um modelo</h2>
+<p>Quando pensamos em Data Science, é comum pensar em estudar os modelos mais famosos de <em>Machine Learning</em>:</p>
+<ul>
+<li>regressão, random forest, XGBoost, redes neurais, etc</li>
+</ul>
+<p>Mas essa não deveria ser a primeira pergunta.</p>
+<p>Antes de perguntar: <em>“Qual modelo devemos usar?”</em></p>
+<p>Precisamos perguntar: <strong><em>O que queremos aprender com os dados?</em></strong></p>
+<p>Aqui, nosso objetivo é mostrar que o objetivo na vida real <strong>depende da decisão que se busca tomar</strong>. Essa decisão, por sua vez, precisa responder essa seguinte pergunta: <em>O que queremos aprender com os dados.</em></p>
+<p>Com isso em mente, a figura abaixo consegue esclarecer o que veremos nesse capítulo.</p>
+<pre class="text"><code>                                DADOS
+                                  │
+          ┌───────────────────────┼───────────────────────┐
+          │                       │                       │
+          │                       │                       │
+     Prediction        Inferência Estatística     Inferência Causal
+          │                       │                       │
+          │                       │                       │
+"O que provavelmente   "O que podemos aprender    "O que aconteceria
+  vai acontecer?"      sobre a população e com     se intervíssemos?"
+                       qual incerteza?"
+          │                       │                       │
+          └───────────────────────┼───────────────────────┘
+                                  │
+                                  │
+                               Decisão
+                                  │
+                           Ação no negócio</code></pre>
+<p>Uma mesma empresa, usando os mesmos dados, pode estar interessada em perguntas <strong>completamente diferentes</strong>.</p>
+<p>Imagine uma empresa preocupada com <strong>churn</strong>:</p>
+<ul>
+<li><strong>Quem provavelmente vai cancelar?</strong></li>
+<li><strong>Qual é a taxa de churn dos nossos clientes e com que precisão conseguimos estimá-la?</strong></li>
+<li><strong>Se oferecermos um benefício, quanto o churn diminuirá por causa dessa intervenção?</strong></li>
+</ul>
+<p>As três perguntas envolvem dados. As três podem envolver modelos. Mas são problemas <strong>completamente diferentes</strong>.</p>
+<p>Este capítulo apresenta um mapa mental simples para reconhecer <strong>três dos principais tipos de problemas</strong> encontrados em <strong>Data Science</strong>:</p>
+<ol type="1">
+<li><strong>Previsão:</strong> <em>o que provavelmente vai acontecer?</em></li>
+<li><strong>Inferência Estatística:</strong> <em>o que podemos aprender sobre uma população ou fenômeno, e com qual incerteza?</em></li>
+<li><strong>Inferência Causal:</strong> <em>o que aconteceria se fizéssemos alguma coisa?</em></li>
+</ol>
+<p>A pergunta vem <strong>antes</strong> do modelo.</p>
+</section>
+<section id="previsão-o-que-provavelmente-vai-acontecer" class="level2">
+<h2 class="anchored" data-anchor-id="previsão-o-que-provavelmente-vai-acontecer">1. Previsão: o que provavelmente vai acontecer?</h2>
+<section id="a-pergunta" class="level3">
+<h3 class="anchored" data-anchor-id="a-pergunta">A pergunta</h3>
+<p>Em problemas preditivos, queremos antecipar um resultado ainda desconhecido.</p>
+<p>Por exemplo:</p>
+<ul>
+<li>Esse cliente vai cancelar?</li>
+<li>Essa transação é fraude?</li>
+<li>Esse usuário provavelmente vai comprar?</li>
+<li>Quanto vamos vender no próximo mês?</li>
+<li>Quanto tempo essa entrega vai levar?</li>
+<li>Qual lead provavelmente vai converter?</li>
+<li>Qual produto devemos recomendar para esse usuário?</li>
+<li>Qual é a probabilidade de inadimplência desse cliente?</li>
+</ul>
+<p>O objetivo em problemas preditivos é aprender (ou <em>estimar</em>)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, a partir dos dados observados, uma função <span class="math inline">\(f\)</span> capaz de transformar informações disponíveis (<span class="math inline">\(X\)</span>) em uma boa previsão de <span class="math inline">\(Y\)</span> para casos novos.</p>
+<p>Uma forma geral de representar essa relação é:</p>
+<p><span class="math display">\[
+Y = f(X) + \epsilon
+\]</span></p>
+<p>onde <span class="math inline">\(f\)</span> representa a relação sistemática entre <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>, enquanto <span class="math inline">\(\epsilon\)</span> representa a parte aleatória de <span class="math inline">\(Y\)</span> que não é explicada pelas informações contidas em <span class="math inline">\(X\)</span>.</p>
+<p>Quando o objetivo é <strong>previsão</strong>, não precisamos necessariamente interpretar o significado de cada parâmetro ou componente do modelo. O principal é que a função estimada <strong>produza boas previsões</strong> e <strong>generalize</strong> para novos dados.</p>
+<p>Ou seja:</p>
+<blockquote class="blockquote">
+<p>quando chegarem novas observações de <span class="math inline">\(X\)</span>, conseguiremos prever bem seus respectivos valores de <span class="math inline">\(Y\)</span>?</p>
+</blockquote>
+</section>
+<section id="por-que-uma-empresa-quer-prever-algo" class="level3">
+<h3 class="anchored" data-anchor-id="por-que-uma-empresa-quer-prever-algo">Por que uma empresa quer prever algo?</h3>
+<p>Porque antecipar um acontecimento permite agir antes que ele ocorra.</p>
+<ul>
+<li>Se conseguimos prever quem tem grande probabilidade de churn, podemos priorizar esses clientes.</li>
+<li>Se conseguimos prever fraude, podemos identificar transações que merecem bloqueio ou revisão.</li>
+<li>Se conseguimos prever demanda, podemos organizar estoque e operação antes que os pedidos ocorram.</li>
+<li>Se conseguimos prever quais produtos interessam a determinado usuário, podemos personalizar sua experiência.</li>
+</ul>
+<p><strong>Previsão</strong> é especialmente valioso quando uma empresa precisa tomar muitas decisões repetidamente.</p>
+</section>
+<section id="o-que-a-empresa-pode-fazer-com-a-resposta-dessa-previsão" class="level3">
+<h3 class="anchored" data-anchor-id="o-que-a-empresa-pode-fazer-com-a-resposta-dessa-previsão">O que a empresa pode fazer com a resposta dessa previsão?</h3>
+<p>Alguns exemplos:</p>
+<p><strong>Churn</strong></p>
+<p>Previsão:</p>
+<blockquote class="blockquote">
+<p>“Este cliente possui alta probabilidade de cancelar.”</p>
+</blockquote>
+<p>Possíveis ações:</p>
+<ul>
+<li>priorizar o cliente para o time de retenção;</li>
+<li>antecipar um contato ao cliente;</li>
+<li>criar uma fila de atendimento baseada em risco.</li>
+</ul>
+<p><strong>Fraude</strong></p>
+<p>Previsão:</p>
+<blockquote class="blockquote">
+<p>“Esta transação possui alta probabilidade de ser fraudulenta.”</p>
+</blockquote>
+<p>Possíveis ações:</p>
+<ul>
+<li>bloquear automaticamente;</li>
+<li>pedir autenticação adicional;</li>
+<li>enviar para revisão humana.</li>
+</ul>
+<p><strong>Demanda</strong></p>
+<p>Previsão:</p>
+<blockquote class="blockquote">
+<p>“Esperamos aproximadamente esta demanda na próxima semana.”</p>
+</blockquote>
+<p>Possíveis ações:</p>
+<ul>
+<li>comprar estoque;</li>
+<li>dimensionar equipe;</li>
+<li>organizar logística;</li>
+<li>planejar caixa.</li>
+</ul>
+<p><strong>Lead scoring</strong></p>
+<p>Previsão:</p>
+<blockquote class="blockquote">
+<p>“Estes leads possuem maior probabilidade de conversão.”</p>
+</blockquote>
+<p>Possíveis ações:</p>
+<ul>
+<li>priorizar o trabalho dos vendedores;</li>
+<li>definir filas de contato;</li>
+<li>distribuir esforço comercial.</li>
+</ul>
+<p><strong>Recomendação</strong></p>
+<p>Previsão:</p>
+<blockquote class="blockquote">
+<p>“Estes são os itens que esse usuário provavelmente terá maior interesse em consumir.”</p>
+</blockquote>
+<p>Possíveis ações:</p>
+<ul>
+<li>ordenar produtos;</li>
+<li>recomendar filmes;</li>
+<li>selecionar anúncios;</li>
+<li>personalizar uma home page.</li>
+</ul>
+</section>
+<section id="o-que-precisamos-aprender-para-resolver-esses-problemas" class="level3">
+<h3 class="anchored" data-anchor-id="o-que-precisamos-aprender-para-resolver-esses-problemas">O que precisamos aprender para resolver esses problemas?</h3>
+<p>Prediction normalmente nos leva para o campo de <strong>Statistical Learning e Machine Learning</strong>.</p>
+<p>Entre os principais fundamentos estão:</p>
+<ul>
+<li><strong>Teoria da Probabilidade</strong> (variáveis aleatórias, distribuições, probabilidade condicional, esperança, variância, etc.);</li>
+<li>álgebra linear;</li>
+<li>cálculo e otimização;</li>
+<li>loss functions;</li>
+<li>train, validation e test;</li>
+<li>generalização;</li>
+<li>overfitting e regularização;</li>
+<li>cross-validation;</li>
+<li>métricas de performance;</li>
+<li>algoritmos de Machine Learning.</li>
+</ul>
+<p><strong>Probabilidade</strong> continua sendo fundamental.</p>
+<p>A diferença é que, em problemas puramente preditivos, o objetivo principal não é estimar uma quantidade populacional e quantificar sua incerteza, mas construir uma função que <strong>generalize bem para novos dados</strong>.</p>
+<p>Por isso, <strong>Inferência Estatística</strong> não é, em geral, um pré-requisito para construir um bom modelo preditivo.</p>
+<p>Ela volta a ser necessária quando mudamos a pergunta e passamos a querer saber <strong>o que podemos concluir para além da amostra observada e com qual incerteza</strong>.</p>
+<p>Mas, <strong>olhe que interessante</strong>. Suponha que usamos ML para um certo problema de predição. Porém, depois de finalizado, <strong>percebemos uma necessidade diferente</strong>.</p>
+<p>Por exemplo, suponha que dois modelos de churn tenham AUCs de 0,81 e 0,83 na mesma amostra de teste.</p>
+<p>Se perguntamos:</p>
+<blockquote class="blockquote">
+<p><strong>Qual modelo teve melhor performance observada?</strong></p>
+</blockquote>
+<p>estamos em um problema preditivo.</p>
+<p>Mas, se perguntamos:</p>
+<blockquote class="blockquote">
+<p><strong>Essa diferença de 0,02 provavelmente se mantém para a população de casos futuros ou pode ser apenas resultado da amostra utilizada?</strong></p>
+</blockquote>
+<p>entramos em um problema de <strong>Inferência Estatística</strong>.</p>
+<p>Podemos então quantificar essa incerteza usando, por exemplo, bootstrap, intervalos de confiança ou testes específicos para comparação de AUCs.</p>
+<p>A ponte fica clara:</p>
+<ul>
+<li><strong>ML preditivo:</strong> qual modelo teve melhor generalização observada?</li>
+<li><strong>Inferência Estatística (em cima de ML):</strong> quanta incerteza existe nessa diferença?</li>
+</ul>
+<p>As AUCs 0,81 e 0,83 são estatísticas calculadas a partir de muitas observações. A ideia inferencial é imaginar como essa diferença variaria se repetíssemos o processo de amostragem.</p>
+<p>Isso nos leva à <strong>distribuição amostral</strong> e, a partir dela, a conceitos como erro padrão, intervalos de confiança e testes de hipóteses. Ou seja, novamente, <strong>a estatística inferêncial aparece como necessário</strong> mesmo durante um problema de Machine Learning.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Ideia principal
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Previsão cria valor quando <strong>antecipar corretamente um acontecimento permite à empresa agir melhor antes que ele ocorra</strong>.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="inferência-estatística-o-que-podemos-aprender-sobre-o-mundo" class="level2">
+<h2 class="anchored" data-anchor-id="inferência-estatística-o-que-podemos-aprender-sobre-o-mundo">2. Inferência Estatística: o que podemos aprender sobre o mundo?</h2>
+<section id="a-pergunta-1" class="level3">
+<h3 class="anchored" data-anchor-id="a-pergunta-1">A pergunta</h3>
+<p>Agora a pergunta muda.</p>
+<p>Não queremos necessariamente <strong>prever</strong> o resultado de uma nova observação.</p>
+<p>Queremos aprender alguma quantidade desconhecida <strong>sobre uma população ou sobre o fenômeno</strong> que estamos estudando e, ao mesmo tempo, quantificar a incerteza dessa conclusão.</p>
+<p>Por exemplo:</p>
+<ul>
+<li>Qual é a taxa de churn dos nossos clientes?</li>
+<li>Qual é a conversão média do nosso produto?</li>
+<li>Qual é a receita média por cliente?</li>
+<li>Qual é a diferença de conversão entre dois grupos?</li>
+<li>A taxa de churn realmente aumentou ou estamos observando uma flutuação amostral?</li>
+<li>Com que precisão conseguimos estimar determinado KPI?</li>
+</ul>
+<p>Aqui aparece um problema fundamental:</p>
+<blockquote class="blockquote">
+<p><strong>temos uma amostra, mas queremos aprender algo para além dos valores observados nessa amostra.</strong></p>
+</blockquote>
+<p>Se calculássemos apenas a taxa de churn dos clientes presentes no nosso <em>dataset</em>, estaríamos fazendo <strong>Estatística Descritiva</strong>: estaríamos apenas resumindo aquilo que efetivamente observamos.</p>
+<p>Isso é perfeitamente válido. O problema aparece quando damos um passo além e queremos <strong>generalizar essa informação para o todo</strong>, para outros períodos ou para novas amostras. Nesse momento, precisamos levar em conta que outra amostra poderia produzir outro resultado.</p>
+<p>Suponha que observamos uma taxa de churn de 8%. O número 8% descreve os dados observados.</p>
+<p>Mas podemos querer responder:</p>
+<blockquote class="blockquote">
+<p>Qual é a taxa de churn da população da qual esses dados foram gerados?</p>
+</blockquote>
+<p>E, tão importante quanto:</p>
+<blockquote class="blockquote">
+<p>Quanta incerteza existe nessa estimativa?</p>
+</blockquote>
+<p>É essa passagem — <strong>da amostra observada para uma quantidade desconhecida da população</strong> — que nos leva à <strong>Inferência Estatística</strong>.</p>
+</section>
+<section id="por-que-uma-empresa-quer-fazer-inferência" class="level3">
+<h3 class="anchored" data-anchor-id="por-que-uma-empresa-quer-fazer-inferência">Por que uma empresa quer fazer inferência?</h3>
+<p>Porque métricas variam. Conversão muda de uma semana para outra. Churn muda de um mês para outro. Receita média muda entre amostras. Segmentos apresentam resultados diferentes.</p>
+<p>Se tratarmos toda variação observada como uma mudança real do negócio, podemos tomar decisões ruins.</p>
+<p>Uma função importante da Inferência Estatística é nos ajudar a distinguir:</p>
+<blockquote class="blockquote">
+<p><strong>sinal de ruído.</strong></p>
+</blockquote>
+<p>Ou, de forma mais precisa:</p>
+<blockquote class="blockquote">
+<p>avaliar quanto da diferença que observamos pode refletir uma diferença real na população e quanto pode ser explicado pela variabilidade inerente ao processo de amostragem e geração dos dados.</p>
+</blockquote>
+</section>
+<section id="o-que-a-empresa-pode-fazer-com-a-resposta" class="level3">
+<h3 class="anchored" data-anchor-id="o-que-a-empresa-pode-fazer-com-a-resposta">O que a empresa pode fazer com a resposta?</h3>
+<p>Imagine que a conversão caiu de 10% para 9,7%.</p>
+<p>Sem pensar estatisticamente, alguém pode imediatamente concluir:</p>
+<blockquote class="blockquote">
+<p>“Alguma coisa deu errado.”</p>
+</blockquote>
+<p>Mas talvez essa diferença seja perfeitamente compatível com a variabilidade esperada nos dados.</p>
+<p>Nesse caso, entender a incerteza <strong>pode evitar</strong>:</p>
+<ul>
+<li>redesenhar o produto desnecessariamente;</li>
+<li>interromper uma campanha que continua funcionando;</li>
+<li>culpar uma equipe por uma oscilação aleatória;</li>
+<li>mover orçamento prematuramente;</li>
+<li>alterar metas com base em ruído.</li>
+</ul>
+<p>Agora imagine que a evidência de fato sugira uma mudança relevante.</p>
+<p>A empresa pode:</p>
+<ul>
+<li>investigar o funil;</li>
+<li>procurar bugs;</li>
+<li>investigar mudanças no comportamento dos usuários;</li>
+<li>rever pricing;</li>
+<li>revisar campanhas;</li>
+<li>alterar processos;</li>
+<li>redefinir metas.</li>
+</ul>
+<p>Outro exemplo:</p>
+<blockquote class="blockquote">
+<p>“O churn parece muito maior entre clientes pequenos.”</p>
+</blockquote>
+<p>Uma análise inferencial pode ajudar a estimar <strong>o tamanho dessa diferença</strong> e <strong>a incerteza associada a ela</strong>.</p>
+<p>A empresa pode então:</p>
+<ul>
+<li>criar um onboarding específico;</li>
+<li>mudar a estratégia de Customer Success;</li>
+<li>alterar pricing;</li>
+<li>criar segmentos diferentes;</li>
+<li>rever CAC aceitável;</li>
+<li>melhorar previsões financeiras.</li>
+</ul>
+<p>Outro exemplo:</p>
+<blockquote class="blockquote">
+<p>“Qual é nossa taxa média de churn?”</p>
+</blockquote>
+<p>Uma estimativa acompanhada de sua incerteza pode contribuir para:</p>
+<ul>
+<li>projeções de receita;</li>
+<li>análise de risco;</li>
+<li>planejamento financeiro;</li>
+<li>definição de metas;</li>
+<li>comparação entre períodos;</li>
+<li>cálculo de cenários.</li>
+</ul>
+<p>Portanto, Inferência Estatística não serve apenas para produzir um <em>p-value</em> ou um <em>intervalo de confiança</em>.</p>
+<p>Ela ajuda a empresa a responder perguntas como:</p>
+<blockquote class="blockquote">
+<p><strong>essa diferença merece uma reação ou estamos apenas observando uma flutuação compatível com a variabilidade dos dados?</strong></p>
+</blockquote>
+</section>
+<section id="o-que-precisamos-aprender-para-fazer-inferência-estatística" class="level3">
+<h3 class="anchored" data-anchor-id="o-que-precisamos-aprender-para-fazer-inferência-estatística">O que precisamos aprender para fazer Inferência Estatística?</h3>
+<p>Aqui a <strong>Teoria da Probabilidade</strong> passa a ocupar um <strong>papel central</strong>, pois ela fornece a linguagem matemática para representar incerteza e raciocinar sobre <em>o que poderia acontecer se repetíssemos o processo de geração e amostragem dos dados</em> (essa frase é o cerne da inferência estatística e vamos aprender sobre isso).</p>
+<p>É justamente essa base que construiremos neste curso.</p>
+<p>Isso envolve conceitos como:</p>
+<ul>
+<li>experimentos aleatórios;</li>
+<li>modelos probabilísticos;</li>
+<li>variáveis aleatórias;</li>
+<li>distribuições de probabilidade;</li>
+<li>distribuições conjuntas;</li>
+<li>independência;</li>
+<li>probabilidade condicional;</li>
+<li>esperança;</li>
+<li>variância;</li>
+<li>covariância.</li>
+</ul>
+<p>Depois precisamos entender como uma amostra se relaciona com uma população.</p>
+<p>Entram então:</p>
+<ul>
+<li>amostragem;</li>
+<li>estatísticas e estimadores;</li>
+<li>distribuições amostrais;</li>
+<li>Lei dos Grandes Números;</li>
+<li>Teorema Central do Limite;</li>
+<li>erro padrão;</li>
+<li>estimação;</li>
+<li>propriedades de estimadores;</li>
+<li>intervalos de confiança;</li>
+<li>testes de hipóteses;</li>
+<li>p-values;</li>
+<li>erros Tipo I e Tipo II.</li>
+</ul>
+<p>É essa construção que nos permite transformar:</p>
+<blockquote class="blockquote">
+<p>“observamos este número”</p>
+</blockquote>
+<p>em algo como:</p>
+<blockquote class="blockquote">
+<p>“com base nesta amostra e nas hipóteses que estamos fazendo sobre o processo gerador dos dados, nossa melhor estimativa da quantidade de interesse é esta, acompanhada desta incerteza.”</p>
+</blockquote>
+</section>
+<section id="previsão-versus-inferência-estatística" class="level3">
+<h3 class="anchored" data-anchor-id="previsão-versus-inferência-estatística">Previsão versus Inferência Estatística</h3>
+<p>Compare:</p>
+<p><strong>Previsão</strong></p>
+<blockquote class="blockquote">
+<p>Qual cliente vai cancelar?</p>
+</blockquote>
+<p>Queremos prever um resultado ainda desconhecido para um novo caso.</p>
+<p><strong>Inferência Estatística</strong></p>
+<blockquote class="blockquote">
+<p>Qual é a taxa de churn dos nossos clientes e com que precisão conseguimos estimá-la?</p>
+</blockquote>
+<p>Queremos aprender uma quantidade sobre a população a partir de uma amostra e quantificar a incerteza dessa conclusão.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Ideia principal
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Inferência Estatística cria valor quando precisamos <strong>aprender algo para além da amostra observada sem tratar cada número calculado como uma verdade exata sobre o todo</strong>.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="inferência-causal-o-que-aconteceria-se-fizéssemos-alguma-coisa" class="level2">
+<h2 class="anchored" data-anchor-id="inferência-causal-o-que-aconteceria-se-fizéssemos-alguma-coisa">3. Inferência Causal: o que aconteceria se fizéssemos alguma coisa?</h2>
+<section id="a-pergunta-2" class="level3">
+<h3 class="anchored" data-anchor-id="a-pergunta-2">A pergunta</h3>
+<p>Agora a pergunta muda novamente.</p>
+<p>Empresas não querem apenas observar ou prever o mundo. Elas querem <strong>agir sobre ele</strong>.</p>
+<p>Elas:</p>
+<ul>
+<li>mudam preços;</li>
+<li>lançam features;</li>
+<li>enviam campanhas;</li>
+<li>oferecem descontos;</li>
+<li>alteram interfaces;</li>
+<li>mudam processos;</li>
+<li>criam políticas;</li>
+<li>modificam algoritmos.</li>
+</ul>
+<p>E então surge uma pergunta diferente:</p>
+<blockquote class="blockquote">
+<p>O que mudou <strong>por causa</strong> da nossa ação?</p>
+</blockquote>
+<p>Exemplos:</p>
+<ul>
+<li>Se oferecermos um cupom, quanto aumentam as compras?</li>
+<li>Se mudarmos a tela de checkout, quanto aumenta a conversão?</li>
+<li>Se aumentarmos o preço, quanto muda a demanda?</li>
+<li>Essa campanha aumentou a receita?</li>
+<li>Esse novo onboarding reduziu churn?</li>
+<li>Essa funcionalidade aumentou retenção?</li>
+<li>Esse contato comercial realmente gerou vendas adicionais?</li>
+</ul>
+<p>A expressão fundamental aqui é:</p>
+<blockquote class="blockquote">
+<p><strong>por causa de.</strong></p>
+</blockquote>
+<p>Não queremos saber simplesmente se duas coisas aparecem juntas, <em>mas sim se mudar uma delas <strong>provoca</strong> uma mudança na outra</em>.</p>
+</section>
+<section id="associação-não-é-intervenção" class="level3">
+<h3 class="anchored" data-anchor-id="associação-não-é-intervenção">Associação não é intervenção</h3>
+<p>Imagine que clientes que recebem cupons compram mais.</p>
+<p>Isso não significa necessariamente que:</p>
+<blockquote class="blockquote">
+<p>os cupons fizeram esses clientes comprarem mais.</p>
+</blockquote>
+<p>Talvez a empresa ofereça cupons justamente aos seus melhores clientes, <em>que provavelmente já comprariam mais mesmo sem os cupons</em>.</p>
+<p>Da mesma forma:</p>
+<blockquote class="blockquote">
+<p>usuários que utilizam determinada feature possuem maior retenção.</p>
+</blockquote>
+<p>Isso não significa necessariamente que:</p>
+<blockquote class="blockquote">
+<p>fazer um usuário utilizar essa feature aumentará sua retenção.</p>
+</blockquote>
+<p>Talvez usuários naturalmente mais engajados <em>sejam justamente aqueles que utilizam a feature</em>.</p>
+<p><strong>Inferência Causal</strong> tenta responder:</p>
+<blockquote class="blockquote">
+<p>O que teria acontecido com essas mesmas unidades se a intervenção tivesse sido diferente?</p>
+</blockquote>
+<p>Essa é a ideia do <strong>contrafactual</strong>.</p>
+</section>
+<section id="por-que-uma-empresa-quer-causalidade" class="level3">
+<h3 class="anchored" data-anchor-id="por-que-uma-empresa-quer-causalidade">Por que uma empresa quer causalidade?</h3>
+<p>Porque praticamente <strong>toda estratégia empresarial envolve alguma intervenção</strong>.</p>
+<p>Se a empresa gasta dinheiro com uma ação, ela quer saber se aquela ação gera algum resultado incremental.</p>
+<p>Não queremos apenas saber:</p>
+<blockquote class="blockquote">
+<p>“quem compra?”</p>
+</blockquote>
+<p>Queremos saber:</p>
+<blockquote class="blockquote">
+<p>“quem comprará <strong>por causa da campanha</strong>?”</p>
+</blockquote>
+<p>Não queremos apenas saber:</p>
+<blockquote class="blockquote">
+<p>“quem vai churnar?”</p>
+</blockquote>
+<p>Podemos querer saber:</p>
+<blockquote class="blockquote">
+<p>“para quem uma intervenção realmente reduzirá churn?”</p>
+</blockquote>
+</section>
+<section id="o-que-a-empresa-pode-fazer-com-a-resposta-1" class="level3">
+<h3 class="anchored" data-anchor-id="o-que-a-empresa-pode-fazer-com-a-resposta-1">O que a empresa pode fazer com a resposta?</h3>
+<p><strong>Campanhas</strong></p>
+<p>Pergunta causal:</p>
+<blockquote class="blockquote">
+<p>“Essa campanha realmente aumentou vendas?”</p>
+</blockquote>
+<p>A empresa pode:</p>
+<ul>
+<li>aumentar investimento se houver retorno incremental;</li>
+<li>reduzir investimento se os clientes comprariam de qualquer forma;</li>
+<li>redistribuir orçamento entre canais.</li>
+</ul>
+<p><strong>Produto</strong></p>
+<p>Pergunta causal:</p>
+<blockquote class="blockquote">
+<p>“Essa nova experiência aumentou conversão?”</p>
+</blockquote>
+<p>A empresa pode:</p>
+<ul>
+<li>lançar a nova versão;</li>
+<li>abandonar a mudança;</li>
+<li>testar outra alternativa.</li>
+</ul>
+<p><strong>Pricing</strong></p>
+<p>Pergunta causal:</p>
+<blockquote class="blockquote">
+<p>“Quanto a demanda muda quando alteramos o preço?”</p>
+</blockquote>
+<p>A empresa pode:</p>
+<ul>
+<li>rever preços;</li>
+<li>segmentar estratégias;</li>
+<li>estimar trade-offs entre margem e volume.</li>
+</ul>
+<p><strong>Retenção</strong></p>
+<p>Pergunta causal:</p>
+<blockquote class="blockquote">
+<p>“Oferecer esse benefício reduz churn?”</p>
+</blockquote>
+<p>A empresa pode:</p>
+<ul>
+<li>decidir se a intervenção vale seu custo;</li>
+<li>selecionar quais clientes devem recebê-la;</li>
+<li>evitar gastar dinheiro com clientes cujo comportamento não mudará.</li>
+</ul>
+</section>
+<section id="previsão-não-é-inferência-causal" class="level3">
+<h3 class="anchored" data-anchor-id="previsão-não-é-inferência-causal">Previsão não é Inferência Causal</h3>
+<p>Imagine dois clientes.</p>
+<p>Cliente A:</p>
+<ul>
+<li>90% de probabilidade prevista de churn;</li>
+<li>praticamente nenhuma resposta a uma intervenção de retenção.</li>
+</ul>
+<p>Cliente B:</p>
+<ul>
+<li>40% de probabilidade prevista de churn;</li>
+<li>sua probabilidade poderia cair para 10% se recebesse a intervenção.</li>
+</ul>
+<p>Se a empresa olhar <em>apenas para previsão</em>, provavelmente priorizará A.</p>
+<p>Mas, se a pergunta for:</p>
+<blockquote class="blockquote">
+<p>“Em quem essa intervenção terá maior impacto?”</p>
+</blockquote>
+<p><strong>B pode ser o cliente mais interessante</strong>.</p>
+<p>Portanto:</p>
+<blockquote class="blockquote">
+<p><strong>alto risco previsto não significa alto efeito causal.</strong></p>
+</blockquote>
+</section>
+<section id="o-que-precisamos-aprender-para-fazer-inferência-causal" class="level3">
+<h3 class="anchored" data-anchor-id="o-que-precisamos-aprender-para-fazer-inferência-causal">O que precisamos aprender para fazer Inferência Causal?</h3>
+<p>Inferência Causal não substitui Inferência Estatística, ela se apoia nela e acrescenta uma nova camada.</p>
+<p>Primeiro precisamos dos fundamentos da <strong>Teoria da Probabilidade</strong>:</p>
+<ul>
+<li>variáveis aleatórias;</li>
+<li>distribuições;</li>
+<li>esperança;</li>
+<li>variância;</li>
+<li>probabilidade condicional;</li>
+<li>independência.</li>
+</ul>
+<p>Depois precisamos dos fundamentos de <strong>Inferência Estatística</strong>:</p>
+<ul>
+<li>amostragem;</li>
+<li>estimadores;</li>
+<li>distribuições amostrais;</li>
+<li>erro padrão;</li>
+<li>intervalos de confiança;</li>
+<li>testes de hipóteses;</li>
+<li>regressão.</li>
+</ul>
+<p>E então aparecem os conceitos especificamente <strong>causais</strong>:</p>
+<ul>
+<li>treatment;</li>
+<li>outcome;</li>
+<li>potential outcomes;</li>
+<li>counterfactual;</li>
+<li>treatment effect;</li>
+<li>randomização;</li>
+<li>confounding;</li>
+<li>identification;</li>
+<li>selection bias;</li>
+<li>experiments e A/B tests;</li>
+<li>dados observacionais;</li>
+<li>Difference-in-Differences;</li>
+<li>Instrumental Variables;</li>
+<li>Regression Discontinuity;</li>
+<li>matching e weighting;</li>
+<li>heterogeneous treatment effects;</li>
+<li>Causal Machine Learning.</li>
+</ul>
+<p>Há uma distinção particularmente importante:</p>
+<p><strong>Inferência Estatística</strong></p>
+<p>ajuda a responder:</p>
+<blockquote class="blockquote">
+<p>“Com que precisão estimamos esta quantidade?”</p>
+</blockquote>
+<p><strong>Inferência Causal</strong></p>
+<p>precisa primeiro responder:</p>
+<blockquote class="blockquote">
+<p>“Esta quantidade pode ser interpretada como efeito causal?”</p>
+</blockquote>
+<p>Só depois estimamos esse efeito e quantificamos sua incerteza.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Identificação vem antes da estimação
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Um intervalo de confiança extremamente preciso em torno da quantidade errada continua não respondendo à pergunta causal.</p>
+<p>Inferência Causal exige não apenas estimar bem, mas justificar por que a quantidade estimada representa o efeito da intervenção que queremos conhecer.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Ideia principal
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Inferência Causal cria valor quando precisamos descobrir <strong>quais ações realmente provocam mudanças nos resultados que importam para a empresa</strong>.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="os-três-problemas-usando-os-mesmos-dados" class="level2">
+<h2 class="anchored" data-anchor-id="os-três-problemas-usando-os-mesmos-dados">Os três problemas usando os mesmos dados</h2>
+<p>Imagine novamente uma empresa com dados de clientes.</p>
+<section id="previsão" class="level3">
+<h3 class="anchored" data-anchor-id="previsão">Previsão</h3>
+<p>Pergunta:</p>
+<blockquote class="blockquote">
+<p>Quem vai cancelar?</p>
+</blockquote>
+<p>Objetivo: <em>Antecipar churn individual</em>.</p>
+<p>Possível ação: <em>Priorizar clientes para atendimento</em>.</p>
+</section>
+<section id="inferência-estatística" class="level3">
+<h3 class="anchored" data-anchor-id="inferência-estatística">Inferência Estatística</h3>
+<p>Pergunta:</p>
+<blockquote class="blockquote">
+<p>Qual é nossa taxa de churn e com que precisão conseguimos estimá-la?</p>
+</blockquote>
+<p>Objetivo: <em>Aprender sobre o nível de churn da população e sua incerteza</em>.</p>
+<p>Possíveis ações:</p>
+<ul>
+<li>planejamento financeiro;</li>
+<li>definição de metas;</li>
+<li>comparação entre segmentos;</li>
+<li>investigação de mudanças.</li>
+</ul>
+<hr>
+</section>
+<section id="inferência-causal" class="level3">
+<h3 class="anchored" data-anchor-id="inferência-causal">Inferência Causal</h3>
+<p>Pergunta:</p>
+<blockquote class="blockquote">
+<p>Oferecer determinado benefício reduz churn?</p>
+</blockquote>
+<p>Objetivo: <em>Estimar o efeito da intervenção</em>.</p>
+<p>Possíveis ações:</p>
+<ul>
+<li>decidir se o benefício vale seu custo;</li>
+<li>escalar ou interromper a estratégia;</li>
+<li>descobrir para quais clientes ela funciona melhor.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="um-mapa-mental" class="level2">
+<h2 class="anchored" data-anchor-id="um-mapa-mental">Um mapa mental</h2>
+<p>Quando você se deparar com um novo problema de Data Science, tente começar por estas perguntas:</p>
+<section id="quero-antecipar-um-resultado" class="level3">
+<h3 class="anchored" data-anchor-id="quero-antecipar-um-resultado">Quero antecipar um resultado?</h3>
+<blockquote class="blockquote">
+<p>O que provavelmente vai acontecer?</p>
+</blockquote>
+<p><strong>Previsão</strong></p>
+<hr>
+</section>
+<section id="quero-aprender-uma-quantidade-sobre-uma-população-e-saber-quão-incerta-é-minha-conclusão" class="level3">
+<h3 class="anchored" data-anchor-id="quero-aprender-uma-quantidade-sobre-uma-população-e-saber-quão-incerta-é-minha-conclusão">Quero aprender uma quantidade sobre uma população e saber quão incerta é minha conclusão?</h3>
+<blockquote class="blockquote">
+<p>O que os dados me permitem afirmar sobre o mundo?</p>
+</blockquote>
+<p><strong>Inferência Estatística</strong></p>
+<hr>
+</section>
+<section id="quero-saber-o-efeito-de-mudar-alguma-coisa" class="level3">
+<h3 class="anchored" data-anchor-id="quero-saber-o-efeito-de-mudar-alguma-coisa">Quero saber o efeito de mudar alguma coisa?</h3>
+<blockquote class="blockquote">
+<p>O que aconteceria se eu interviesse?</p>
+</blockquote>
+<p><strong>Inferência Causal</strong></p>
+<hr>
+<p>E somente depois pergunte:</p>
+<blockquote class="blockquote">
+<p>Qual método ou modelo devo utilizar?</p>
+</blockquote>
+<hr>
+</section>
+</section>
+<section id="o-modelo-não-define-a-pergunta" class="level2">
+<h2 class="anchored" data-anchor-id="o-modelo-não-define-a-pergunta">O modelo não define a pergunta</h2>
+<p>É importante não associar automaticamente determinados algoritmos a determinados paradigmas.</p>
+<p>Por exemplo:</p>
+<blockquote class="blockquote">
+<p>regressão = Inferência Estatística</p>
+</blockquote>
+<p>ou</p>
+<blockquote class="blockquote">
+<p>XGBoost = Previsão.</p>
+</blockquote>
+<p>Uma regressão pode ser utilizada para <strong>previsão</strong>, para <strong>Inferência Estatística</strong>, ou aparecer dentro de uma <strong>análise causal</strong>.</p>
+<p><strong>Machine Learning</strong> também pode ser utilizado dentro de Inferência Causal.</p>
+<p>Portanto:</p>
+<blockquote class="blockquote">
+<p><strong>o algoritmo não define o problema. A pergunta define o problema.</strong></p>
+</blockquote>
+<p>O modelo é uma ferramenta escolhida depois que sabemos o que queremos aprender.</p>
+<hr>
+</section>
+<section id="e-onde-entra-bayesian-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="e-onde-entra-bayesian-statistics">E onde entra Bayesian Statistics?</h2>
+<p>Bayesian Statistics não constitui uma quarta categoria paralela às três anteriores.</p>
+<p>Ela oferece outra maneira de representar e atualizar incerteza a partir de dados.</p>
+<p>Métodos bayesianos podem ser utilizados em:</p>
+<ul>
+<li>Previsão;</li>
+<li>Inferência Estatística;</li>
+<li>Inferência Causal;</li>
+<li>decision making.</li>
+</ul>
+<p>Neste momento, basta guardar que:</p>
+<blockquote class="blockquote">
+<p>“Bayesian” e “Frequentist” dizem respeito a frameworks de inferência, e não substituem a distinção entre prever, inferir e estimar efeitos causais.</p>
+</blockquote>
+<p>Voltaremos a essas ideias posteriormente. Porém, não entraremos em Bayesian Statistics nesse curso.</p>
+<hr>
+</section>
+<section id="isso-depende-da-empresa-ser-b2b-b2c-ou-uma-empresa-enorme" class="level2">
+<h2 class="anchored" data-anchor-id="isso-depende-da-empresa-ser-b2b-b2c-ou-uma-empresa-enorme">Isso depende da empresa ser B2B, B2C ou uma empresa enorme?</h2>
+<p>Não necessariamente.</p>
+<p>Grandes empresas digitais frequentemente possuem condições particularmente favoráveis:</p>
+<ul>
+<li>muitos usuários;</li>
+<li>muitas interações;</li>
+<li>muitas decisões repetidas;</li>
+<li>boa instrumentação;</li>
+<li>infraestrutura de experimentação.</li>
+</ul>
+<p>Por isso vemos empresas como iFood, Nubank, Amazon, Uber, Booking e Netflix utilizando intensamente <strong>Machine Learning, Experimentação e Inferência Causal</strong>.</p>
+<p>Mas o tamanho da empresa não determina sozinho quais perguntas podem ser feitas. Uma empresa pequena pode possuir milhões de observações, e uma empresa enorme pode ter poucos dados para determinada pergunta.</p>
+<p>Também é importante lembrar:</p>
+<blockquote class="blockquote">
+<p><strong>número N de linhas não é necessariamente o tamanho efetivo da amostra.</strong></p>
+</blockquote>
+<p>Uma base pode conter 20 milhões de eventos produzidos por apenas algumas centenas de empresas.</p>
+<p>Se a intervenção acontece <em>no nível da empresa</em>, o número relevante de unidades pode ser muito menor que 20 milhões.</p>
+<p>O que importa é a combinação entre:</p>
+<ul>
+<li>pergunta de negócio;</li>
+<li>unidade de análise;</li>
+<li>unidade de intervenção;</li>
+<li>quantidade de informação independente;</li>
+<li>qualidade dos dados;</li>
+<li>capacidade de medir outcomes;</li>
+<li>valor econômico da resposta.</li>
+</ul>
+<hr>
+</section>
+<section id="onde-este-curso-se-encaixa" class="level2">
+<h2 class="anchored" data-anchor-id="onde-este-curso-se-encaixa">Onde este curso se encaixa?</h2>
+<p>Este curso <strong>não é um curso de Machine Learning preditivo</strong>.</p>
+<p>Não vamos construir nosso caminho principalmente em torno de:</p>
+<ul>
+<li>Random Forest;</li>
+<li>XGBoost;</li>
+<li>redes neurais;</li>
+<li>forecasting;</li>
+<li>recommendation systems;</li>
+<li>predictive modeling.</li>
+</ul>
+<p>Essas são ferramentas extremamente importantes em Data Science, mas respondem principalmente ao primeiro ramo do nosso mapa:</p>
+<blockquote class="blockquote">
+<p><strong>Previsão.</strong></p>
+</blockquote>
+<p>Nosso caminho será direcionado principalmente aos outros dois:</p>
+<blockquote class="blockquote">
+<p><strong>Inferência Estatística e Inferência Causal.</strong></p>
+</blockquote>
+<p>Para chegar até eles, precisamos construir as fundações.</p>
+<p>Começaremos com <strong>Matemática e Teoria da Probabilidade</strong>, porque precisamos de uma linguagem rigorosa para representar incerteza.</p>
+<p>Depois estudaremos <strong>Inferência Estatística</strong>, aprendendo como uma amostra pode ser utilizada para aprender sobre uma população e como quantificar a incerteza das nossas conclusões.</p>
+<p>Estudaremos <strong>Regressão</strong>, uma das ferramentas mais importantes para modelar relações entre variáveis e que será também uma ponte fundamental para Inferência Causal.</p>
+<p>Finalmente chegaremos à <strong>Inferência Causal</strong>, onde adicionaremos uma nova pergunta:</p>
+<blockquote class="blockquote">
+<p>O que aconteceria se intervíssemos no mundo?</p>
+</blockquote>
+<p>O caminho do curso será, portanto:</p>
+<p><strong>Matemática</strong></p>
+<p>↓</p>
+<p><strong>Teoria da Probabilidade</strong></p>
+<p>↓</p>
+<p><strong>Inferência Estatística</strong></p>
+<p>↓</p>
+<p><strong>Regressão</strong></p>
+<p>↓</p>
+<p><strong>Inferência Causal</strong></p>
+<hr>
+</section>
+<section id="para-guardar" class="level2">
+<h2 class="anchored" data-anchor-id="para-guardar">Para guardar</h2>
+<p>Antes de escolher qualquer modelo, pergunte:</p>
+<blockquote class="blockquote">
+<p><strong>O que queremos aprender com os dados?</strong></p>
+</blockquote>
+<p><strong>Previsão</strong></p>
+<p>O que provavelmente vai acontecer?</p>
+<p>→ Ajuda a empresa a <strong>antecipar</strong>.</p>
+<p><strong>Inferência Estatística</strong></p>
+<p>O que podemos aprender sobre uma população e com qual incerteza?</p>
+<p>→ Ajuda a empresa a <strong>medir sem confundir sinal com ruído</strong>.</p>
+<p><strong>Inferência Causal</strong></p>
+<p>O que aconteceria se fizéssemos alguma coisa?</p>
+<p>→ Ajuda a empresa a <strong>descobrir quais ações realmente mudam resultados</strong>.</p>
+<p>Modelos vêm depois. <strong>Primeiro vem a pergunta</strong>.</p>
+
+
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>James, G., Witten, D., Hastie, T., &amp; Tibshirani, R. (2021). <em>An Introduction to Statistical Learning: with Applications in R</em> (2nd ed.). Springer.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiada");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiada");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../conteudo.html" class="pagination-link" aria-label="Conteúdo">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Conteúdo</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/00-1_pre_requisitos_matematicos.html" class="pagination-link" aria-label="Pré-requisitos Matemáticos">
+        <span class="nav-page-text"><span class="chapter-title">Pré-requisitos Matemáticos</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
