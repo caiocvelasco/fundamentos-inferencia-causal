@@ -1,0 +1,291 @@
+---
+title: "Da Incerteza à Probabilidade"
+---
+
+<!--
+FONTES PRINCIPAIS
+
+Spanos:
+- Chapter 1 — An Introduction to Empirical Modeling
+- 1.2 Stochastic Phenomena
+- 1.3 Chance Regularity and Statistical Models
+
+Bertsekas & Tsitsiklis:
+- Chapter 1 — Sample Space and Probability
+-->
+
+No prelúdio, vimos o mapa geral: fenômenos do mundo real produzem dados e usamos a Probabilidade para construir uma representação matemática do mecanismo capaz de gerá-los.
+
+Mas antes de calcular probabilidades, precisamos responder:
+
+> **Por que precisamos de uma Teoria das Probabilidades?**
+
+A resposta começa com o tipo de fenômeno que queremos representar.
+
+## Determinístico vs. estocástico
+
+Considere $y=f(x)=2x+1$.
+
+Se $x=3$, então necessariamente $y=7$.
+
+Conhecido $x$ e conhecido o mecanismo $f$, o resultado está determinado.
+
+Esse é um **fenômeno determinístico**.
+
+Agora pense em uma **sessão de checkout de um usuário em um e-commerce**.
+
+Podemos conhecer o dispositivo, país, horário, produtos no carrinho e várias outras características do usuário.
+
+Ainda assim, **não necessariamente sabemos** se ele fará uma compra.
+
+O resultado pode ser:
+
+$$
+\text{compra}
+\qquad\text{ou}\qquad
+\text{não compra}.
+$$
+
+Existe **incerteza sobre o resultado que será observado**.
+
+Esse é o tipo de situação que chamaremos de **fenômeno estocástico**.
+
+> Em um fenômeno estocástico, não conseguimos determinar antecipadamente qual resultado particular será observado.
+
+Mas isso não significa ausência de estrutura.
+
+## Acaso e regularidade
+
+Spanos[^1] usa a expressão *chance regularity* para descrever uma característica fundamental dos fenômenos estocásticos:
+
+[^1]: Spanos, A. (1999). *Probability Theory and Statistical Inference: Econometric Modeling with Observational Data*. Cambridge University Press.
+
+$$
+\underbrace{\text{Acaso}}_{\text{incerteza individual}}
++
+\underbrace{\text{Regularidade}}_{\text{estrutura no agregado}}.
+$$
+
+Em palavras:
+
+> **incerteza no resultado individual, regularidade quando observamos muitos resultados.**
+
+Considere o lançamento de dois dados.
+
+Em um lançamento, a soma pode ser qualquer valor entre $2$ e $12$, e não sabemos antecipadamente qual será observado.
+
+Mas os valores possíveis não possuem a mesma estrutura:
+
+::: {.compact-table}
+
+| Soma | Combinações possíveis |
+|:---:|:---:|
+| 2 | 1 |
+| 3 | 2 |
+| 4 | 3 |
+| 5 | 4 |
+| 6 | 5 |
+| 7 | 6 |
+| 8 | 5 |
+| 9 | 4 |
+| 10 | 3 |
+| 11 | 2 |
+| 12 | 1 |
+
+:::
+
+A soma $7$, por exemplo, pode ocorrer de seis maneiras:
+
+$$
+(1,6),(2,5),(3,4),(4,3),(5,2),(6,1),
+$$
+
+enquanto a soma $2$ só pode ocorrer como
+
+$$
+(1,1).
+$$
+
+Podemos visualizar essa estrutura:
+
+```{=html}
+<div style="width: 100%; max-width: 900px; margin: 2rem auto; overflow-x: auto;">
+
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 900 390"
+     width="100%"
+     style="display: block;"
+     role="img"
+     aria-label="Número de combinações possíveis para cada soma de dois dados">
+
+  <line x1="70" y1="310" x2="850" y2="310"
+        stroke="currentColor" stroke-width="2"/>
+
+  <rect x="90"  y="270" width="45" height="40"  fill="currentColor" opacity="0.70"/>
+  <rect x="155" y="230" width="45" height="80"  fill="currentColor" opacity="0.70"/>
+  <rect x="220" y="190" width="45" height="120" fill="currentColor" opacity="0.70"/>
+  <rect x="285" y="150" width="45" height="160" fill="currentColor" opacity="0.70"/>
+  <rect x="350" y="110" width="45" height="200" fill="currentColor" opacity="0.70"/>
+  <rect x="415" y="70"  width="45" height="240" fill="currentColor" opacity="0.70"/>
+  <rect x="480" y="110" width="45" height="200" fill="currentColor" opacity="0.70"/>
+  <rect x="545" y="150" width="45" height="160" fill="currentColor" opacity="0.70"/>
+  <rect x="610" y="190" width="45" height="120" fill="currentColor" opacity="0.70"/>
+  <rect x="675" y="230" width="45" height="80"  fill="currentColor" opacity="0.70"/>
+  <rect x="740" y="270" width="45" height="40"  fill="currentColor" opacity="0.70"/>
+
+  <g fill="currentColor" font-size="16" text-anchor="middle">
+    <text x="112" y="260">1</text>
+    <text x="177" y="220">2</text>
+    <text x="242" y="180">3</text>
+    <text x="307" y="140">4</text>
+    <text x="372" y="100">5</text>
+    <text x="437" y="60">6</text>
+    <text x="502" y="100">5</text>
+    <text x="567" y="140">4</text>
+    <text x="632" y="180">3</text>
+    <text x="697" y="220">2</text>
+    <text x="762" y="260">1</text>
+  </g>
+
+  <g fill="currentColor" font-size="16" text-anchor="middle">
+    <text x="112" y="335">2</text>
+    <text x="177" y="335">3</text>
+    <text x="242" y="335">4</text>
+    <text x="307" y="335">5</text>
+    <text x="372" y="335">6</text>
+    <text x="437" y="335">7</text>
+    <text x="502" y="335">8</text>
+    <text x="567" y="335">9</text>
+    <text x="632" y="335">10</text>
+    <text x="697" y="335">11</text>
+    <text x="762" y="335">12</text>
+  </g>
+
+  <text x="437" y="375"
+        text-anchor="middle"
+        font-size="18"
+        fill="currentColor">
+    Soma dos dois dados
+  </text>
+
+</svg>
+
+</div>
+```
+
+Ainda não definimos nenhuma probabilidade.
+
+Mas já percebemos a ideia importante:
+
+> **a incerteza pode possuir estrutura.**
+
+## Repetição e frequência
+
+Agora imagine repetir o lançamento dos dois dados muitas vezes:
+
+$$
+7,\;4,\;10,\;6,\;7,\;9,\;3,\;8,\ldots
+$$
+
+Cada resultado individual continua incerto, mas podemos observar quantas vezes determinado evento ocorre.
+
+Se a soma $7$ aparecer $18$ vezes em $100$ lançamentos, sua **frequência relativa observada** será
+
+$$
+\frac{18}{100}=0{,}18.
+$$
+
+Se repetirmos o processo, podemos encontrar $0{,}15$, $0{,}19$, $0{,}17,\ldots$
+
+Essas frequências variam, mas podem apresentar **regularidade** quando o número de observações cresce.
+
+É exatamente a combinação:
+
+$$
+\boxed{
+\text{incerteza individual}
++
+\text{regularidade no agregado}
+}
+$$
+
+::: {.callout-note title="Probabilidade não é frequência relativa"}
+
+A **frequência relativa** é algo que observamos nos dados.
+
+A **probabilidade** fará parte do modelo matemático que construiremos.
+
+Mais adiante, a [**Lei dos Grandes Números**]{.conceito} (_Law of Large Numbers - LLN_) estabelecerá a relação entre essas duas ideias sob determinadas condições.
+
+:::
+
+![](/images/individual_agregado.png){.course-figure width="80%"}
+
+## Do fenômeno aos dados
+
+No mundo real, normalmente não observamos diretamente o mecanismo estocástico, observamos suas **realizações**.
+
+Em um checkout, por exemplo, podemos observar:
+
+::: {.compact-table}
+
+| user_id | compra |
+|:---:|:---:|
+| 1 | 0 |
+| 2 | 0 |
+| 3 | 1 |
+| 4 | 0 |
+| 5 | 0 |
+
+:::
+
+Isso nos obriga a separar duas coisas:
+
+$$
+\boxed{
+\text{mecanismo que gera os dados}
+\neq
+\text{dados observados}
+}
+$$
+
+Os dados são aquilo que observamos. O **mecanismo subjacente** é aquilo que queremos representar matematicamente.
+
+Mais adiante chamaremos esse mecanismo de [**Processo Gerador dos Dados**]{.conceito}, ou *Data Generating Process* (**DGP**).
+
+## Por que Probabilidade?
+
+Chegamos então à pergunta inicial:
+
+> **como representar matematicamente um fenômeno cujo resultado individual é incerto, mas que possui estrutura e pode apresentar regularidade?**
+
+É para isso que construiremos a **Teoria das Probabilidades**.
+
+Ela **não eliminará a incerteza** nem nos dirá necessariamente qual resultado ocorrerá, ela fornecerá uma linguagem para dizer, de maneira precisa:
+
+- quais resultados são possíveis;
+- quais conjuntos de resultados queremos estudar;
+- como atribuímos probabilidades a eles.
+
+Por enquanto, guarde apenas a história:
+
+$$
+\boxed{
+\text{fenômeno estocástico}
+\longrightarrow
+\text{incerteza + regularidade}
+\longrightarrow
+\text{modelo probabilístico}
+}
+$$
+
+## Antes de continuar
+
+Até aqui, construímos a motivação: fenômenos estocásticos combinam **incerteza no resultado individual** com algum tipo de **estrutura ou regularidade**.
+
+A próxima etapa é transformar essa intuição em matemática.
+
+No próximo capítulo, começaremos a formalização: veremos como definir com precisão o fenômeno que queremos estudar e como organizar os objetos matemáticos que permitirão passar da Probabilidade para a Estatística.
+
+> **A pergunta deixa de ser apenas “por que Probabilidade?” e passa a ser: como construímos um modelo matemático para representar essa incerteza?**
+

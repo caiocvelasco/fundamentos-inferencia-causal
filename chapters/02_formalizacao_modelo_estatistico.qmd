@@ -1,0 +1,507 @@
+---
+title: "A Formalização Matemática"
+---
+
+<!--
+FONTES PRINCIPAIS
+
+Spanos:
+- Chapter 1 — An Introduction to Empirical Modeling
+- 1.2 Stochastic Phenomena
+- 1.3 Chance Regularity and Statistical Models
+
+Bertsekas & Tsitsiklis:
+- Chapter 1 — Sample Space and Probability
+-->
+
+No capítulo anterior, vimos **por que** precisamos da Probabilidade. Agora começa uma mudança importante: vamos transformar aquela intuição em objetos matemáticos bem definidos.
+
+Formalizar não é apenas trocar palavras por símbolos. É aprender a dizer com precisão:
+
+- **o que exatamente estamos modelando**;
+- **quais hipóteses estamos impondo**;
+- **quais objetos pertencem ao modelo**;
+- e **como esses objetos se relacionam**.
+
+Esse exercício nos treina a pensar de forma estruturada. Antes de calcular alguma coisa, precisamos aprender a construir o problema: definir o fenômeno, separar o que é aleatório do que foi observado e explicitar a estrutura que estamos assumindo.
+
+Essa habilidade aparecerá repetidamente em Estatística, Machine Learning e Inferência Causal. Modelar começa muito antes de escolher um estimador ou rodar um algoritmo.
+
+## A Formalização Matemática
+
+Nos próximos capítulos, construiremos os objetos matemáticos necessários para representar um fenômeno estocástico e, depois, os dados produzidos por ele.
+
+Na organização adotada por Spanos, nosso destino será um [**Modelo Estatístico**]{.conceito} (*Statistical Model*) com dois componentes complementares:
+
+- o **Espaço de Probabilidade**, que descreve a estrutura probabilística do fenômeno que escolhemos modelar;
+- o **Espaço de Amostragem**, que descreve a estrutura probabilística conjunta das observações que formarão nossos dados.
+
+```{=html}
+<div style="max-width: 900px; margin: 2rem auto; border: 2px solid currentColor; border-radius: 12px; padding: 1.25rem 1.5rem 1.5rem 1.5rem;">
+  <div style="text-align: center; font-weight: 700; font-size: 1.15rem; margin-bottom: 1rem;">
+    Modelo Estatístico
+  </div>
+  <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+    <div style="flex: 1 1 280px; border: 1.5px solid currentColor; border-radius: 9px; padding: 1rem; text-align: center;">
+      <strong>Espaço de Probabilidade</strong><br>
+      <span style="font-size: 0.95rem;">estrutura probabilística do fenômeno</span><br><br>
+      <span>\((\Omega,\mathcal F,P)\)</span>
+    </div>
+    <div style="flex: 1 1 280px; border: 1.5px solid currentColor; border-radius: 9px; padding: 1rem; text-align: center;">
+      <strong>Espaço de Amostragem</strong><br>
+      <span style="font-size: 0.95rem;">estrutura probabilística conjunta das observações</span>
+    </div>
+  </div>
+</div>
+```
+
+Esses dois componentes cumprem papéis diferentes e complementares.
+
+### Espaço de Probabilidade
+
+Primeiro, formalizaremos a incerteza associada ao experimento que escolhemos estudar.
+
+Precisamos responder a três perguntas:
+
+1. **Quais resultados são possíveis?**  
+   O **espaço amostral** $\Omega$ reúne todos os resultados possíveis.
+
+2. **Quais conjuntos de resultados queremos considerar como eventos?**  
+   A coleção $\mathcal F$ organiza esses eventos.
+
+3. **Como atribuímos probabilidades a esses eventos?**  
+   A função $P$ faz essa atribuição.
+
+Juntos, esses três objetos formam o **espaço de probabilidade**:
+
+$$
+\boxed{(\Omega,\mathcal F,P)}
+$$
+
+Essa estrutura já nos permite fazer coisas interessantes dentro de um experimento, como estudar **probabilidade condicional** e **independência** entre eventos.
+
+Por exemplo, podemos definir como um único experimento:
+
+> lançar uma moeda duas vezes.
+
+Um possível resultado será então: $(H,T)$, ou seja, **um único elemento** de um espaço amostral **com duas coordenadas**.
+
+### Espaço de Amostragem
+
+Para fazer Estatística, porém, normalmente queremos observar o fenômeno **várias vezes**.
+
+Se fixamos um experimento básico e consideramos uma sequência de ensaios
+
+$$
+T_1,\ldots,T_n
+$$
+
+precisamos de uma estrutura probabilística capaz de representar **todos esses ensaios conjuntamente**.
+
+Sem ela, conseguimos descrever cada ensaio isoladamente, mas ainda não temos uma linguagem matemática para dizer como as várias observações que formarão nossos dados **se relacionam entre si**.
+
+Essa estrutura conjunta é formalizada por meio do [**Espaço de Amostragem**]{.conceito} (_sampling space_).
+
+Essa terminologia é própria da organização conceitual adotada por Spanos. Outros autores de Probabilidade constroem diretamente espaços de probabilidade conjuntos e vetores aleatórios sem necessariamente introduzir um objeto separado com esse nome.
+
+A motivação, porém, é a mesma: 
+
+- representar conjuntamente aquilo que depois aparecerá como várias observações.
+
+A ideia que usaremos será:
+
+$$
+T_i
+\longrightarrow
+X_i
+\longrightarrow
+x_i
+$$
+
+Isto é:
+
+- $T_i$: o $i$-ésimo ensaio, ou seja, um ensaio qualquer;
+- $X_i$: a variável aleatória associada à posição $i$ da amostra (_vamos aprender sobre isso mais a frente_);
+- $x_i$: o valor efetivamente observado nessa posição.
+
+O índice $i$ não representa uma nova variável de interesse, ele identifica **qual observação da amostra estamos representando**.
+
+Assim, se medimos apenas uma variável, por exemplo, aquela com possíveis valores de compra ou não compra, podemos ter
+
+$$
+X_1,X_2,\ldots,X_n
+$$
+
+como $n$ observações da mesma variável conceitual.
+
+Depois que os dados são observados, teremos uma realização
+
+$$
+x=(x_1,\ldots,x_n)
+$$
+
+É por isso que o **espaço de amostragem** é importante: 
+
+- ele fornece a estrutura probabilística conjunta das várias posições que formarão a amostra.
+
+Ele nos permite perguntar, por exemplo:
+
+> conhecer o resultado de um ensaio muda o que sabemos sobre outro?
+
+Se não muda, podemos modelar os ensaios como **independentes**. Se muda, existe algum tipo de **dependência** que nosso modelo deve representar. 
+
+Ou seja, garantir essa possibilidade de **_relaxar_** o modelo é algo ainda mais próximo do mundo real.  
+
+#### Convenção que usaremos
+
+Para evitar confusão entre teoria e dados observados:
+
+- $X_i$ representa a $i$-ésima observação **como objeto aleatório** (_veremos isso mais adiante_);
+- $x_i$ representa o valor **realizado e observado** dessa observação;
+- em problemas multivariados, $X_i$ pode ser um vetor com várias variáveis;
+- após a realização, $x_i$ será então a linha $i$ do dataset.
+
+Se houver $p$ variáveis (_ou colunas, ou features, ou predictors..._) por observação,
+
+$$
+X_i=(X_{i1},\ldots,X_{ip})
+$$
+
+e, depois de observarmos os dados, ou seja, a realização desses ensaios,
+
+$$
+x_i=(x_{i1},\ldots,x_{ip})
+$$
+
+Usaremos a convenção:
+
+- $i$ = observação / linha;
+- $j$ = variável / coluna.
+
+Por exemplo, imagine um **_dataset_** com $n=3$ observações e $p=3$ variáveis:
+
+| $i$ | idade ($j=1$) | renda ($j=2$) | compra ($j=3$) |
+|:---:|---:|---:|---:|
+| $i=1$ | $x_{11}=25$ | $x_{12}=3000$ | $x_{13}=0$ |
+| $i=2$ | $x_{21}=41$ | $x_{22}=7200$ | $x_{23}=1$ |
+| $i=3$ | $x_{31}=33$ | $x_{32}=4800$ | $x_{33}=1$ |
+
+Assim:
+
+- $x_{21}=41$ é o valor da **variável 1** para a **observação 2**;
+- a linha inteira
+
+$$
+x_2=(x_{21},x_{22},x_{23})=(41,7200,1)
+$$
+
+é a segunda observação do dataset;
+
+- a coluna $j=2$ reúne os valores observados da variável renda:
+
+$$
+(x_{12},x_{22},x_{32})=(3000,7200,4800).
+$$
+
+Portanto, em $x_{ij}$:
+
+$$
+\boxed{
+i=\text{linha/observação}
+\qquad
+j=\text{coluna/variável}
+}
+$$
+
+#### Vamos visualizar alguns exemplos
+
+**Exemplo 1 — Série Temporal**
+
+Imagine que observamos as vendas de uma empresa ao longo dos dias.
+
+Antes da realização, ou seja, na hora que estamos usando a teoria para descrever este fenômeno, escrevemos
+
+$$
+X_t,\;X_{t+1},\ldots
+$$
+
+para representar os valores ainda aleatórios das vendas em cada instante.
+
+Depois que os dados são observados, escrevemos
+
+$$
+x_t,\;x_{t+1},\ldots
+$$
+
+para os valores efetivamente registrados.
+
+| Tempo | Vendas observadas | Relação com o objeto aleatório |
+|:---:|---:|:---|
+| $t-1$ | $x_{t-1}=118$ | $X_{t-1} \rightarrow x_{t-1}=118$ |
+| $t$ | $x_t=260$ | $X_t \rightarrow x_t=260$ |
+| $t+1$ | $x_{t+1}=241$ | $X_{t+1} \rightarrow x_{t+1}=241$ |
+| $t+2$ | $x_{t+2}=229$ | $X_{t+2} \rightarrow x_{t+2}=229$ |
+
+Cada linha é uma observação diferente ao longo do tempo.
+
+Se observar vendas muito altas em $X_t$ altera o que esperamos para $X_{t+1}$, então essas duas variáveis não são independentes.
+
+A questão só aparece porque agora estamos interessados em **mais de uma observação conjuntamente**.
+
+**Observação.:** 
+
+- Isso **não** significa que $X_t$ necessariamente **causa** $X_{t+1}$. Pode existir uma promoção, sazonalidade, tendência ou outro fator comum afetando as duas observações. Isso será parte do assunto de **Inferência Causal**.
+
+---
+
+**Exemplo 2 — Observações repetidas da mesma unidade**
+
+Outro caso comum em **Data Science** ocorre quando a **mesma unidade** aparece várias vezes no dataset.
+
+Por exemplo, podemos observar várias sessões do mesmo usuário. Antes de observarmos os dados, pensamos em
+
+$$
+X_1,X_2,X_3,X_4
+$$
+
+como quatro observações aleatórias sucessivas do comportamento desse usuário.
+
+Depois da realização:
+
+| user_id | sessão | compra observada | Relação com o objeto aleatório |
+|:---:|:---:|:---:|:---|
+| 42 | 1 | $x_1=0$ | $X_1 \rightarrow x_1=0$ |
+| 42 | 2 | $x_2=1$ | $X_2 \rightarrow x_2=1$ |
+| 42 | 3 | $x_3=1$ | $X_3 \rightarrow x_3=1$ |
+| 42 | 4 | $x_4=0$ | $X_4 \rightarrow x_4=0$ |
+
+Aqui temos quatro observações da mesma variável conceitual — compra ou não compra — mas todas pertencem ao **mesmo usuário**.
+
+Esse tipo de dado é um exemplo de [**observações repetidas da mesma unidade**]{.conceito}.
+
+Nesse caso, talvez seja pouco realista assumir automaticamente que $X_1,X_2,X_3,X_4$ são independentes. O mesmo usuário carrega características como preferências e hábitos de uma sessão para a seguinte, de modo que conhecer seu comportamento em uma sessão pode trazer informação sobre seu comportamento em outra.
+
+Perceba a diferença em relação ao exemplo anterior:
+
+- na **série temporal**, o foco era a relação entre observações em diferentes instantes;
+- aqui, o foco é que várias observações pertencem à **mesma unidade**.
+
+As duas estruturas podem até aparecer juntas — sessões de um mesmo usuário também acontecem ao longo do tempo —, mas representam motivos distintos para questionarmos uma hipótese de independência.
+
+---
+
+Mais adiante, quando introduzirmos [**variáveis aleatórias**]{.conceito} (_random variables_), escreveremos a amostra como
+
+$$
+X=(X_1,\ldots,X_n)
+$$
+
+O vetor $X$ ainda é uma variável aleatória: cada posição da amostra ainda pode assumir diferentes valores.
+
+Podemos visualizar a passagem do objeto aleatório para uma realização observada:
+
+| Posição na amostra | Antes de observar | Depois de observar |
+|:---:|:---:|:---:|
+| 1 | $X_1$ | $x_1=0$ |
+| 2 | $X_2$ | $x_2=1$ |
+| 3 | $X_3$ | $x_3=1$ |
+| $\vdots$ | $\vdots$ | $\vdots$ |
+| $n$ | $X_n$ | $x_n=0$ |
+
+Assim,
+
+$$
+X=(X_1,\ldots,X_n)
+$$
+
+é a **amostra enquanto vetor aleatório**, enquanto
+
+$$
+x=(x_1,\ldots,x_n)
+$$
+
+é **uma realização observada dessa amostra**.
+
+No exemplo da tabela,
+
+$$
+x=(0,1,1,\ldots,0)
+$$
+
+A estrutura de amostragem dará origem a uma **descrição probabilística conjunta das observações da amostra**.
+
+Isto é: queremos representar probabilisticamente o vetor inteiro
+
+$$
+X=(X_1,\ldots,X_n)
+$$
+
+e não apenas cada $X_i$ isoladamente.
+
+No caso discreto, uma forma de visualizar essa ideia é
+
+$$
+P(X_1=x_1,\ldots,X_n=x_n),
+$$
+
+que responde à pergunta:
+
+> qual é a probabilidade de observarmos esta combinação específica de valores nas diferentes posições da amostra?
+
+::: {.callout-note title="Não confundir duas ideias de distribuição conjunta"}
+
+Mais adiante também estudaremos [**distribuições conjuntas entre variáveis diferentes**]{.conceito}, como $X$ e $Y$.
+
+Por exemplo, em um problema de regressão podemos querer estudar conjuntamente:
+
+$$
+X=\text{renda}
+\qquad\text{e}\qquad
+Y=\text{gasto}.
+$$
+
+Nesse caso, a distribuição conjunta descreve a relação entre **variáveis diferentes** — algo que podemos imaginar como colunas diferentes de um dataset.
+
+Aqui, porém, estamos usando a mesma ideia matemática para outro propósito:
+
+$$
+X_1,X_2,\ldots,X_n
+$$
+
+representam **diferentes observações da amostra** — isto é, diferentes posições ou linhas.
+
+Portanto:
+
+- $X,Y,\ldots$ podem representar **variáveis diferentes**;
+- $X_1,X_2,\ldots,X_n$ representam aqui **observações diferentes da mesma variável conceitual**.
+
+A matemática de distribuições conjuntas será a mesma, mas o significado dos índices é diferente.
+
+:::
+
+Essa descrição conjunta nos permite dizer quais possíveis vetores
+
+$$
+(x_1,\ldots,x_n)
+$$
+
+podem ser observados e como suas posições se relacionam probabilisticamente.
+
+Para visualizar isso, suponha apenas duas observações Bernoulli:
+
+$$
+X=(X_1,X_2)
+$$
+
+onde cada $X_i$ pode assumir $0$ ou $1$.
+
+As possíveis realizações do vetor inteiro são:
+
+| Possível realização $x$ | $x_1$ | $x_2$ | Probabilidade atribuída pelo modelo |
+|:---:|:---:|:---:|:---:|
+| $(0,0)$ | 0 | 0 | $P(X_1=0,X_2=0)$ |
+| $(0,1)$ | 0 | 1 | $P(X_1=0,X_2=1)$ |
+| $(1,0)$ | 1 | 0 | $P(X_1=1,X_2=0)$ |
+| $(1,1)$ | 1 | 1 | $P(X_1=1,X_2=1)$ |
+
+Cada linha representa **uma possível realização da amostra inteira**.
+
+É isso que significa modelar as observações **conjuntamente**.
+
+A distribuição conjunta contém, portanto, não apenas a distribuição de cada $X_i$ **isoladamente**, mas também informação sobre **como os $X_i$ se relacionam entre si**.
+
+**Essa diferença é fundamental.**
+
+Saber apenas que
+
+$$
+X_1\sim \text{Bernoulli}(p)
+\qquad\text{e}\qquad
+X_2\sim \text{Bernoulli}(p)
+$$
+
+não determina, por exemplo,
+
+$$
+P(X_1=1,X_2=1).
+$$
+
+Para isso, precisamos saber como $X_1$ e $X_2$ se comportam conjuntamente. É daí que nasce a necessidade de mostrar a casa desses objetos quando falamos de vários ensaios de um experimento: o **Espaço de Amostragem**.
+
+No caso de independência,
+
+$$
+P(X_1=1,X_2=1)=p^2.
+$$
+
+Em outros modelos, onde assumimos hipóteses diferentes, **esse valor pode ser diferente**.
+
+É essa distribuição conjunta que permitirá, depois, estudar [**estatísticas**]{.conceito} (ou seja, _funções sobre os dados_, representado por $h$ de forma a representar qualquer possível função - como por exemplo, a _média_) como
+
+$$
+\bar X=h(X_1,\ldots,X_n)
+$$
+
+e descobrir sua [**distribuição amostral**]{.conceito} (_sampling distribution_).
+
+No caso **mais simples da repetição de um experimento**, os ensaios são considerados [**Independentes e Identicamente distribuídos (IID)**]{.conceito}. 
+
+Usando a notação $\mathcal G_n=\{T_1,T_2,\ldots,T_n\}$ para representar o [**espaço de amostragem**], quando impomos a hipótese de que os ensaios são **IID**, temos
+
+$$
+\mathcal G_n^{IID}.
+$$
+
+Mais adiante veremos que IID é uma **hipótese sobre a estrutura conjunta dos dados**, e não uma consequência automática de termos uma amostra.
+
+Nos próximos capítulos, portanto, faremos este caminho:
+
+1. construiremos o espaço de probabilidade;
+2. veremos como essa estrutura funciona quando o espaço amostral é contínuo;
+3. construiremos a estrutura conjunta necessária para representar várias observações;
+4. introduziremos variáveis aleatórias e chegaremos à ideia de amostra, à estrutura probabilística conjunta das observações e, depois, à Inferência Estatística.
+
+## Antes de finalizarmos: Feynman e o *framework*
+
+Antes de continuar, assista a este breve vídeo de Richard Feynman, um físico super famoso que já veio ao Brasil, no Rio de Janeiro! Eu gosto muito dele.
+
+O vídeo é engraçado, pois o repórter chega a se assustar com a necessidade do Feynman de mostrar a importância de _aprender algo mais profundo para entender um assunto_!
+
+**Preste atenção** especialmente à ideia de que uma explicação só pode ir até certo ponto sem que quem pergunta e quem responde compartilhem um **framework de conhecimento e raciocínio**.
+
+Ele fala isso no **minuto 1:38**, mas assista tudo e você vai perceber que ele só conseguiria dar a resposta final se o repórter primeiro aprendesse esse **framework**, ou seja, só se ele fizesse um **PhD em Física**!
+
+Imagina, então, quanta coisa você estava perdendo ao não estudar profundamente as coisas! _Te convenci?_
+
+O objetivo deste curso não é nivelar a discussão por baixo. É ajudá-lo a **entrar nesse framework**, construindo a linguagem e as ideias necessárias para raciocinar, questionar e criar dentro dele.
+
+```{=html}
+<div style="max-width: 900px; margin: 1.5rem auto;">
+  <iframe
+    width="100%"
+    style="aspect-ratio: 16 / 9; border: 0;"
+    src="https://www.youtube.com/embed/36GT2zI8lVA?start=1"
+    title="Richard Feynman — Why?"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen>
+  </iframe>
+</div>
+```
+
+## Antes de continuar
+
+Tente responder sem voltar ao texto:
+
+1. Qual é a diferença entre um fenômeno determinístico e um fenômeno estocástico?
+
+2. O que significa **acaso e regularidade**?
+
+3. Por que o exemplo dos dois dados mostra que pode existir estrutura mesmo quando o resultado individual é incerto?
+
+4. Qual é a diferença entre frequência relativa e probabilidade?
+
+5. Qual é a diferença entre o mecanismo que gera os dados e os dados observados?
+
+6. Quais são os três componentes do espaço de probabilidade e qual é o papel de cada um?
+
+7. Qual é a diferença entre o espaço de probabilidade e o espaço de amostragem?

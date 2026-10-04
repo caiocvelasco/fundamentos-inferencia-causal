@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./conteudo.html" rel="next">
+<link href="./chapters/motivacao.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -40,7 +40,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-b719d3d4935f2b08311a76135e2bf442.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-c756783dfb0358d45b59639da55b8c80.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-8ee17f74d3b140f8619030554e94af15.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -112,16 +112,6 @@ ul.task-list li input[type="checkbox"] {
   <a href="./index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Fundamentos para Inferência Causal</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./conteudo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Conteúdo</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./chapters/motivacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">O que queremos aprender com os dados?</span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
@@ -131,6 +121,11 @@ ul.task-list li input[type="checkbox"] {
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/motivacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">O que queremos aprender com os dados?</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapters/00-2_preludio_01.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1. O Mapa da Probabilidade e da Inferência</span></a>
@@ -151,7 +146,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
- <span class="menu-text">Módulo 1 — Probabilidade</span></a>
+ <span class="menu-text">Módulo 1 - Probabilidade</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Alternar seção">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -159,12 +154,12 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/01_da_incerteza_a_probabilidade.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Da Incerteza à Probabilidade</span></a>
+  <a href="./chapters/01_da_incerteza_a_probabilidade_refatorado.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Da Incerteza à Probabilidade</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/02_construindo_um_modelo_probabilistico.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">[Formalização] Parte 1 de 3 - Espaço de Probabilidade</span></a>
+  <a href="./chapters/02_formalizacao_modelo_estatistico.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A Formalização Matemática</span></a>
   </div>
 </li>
       </ul>
@@ -200,21 +195,20 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Estas são as notas de aula do curso <strong>Fundamentos para Inferência Causal</strong>.</p>
-<p><img src="images/incerteza_causalidade.png" class="course-figure img-fluid" style="width:80.0%"></p>
+<p><img src="images/principal.png" class="course-figure img-fluid" style="width:60.0%"></p>
+<p>Estas são as <strong>notas de aula aprofundadas</strong> do nosso curso <strong>Fundamentos para Inferência Causal</strong>.</p>
 <p>O objetivo do curso é construir, passo a passo, os fundamentos necessários para compreender Inferência Causal de forma rigorosa, conectando teoria e aplicações reais.</p>
 <blockquote class="blockquote">
 <p>Apenas quem se matriculou tem acesso a esse conteúdo. Todo o material é <strong>propriedade privada, protegido, e rastreável</strong>. O uso é restrito exclusivamente aos alunos matriculados no curso, durante o período de sua realização.</p>
 </blockquote>
 <p>O percurso principal será:</p>
 <ul>
-<li>Pré-Curso (Revisão de Matemática Básica)</li>
 <li>Probabilidade</li>
 <li>Inferência Estatística</li>
 <li>Regressão</li>
 <li>Inferência Causal</li>
 </ul>
-<p>As aulas são realizadas <strong>ao vivo</strong>. Estas notas funcionam como material de apoio, estudo e consulta.</p>
+<p>Estas notas aprofundadas funcionam como material de apoio, estudo e consulta.</p>
 
 
 
@@ -622,8 +616,8 @@ ul.task-list li input[type="checkbox"] {
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./conteudo.html" class="pagination-link" aria-label="Conteúdo">
-        <span class="nav-page-text"><span class="chapter-title">Conteúdo</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./chapters/motivacao.html" class="pagination-link" aria-label="O que queremos aprender com os dados?">
+        <span class="nav-page-text"><span class="chapter-title">O que queremos aprender com os dados?</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

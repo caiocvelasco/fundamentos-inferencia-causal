@@ -65,3 +65,179 @@ figure:has(.course-figure) figcaption:empty {
   color: #198754;
   font-weight: 600;
 }
+
+/* ========================================
+   BOOK TYPOGRAPHY
+   ======================================== */
+
+#quarto-document-content {
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+
+  font-size: 1rem;
+  line-height: 1.55;
+  color: #333;
+  font-weight: 400;
+}
+
+#quarto-document-content p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+#quarto-document-content h1,
+#quarto-document-content h2,
+#quarto-document-content h3,
+#quarto-document-content h4 {
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+
+  color: #222;
+}
+
+#quarto-document-content h1 {
+  font-size: 2.35rem;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+#quarto-document-content h2 {
+  font-size: 1.9rem;
+  line-height: 1.25;
+  font-weight: 600;
+  margin-top: 2.6rem;
+  margin-bottom: 1rem;
+}
+
+#quarto-document-content h3 {
+  font-size: 1.55rem;
+  line-height: 1.3;
+  font-weight: 600;
+  margin-top: 2.1rem;
+  margin-bottom: 0.8rem;
+}
+
+#quarto-document-content h4 {
+  font-size: 1.25rem;
+  line-height: 1.35;
+  font-weight: 600;
+}
+
+/* ========================================
+   RIGHT TABLE OF CONTENTS
+   ======================================== */
+
+#TOC {
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+}
+
+#TOC .nav-link {
+  font-size: 0.88rem;
+  line-height: 1.35;
+  font-weight: 400;
+  color: #6b7280;
+  padding-top: 0.28rem;
+  padding-bottom: 0.28rem;
+}
+
+#TOC .nav-link:hover {
+  color: #374151;
+}
+
+#TOC .nav-link.active {
+  color: #198754;
+  font-weight: 500;
+}
+
+#TOC #toc-title {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #374151;
+  letter-spacing: 0.01em;
+  margin-bottom: 0.65rem;
+}
+
+/* ========================================
+   LEFT SIDEBAR
+   ======================================== */
+
+#quarto-sidebar {
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+}
+
+/* Título do livro */
+#quarto-sidebar .sidebar-title {
+  font-size: 1rem;
+  line-height: 1.3;
+  font-weight: 600;
+  color: #2f3437;
+}
+
+/* Links principais */
+#quarto-sidebar .sidebar-item-text,
+#quarto-sidebar .sidebar-link {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  font-weight: 400;
+  color: #5f666b;
+}
+
+/* Hover */
+#quarto-sidebar .sidebar-link:hover {
+  color: #30363a;
+}
+
+/* Página atual */
+#quarto-sidebar .sidebar-link.active {
+  color: #198754;
+  font-weight: 500;
+}
+
+/* Títulos dos módulos / partes */
+/* Títulos dos módulos / parts */
+#quarto-sidebar
+.sidebar-item-section
+> .sidebar-item-container
+> .sidebar-item-text,
+#quarto-sidebar
+.sidebar-item-section
+> .sidebar-item-container
+> .sidebar-link {
+  font-size: 0.9rem;
+  font-weight: 700 !important;
+  color: #2f3437;
+}
+
+/* Espaçamento entre os itens */
+#quarto-sidebar .sidebar-item {
+  margin-bottom: 0.12rem;
+}
+
+/* Um pouco menos de espaço vertical nos links */
+#quarto-sidebar .sidebar-link {
+  padding-top: 0.28rem;
+  padding-bottom: 0.28rem;
+}
