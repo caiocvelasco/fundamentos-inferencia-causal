@@ -1,5 +1,5 @@
 ---
-title: "2. Empirical Modeling: do Mundo Real ao Modelo Estatístico"
+title: "Empirical Modeling: do Mundo Real ao Modelo Estatístico"
 ---
 
 <!--

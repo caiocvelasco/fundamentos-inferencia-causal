@@ -155,210 +155,210 @@
   {
     "objectID": "chapters/00-2_preludio_01.html",
     "href": "chapters/00-2_preludio_01.html",
-    "title": "1. O Mapa da Probabilidade e da Inferência",
+    "title": "O Mapa da Probabilidade e da Inferência",
     "section": "",
     "text": "1. Teoria da Probabilidade: por que construímos modelos probabilísticos?\nAntes de começarmos, quero deixar claro onde estamos indo.\nA ideia central deste curso é simples e pode ser vista a partir de dois movimentos distintos, mas profundamente conectados:\nQuando alguma característica desse mecanismo é desconhecida — como uma média, uma probabilidade de conversão ou outra quantidade de interesse — usamos os dados observados para aprender sobre ela.\nÉ dessa relação entre modelo e dados que surgem as duas grandes ideias que vamos conectar ao longo do curso: Probabilidade e Inferência Estatística.\nNo mundo real existem fenômenos cujo resultado individual não conseguimos determinar antecipadamente com certeza.\nExiste incerteza no nível individual, ou seja, se você realizar um ensaio de um experimento, você não sabe o que pode vir a acontecer!\nMas incerteza não significa ausência completa de estrutura.\nE ter alguma estrutura é algo muito importante, pois é aí que a matemática entra para entender e modelar o fenômeno.\nOlha que interessante. Quando observamos muitas ocorrências de certos fenômenos, podem aparecer regularidades no agregado: alguns resultados aparecem mais frequentemente que outros, algumas proporções parecem se estabilizar e certos padrões reaparecem nos dados.\nEssa combinação de incerteza individual com regularidade agregada é uma maneira útil de pensar no que chamamos de chance regularity (acaso e regularidade).\n\\[\n\\begin{array}{c}\n\\boxed{\\text{fenômeno real incerto}} \\\\\n\\Downarrow \\\\\n\\boxed{\\text{resultados individuais imprevisíveis}} \\\\\n\\Downarrow \\\\\n\\boxed{\\text{regularidades podem aparecer no agregado}}\n\\end{array}\n\\]\nA Teoria da Probabilidade fornece uma linguagem matemática para representar esse tipo de fenômeno.\nEm vez de tentar descrever cada resultado individual antecipadamente, construímos uma representação matemática do mecanismo incerto que poderia produzir esses resultados.\nChamaremos essa representação de modelo probabilístico.\n\\[\n\\begin{array}{c}\n\\boxed{\\text{MUNDO REAL}} \\\\\n\\Downarrow \\\\\n\\boxed{\\text{fenômeno incerto}} \\\\\n\\Downarrow \\\\\n\\boxed{\\text{regularidades observáveis}} \\\\\n\\Downarrow \\\\\n\\boxed{\\text{representação matemática}} \\\\\n\\Downarrow \\\\\n\\boxed{\\text{MODELO PROBABILÍSTICO}}\n\\end{array}\n\\]\nEsse é o primeiro movimento do nosso mapa:\n\\[\n\\begin{array}{c}\n\\boxed{\\text{fenômeno incerto}} \\\\\n\\Downarrow \\\\\n\\boxed{\\text{representação matemática}} \\\\\n\\Downarrow \\\\\n\\boxed{\\text{modelo probabilístico}} \\\\\n\\Downarrow \\\\\n\\boxed{\\text{estudar o que esse modelo implica}}\n\\end{array}\n\\]",
     "crumbs": [
       "Prelúdio",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>1. O Mapa da Probabilidade e da Inferência</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>O Mapa da Probabilidade e da Inferência</span>"
     ]
   },
   {
     "objectID": "chapters/00-2_preludio_01.html#teoria-da-probabilidade-por-que-construímos-modelos-probabilísticos",
     "href": "chapters/00-2_preludio_01.html#teoria-da-probabilidade-por-que-construímos-modelos-probabilísticos",
-    "title": "1. O Mapa da Probabilidade e da Inferência",
+    "title": "O Mapa da Probabilidade e da Inferência",
     "section": "",
     "text": "Um usuário vai comprar?\nUm cliente vai cancelar?\nQuanto uma pessoa vai gastar no próximo mês?\nQual será o resultado do próximo lançamento de uma moeda?",
     "crumbs": [
       "Prelúdio",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>1. O Mapa da Probabilidade e da Inferência</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>O Mapa da Probabilidade e da Inferência</span>"
     ]
   },
   {
     "objectID": "chapters/00-2_preludio_01.html#inferência-estatística-quando-o-modelo-encontra-os-dados",
     "href": "chapters/00-2_preludio_01.html#inferência-estatística-quando-o-modelo-encontra-os-dados",
-    "title": "1. O Mapa da Probabilidade e da Inferência",
+    "title": "O Mapa da Probabilidade e da Inferência",
     "section": "2. Inferência Estatística: quando o modelo encontra os dados",
     "text": "2. Inferência Estatística: quando o modelo encontra os dados\nNa prática, porém, raramente conhecemos todas as características do mecanismo que estamos tentando representar.\nPodemos saber como representar probabilisticamente um fenômeno, mas ainda desconhecer alguma quantidade importante do modelo: uma média, uma variância, uma probabilidade de conversão, entre outras.\nÉ aí que aparece o segundo movimento do nosso mapa.\nEm vez de partir de um modelo completamente especificado e perguntar apenas o que ele implica, observamos dados e perguntamos:\n\nO que esses dados nos permitem aprender sobre as características desconhecidas do mecanismo probabilístico que poderia tê-los produzido?\n\n\\[\n\\begin{array}{c}\n\\boxed{\\text{modelo probabilístico com algo desconhecido}} \\\\\n+ \\\\\n\\boxed{\\text{dados observados}} \\\\\n\\Downarrow \\\\\n\\boxed{\\text{aprender sobre o mecanismo}}\n\\end{array}\n\\]\nAqui nasce a Inferência Estatística. Ela não abandona a Probabilidade: usa justamente a estrutura probabilística do modelo para conectar aquilo que observamos àquilo que queremos aprender.\nCom esses dois movimentos em mente, podemos comparar duas situações simples.",
     "crumbs": [
       "Prelúdio",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>1. O Mapa da Probabilidade e da Inferência</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>O Mapa da Probabilidade e da Inferência</span>"
     ]
   },
   {
     "objectID": "chapters/00-2_preludio_01.html#caso-1-o-modelo-está-completamente-especificado",
     "href": "chapters/00-2_preludio_01.html#caso-1-o-modelo-está-completamente-especificado",
-    "title": "1. O Mapa da Probabilidade e da Inferência",
+    "title": "O Mapa da Probabilidade e da Inferência",
     "section": "Caso 1 — o modelo está completamente especificado",
     "text": "Caso 1 — o modelo está completamente especificado\nConsidere uma moeda que decidimos modelar como justa.\nAqui, partimos do pressuposto que já temos o que é um Modelo Probabilístico sobre o mundo.\nDefinimos\n\\[\nX=\n\\begin{cases}\n1, & \\text{se sair cara},\\\\\n0, & \\text{se sair coroa}.\n\\end{cases}\n\\]\nE especificamos o modelo, ou seja, assumimos que esse fenômeno segue algo do tipo\n\\[\nX\\sim\\operatorname{Bernoulli}(0.5).\n\\]\nO valor \\(0.5\\) não apareceu porque os axiomas da Probabilidade obrigam uma moeda a ter essa probabilidade.\nEle faz parte da nossa modelagem da moeda como justa, isto é,\n\\[\nP(X=1)=P(X=0)=0.5.\n\\]\nNeste exemplo, a simetria física da moeda ajuda a justificar a hipótese de probabilidades iguais. Em outros problemas, as hipóteses podem vir de outras fontes.\nAgora imagine \\(100\\) lançamentos:\n\\[\nX_1,X_2,\\ldots,X_{100}.\n\\]\nComo o modelo está completamente especificado (no sentido de nós assumimos que conhecemos todos os parâmetros, inclusive o tal \\(p\\)), podemos perguntar:\n\nSe eu lançar essa moeda 100 vezes, qual é a probabilidade de observar exatamente 50 caras?\n\nE calcular\n\\[\nP\\left(\\sum_{i=1}^{100}X_i=50\\right)\n=\n\\binom{100}{50}(0.5)^{100}.\n\\]\nA direção do raciocínio é:\n\\[\n\\begin{array}{c}\n\\boxed{\\text{já temos um modelo probabilístico especificado}} \\\\\n\\Downarrow \\\\\n\\boxed{\\text{o que esse modelo implica matematicamente?}} \\\\\n\\Downarrow \\\\\n\\boxed{\\text{chegamos em possíveis dados e suas probabilidades}}\n\\end{array}\n\\]\nAqui estamos fazendo Probabilidade:\n\npartimos de um modelo especificado e deduzimos suas consequências.",
     "crumbs": [
       "Prelúdio",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>1. O Mapa da Probabilidade e da Inferência</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>O Mapa da Probabilidade e da Inferência</span>"
     ]
   },
   {
     "objectID": "chapters/00-2_preludio_01.html#caso-2-parte-do-modelo-é-desconhecida",
     "href": "chapters/00-2_preludio_01.html#caso-2-parte-do-modelo-é-desconhecida",
-    "title": "1. O Mapa da Probabilidade e da Inferência",
+    "title": "O Mapa da Probabilidade e da Inferência",
     "section": "Caso 2 — parte do modelo é desconhecida",
     "text": "Caso 2 — parte do modelo é desconhecida\nAgora considere algo muito mais parecido com o dia a dia de Data Science: a conversão de um checkout.\nPara cada sessão observada de um usuário no site, definimos\n\\[\nX=\n\\begin{cases}\n1, & \\text{se houve compra},\\\\\n0, & \\text{caso contrário}.\n\\end{cases}\n\\]\nMotivados pelo nosso conhecimento prévio de Modelos Probabilísticos, podemos representar esse resultado por uma Bernoulli:\n\\[\nX\\sim\\operatorname{Bernoulli}(p).\n\\]\nMas agora existe uma diferença fundamental: não sabemos quanto vale\n\\[\np=P(X=1),\n\\]\nisto é, a probabilidade de conversão no modelo.\nNesse caso, infelizmente não existe aqui uma simetria física que nos entregue antecipadamente algo como \\(p=0.5\\) e nos ajude a chegar numa resposta final.\nSabemos uma maneira possível de representar probabilisticamente o fenômeno, mas uma característica do modelo permanece desconhecida.\nÉ aí que entram os dados (e a Inferência Estatística).\nSe observarmos \\(n\\) sessões, antes de vermos os resultados podemos representá-las por\n\\[\nX_1,X_2,\\ldots,X_n.\n\\]\nDepois que essas sessões realmente acontecem, observamos valores concretos:\n\\[\nx_1,x_2,\\ldots,x_n.\n\\]\nNa prática, esses valores observados são armazenados como dados — isto é, como um dataset (e nesse caso com apenas uma coluna).\n\n\n\n\nsessão\ncompra\n\n\n\n\n1\n0\n\n\n2\n1\n\n\n3\n0\n\n\n4\n0\n\n\n5\n1\n\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\n\n\\(n\\)\n0\n\n\n\n\nEssa é uma conexão importante entre a linguagem da teoria e aquilo que vemos no dia a dia. No nosso exemplo, todo o caminho pode ser visto de uma vez:\n\\[\n\\begin{array}{c}\n\\boxed{X\\sim\\operatorname{Bernoulli}(p),\\quad p\\text{ desconhecido}} \\\\\n\\Downarrow \\\\\n\\boxed{X_1,\\ldots,X_n\\quad \\text{(a amostra, antes de observarmos)}} \\\\\n\\Downarrow \\\\\n\\boxed{\\text{observamos seus valores}} \\\\\n\\Downarrow \\\\\n\\boxed{x_1,\\ldots,x_n\\quad \\text{(dataset observado)}} \\\\\n\\Downarrow \\\\\n\\boxed{\\text{usamos os dados para aprender sobre }p}\n\\end{array}\n\\]\nOu seja: aquilo que na teoria escrevemos como \\(X_1,\\ldots,X_n\\) se transforma, depois da observação, nos valores concretos \\(x_1,\\ldots,x_n\\) que encontramos em um dataset. A partir daí, usamos aquilo que observamos para aprender sobre aquilo que não conhecemos.\nAqui começa a Inferência Estatística:\n\npartimos dos dados observados para aprender sobre características desconhecidas do modelo probabilístico; mas continuamos usando a matemática e a Teoria da Probabilidade para formalizar a ideia da inferência.\n\n\n\n\n\n\n\nA Probabilidade não desapareceu\n\n\n\nInferência Estatística não substitui a Probabilidade.\nEla depende dela.\nContinuamos usando uma estrutura probabilística para representar o mecanismo que poderia ter gerado os dados. A diferença é que agora alguma parte dessa estrutura é desconhecida e precisa ser aprendida a partir das observações.",
     "crumbs": [
       "Prelúdio",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>1. O Mapa da Probabilidade e da Inferência</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>O Mapa da Probabilidade e da Inferência</span>"
     ]
   },
   {
     "objectID": "chapters/00-2_preludio_01.html#mas-e-a-estatística-descritiva",
     "href": "chapters/00-2_preludio_01.html#mas-e-a-estatística-descritiva",
-    "title": "1. O Mapa da Probabilidade e da Inferência",
+    "title": "O Mapa da Probabilidade e da Inferência",
     "section": "Mas e a Estatística Descritiva?",
     "text": "Mas e a Estatística Descritiva?\nAté aqui falamos de Probabilidade e Inferência Estatística. Mas existe um terceiro termo que aparece o tempo inteiro em livros, cursos e no trabalho com dados: Estatística Descritiva.\nA ideia é bem mais simples do que o nome pode sugerir.\nDepois que observamos os valores\n\\[\nx_1,x_2,\\ldots,x_n,\n\\]\ne temos um dataset em mãos, podemos simplesmente perguntar:\n\nO que estes dados que eu observei mostram?\n\nPor exemplo:\n\nqual foi a taxa de conversão observada?\nqual foi o gasto médio?\nqual foi a mediana?\ncomo os valores estão distribuídos?\nexistem valores muito distantes dos demais?\nqual é a correlação observada entre duas colunas?\n\nIsso é o papel da Estatística Descritiva: organizar, resumir e visualizar os dados que efetivamente observamos.\n\\[\n\\begin{array}{c}\n\\boxed{\\text{dataset observado}} \\\\\n\\Downarrow \\\\\n\\boxed{\\text{resumir e descrever o que aconteceu nos dados}}\n\\end{array}\n\\]\nSuponha, por exemplo, que observamos \\(1.000\\) sessões de checkout e, em \\(120\\) delas, houve compra.\nA taxa de conversão observada é\n\\[\n\\frac{120}{1000}=0.12.\n\\]\nDizer\n\n“12% das sessões deste dataset terminaram em compra”\n\né uma afirmação puramente descritiva. Estamos apenas resumindo aquilo que aconteceu nos dados que temos em mãos.\nPerceba que, para fazer essa afirmação, ainda não precisamos dizer que \\(0.12\\) é a verdadeira probabilidade de conversão de todos os usuários, nem que esse número se repetirá em outro conjunto de sessões.\nPara tentar ir além do dataset observado, precisamos de algo a mais. É justamente aí que entram o modelo probabilístico e a Inferência Estatística.",
     "crumbs": [
       "Prelúdio",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>1. O Mapa da Probabilidade e da Inferência</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>O Mapa da Probabilidade e da Inferência</span>"
     ]
   },
   {
     "objectID": "chapters/00-2_preludio_01.html#o-mapa-que-queremos-guardar",
     "href": "chapters/00-2_preludio_01.html#o-mapa-que-queremos-guardar",
-    "title": "1. O Mapa da Probabilidade e da Inferência",
+    "title": "O Mapa da Probabilidade e da Inferência",
     "section": "O mapa que queremos guardar",
     "text": "O mapa que queremos guardar\nTudo deste prelúdio pode ser resumido em um único mapa.\nO primeiro movimento é o da Teoria da Probabilidade: o mundo real motiva a construção de uma representação matemática para fenômenos incertos.\n\\[\n\\begin{array}{c}\n\\boxed{\\text{fenômeno real incerto}} \\\\\n\\Downarrow \\\\\n\\boxed{\\text{regularidades no agregado}} \\\\\n\\Downarrow \\\\\n\\boxed{\\begin{array}{c}\n\\text{modelo probabilístico} \\\\\n\\text{(matemática!)}\n\\end{array}}\n\\end{array}\n\\]\nQuando o modelo está completamente especificado, seguimos a direção da Teoria da Probabilidade:\n\\[\n\\boxed{\\text{modelo probabilístico especificado}}\n\\;\\longrightarrow\\;\n\\boxed{\\text{possíveis dados e suas probabilidades}}\n\\]\nO segundo movimento é o da Inferência Estatística. Quando alguma característica do modelo é desconhecida, observamos uma amostra:\n\\[\n\\begin{array}{c}\n\\boxed{X_1,\\ldots,X_n} \\\\\n\\Downarrow \\\\\n\\boxed{\\text{observamos}} \\\\\n\\Downarrow \\\\\n\\boxed{x_1,\\ldots,x_n} \\\\\n\\Downarrow \\\\\n\\boxed{\\text{dataset observado}}\n\\end{array}\n\\]\nE, a partir desse dataset, aparecem duas perguntas diferentes:\n\\[\n\\begin{array}{ccc}\n& \\boxed{\\text{dataset observado}} & \\\\\n& \\boxed{x_1,\\ldots,x_n} & \\\\\n& \\swarrow \\qquad \\searrow & \\\\\n\\boxed{\\text{ESTATÍSTICA DESCRITIVA}}\n&&\n\\boxed{\\text{INFERÊNCIA ESTATÍSTICA}}\n\\\\[0.15cm]\n\\Downarrow && \\Downarrow\n\\\\[0.15cm]\n\\boxed{\\text{descrever o que observamos}}\n&&\n\\boxed{\\begin{array}{c}\n\\text{usar dados + modelo probabilístico}\\\\\n\\text{para aprender sobre características}\\\\\n\\text{desconhecidas do mecanismo}\n\\end{array}}\n\\end{array}\n\\]\nEm uma frase para cada parte:\n\nEstatística Descritiva: o que aconteceu nos dados que observamos?\nTeoria da Probabilidade: se este é o mecanismo probabilístico, o que poderia acontecer e com quais probabilidades?\nInferência Estatística: o que os dados observados, junto com um modelo probabilístico, nos permitem aprender sobre o mecanismo que poderia tê-los produzido?\n\nEssas três ideias não competem entre si. Na prática, um Data Scientist pode descrever e explorar os dados, construir ou avaliar um modelo e fazer inferência — muitas vezes indo e voltando entre essas etapas.\nMas, conceitualmente, vale guardar a distinção:\n\ndescrever os dados não é a mesma coisa que inferir além deles.\n\nCom esse mapa em mente, podemos voltar ao começo e fazer a primeira pergunta do curso:\n\npor que precisamos de uma Teoria das Probabilidades?\n\nE isso são “Cenas do próximo capítulo…”",
     "crumbs": [
       "Prelúdio",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>1. O Mapa da Probabilidade e da Inferência</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>O Mapa da Probabilidade e da Inferência</span>"
     ]
   },
   {
     "objectID": "chapters/00-2_preludio_02.html",
     "href": "chapters/00-2_preludio_02.html",
-    "title": "2. Empirical Modeling: do Mundo Real ao Modelo Estatístico",
+    "title": "Empirical Modeling: do Mundo Real ao Modelo Estatístico",
     "section": "",
     "text": "O modelo estatístico dentro de um processo maior\nNo primeiro prelúdio, vimos o mapa geral que conecta Probabilidade, dados e Inferência Estatística.\nAgora vamos subir um nível.\nAntes de perguntar como construir um espaço de probabilidade, uma variável aleatória ou uma distribuição, vale perguntar:\nUma resposta útil é: para fazer empirical modeling — isto é, construir e usar modelos para aprender, de forma disciplinada, sobre fenômenos observados no mundo real a partir de dados.\nUm modelo estatístico (statistical model) é uma representação probabilística do fenômeno que queremos estudar.\nMas construir um modelo não encerra o trabalho.\nNo empirical modeling, o modelo entra em um processo maior:\n\\[\n\\begin{array}{c}\n\\boxed{\\textbf{MUNDO REAL}}\\\\\n\\Downarrow\\\\\n\\boxed{\\text{fenômeno estocástico}}\\\\\n\\Downarrow\\\\\n\\boxed{\n\\begin{array}{c}\n\\textbf{EMPIRICAL MODELING}\\\\[0.4em]\n\\text{especificar}\\\\\n\\Downarrow\\\\\n\\text{estimar}\\\\\n\\Downarrow\\\\\n\\text{confrontar com os dados}\\\\\n\\Downarrow\\\\\n\\text{revisar quando necessário}\n\\end{array}}\n\\end{array}\n\\]",
     "crumbs": [
       "Prelúdio",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>2. Empirical Modeling: do Mundo Real ao Modelo Estatístico</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Empirical Modeling: do Mundo Real ao Modelo Estatístico</span>"
     ]
   },
   {
     "objectID": "chapters/00-2_preludio_02.html#as-quatro-etapas",
     "href": "chapters/00-2_preludio_02.html#as-quatro-etapas",
-    "title": "2. Empirical Modeling: do Mundo Real ao Modelo Estatístico",
+    "title": "Empirical Modeling: do Mundo Real ao Modelo Estatístico",
     "section": "As quatro etapas",
     "text": "As quatro etapas\nNa organização que seguiremos, esse processo pode ser pensado em quatro movimentos.\n\\[\n\\boxed{\\textbf{1. SPECIFICATION}}\n\\]\nEscolhemos uma representação probabilística para o fenômeno.\nIsso envolve perguntas como:\n\no que queremos explicar ou medir?\nquais variáveis entram?\nque tipo de relação estamos assumindo?\nquais hipóteses probabilísticas estamos fazendo?\n\n\\[\n\\Downarrow\n\\]\n\\[\n\\boxed{\\textbf{2. ESTIMATION}}\n\\]\nUsamos os dados observados para aprender valores desconhecidos do modelo.\nÉ aqui que aparecem ideias como parâmetros, estimadores e procedimentos de ajuste.\n\\[\n\\Downarrow\n\\]\n\\[\n\\boxed{\\textbf{3. MISSPECIFICATION CHECKING}}\n\\]\nPerguntamos se o modelo que postulamos é compatível com aspectos relevantes dos dados.\nEm linguagem mais próxima do dia a dia de Data Science, aqui aparecem ideias como:\n\ndiagnostics;\nresidual analysis;\nassumption checking;\nvalidation;\nmodel checking.\n\n\\[\n\\Downarrow\n\\]\n\\[\n\\boxed{\\textbf{4. RESPECIFICATION}}\n\\]\nSe o modelo não captura adequadamente a estrutura observada, nós o revisamos.\nPodemos mudar variáveis, relações, distribuições, hipóteses ou até a classe inteira do modelo.\n\n\n\n\n\n\nNão precisamos dominar nenhuma dessas etapas agora.\nO objetivo é perceber que especificar um modelo é apenas o começo.\nMais adiante, precisaremos saber construir, estimar, avaliar e, quando necessário, revisar modelos.",
     "crumbs": [
       "Prelúdio",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>2. Empirical Modeling: do Mundo Real ao Modelo Estatístico</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Empirical Modeling: do Mundo Real ao Modelo Estatístico</span>"
     ]
   },
   {
     "objectID": "chapters/00-2_preludio_02.html#um-exemplo-simples-regressão",
     "href": "chapters/00-2_preludio_02.html#um-exemplo-simples-regressão",
-    "title": "2. Empirical Modeling: do Mundo Real ao Modelo Estatístico",
+    "title": "Empirical Modeling: do Mundo Real ao Modelo Estatístico",
     "section": "Um exemplo simples: regressão",
     "text": "Um exemplo simples: regressão\nImagine que queremos estudar o gasto de clientes usando algumas características observadas.\nPodemos começar especificando algo como\n\\[\nY_i\n=\n\\beta_0\n+\n\\beta_1X_{1i}\n+\n\\beta_2X_{2i}\n+\n\\varepsilon_i\n\\]\nonde \\(Y_i\\) representa o gasto e os \\(X\\) representam características dos clientes.\nMesmo antes de calcular qualquer coisa, já fizemos várias escolhas.\n\n1. Specification\nNesta primeira etapa, escolhemos:\n\nqual é a variável de interesse;\nquais variáveis usar para representá-la;\numa forma funcional;\ne uma estrutura probabilística para o problema.\n\nOu seja, antes de ajustar qualquer modelo, já precisamos decidir como vamos representar o fenômeno.\n\n\n2. Estimation\nDepois usamos os dados para obter valores como\n\\[\n\\hat\\beta_0,\\hat\\beta_1,\\hat\\beta_2.\n\\]\nÉ aqui que o modelo encontra os dados: usamos a amostra observada para aprender valores desconhecidos do modelo.\n\n\n3. Model checking\nMas o trabalho ainda não terminou.\nDepois de estimar, podemos descobrir que:\n\nos resíduos possuem estrutura;\na relação não parece linear;\ngrupos diferentes se comportam de maneiras distintas;\nou alguma hipótese do modelo parece pouco plausível.\n\nEm outras palavras, precisamos perguntar se o modelo que escolhemos parece compatível com os dados observados.\n\n\n4. Respecification\nSe a resposta for “não completamente”, talvez precisemos:\n\nadicionar uma interação;\ntransformar uma variável;\nincluir novos preditores;\nou até escolher outra representação para o problema.\n\nOu seja, o modelo pode precisar ser revisado.\n\n\n\n\n\n\nLeia este exemplo como um ciclo\n\n\n\n\\[\n\\boxed{\\text{1. Specification}}\n\\longrightarrow\n\\boxed{\\text{2. Estimation}}\n\\longrightarrow\n\\boxed{\\text{3. Model\\ Checking}}\n\\longrightarrow\n\\boxed{\\text{4. Respecification}}\n\\]\nMesmo uma regressão aparentemente simples já participa desse ciclo.",
     "crumbs": [
       "Prelúdio",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>2. Empirical Modeling: do Mundo Real ao Modelo Estatístico</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Empirical Modeling: do Mundo Real ao Modelo Estatístico</span>"
     ]
   },
   {
     "objectID": "chapters/00-2_preludio_02.html#e-em-inferência-causal",
     "href": "chapters/00-2_preludio_02.html#e-em-inferência-causal",
-    "title": "2. Empirical Modeling: do Mundo Real ao Modelo Estatístico",
+    "title": "Empirical Modeling: do Mundo Real ao Modelo Estatístico",
     "section": "E em Inferência Causal?",
     "text": "E em Inferência Causal?\nA mesma lógica aparece de forma ainda mais explícita quando queremos responder uma pergunta causal.\nImagine que queremos estudar:\n\nqual é o efeito de uma campanha sobre o gasto dos clientes?\n\n\n1. Specification\nAntes de estimar qualquer efeito, precisamos especificar o problema.\nIsso envolve perguntas como:\n\nqual é o tratamento?\nqual é o outcome?\nqual é a população?\nqual efeito queremos estimar?\nquais hipóteses tornam essa comparação causal?\n\nOu seja, antes de qualquer cálculo, precisamos deixar claro qual é a pergunta causal e sob quais condições ela pode ser respondida.\n\n\n2. Estimation\nDepois usamos os dados para estimar o efeito de interesse.\nDependendo do problema, isso pode envolver regressão, matching, weighting, Difference-in-Differences, experimentos ou outros métodos.\n\n\n3. Model checking\nEm seguida, precisamos avaliar se as hipóteses relevantes parecem plausíveis e se o procedimento está funcionando como esperado.\nPodem aparecer verificações como:\n\nbalance;\noverlap;\npre-trends;\nresidual diagnostics;\nplacebo tests;\nsensitivity checks.\n\n\n\n4. Respecification\nSe alguma hipótese ou aspecto importante do modelo não parecer adequado, precisamos revisar a estratégia.\nIsso pode significar:\n\nmudar a especificação;\najustar o conjunto de covariáveis;\ntrocar o método;\nredefinir a população;\nou reformular a própria pergunta causal.\n\n\n\n\n\n\n\nO mesmo ciclo aparece novamente\n\n\n\n\\[\n\\boxed{\\text{1. Specification}}\n\\longrightarrow\n\\boxed{\\text{2. Estimation}}\n\\longrightarrow\n\\boxed{\\text{3. Model\\ Checking}}\n\\longrightarrow\n\\boxed{\\text{4. Respecification}}\n\\]\nA diferença é que, em Inferência Causal, as hipóteses necessárias para interpretar o resultado causalmente ganham um papel central.\n\n\nNovamente, não precisamos aprender essas ferramentas agora.\nO ponto é perceber para onde os fundamentos deste curso estão nos levando.",
     "crumbs": [
       "Prelúdio",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>2. Empirical Modeling: do Mundo Real ao Modelo Estatístico</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Empirical Modeling: do Mundo Real ao Modelo Estatístico</span>"
     ]
   },
   {
     "objectID": "chapters/00-2_preludio_02.html#e-machine-learning",
     "href": "chapters/00-2_preludio_02.html#e-machine-learning",
-    "title": "2. Empirical Modeling: do Mundo Real ao Modelo Estatístico",
+    "title": "Empirical Modeling: do Mundo Real ao Modelo Estatístico",
     "section": "E Machine Learning?",
     "text": "E Machine Learning?\nExiste uma relação clara, mas não é uma equivalência perfeita.\nEm um problema preditivo de Machine Learning também escolhemos uma representação, ajustamos o modelo, avaliamos seu desempenho e iteramos:\n\\[\n\\boxed{\\text{escolher}}\n\\longrightarrow\n\\boxed{\\text{treinar}}\n\\longrightarrow\n\\boxed{\\text{validar}}\n\\longrightarrow\n\\boxed{\\text{revisar}}\n\\]\nPortanto, a lógica geral continua útil.\nMas o foco deste curso está mais próximo de Statistical Modeling, Econometrics, Experimentation e Causal Inference, onde entender explicitamente a estrutura probabilística e as hipóteses do modelo será especialmente importante.\n\n\n\n\n\n\nPor que isso importa para um Data Scientist?\n\n\n\nPorque saber executar\nmodel.fit(X, y)\né apenas uma parte do problema.\nAntes do fit, alguém precisou decidir o que está sendo modelado, sob quais hipóteses e com qual estrutura.\nDepois do fit, alguém ainda precisa decidir se aquilo que foi estimado responde à pergunta original e se o modelo é compatível com os dados.",
     "crumbs": [
       "Prelúdio",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>2. Empirical Modeling: do Mundo Real ao Modelo Estatístico</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Empirical Modeling: do Mundo Real ao Modelo Estatístico</span>"
     ]
   },
   {
     "objectID": "chapters/00-2_preludio_02.html#onde-estamos-indo",
     "href": "chapters/00-2_preludio_02.html#onde-estamos-indo",
-    "title": "2. Empirical Modeling: do Mundo Real ao Modelo Estatístico",
+    "title": "Empirical Modeling: do Mundo Real ao Modelo Estatístico",
     "section": "Onde estamos indo?",
     "text": "Onde estamos indo?\nPodemos agora colocar toda a arquitetura em uma única figura:\n\\[\n\\begin{array}{c}\n\\boxed{\\textbf{MUNDO REAL}}\\\\\n\\Downarrow\\\\\n\\boxed{\\text{fenômeno estocástico}}\\\\\n\\Downarrow\\\\\n\\boxed{\n\\begin{array}{c}\n\\textbf{EMPIRICAL MODELING}\\\\[0.3em]\n\\text{especificar}\\\\\n\\rightarrow\n\\text{estimar}\\\\\n\\rightarrow\n\\text{checar}\\\\\n\\rightarrow\n\\text{revisar}\n\\end{array}}\n\\\\\n\\Uparrow\\\\[-0.2em]\n\\textit{usa}\\\\\n\\Uparrow\\\\\n\\boxed{\\textbf{STATISTICAL MODEL}}\\\\\n\\Uparrow\\\\[-0.2em]\n\\textit{mas como construímos esse objeto?}\\\\\n\\Uparrow\\\\\n\\boxed{\\text{começaremos pelo caso mais simples}}\\\\\n\\Uparrow\\\\\n\\boxed{\\textbf{RANDOM EXPERIMENT}}\n\\end{array}\n\\]\nEssa última pergunta será o tema do próximo prelúdio.\nPara entender de onde vem um modelo estatístico, voltaremos ao começo e construiremos, passo a passo, a estrutura probabilística do caso mais simples.\n\n\n\n\n\n\nO próximo passo\n\n\n\nNo próximo prelúdio, desceremos um nível nessa arquitetura:\n\\[\n\\boxed{\\text{random experiment}}\n\\longrightarrow\n\\boxed{\\text{probability theory}}\n\\longrightarrow\n\\boxed{\\text{statistical space}}\n\\longrightarrow\n\\boxed{\\text{random variables}}\n\\longrightarrow\n\\boxed{\\text{statistical model}}\n\\]\nDepois disso, começaremos a construir cada peça de verdade.",
     "crumbs": [
       "Prelúdio",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>2. Empirical Modeling: do Mundo Real ao Modelo Estatístico</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Empirical Modeling: do Mundo Real ao Modelo Estatístico</span>"
     ]
   },
   {
     "objectID": "chapters/00-2_preludio_03.html",
     "href": "chapters/00-2_preludio_03.html",
-    "title": "3. Onde Queremos Chegar: do Experimento Aleatório ao Modelo Estatístico",
+    "title": "Onde Queremos Chegar: do Experimento Aleatório ao Modelo Estatístico",
     "section": "",
     "text": "Do fenômeno estocástico ao experimento aleatório\nNos dois prelúdios anteriores, construímos o contexto mais amplo desta jornada.\nPrimeiro vimos o mapa geral que conecta Probabilidade, dados e Inferência Estatística.\nDepois vimos que esses objetos fazem parte de um processo maior de empirical modeling: especificar modelos, estimá-los, confrontá-los com os dados e revisá-los quando necessário.\nAgora vamos descer mais um nível na arquitetura:\nPara responder, começaremos pela estrutura matemática mais simples que usaremos para representar um fenômeno estocástico: o experimento aleatório (random experiment).\nEssa pergunta organiza boa parte do caminho que vem a seguir.\nA estratégia será começar pelo caso mais simples possível, entender sua arquitetura com precisão e, só depois, ampliar essa arquitetura para fenômenos mais realistas.\nIsso é importante porque, nos próximos capítulos, começaremos a trabalhar com símbolos como \\(\\Omega\\), \\(\\mathcal F\\), \\(P\\), produtos cartesianos e sequências de ensaios. Se olharmos apenas para cada peça isoladamente, é fácil perder de vista o que estamos construindo e por quê.\nA ideia deste prelúdio é enxergar primeiro a floresta. Depois entraremos nas árvores.\nComeçamos no mundo real com um fenômeno estocástico: um fenômeno no qual existe incerteza sobre realizações individuais, mas podem aparecer regularidades quando observamos muitas ocorrências.\nÉ a combinação que já chamamos de chance regularity:\n\\[\n\\boxed{\\text{incerteza individual}}\n\\qquad + \\qquad\n\\boxed{\\text{regularidade no agregado}}\n\\]\nMas fenômenos estocásticos podem ter estruturas muito diferentes. Por isso, em vez de tentar começar pelo caso mais geral, começaremos por uma classe particularmente simples.\nA ideia é representar um fenômeno que possa ser pensado como um experimento aleatório (random experiment).\nAqui, experimento aleatório não significa apenas “algo incerto que acontece”. Ele é um mecanismo de chance com três características específicas:\nExemplos simples conseguem se encaixar bem nessa ideia: lançar uma moeda, medir a vida útil de uma lâmpada ou contar quantas ligações chegam a uma central telefônica durante um intervalo de tempo.\nA última situação já parece muito mais próxima de dados reais. Ainda assim, se conseguimos imaginar a contagem sendo observada repetidamente sob condições suficientemente semelhantes, ela pode ser tratada inicialmente dentro dessa estrutura simples.\nNem todo fenômeno estocástico, porém, cabe nessa estrutura.\nPense, por exemplo, em uma série temporal de taxas de câmbio. Os possíveis valores podem ser descritos e o próximo valor é incerto, mas a condição [c] é problemática: as circunstâncias mudam ao longo do tempo e o valor de hoje pode estar relacionado ao de ontem. O fenômeno continua sendo estocástico e pode exibir chance regularity, mas a estrutura simples do experimento aleatório já não é suficiente para capturá-lo.\nOu seja,\n\\[\n\\boxed{\\text{fenômeno estocástico}}\n\\quad \\not\\Rightarrow \\quad\n\\boxed{\\text{experimento aleatório simples}}\n\\]\nEsse contraste é importante para entender a estratégia do curso:",
     "crumbs": [
       "Prelúdio",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>3. Onde Queremos Chegar: do Experimento Aleatório ao Modelo Estatístico</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Onde Queremos Chegar: do Experimento Aleatório ao Modelo Estatístico</span>"
     ]
   },
   {
     "objectID": "chapters/00-2_preludio_03.html#do-fenômeno-estocástico-ao-experimento-aleatório",
     "href": "chapters/00-2_preludio_03.html#do-fenômeno-estocástico-ao-experimento-aleatório",
-    "title": "3. Onde Queremos Chegar: do Experimento Aleatório ao Modelo Estatístico",
+    "title": "Onde Queremos Chegar: do Experimento Aleatório ao Modelo Estatístico",
     "section": "",
     "text": "[a] Os possíveis resultados são conhecidos a priori.\n[b] O resultado de um ensaio particular não é conhecido a priori, mas existe uma regularidade de ocorrência associada aos resultados.\n[c] O experimento pode ser repetido sob condições idênticas.\n\n\n\n\n\n\n\n\n\nPor que começar por um caso tão simples?\n\n\n\nPorque ele nos permite construir, sem complicações desnecessárias, a arquitetura fundamental da teoria.\nPrimeiro matematizamos uma forma simples de fenômeno estocástico. Depois veremos quais hipóteses precisam ser modificadas quando o fenômeno real é mais complexo.\n\n\n\n\n\n\n\n\ncomeçaremos construindo com precisão o modelo do caso simples; depois teremos uma base sobre a qual introduzir dependência, heterogeneidade e estruturas mais realistas.\n\n\nAs três condições serão nosso roteiro\nA formalização matemática seguirá diretamente as três características do experimento aleatório:\n\\[\n\\begin{array}{rcl}\n\\textbf{[a]} & \\text{quais resultados são possíveis?} & \\longrightarrow \\Omega \\\\[0.8em]\n\\textbf{[b]} & \\text{como representar a incerteza?} & \\longrightarrow (\\Omega,\\mathcal F,P) \\\\[0.8em]\n\\textbf{[c]} & \\text{como representar suas repetições?} & \\longrightarrow \\mathcal G_n\n\\end{array}\n\\]\nEsse é o fio condutor dos próximos capítulos.\nEm outras palavras, estamos tentando matematizar o experimento aleatório. A primeira forma completa dessa formalização será um espaço estatístico. Depois, com variáveis aleatórias, chegaremos à forma numérica que chamaremos de modelo estatístico.",
     "crumbs": [
       "Prelúdio",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>3. Onde Queremos Chegar: do Experimento Aleatório ao Modelo Estatístico</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Onde Queremos Chegar: do Experimento Aleatório ao Modelo Estatístico</span>"
     ]
   },
   {
     "objectID": "chapters/00-2_preludio_03.html#primeiro-destino-construir-os-espaços-abstratos",
     "href": "chapters/00-2_preludio_03.html#primeiro-destino-construir-os-espaços-abstratos",
-    "title": "3. Onde Queremos Chegar: do Experimento Aleatório ao Modelo Estatístico",
+    "title": "Onde Queremos Chegar: do Experimento Aleatório ao Modelo Estatístico",
     "section": "Primeiro destino: construir os espaços abstratos",
     "text": "Primeiro destino: construir os espaços abstratos\nA primeira pergunta nos levará ao conjunto dos resultados possíveis:\n\\[\n\\boxed{\\Omega}\n\\]\nDepois construiremos os eventos que queremos representar e uma função capaz de atribuir probabilidades a eles:\n\\[\n\\boxed{(\\Omega,\\mathcal F,P)}\n\\]\nEsse objeto será chamado de espaço de probabilidade (probability space).\nEle representa matematicamente a incerteza associada ao resultado de um ensaio completo do experimento que definimos.\nMas nossa história não termina em um ensaio.\nSe executarmos o experimento várias vezes,\n\\[\nT_1,T_2,\\ldots,T_n,\n\\]\nprecisaremos representar conjuntamente os possíveis resultados dessas execuções e a estrutura probabilística que existe entre elas.\nIsso nos levará a um espaço probabilístico conjunto,\n\\[\n(\\Omega^{(n)},\\mathcal F^{(n)},P^{(n)}),\n\\]\ne ao espaço de amostragem (sampling space)\n\\[\n\\mathcal G_n.\n\\]\nJuntando essas peças, chegaremos ao nosso primeiro grande destino:\n\\[\n\\boxed{\n\\left[\n(\\Omega^{(n)},\\mathcal F^{(n)},P^{(n)}),\n\\mathcal G_n\n\\right]\n}\n\\]\nque chamaremos de espaço estatístico (statistical space).\n\n\n\n\n\n\nO que estamos construindo até aqui?\n\n\n\nUma estrutura matemática abstrata capaz de representar:\n\na incerteza de um ensaio;\nvárias execuções do experimento;\ne a relação probabilística entre essas execuções.\n\nAinda estamos trabalhando com espaços, eventos e funções de probabilidade — não com os dados numéricos que aparecerão depois.\n\n\n\nE onde entra IID?\nNa construção simples que está motivando essa história, a expressão “repetir sob condições idênticas” acabará levando ao caso IID.\nNo nosso curso, porém, faremos uma pequena generalização pedagógica: primeiro construiremos um espaço de amostragem \\(\\mathcal G_n\\) geral e só depois especializaremos para o caso em que os ensaios são modelados como:\n\n[I] sendo independentes;\n[ID] identicamente distribuídos, isto é, com a mesma estrutura probabilística.\n\nNesse caso chegaremos à estrutura simples\n\\[\n\\boxed{\n\\left[\n(\\Omega,\\mathcal F,P)^n,\n\\mathcal G_n^{IID}\n\\right]\n}\n\\]\nque será chamada de espaço estatístico simples.\nNão precisamos entender IID agora.\nO importante é guardar apenas isto:\n\nIID não aparece porque existem vários dados. É uma hipótese adicional sobre como modelamos a relação entre os ensaios.\n\nMais adiante veremos que formalizar precisamente a ideia de que “saber o que aconteceu em um ensaio não altera as probabilidades dos demais” exigirá uma ferramenta nova: probabilidade condicional.\nAtenção: probabilidade condicional é um conceito geral e não depende de repetição de ensaios. Ela aparece aqui na nossa narrativa porque será uma ferramenta natural para definir independência.",
     "crumbs": [
       "Prelúdio",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>3. Onde Queremos Chegar: do Experimento Aleatório ao Modelo Estatístico</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Onde Queremos Chegar: do Experimento Aleatório ao Modelo Estatístico</span>"
     ]
   },
   {
     "objectID": "chapters/00-2_preludio_03.html#espaços-agora-modelos-depois",
     "href": "chapters/00-2_preludio_03.html#espaços-agora-modelos-depois",
-    "title": "3. Onde Queremos Chegar: do Experimento Aleatório ao Modelo Estatístico",
+    "title": "Onde Queremos Chegar: do Experimento Aleatório ao Modelo Estatístico",
     "section": "Espaços agora, modelos depois",
     "text": "Espaços agora, modelos depois\nAqui está uma distinção que será fundamental para não misturarmos etapas diferentes da construção:\n\\[\n\\boxed{\\textbf{SPACE} \\neq \\textbf{MODEL}}\n\\]\nAté o final dessa primeira parte, estaremos construindo espaços abstratos.\nSó depois introduziremos variáveis aleatórias. Elas permitirão levar essa estrutura abstrata para objetos numéricos definidos sobre a reta real.\nPodemos visualizar a transformação assim:\n\\[\n\\begin{array}{ccc}\n\\boxed{\n\\begin{array}{c}\n\\textbf{AGORA}\\\\[0.3em]\n\\text{espaço de probabilidade}\\\\\n(\\Omega,\\mathcal F,P)\\\\[0.6em]\n+\\\\[0.6em]\n\\text{espaço de amostragem}\\\\\n\\mathcal G_n\\\\[0.6em]\n\\Downarrow\\\\\n\\textbf{espaço estatístico}\n\\end{array}}\n&\n\\quad \\xrightarrow{\\quad \\text{variáveis aleatórias} \\quad} \\quad\n&\n\\boxed{\n\\begin{array}{c}\n\\textbf{MAIS ADIANTE}\\\\[0.3em]\n\\text{modelo probabilístico}\\\\\n\\textit{(probability model)}\\\\[0.6em]\n+\\\\[0.6em]\n\\text{modelo de amostragem}\\\\\n\\textit{(sampling model)}\\\\[0.6em]\n\\Downarrow\\\\\n\\textbf{modelo estatístico}\n\\end{array}}\n\\end{array}\n\\]\nA ideia é simples:\n\\[\n\\boxed{\\text{estrutura abstrata}}\n\\quad\\longrightarrow\\quad\n\\boxed{\\text{representação numérica}}\n\\]\nO espaço de probabilidade \\((\\Omega,\\mathcal F,P)\\) será levado, por meio de variáveis aleatórias, a um modelo probabilístico (probability model).\nDa mesma maneira, a estrutura dos ensaios será levada a um modelo de amostragem (sampling model).\nOs dois lados formarão então um modelo estatístico (statistical model).\n\n\n\n\n\n\nMas já usamos a palavra modelo no prelúdio anterior…\n\n\n\nSim — e isso foi proposital.\nPrimeiro mostramos o destino para construir uma intuição geral. Agora começaremos a distinguir com mais precisão as etapas da estrada.\nNos próximos capítulos, \\((\\Omega,\\mathcal F,P)\\) será chamado de espaço de probabilidade. O modelo probabilístico, no sentido mais específico que adotaremos depois, aparecerá somente após introduzirmos variáveis aleatórias e distribuições.",
     "crumbs": [
       "Prelúdio",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>3. Onde Queremos Chegar: do Experimento Aleatório ao Modelo Estatístico</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Onde Queremos Chegar: do Experimento Aleatório ao Modelo Estatístico</span>"
     ]
   },
   {
     "objectID": "chapters/00-2_preludio_03.html#o-mapa-completo-da-construção",
     "href": "chapters/00-2_preludio_03.html#o-mapa-completo-da-construção",
-    "title": "3. Onde Queremos Chegar: do Experimento Aleatório ao Modelo Estatístico",
+    "title": "Onde Queremos Chegar: do Experimento Aleatório ao Modelo Estatístico",
     "section": "O mapa completo da construção",
     "text": "O mapa completo da construção\nPodemos agora olhar toda a história de uma vez:\n\\[\n\\begin{array}{c}\n\\boxed{\\text{MUNDO REAL}}\\\\\n\\Downarrow\\\\\n\\boxed{\\text{fenômeno estocástico}}\\\\\n\\Downarrow\\\\[-0.2em]\n\\textit{começamos pelo caso mais simples}\\\\\n\\Downarrow\\\\\n\\boxed{\\text{experimento aleatório: [a], [b], [c]}}\\\\\n\\Downarrow\\\\[-0.2em]\n\\text{formalização matemática}\\\\\n\\Downarrow\\\\\n\\boxed{\n\\begin{array}{c}\n\\Omega,\\ \\mathcal F,\\ P,\\ \\mathcal G_n\\\\[0.3em]\n\\textbf{ESPAÇO ESTATÍSTICO}\n\\end{array}}\n\\\\[1em]\n\\textit{mais adiante}\\\\[-0.2em]\n\\Downarrow\\\\\n\\boxed{\\text{variáveis aleatórias}}\\\\\n\\Downarrow\\\\\n\\boxed{\\textbf{MODELO ESTATÍSTICO}}\\\\\n\\Downarrow\\\\\n\\boxed{\\text{dados observados e inferência}}\n\\end{array}\n\\]\nPerceba que o experimento aleatório não é um conjunto contendo esses espaços.\nEle é o mecanismo conceitual que estamos tentando representar. Os espaços aparecem como parte de sua formalização matemática.",
     "crumbs": [
       "Prelúdio",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>3. Onde Queremos Chegar: do Experimento Aleatório ao Modelo Estatístico</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Onde Queremos Chegar: do Experimento Aleatório ao Modelo Estatístico</span>"
     ]
   },
   {
     "objectID": "chapters/00-2_preludio_03.html#onde-os-dados-aparecerão",
     "href": "chapters/00-2_preludio_03.html#onde-os-dados-aparecerão",
-    "title": "3. Onde Queremos Chegar: do Experimento Aleatório ao Modelo Estatístico",
+    "title": "Onde Queremos Chegar: do Experimento Aleatório ao Modelo Estatístico",
     "section": "Onde os dados aparecerão?",
     "text": "Onde os dados aparecerão?\nQuando chegarmos às variáveis aleatórias, os ensaios\n\\[\nT_1,T_2,\\ldots,T_n\n\\]\npoderão ser associados a objetos numéricos\n\\[\nX_1,X_2,\\ldots,X_n.\n\\]\nDepois que os ensaios realmente acontecerem, observaremos valores concretos\n\\[\nx_1,x_2,\\ldots,x_n.\n\\]\nÉ aí que começaremos a reconhecer aquilo que, no mundo real, armazenamos como dados.\nPor exemplo, imagine que o nosso interesse seja observar o gasto de diferentes clientes em uma compra. Depois de observarmos os clientes, poderíamos terminar com algo assim:\n\n\n\n\nobservação\ncliente\ngasto\n\n\n\n\n\\(x_1 \\rightarrow\\)\n1\n42,90\n\n\n\\(x_2 \\rightarrow\\)\n2\n18,50\n\n\n\\(x_3 \\rightarrow\\)\n3\n76,20\n\n\n\\(x_4 \\rightarrow\\)\n4\n31,00\n\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\vdots\\)\n\n\n\\(x_n \\rightarrow\\)\n\\(n\\)\n54,70\n\n\n\n\nNesse exemplo,\n\\[\nx_1 = 42{,}90,\\qquad\nx_2 = 18{,}50,\\qquad\nx_3 = 76{,}20,\\qquad\nx_4 = 31{,}00,\\qquad \\ldots\n\\]\nCada \\(x_i\\) é, portanto, um valor observado: aquilo que efetivamente apareceu depois que o ensaio correspondente aconteceu.\nÉ justamente a coleção desses valores observados que começamos a reconhecer, no dia a dia de Data Science, como um dataset.\nAssim, a ideia geral é:\n\\[\n\\boxed{\nT_1,\\ldots,T_n\n\\quad\\longrightarrow\\quad\nX_1,\\ldots,X_n\n\\quad\\longrightarrow\\quad\nx_1,\\ldots,x_n\n\\quad\\longrightarrow\\quad\n\\text{dataset observado}\n}\n\\]\nMais adiante, veremos com cuidado como passamos de cada ensaio \\(T_i\\) para uma variável aleatória \\(X_i\\), e de \\(X_i\\) para o valor observado \\(x_i\\).\nMas ainda não precisamos formalizar essa passagem.\nPor enquanto, basta saber onde ela aparecerá.\n\n\n\n\n\n\nLeia este mapa assim\n\n\n\nComeçamos pela matematização da forma mais simples do fenômeno estocástico: o experimento aleatório.\nPrimeiro construiremos sua estrutura abstrata. Depois usaremos variáveis aleatórias para transformá-la em objetos numéricos. Só então estaremos prontos para conectar essa estrutura aos dados — e, mais adiante, ampliar o modelo quando o mundo real exigir dependência, heterogeneidade e outras formas de complexidade.\n\n\nNos próximos capítulos, faremos exatamente esse caminho — uma peça por vez.",
     "crumbs": [
       "Prelúdio",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>3. Onde Queremos Chegar: do Experimento Aleatório ao Modelo Estatístico</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Onde Queremos Chegar: do Experimento Aleatório ao Modelo Estatístico</span>"
     ]
   },
   {
