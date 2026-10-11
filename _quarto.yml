@@ -23,20 +23,21 @@ book:
 
     - part: "Prelúdio"
       chapters:
-        - chapters/motivacao.qmd
+        - chapters/00_o_que_aprender_com_os_dados.qmd
         - chapters/00-2_preludio_01.qmd
         - chapters/00-2_preludio_02.qmd
         - chapters/00-2_preludio_03.qmd
 
     - part: "Módulo 1 - Probabilidade"
       chapters:
-      #  - chapters/01_da_incerteza_a_probabilidade.qmd
-        - chapters/01_da_incerteza_a_probabilidade_refatorado.qmd
-        - chapters/02_formalizacao_modelo_estatistico.qmd
-      #  - chapters/03_construindo_um_modelo_probabilistico.qmd
-      #  - chapters/03_construindo_um_modelo_probabilistico_refatorado.qmd
-      #  - chapters/04_quando_o_espaco_amostral_e_continuo.qmd
-      #  - chapters/05_espaco_de_amostragem.qmd
+        - chapters/01_da_incerteza_a_probabilidade.qmd
+        - chapters/02_formalizacao_espaco_estatistico.qmd
+        # - chapters/03_1_espaco_de_probabilidade.qmd
+        # - chapters/03_2_dgp.qmd
+        # - chapters/04_quando_o_espaco_amostral_e_continuo.qmd
+        # - chapters/05_espaco_de_amostragem.qmd
+        # - chapters/06_iid.qmd
+        # - chapters/07_probabilidade_condicional.qmd
 
 format:
   html:

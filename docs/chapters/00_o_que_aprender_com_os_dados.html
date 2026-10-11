@@ -112,7 +112,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/motivacao.html">Prelúdio</a></li><li class="breadcrumb-item"><a href="../chapters/motivacao.html"><span class="chapter-title">O que queremos aprender com os dados?</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/00_o_que_aprender_com_os_dados.html">Prelúdio</a></li><li class="breadcrumb-item"><a href="../chapters/00_o_que_aprender_com_os_dados.html"><span class="chapter-title">O que queremos aprender com os dados?</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
@@ -153,7 +153,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/motivacao.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">O que queremos aprender com os dados?</span></a>
+  <a href="../chapters/00_o_que_aprender_com_os_dados.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">O que queremos aprender com os dados?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -184,12 +184,12 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/01_da_incerteza_a_probabilidade_refatorado.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Da Incerteza à Probabilidade</span></a>
+  <a href="../chapters/01_da_incerteza_a_probabilidade.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Da Incerteza à Probabilidade</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/02_formalizacao_modelo_estatistico.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A Formalização Matemática</span></a>
+  <a href="../chapters/02_formalizacao_espaco_estatistico.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Formalização Matemática - Espaço Estatístico</span></a>
   </div>
 </li>
       </ul>
@@ -205,45 +205,41 @@ window.Quarto = {
    
   <ul>
   <li><a href="#antes-de-escolher-um-modelo" id="toc-antes-de-escolher-um-modelo" class="nav-link active" data-scroll-target="#antes-de-escolher-um-modelo">Antes de escolher um modelo</a></li>
-  <li><a href="#previsão-o-que-provavelmente-vai-acontecer" id="toc-previsão-o-que-provavelmente-vai-acontecer" class="nav-link" data-scroll-target="#previsão-o-que-provavelmente-vai-acontecer">1. Previsão: o que provavelmente vai acontecer?</a>
+  <li><a href="#descrição-o-que-aconteceu-nos-dados-que-vimos" id="toc-descrição-o-que-aconteceu-nos-dados-que-vimos" class="nav-link" data-scroll-target="#descrição-o-que-aconteceu-nos-dados-que-vimos">1. Descrição: o que aconteceu nos dados que vimos?</a>
   <ul class="collapse">
   <li><a href="#a-pergunta" id="toc-a-pergunta" class="nav-link" data-scroll-target="#a-pergunta">A pergunta</a></li>
-  <li><a href="#por-que-uma-empresa-quer-prever-algo" id="toc-por-que-uma-empresa-quer-prever-algo" class="nav-link" data-scroll-target="#por-que-uma-empresa-quer-prever-algo">Por que uma empresa quer prever algo?</a></li>
-  <li><a href="#o-que-a-empresa-pode-fazer-com-a-resposta-dessa-previsão" id="toc-o-que-a-empresa-pode-fazer-com-a-resposta-dessa-previsão" class="nav-link" data-scroll-target="#o-que-a-empresa-pode-fazer-com-a-resposta-dessa-previsão">O que a empresa pode fazer com a resposta dessa previsão?</a></li>
-  <li><a href="#o-que-precisamos-aprender-para-resolver-esses-problemas" id="toc-o-que-precisamos-aprender-para-resolver-esses-problemas" class="nav-link" data-scroll-target="#o-que-precisamos-aprender-para-resolver-esses-problemas">O que precisamos aprender para resolver esses problemas?</a></li>
+  <li><a href="#por-que-uma-empresa-quer-descrever-os-dados" id="toc-por-que-uma-empresa-quer-descrever-os-dados" class="nav-link" data-scroll-target="#por-que-uma-empresa-quer-descrever-os-dados">Por que uma empresa quer descrever os dados?</a></li>
   </ul></li>
-  <li><a href="#inferência-estatística-o-que-podemos-aprender-sobre-o-mundo" id="toc-inferência-estatística-o-que-podemos-aprender-sobre-o-mundo" class="nav-link" data-scroll-target="#inferência-estatística-o-que-podemos-aprender-sobre-o-mundo">2. Inferência Estatística: o que podemos aprender sobre o mundo?</a>
+  <li><a href="#previsão-o-que-provavelmente-vai-acontecer" id="toc-previsão-o-que-provavelmente-vai-acontecer" class="nav-link" data-scroll-target="#previsão-o-que-provavelmente-vai-acontecer">2. Previsão: o que provavelmente vai acontecer?</a>
   <ul class="collapse">
   <li><a href="#a-pergunta-1" id="toc-a-pergunta-1" class="nav-link" data-scroll-target="#a-pergunta-1">A pergunta</a></li>
-  <li><a href="#por-que-uma-empresa-quer-fazer-inferência" id="toc-por-que-uma-empresa-quer-fazer-inferência" class="nav-link" data-scroll-target="#por-que-uma-empresa-quer-fazer-inferência">Por que uma empresa quer fazer inferência?</a></li>
-  <li><a href="#o-que-a-empresa-pode-fazer-com-a-resposta" id="toc-o-que-a-empresa-pode-fazer-com-a-resposta" class="nav-link" data-scroll-target="#o-que-a-empresa-pode-fazer-com-a-resposta">O que a empresa pode fazer com a resposta?</a></li>
-  <li><a href="#o-que-precisamos-aprender-para-fazer-inferência-estatística" id="toc-o-que-precisamos-aprender-para-fazer-inferência-estatística" class="nav-link" data-scroll-target="#o-que-precisamos-aprender-para-fazer-inferência-estatística">O que precisamos aprender para fazer Inferência Estatística?</a></li>
-  <li><a href="#previsão-versus-inferência-estatística" id="toc-previsão-versus-inferência-estatística" class="nav-link" data-scroll-target="#previsão-versus-inferência-estatística">Previsão versus Inferência Estatística</a></li>
+  <li><a href="#por-que-uma-empresa-quer-prever-algo" id="toc-por-que-uma-empresa-quer-prever-algo" class="nav-link" data-scroll-target="#por-que-uma-empresa-quer-prever-algo">Por que uma empresa quer prever algo?</a></li>
   </ul></li>
-  <li><a href="#inferência-causal-o-que-aconteceria-se-fizéssemos-alguma-coisa" id="toc-inferência-causal-o-que-aconteceria-se-fizéssemos-alguma-coisa" class="nav-link" data-scroll-target="#inferência-causal-o-que-aconteceria-se-fizéssemos-alguma-coisa">3. Inferência Causal: o que aconteceria se fizéssemos alguma coisa?</a>
+  <li><a href="#inferência-estatística-o-que-podemos-aprender-além-dos-dados-observados" id="toc-inferência-estatística-o-que-podemos-aprender-além-dos-dados-observados" class="nav-link" data-scroll-target="#inferência-estatística-o-que-podemos-aprender-além-dos-dados-observados">3. Inferência Estatística: o que podemos aprender além dos dados observados?</a>
   <ul class="collapse">
   <li><a href="#a-pergunta-2" id="toc-a-pergunta-2" class="nav-link" data-scroll-target="#a-pergunta-2">A pergunta</a></li>
-  <li><a href="#associação-não-é-intervenção" id="toc-associação-não-é-intervenção" class="nav-link" data-scroll-target="#associação-não-é-intervenção">Associação não é intervenção</a></li>
-  <li><a href="#por-que-uma-empresa-quer-causalidade" id="toc-por-que-uma-empresa-quer-causalidade" class="nav-link" data-scroll-target="#por-que-uma-empresa-quer-causalidade">Por que uma empresa quer causalidade?</a></li>
-  <li><a href="#o-que-a-empresa-pode-fazer-com-a-resposta-1" id="toc-o-que-a-empresa-pode-fazer-com-a-resposta-1" class="nav-link" data-scroll-target="#o-que-a-empresa-pode-fazer-com-a-resposta-1">O que a empresa pode fazer com a resposta?</a></li>
+  <li><a href="#um-exemplo-com-churn" id="toc-um-exemplo-com-churn" class="nav-link" data-scroll-target="#um-exemplo-com-churn">Um exemplo com churn</a></li>
+  <li><a href="#por-que-uma-empresa-quer-fazer-inferência" id="toc-por-que-uma-empresa-quer-fazer-inferência" class="nav-link" data-scroll-target="#por-que-uma-empresa-quer-fazer-inferência">Por que uma empresa quer fazer inferência?</a></li>
+  <li><a href="#o-que-precisamos-aprender-para-fazer-inferência-estatística" id="toc-o-que-precisamos-aprender-para-fazer-inferência-estatística" class="nav-link" data-scroll-target="#o-que-precisamos-aprender-para-fazer-inferência-estatística">O que precisamos aprender para fazer Inferência Estatística?</a></li>
+  </ul></li>
+  <li><a href="#inferência-causal-o-que-aconteceria-se-fizéssemos-alguma-coisa" id="toc-inferência-causal-o-que-aconteceria-se-fizéssemos-alguma-coisa" class="nav-link" data-scroll-target="#inferência-causal-o-que-aconteceria-se-fizéssemos-alguma-coisa">4. Inferência Causal: o que aconteceria se fizéssemos alguma coisa?</a>
+  <ul class="collapse">
+  <li><a href="#a-pergunta-3" id="toc-a-pergunta-3" class="nav-link" data-scroll-target="#a-pergunta-3">A pergunta</a></li>
+  <li><a href="#the-jump-of-the-cat-associação-não-é-intervenção" id="toc-the-jump-of-the-cat-associação-não-é-intervenção" class="nav-link" data-scroll-target="#the-jump-of-the-cat-associação-não-é-intervenção">The Jump of the Cat: Associação não é intervenção</a></li>
   <li><a href="#previsão-não-é-inferência-causal" id="toc-previsão-não-é-inferência-causal" class="nav-link" data-scroll-target="#previsão-não-é-inferência-causal">Previsão não é Inferência Causal</a></li>
   <li><a href="#o-que-precisamos-aprender-para-fazer-inferência-causal" id="toc-o-que-precisamos-aprender-para-fazer-inferência-causal" class="nav-link" data-scroll-target="#o-que-precisamos-aprender-para-fazer-inferência-causal">O que precisamos aprender para fazer Inferência Causal?</a></li>
   </ul></li>
-  <li><a href="#os-três-problemas-usando-os-mesmos-dados" id="toc-os-três-problemas-usando-os-mesmos-dados" class="nav-link" data-scroll-target="#os-três-problemas-usando-os-mesmos-dados">Os três problemas usando os mesmos dados</a>
-  <ul class="collapse">
-  <li><a href="#previsão" id="toc-previsão" class="nav-link" data-scroll-target="#previsão">Previsão</a></li>
-  <li><a href="#inferência-estatística" id="toc-inferência-estatística" class="nav-link" data-scroll-target="#inferência-estatística">Inferência Estatística</a></li>
-  <li><a href="#inferência-causal" id="toc-inferência-causal" class="nav-link" data-scroll-target="#inferência-causal">Inferência Causal</a></li>
-  </ul></li>
+  <li><a href="#o-mesmo-problema-de-churn-quatro-perguntas-diferentes" id="toc-o-mesmo-problema-de-churn-quatro-perguntas-diferentes" class="nav-link" data-scroll-target="#o-mesmo-problema-de-churn-quatro-perguntas-diferentes">O mesmo problema de churn, quatro perguntas diferentes</a></li>
   <li><a href="#um-mapa-mental" id="toc-um-mapa-mental" class="nav-link" data-scroll-target="#um-mapa-mental">Um mapa mental</a>
   <ul class="collapse">
+  <li><a href="#quero-apenas-resumir-o-que-aconteceu" id="toc-quero-apenas-resumir-o-que-aconteceu" class="nav-link" data-scroll-target="#quero-apenas-resumir-o-que-aconteceu">Quero apenas resumir o que aconteceu?</a></li>
   <li><a href="#quero-antecipar-um-resultado" id="toc-quero-antecipar-um-resultado" class="nav-link" data-scroll-target="#quero-antecipar-um-resultado">Quero antecipar um resultado?</a></li>
-  <li><a href="#quero-aprender-uma-quantidade-sobre-uma-população-e-saber-quão-incerta-é-minha-conclusão" id="toc-quero-aprender-uma-quantidade-sobre-uma-população-e-saber-quão-incerta-é-minha-conclusão" class="nav-link" data-scroll-target="#quero-aprender-uma-quantidade-sobre-uma-população-e-saber-quão-incerta-é-minha-conclusão">Quero aprender uma quantidade sobre uma população e saber quão incerta é minha conclusão?</a></li>
+  <li><a href="#quero-aprender-algo-que-vai-além-dos-dados-observados-e-quantificar-a-incerteza" id="toc-quero-aprender-algo-que-vai-além-dos-dados-observados-e-quantificar-a-incerteza" class="nav-link" data-scroll-target="#quero-aprender-algo-que-vai-além-dos-dados-observados-e-quantificar-a-incerteza">Quero aprender algo que vai além dos dados observados e quantificar a incerteza?</a></li>
   <li><a href="#quero-saber-o-efeito-de-mudar-alguma-coisa" id="toc-quero-saber-o-efeito-de-mudar-alguma-coisa" class="nav-link" data-scroll-target="#quero-saber-o-efeito-de-mudar-alguma-coisa">Quero saber o efeito de mudar alguma coisa?</a></li>
   </ul></li>
   <li><a href="#o-modelo-não-define-a-pergunta" id="toc-o-modelo-não-define-a-pergunta" class="nav-link" data-scroll-target="#o-modelo-não-define-a-pergunta">O modelo não define a pergunta</a></li>
   <li><a href="#e-onde-entra-bayesian-statistics" id="toc-e-onde-entra-bayesian-statistics" class="nav-link" data-scroll-target="#e-onde-entra-bayesian-statistics">E onde entra Bayesian Statistics?</a></li>
-  <li><a href="#isso-depende-da-empresa-ser-b2b-b2c-ou-uma-empresa-enorme" id="toc-isso-depende-da-empresa-ser-b2b-b2c-ou-uma-empresa-enorme" class="nav-link" data-scroll-target="#isso-depende-da-empresa-ser-b2b-b2c-ou-uma-empresa-enorme">Isso depende da empresa ser B2B, B2C ou uma empresa enorme?</a></li>
+  <li><a href="#o-tamanho-da-empresa-ou-o-modelo-de-negócio-importa" id="toc-o-tamanho-da-empresa-ou-o-modelo-de-negócio-importa" class="nav-link" data-scroll-target="#o-tamanho-da-empresa-ou-o-modelo-de-negócio-importa">O tamanho da empresa ou o modelo de negócio importa?</a></li>
   <li><a href="#onde-este-curso-se-encaixa" id="toc-onde-este-curso-se-encaixa" class="nav-link" data-scroll-target="#onde-este-curso-se-encaixa">Onde este curso se encaixa?</a></li>
   <li><a href="#para-guardar" id="toc-para-guardar" class="nav-link" data-scroll-target="#para-guardar">Para guardar</a></li>
   </ul>
@@ -252,10 +248,10 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/motivacao.html">Prelúdio</a></li><li class="breadcrumb-item"><a href="../chapters/motivacao.html"><span class="chapter-title">O que queremos aprender com os dados?</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/00_o_que_aprender_com_os_dados.html">Prelúdio</a></li><li class="breadcrumb-item"><a href="../chapters/00_o_que_aprender_com_os_dados.html"><span class="chapter-title">O que queremos aprender com os dados?</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-title">O que queremos aprender com os dados?</span></h1>
-<p class="subtitle lead">Um mapa mental para Previsão, Inferência Estatística e Inferência Causal</p>
+<p class="subtitle lead">Um mapa mental para Descrição, Previsão, Inferência Estatística e Inferência Causal</p>
 </div>
 
 
@@ -274,189 +270,75 @@ window.Quarto = {
 
 <section id="antes-de-escolher-um-modelo" class="level2">
 <h2 class="anchored" data-anchor-id="antes-de-escolher-um-modelo">Antes de escolher um modelo</h2>
-<p>Quando pensamos em Data Science, é comum pensar em estudar os modelos mais famosos de <em>Machine Learning</em>:</p>
+<p>Quando pensamos em Data Science, é comum começar pelos modelos mais famosos de <em>Machine Learning</em>:</p>
 <ul>
-<li>regressão, random forest, XGBoost, redes neurais, etc</li>
+<li>regressão;</li>
+<li>random forest;</li>
+<li>XGBoost;</li>
+<li>redes neurais;</li>
+<li>etc.</li>
 </ul>
-<p>Mas essa não deveria ser a primeira pergunta.</p>
-<p>Antes de perguntar: <em>“Qual modelo devemos usar?”</em></p>
-<p>Precisamos perguntar: <strong><em>O que queremos aprender com os dados?</em></strong></p>
-<p>Aqui, nosso objetivo é mostrar que o objetivo na vida real <strong>depende da decisão que se busca tomar</strong>. Essa decisão, por sua vez, precisa responder essa seguinte pergunta: <em>O que queremos aprender com os dados.</em></p>
-<p>Com isso em mente, a figura abaixo consegue esclarecer o que veremos nesse capítulo.</p>
-<pre class="text"><code>                                DADOS
-                                  │
-          ┌───────────────────────┼───────────────────────┐
-          │                       │                       │
-          │                       │                       │
-     Prediction        Inferência Estatística     Inferência Causal
-          │                       │                       │
-          │                       │                       │
-"O que provavelmente   "O que podemos aprender    "O que aconteceria
-  vai acontecer?"      sobre a população e com     se intervíssemos?"
-                       qual incerteza?"
-          │                       │                       │
-          └───────────────────────┼───────────────────────┘
-                                  │
-                                  │
-                               Decisão
-                                  │
-                           Ação no negócio</code></pre>
-<p>Uma mesma empresa, usando os mesmos dados, pode estar interessada em perguntas <strong>completamente diferentes</strong>.</p>
-<p>Imagine uma empresa preocupada com <strong>churn</strong>:</p>
-<ul>
-<li><strong>Quem provavelmente vai cancelar?</strong></li>
-<li><strong>Qual é a taxa de churn dos nossos clientes e com que precisão conseguimos estimá-la?</strong></li>
-<li><strong>Se oferecermos um benefício, quanto o churn diminuirá por causa dessa intervenção?</strong></li>
-</ul>
-<p>As três perguntas envolvem dados. As três podem envolver modelos. Mas são problemas <strong>completamente diferentes</strong>.</p>
-<p>Este capítulo apresenta um mapa mental simples para reconhecer <strong>três dos principais tipos de problemas</strong> encontrados em <strong>Data Science</strong>:</p>
+<p>Mas essa <strong>não deveria</strong> ser a primeira pergunta.</p>
+<p>Antes de perguntar:</p>
+<blockquote class="blockquote">
+<p><em>Qual modelo devemos usar?</em></p>
+</blockquote>
+<p>precisamos perguntar:</p>
+<blockquote class="blockquote">
+<p><strong>O que queremos aprender com os dados?</strong></p>
+</blockquote>
+<p>A resposta depende do tipo de pergunta que queremos responder e da decisão que será tomada a partir dela.</p>
+<p><img src="../images/aprender_com_dados.png" class="course-figure img-fluid" style="width:70.0%"></p>
+<p>Imagine uma empresa preocupada com <strong>churn</strong>. Ela pode fazer quatro perguntas diferentes:</p>
 <ol type="1">
-<li><strong>Previsão:</strong> <em>o que provavelmente vai acontecer?</em></li>
-<li><strong>Inferência Estatística:</strong> <em>o que podemos aprender sobre uma população ou fenômeno, e com qual incerteza?</em></li>
-<li><strong>Inferência Causal:</strong> <em>o que aconteceria se fizéssemos alguma coisa?</em></li>
+<li><strong>Descrição:</strong> Qual foi a taxa de churn no último trimestre?</li>
+<li><strong>Previsão:</strong> Quais clientes provavelmente vão cancelar?</li>
+<li><strong>Inferência Estatística:</strong> A taxa observada representa bem o nível de churn dos nossos clientes ou pode variar bastante de uma amostra para outra?</li>
+<li><strong>Inferência Causal:</strong> Se oferecermos um benefício, quanto o churn diminuirá por causa dessa intervenção?</li>
 </ol>
-<p>A pergunta vem <strong>antes</strong> do modelo.</p>
+<p>As quatro perguntas usam dados. Algumas podem até utilizar os mesmos modelos. Mas são problemas diferentes.</p>
+<blockquote class="blockquote">
+<p><strong>A pergunta vem antes do modelo.</strong></p>
+</blockquote>
 </section>
-<section id="previsão-o-que-provavelmente-vai-acontecer" class="level2">
-<h2 class="anchored" data-anchor-id="previsão-o-que-provavelmente-vai-acontecer">1. Previsão: o que provavelmente vai acontecer?</h2>
+<section id="descrição-o-que-aconteceu-nos-dados-que-vimos" class="level2">
+<h2 class="anchored" data-anchor-id="descrição-o-que-aconteceu-nos-dados-que-vimos">1. Descrição: o que aconteceu nos dados que vimos?</h2>
 <section id="a-pergunta" class="level3">
 <h3 class="anchored" data-anchor-id="a-pergunta">A pergunta</h3>
-<p>Em problemas preditivos, queremos antecipar um resultado ainda desconhecido.</p>
+<p>Às vezes queremos apenas resumir aquilo que já observamos.</p>
 <p>Por exemplo:</p>
 <ul>
-<li>Esse cliente vai cancelar?</li>
-<li>Essa transação é fraude?</li>
-<li>Esse usuário provavelmente vai comprar?</li>
-<li>Quanto vamos vender no próximo mês?</li>
-<li>Quanto tempo essa entrega vai levar?</li>
-<li>Qual lead provavelmente vai converter?</li>
-<li>Qual produto devemos recomendar para esse usuário?</li>
-<li>Qual é a probabilidade de inadimplência desse cliente?</li>
+<li>Qual foi a taxa de churn no último trimestre?</li>
+<li>Quantos usuários converteram nesta campanha?</li>
+<li>Qual foi a receita média por cliente?</li>
+<li>Qual segmento teve maior conversão?</li>
+<li>Quantos pedidos foram entregues com atraso?</li>
 </ul>
-<p>O objetivo em problemas preditivos é aprender (ou <em>estimar</em>)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, a partir dos dados observados, uma função <span class="math inline">\(f\)</span> capaz de transformar informações disponíveis (<span class="math inline">\(X\)</span>) em uma boa previsão de <span class="math inline">\(Y\)</span> para casos novos.</p>
-<p>Uma forma geral de representar essa relação é:</p>
-<p><span class="math display">\[
-Y = f(X) + \epsilon
-\]</span></p>
-<p>onde <span class="math inline">\(f\)</span> representa a relação sistemática entre <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>, enquanto <span class="math inline">\(\epsilon\)</span> representa a parte aleatória de <span class="math inline">\(Y\)</span> que não é explicada pelas informações contidas em <span class="math inline">\(X\)</span>.</p>
-<p>Quando o objetivo é <strong>previsão</strong>, não precisamos necessariamente interpretar o significado de cada parâmetro ou componente do modelo. O principal é que a função estimada <strong>produza boas previsões</strong> e <strong>generalize</strong> para novos dados.</p>
-<p>Ou seja:</p>
+<p>Se tivemos 10.000 clientes no trimestre e 1.000 cancelaram, então a taxa observada de churn foi <strong>10%</strong>.</p>
+<p>Esse número descreve aqueles dados. Não precisamos de Inferência Estatística para afirmar isso.</p>
+<p>O ponto importante é distinguir:</p>
 <blockquote class="blockquote">
-<p>quando chegarem novas observações de <span class="math inline">\(X\)</span>, conseguiremos prever bem seus respectivos valores de <span class="math inline">\(Y\)</span>?</p>
+<p><strong>descrever o que aconteceu nos dados observados</strong></p>
 </blockquote>
+<p>de</p>
+<blockquote class="blockquote">
+<p><strong>usar esses dados para aprender algo que vai além deles.</strong></p>
+</blockquote>
+<p>Essa segunda pergunta é justamente onde começa a <strong>Inferência Estatística</strong>.</p>
 </section>
-<section id="por-que-uma-empresa-quer-prever-algo" class="level3">
-<h3 class="anchored" data-anchor-id="por-que-uma-empresa-quer-prever-algo">Por que uma empresa quer prever algo?</h3>
-<p>Porque antecipar um acontecimento permite agir antes que ele ocorra.</p>
+<section id="por-que-uma-empresa-quer-descrever-os-dados" class="level3">
+<h3 class="anchored" data-anchor-id="por-que-uma-empresa-quer-descrever-os-dados">Por que uma empresa quer descrever os dados?</h3>
+<p>Porque antes de prever, inferir ou estimar efeitos causais, precisamos entender o que aconteceu.</p>
+<p>Descrição aparece em praticamente todo trabalho de dados:</p>
 <ul>
-<li>Se conseguimos prever quem tem grande probabilidade de churn, podemos priorizar esses clientes.</li>
-<li>Se conseguimos prever fraude, podemos identificar transações que merecem bloqueio ou revisão.</li>
-<li>Se conseguimos prever demanda, podemos organizar estoque e operação antes que os pedidos ocorram.</li>
-<li>Se conseguimos prever quais produtos interessam a determinado usuário, podemos personalizar sua experiência.</li>
+<li>dashboards;</li>
+<li>KPIs;</li>
+<li>relatórios;</li>
+<li>monitoramento de produto;</li>
+<li>acompanhamento de receita;</li>
+<li>análise de funil;</li>
+<li>comparação entre períodos e segmentos.</li>
 </ul>
-<p><strong>Previsão</strong> é especialmente valioso quando uma empresa precisa tomar muitas decisões repetidamente.</p>
-</section>
-<section id="o-que-a-empresa-pode-fazer-com-a-resposta-dessa-previsão" class="level3">
-<h3 class="anchored" data-anchor-id="o-que-a-empresa-pode-fazer-com-a-resposta-dessa-previsão">O que a empresa pode fazer com a resposta dessa previsão?</h3>
-<p>Alguns exemplos:</p>
-<p><strong>Churn</strong></p>
-<p>Previsão:</p>
-<blockquote class="blockquote">
-<p>“Este cliente possui alta probabilidade de cancelar.”</p>
-</blockquote>
-<p>Possíveis ações:</p>
-<ul>
-<li>priorizar o cliente para o time de retenção;</li>
-<li>antecipar um contato ao cliente;</li>
-<li>criar uma fila de atendimento baseada em risco.</li>
-</ul>
-<p><strong>Fraude</strong></p>
-<p>Previsão:</p>
-<blockquote class="blockquote">
-<p>“Esta transação possui alta probabilidade de ser fraudulenta.”</p>
-</blockquote>
-<p>Possíveis ações:</p>
-<ul>
-<li>bloquear automaticamente;</li>
-<li>pedir autenticação adicional;</li>
-<li>enviar para revisão humana.</li>
-</ul>
-<p><strong>Demanda</strong></p>
-<p>Previsão:</p>
-<blockquote class="blockquote">
-<p>“Esperamos aproximadamente esta demanda na próxima semana.”</p>
-</blockquote>
-<p>Possíveis ações:</p>
-<ul>
-<li>comprar estoque;</li>
-<li>dimensionar equipe;</li>
-<li>organizar logística;</li>
-<li>planejar caixa.</li>
-</ul>
-<p><strong>Lead scoring</strong></p>
-<p>Previsão:</p>
-<blockquote class="blockquote">
-<p>“Estes leads possuem maior probabilidade de conversão.”</p>
-</blockquote>
-<p>Possíveis ações:</p>
-<ul>
-<li>priorizar o trabalho dos vendedores;</li>
-<li>definir filas de contato;</li>
-<li>distribuir esforço comercial.</li>
-</ul>
-<p><strong>Recomendação</strong></p>
-<p>Previsão:</p>
-<blockquote class="blockquote">
-<p>“Estes são os itens que esse usuário provavelmente terá maior interesse em consumir.”</p>
-</blockquote>
-<p>Possíveis ações:</p>
-<ul>
-<li>ordenar produtos;</li>
-<li>recomendar filmes;</li>
-<li>selecionar anúncios;</li>
-<li>personalizar uma home page.</li>
-</ul>
-</section>
-<section id="o-que-precisamos-aprender-para-resolver-esses-problemas" class="level3">
-<h3 class="anchored" data-anchor-id="o-que-precisamos-aprender-para-resolver-esses-problemas">O que precisamos aprender para resolver esses problemas?</h3>
-<p>Prediction normalmente nos leva para o campo de <strong>Statistical Learning e Machine Learning</strong>.</p>
-<p>Entre os principais fundamentos estão:</p>
-<ul>
-<li><strong>Teoria da Probabilidade</strong> (variáveis aleatórias, distribuições, probabilidade condicional, esperança, variância, etc.);</li>
-<li>álgebra linear;</li>
-<li>cálculo e otimização;</li>
-<li>loss functions;</li>
-<li>train, validation e test;</li>
-<li>generalização;</li>
-<li>overfitting e regularização;</li>
-<li>cross-validation;</li>
-<li>métricas de performance;</li>
-<li>algoritmos de Machine Learning.</li>
-</ul>
-<p><strong>Probabilidade</strong> continua sendo fundamental.</p>
-<p>A diferença é que, em problemas puramente preditivos, o objetivo principal não é estimar uma quantidade populacional e quantificar sua incerteza, mas construir uma função que <strong>generalize bem para novos dados</strong>.</p>
-<p>Por isso, <strong>Inferência Estatística</strong> não é, em geral, um pré-requisito para construir um bom modelo preditivo.</p>
-<p>Ela volta a ser necessária quando mudamos a pergunta e passamos a querer saber <strong>o que podemos concluir para além da amostra observada e com qual incerteza</strong>.</p>
-<p>Mas, <strong>olhe que interessante</strong>. Suponha que usamos ML para um certo problema de predição. Porém, depois de finalizado, <strong>percebemos uma necessidade diferente</strong>.</p>
-<p>Por exemplo, suponha que dois modelos de churn tenham AUCs de 0,81 e 0,83 na mesma amostra de teste.</p>
-<p>Se perguntamos:</p>
-<blockquote class="blockquote">
-<p><strong>Qual modelo teve melhor performance observada?</strong></p>
-</blockquote>
-<p>estamos em um problema preditivo.</p>
-<p>Mas, se perguntamos:</p>
-<blockquote class="blockquote">
-<p><strong>Essa diferença de 0,02 provavelmente se mantém para a população de casos futuros ou pode ser apenas resultado da amostra utilizada?</strong></p>
-</blockquote>
-<p>entramos em um problema de <strong>Inferência Estatística</strong>.</p>
-<p>Podemos então quantificar essa incerteza usando, por exemplo, bootstrap, intervalos de confiança ou testes específicos para comparação de AUCs.</p>
-<p>A ponte fica clara:</p>
-<ul>
-<li><strong>ML preditivo:</strong> qual modelo teve melhor generalização observada?</li>
-<li><strong>Inferência Estatística (em cima de ML):</strong> quanta incerteza existe nessa diferença?</li>
-</ul>
-<p>As AUCs 0,81 e 0,83 são estatísticas calculadas a partir de muitas observações. A ideia inferencial é imaginar como essa diferença variaria se repetíssemos o processo de amostragem.</p>
-<p>Isso nos leva à <strong>distribuição amostral</strong> e, a partir dela, a conceitos como erro padrão, intervalos de confiança e testes de hipóteses. Ou seja, novamente, <strong>a estatística inferêncial aparece como necessário</strong> mesmo durante um problema de Machine Learning.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -467,136 +349,188 @@ Ideia principal
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Previsão cria valor quando <strong>antecipar corretamente um acontecimento permite à empresa agir melhor antes que ele ocorra</strong>.</p>
+<p><strong>Descrição</strong> responde ao que aconteceu nos dados que observamos. Ela não exige, por si só, generalizar para uma população, prever novas observações ou interpretar relações como causais.</p>
 </div>
 </div>
 </section>
 </section>
-<section id="inferência-estatística-o-que-podemos-aprender-sobre-o-mundo" class="level2">
-<h2 class="anchored" data-anchor-id="inferência-estatística-o-que-podemos-aprender-sobre-o-mundo">2. Inferência Estatística: o que podemos aprender sobre o mundo?</h2>
+<section id="previsão-o-que-provavelmente-vai-acontecer" class="level2">
+<h2 class="anchored" data-anchor-id="previsão-o-que-provavelmente-vai-acontecer">2. Previsão: o que provavelmente vai acontecer?</h2>
 <section id="a-pergunta-1" class="level3">
 <h3 class="anchored" data-anchor-id="a-pergunta-1">A pergunta</h3>
-<p>Agora a pergunta muda.</p>
-<p>Não queremos necessariamente <strong>prever</strong> o resultado de uma nova observação.</p>
-<p>Queremos aprender alguma quantidade desconhecida <strong>sobre uma população ou sobre o fenômeno</strong> que estamos estudando e, ao mesmo tempo, quantificar a incerteza dessa conclusão.</p>
+<p>Em problemas preditivos, queremos antecipar um resultado ainda desconhecido.</p>
 <p>Por exemplo:</p>
 <ul>
-<li>Qual é a taxa de churn dos nossos clientes?</li>
-<li>Qual é a conversão média do nosso produto?</li>
-<li>Qual é a receita média por cliente?</li>
-<li>Qual é a diferença de conversão entre dois grupos?</li>
-<li>A taxa de churn realmente aumentou ou estamos observando uma flutuação amostral?</li>
-<li>Com que precisão conseguimos estimar determinado KPI?</li>
+<li>Esse cliente vai cancelar?</li>
+<li>Essa transação é fraude?</li>
+<li>Esse usuário provavelmente vai comprar?</li>
+<li>Quanto vamos vender no próximo mês?</li>
+<li>Quanto tempo essa entrega vai levar?</li>
+<li>Qual lead provavelmente vai converter?</li>
+<li>Qual produto devemos recomendar para esse usuário?</li>
 </ul>
-<p>Aqui aparece um problema fundamental:</p>
+<p>O objetivo é aprender, a partir dos dados observados, uma função <span class="math inline">\(f\)</span> capaz de transformar informações disponíveis (<span class="math inline">\(X\)</span>) em uma boa previsão de <span class="math inline">\(Y\)</span> para casos novos.</p>
+<p>Uma forma <strong>geral</strong> de representar essa relação é:</p>
+<p><span class="math display">\[
+Y = f(X) + \epsilon
+\]</span></p>
+<p>Quando o objetivo é <strong>previsão</strong>, o principal é que a função aprendida produza boas previsões e <strong>generalize para novos dados</strong>.</p>
+<p>Ou seja:</p>
 <blockquote class="blockquote">
-<p><strong>temos uma amostra, mas queremos aprender algo para além dos valores observados nessa amostra.</strong></p>
+<p>quando chegarem novas observações de <span class="math inline">\(X\)</span>, conseguiremos prever bem seus respectivos valores de <span class="math inline">\(Y\)</span> por meio da regra <span class="math inline">\(f\)</span> aprendida?</p>
 </blockquote>
-<p>Se calculássemos apenas a taxa de churn dos clientes presentes no nosso <em>dataset</em>, estaríamos fazendo <strong>Estatística Descritiva</strong>: estaríamos apenas resumindo aquilo que efetivamente observamos.</p>
-<p>Isso é perfeitamente válido. O problema aparece quando damos um passo além e queremos <strong>generalizar essa informação para o todo</strong>, para outros períodos ou para novas amostras. Nesse momento, precisamos levar em conta que outra amostra poderia produzir outro resultado.</p>
-<p>Suponha que observamos uma taxa de churn de 8%. O número 8% descreve os dados observados.</p>
-<p>Mas podemos querer responder:</p>
+</section>
+<section id="por-que-uma-empresa-quer-prever-algo" class="level3">
+<h3 class="anchored" data-anchor-id="por-que-uma-empresa-quer-prever-algo">Por que uma empresa quer prever algo?</h3>
+<p>Porque antecipar um acontecimento permite agir antes que ele ocorra.</p>
+<ul>
+<li>prever churn → priorizar clientes para retenção;</li>
+<li>prever fraude → bloquear ou revisar transações;</li>
+<li>prever demanda → organizar estoque e operação;</li>
+<li>prever conversão → priorizar leads;</li>
+<li>prever interesse → personalizar recomendações.</li>
+</ul>
+<p>Prediction normalmente nos leva para o campo de <strong>Statistical Learning e Machine Learning</strong>.</p>
+<p>Entre os principais fundamentos estão:</p>
+<ul>
+<li><strong>Teoria da Probabilidade</strong>;</li>
+<li>álgebra linear;</li>
+<li>cálculo e otimização;</li>
+<li>loss functions;</li>
+<li>train, validation e test;</li>
+<li>generalização;</li>
+<li>overfitting e regularização;</li>
+<li>cross-validation;</li>
+<li>métricas de performance;</li>
+<li>algoritmos de Machine Learning.</li>
+</ul>
+<p>Em um problema puramente preditivo, o objetivo principal não é estimar uma quantidade populacional e quantificar sua incerteza, mas construir uma função que <strong>generalize bem para novos dados</strong>.</p>
+<p>Por isso, Inferência Estatística não é, <strong>em geral</strong>, um pré-requisito para construir um bom modelo preditivo.</p>
+<p>Mas ela pode aparecer depois, quando mudamos a pergunta. Ela pode aparecer <strong>também dentro de um problema preditivo</strong>, como uma camada necessária da avaliação do que foi feito.</p>
+<p>Suponha que dois modelos de churn tenham AUCs de 0,81 e 0,83 na mesma amostra de teste.</p>
+<p>Se perguntamos:</p>
 <blockquote class="blockquote">
-<p>Qual é a taxa de churn da população da qual esses dados foram gerados?</p>
+<p><strong>Qual modelo teve melhor performance observada?</strong></p>
 </blockquote>
-<p>E, tão importante quanto:</p>
+<p>estamos apenas comparando resultados observados.</p>
+<p>Mas, se perguntamos:</p>
 <blockquote class="blockquote">
-<p>Quanta incerteza existe nessa estimativa?</p>
+<p><strong>Essa diferença de 0,02 provavelmente se mantém para novos casos ou pode ser apenas resultado da amostra utilizada?</strong></p>
 </blockquote>
-<p>É essa passagem — <strong>da amostra observada para uma quantidade desconhecida da população</strong> — que nos leva à <strong>Inferência Estatística</strong>.</p>
+<p>entramos em um problema de <strong>Inferência Estatística</strong>.</p>
+<p>Mais abaixo, você vai entender que essa pergunta tem <strong>algo implícito muito importante</strong>:</p>
+<ul>
+<li>Para saber o que acontece em novos casos, seria interessante saber mais sobre o “<em>Processo da Natureza que Gerou os Dados</em>”.</li>
+</ul>
+<p>Porém, como normalmente não é possível ter esse conhecimento no mundo real, usamos uma amostra para inferir algo sobre esse <strong>Processo Gerador de Dados</strong>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Ideia principal
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Previsão</strong> cria valor quando antecipar corretamente um acontecimento permite à empresa agir melhor antes que ele ocorra.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="inferência-estatística-o-que-podemos-aprender-além-dos-dados-observados" class="level2">
+<h2 class="anchored" data-anchor-id="inferência-estatística-o-que-podemos-aprender-além-dos-dados-observados">3. Inferência Estatística: o que podemos aprender além dos dados observados?</h2>
+<section id="a-pergunta-2" class="level3">
+<h3 class="anchored" data-anchor-id="a-pergunta-2">A pergunta</h3>
+<p>Agora a pergunta muda.</p>
+<p>Não queremos apenas descrever os dados que já vimos nem necessariamente prever o resultado de uma nova observação individual.</p>
+<p>Queremos usar os dados observados para <strong>aprender alguma quantidade desconhecida sobre uma população ou sobre o processo que gera os dados</strong>.</p>
+<p><em>Por que isso é necessário?</em></p>
+<p>Imagine que alguém pergunte:</p>
+<blockquote class="blockquote">
+<p><strong>Qual é a verdadeira taxa de churn dos nossos clientes?</strong></p>
+</blockquote>
+<p>Essa quantidade pertence ao <strong>processo gerador dos dados</strong> — o <em>data-generating process</em> (DGP).</p>
+<p>Se conhecêssemos completamente esse processo, saberíamos exatamente com que probabilidades os diferentes resultados são gerados e poderíamos calcular diretamente a taxa de churn que nos interessa.</p>
+<p>Não precisaríamos estimá-la a partir dos dados observados.</p>
+<p>Na prática, porém, <strong>não conhecemos o DGP</strong>.</p>
+<p>O que observamos é apenas <strong>uma realização desse processo</strong>: uma amostra de clientes, transações, usuários ou eventos.</p>
+<p>É a partir dessa amostra que tentamos aprender alguma característica desconhecida do processo maior que gerou os dados.</p>
+<p>É justamente aí que entra a <strong>Inferência Estatística</strong>:</p>
+<blockquote class="blockquote">
+<p>usar os dados observados para aprender sobre uma quantidade desconhecida da população ou do processo gerador dos dados, e quantificar a incerteza dessa conclusão.</p>
+</blockquote>
+<p>Por exemplo:</p>
+<ul>
+<li>A taxa de churn observada representa bem o nível de churn dos nossos clientes?</li>
+<li>A conversão média observada neste período é uma boa aproximação do que esperamos de forma mais geral?</li>
+<li>A diferença de conversão entre dois grupos parece real ou pode ser apenas variação dos dados?</li>
+<li>O churn realmente aumentou ou estamos observando uma flutuação compatível com a variabilidade do processo?</li>
+</ul>
+<p>Aqui está a distinção essencial:</p>
+<blockquote class="blockquote">
+<p><strong>Se calculamos apenas uma métrica nos dados observados, estamos descrevendo esses dados.</strong></p>
+</blockquote>
+<p>A Inferência Estatística começa quando queremos usar essa métrica para dizer algo <strong>além da amostra observada</strong>.</p>
+</section>
+<section id="um-exemplo-com-churn" class="level3">
+<h3 class="anchored" data-anchor-id="um-exemplo-com-churn">Um exemplo com churn</h3>
+<p>Suponha que tivemos 10.000 clientes neste trimestre e 1.000 deram churn.</p>
+<p>A taxa observada foi:</p>
+<blockquote class="blockquote">
+<p><strong>10%</strong></p>
+</blockquote>
+<p>Se a pergunta é:</p>
+<blockquote class="blockquote">
+<p>Qual foi a taxa de churn desses 10.000 clientes?</p>
+</blockquote>
+<p>acabou o problema: <strong>10%</strong>. Isso é Estatística Descritiva.</p>
+<p>Mas a empresa pode querer usar esse número para planejamento, metas ou decisões futuras.</p>
+<p>A pergunta passa a ser algo como:</p>
+<blockquote class="blockquote">
+<p><strong>Esse churn de 10% representa bem o nível de churn que devemos esperar dos nossos clientes de forma mais geral?</strong></p>
+</blockquote>
+<p>Agora existe incerteza.</p>
+<p>Outra amostra de clientes, outro período ou outra realização do mesmo processo poderia produzir 9%, 11%, 13% ou outro valor.</p>
+<p>Os 10% observados passam então a ser usados como uma <strong>estimativa</strong> de uma quantidade que não observamos diretamente: o nível de churn subjacente da população ou do processo que gera esses clientes.</p>
+<p>É nesse momento que entram conceitos como:</p>
+<ul>
+<li>estimador;</li>
+<li>distribuição amostral;</li>
+<li>erro padrão;</li>
+<li>intervalo de confiança;</li>
+<li>testes de hipóteses.</li>
+</ul>
+<p>Uma maneira intuitiva de pensar nisso é:</p>
+<blockquote class="blockquote">
+<p>os clientes que já deram churn pertencem ao passado. Para saber o que aconteceu com eles, basta olhar os dados. A Inferência Estatística aparece quando usamos esses clientes para aprender algo que queremos transportar para além deles — inclusive para clientes e períodos que ainda não observamos.</p>
+</blockquote>
 </section>
 <section id="por-que-uma-empresa-quer-fazer-inferência" class="level3">
 <h3 class="anchored" data-anchor-id="por-que-uma-empresa-quer-fazer-inferência">Por que uma empresa quer fazer inferência?</h3>
-<p>Porque métricas variam. Conversão muda de uma semana para outra. Churn muda de um mês para outro. Receita média muda entre amostras. Segmentos apresentam resultados diferentes.</p>
-<p>Se tratarmos toda variação observada como uma mudança real do negócio, podemos tomar decisões ruins.</p>
-<p>Uma função importante da Inferência Estatística é nos ajudar a distinguir:</p>
+<p>Porque métricas variam, mas <strong>nem toda variação observada significa que o negócio realmente mudou</strong>.</p>
+<p>Conversão muda de uma semana para outra. Churn muda de um mês para outro. Receita média muda entre amostras. Segmentos apresentam resultados diferentes.</p>
+<p>Parte dessa variação pode simplesmente ser consequência da <strong>incerteza inerente ao processo gerador dos dados</strong>. Mesmo que nada relevante tenha mudado no negócio, diferentes amostras produzidas pelo mesmo processo não serão exatamente iguais.</p>
+<p>Considere um exemplo simples: <em>lançar um dado e observar o resultado</em>. Se conhecêssemos completamente o <strong>processo gerador dos dados</strong>, saberíamos a probabilidade de cada resultado. Ainda assim, não saberíamos antecipadamente qual número aparecerá em uma determinada jogada.</p>
+<p>Essa é a <strong>incerteza inerente ao processo</strong>: mesmo conhecendo perfeitamente suas probabilidades, diferentes realizações podem produzir resultados diferentes. Podemos observar 1, depois 3, depois 1 novamente, sem que nada tenha mudado no dado ou no processo que o gera.</p>
+<p>Mas conhecer essas probabilidades nos daria algo fundamental: saberíamos <strong>qual variação é normal e esperada para aquele processo</strong> e poderíamos tomar decisões com base nessa estrutura.</p>
+<p>Nas empresas (<em>ou no mundo real em geral</em>), o problema é que normalmente <strong>não conhecemos o processo gerador nem suas probabilidades</strong>. Temos apenas os dados que ele produziu e tentamos aprender sobre o processo a partir deles usando <strong>inferência estatística</strong>.</p>
+<p>Por isso, observar que a conversão caiu de 10% para 9,7% não é suficiente para concluir que houve uma mudança real. Talvez alguma coisa tenha mudado. Mas talvez o mesmo processo, funcionando exatamente como antes, pudesse naturalmente produzir 10% em uma amostra e 9,7% em outra.</p>
+<p>Uma função importante da <strong>Inferência Estatística</strong> é justamente quantificar essa incerteza e ajudar a separar:</p>
 <blockquote class="blockquote">
-<p><strong>sinal de ruído.</strong></p>
+<p><strong><em>uma diferença que sugere uma mudança no processo gerador de dados</em></strong></p>
 </blockquote>
-<p>Ou, de forma mais precisa:</p>
+<p>de</p>
 <blockquote class="blockquote">
-<p>avaliar quanto da diferença que observamos pode refletir uma diferença real na população e quanto pode ser explicado pela variabilidade inerente ao processo de amostragem e geração dos dados.</p>
+<p><strong><em>uma diferença ainda compatível com a variabilidade que o próprio processo pode gerar</em>.</strong></p>
 </blockquote>
-</section>
-<section id="o-que-a-empresa-pode-fazer-com-a-resposta" class="level3">
-<h3 class="anchored" data-anchor-id="o-que-a-empresa-pode-fazer-com-a-resposta">O que a empresa pode fazer com a resposta?</h3>
-<p>Imagine que a conversão caiu de 10% para 9,7%.</p>
-<p>Sem pensar estatisticamente, alguém pode imediatamente concluir:</p>
-<blockquote class="blockquote">
-<p>“Alguma coisa deu errado.”</p>
-</blockquote>
-<p>Mas talvez essa diferença seja perfeitamente compatível com a variabilidade esperada nos dados.</p>
-<p>Nesse caso, entender a incerteza <strong>pode evitar</strong>:</p>
-<ul>
-<li>redesenhar o produto desnecessariamente;</li>
-<li>interromper uma campanha que continua funcionando;</li>
-<li>culpar uma equipe por uma oscilação aleatória;</li>
-<li>mover orçamento prematuramente;</li>
-<li>alterar metas com base em ruído.</li>
-</ul>
-<p>Agora imagine que a evidência de fato sugira uma mudança relevante.</p>
-<p>A empresa pode:</p>
-<ul>
-<li>investigar o funil;</li>
-<li>procurar bugs;</li>
-<li>investigar mudanças no comportamento dos usuários;</li>
-<li>rever pricing;</li>
-<li>revisar campanhas;</li>
-<li>alterar processos;</li>
-<li>redefinir metas.</li>
-</ul>
-<p>Outro exemplo:</p>
-<blockquote class="blockquote">
-<p>“O churn parece muito maior entre clientes pequenos.”</p>
-</blockquote>
-<p>Uma análise inferencial pode ajudar a estimar <strong>o tamanho dessa diferença</strong> e <strong>a incerteza associada a ela</strong>.</p>
-<p>A empresa pode então:</p>
-<ul>
-<li>criar um onboarding específico;</li>
-<li>mudar a estratégia de Customer Success;</li>
-<li>alterar pricing;</li>
-<li>criar segmentos diferentes;</li>
-<li>rever CAC aceitável;</li>
-<li>melhorar previsões financeiras.</li>
-</ul>
-<p>Outro exemplo:</p>
-<blockquote class="blockquote">
-<p>“Qual é nossa taxa média de churn?”</p>
-</blockquote>
-<p>Uma estimativa acompanhada de sua incerteza pode contribuir para:</p>
-<ul>
-<li>projeções de receita;</li>
-<li>análise de risco;</li>
-<li>planejamento financeiro;</li>
-<li>definição de metas;</li>
-<li>comparação entre períodos;</li>
-<li>cálculo de cenários.</li>
-</ul>
-<p>Portanto, Inferência Estatística não serve apenas para produzir um <em>p-value</em> ou um <em>intervalo de confiança</em>.</p>
-<p>Ela ajuda a empresa a responder perguntas como:</p>
-<blockquote class="blockquote">
-<p><strong>essa diferença merece uma reação ou estamos apenas observando uma flutuação compatível com a variabilidade dos dados?</strong></p>
-</blockquote>
+<p>Se tratarmos toda variação observada <strong>como uma mudança real do negócio</strong> (ou seja, como algo inerente do processo gerador de dados do negócio), podemos reagir a <strong>ruído</strong>.</p>
+<p>Essa distinção ajuda a evitar decisões precipitadas e a entender melhor o que os dados realmente permitem concluir.</p>
 </section>
 <section id="o-que-precisamos-aprender-para-fazer-inferência-estatística" class="level3">
 <h3 class="anchored" data-anchor-id="o-que-precisamos-aprender-para-fazer-inferência-estatística">O que precisamos aprender para fazer Inferência Estatística?</h3>
-<p>Aqui a <strong>Teoria da Probabilidade</strong> passa a ocupar um <strong>papel central</strong>, pois ela fornece a linguagem matemática para representar incerteza e raciocinar sobre <em>o que poderia acontecer se repetíssemos o processo de geração e amostragem dos dados</em> (essa frase é o cerne da inferência estatística e vamos aprender sobre isso).</p>
-<p>É justamente essa base que construiremos neste curso.</p>
-<p>Isso envolve conceitos como:</p>
-<ul>
-<li>experimentos aleatórios;</li>
-<li>modelos probabilísticos;</li>
-<li>variáveis aleatórias;</li>
-<li>distribuições de probabilidade;</li>
-<li>distribuições conjuntas;</li>
-<li>independência;</li>
-<li>probabilidade condicional;</li>
-<li>esperança;</li>
-<li>variância;</li>
-<li>covariância.</li>
-</ul>
-<p>Depois precisamos entender como uma amostra se relaciona com uma população.</p>
-<p>Entram então:</p>
+<p>A <strong>Teoria da Probabilidade</strong> fornece a linguagem matemática para representar incerteza e raciocinar sobre o que poderia acontecer se repetíssemos o processo de geração e amostragem dos dados.</p>
+<p>Depois entram conceitos como:</p>
 <ul>
 <li>amostragem;</li>
 <li>estatísticas e estimadores;</li>
@@ -611,28 +545,14 @@ Ideia principal
 <li>p-values;</li>
 <li>erros Tipo I e Tipo II.</li>
 </ul>
-<p>É essa construção que nos permite transformar:</p>
+<p>Essa construção permite transformar:</p>
 <blockquote class="blockquote">
 <p>“observamos este número”</p>
 </blockquote>
 <p>em algo como:</p>
 <blockquote class="blockquote">
-<p>“com base nesta amostra e nas hipóteses que estamos fazendo sobre o processo gerador dos dados, nossa melhor estimativa da quantidade de interesse é esta, acompanhada desta incerteza.”</p>
+<p>“com base nos dados e nas hipóteses do nosso modelo, esta é nossa melhor estimativa da quantidade de interesse e esta é a incerteza associada a ela.”</p>
 </blockquote>
-</section>
-<section id="previsão-versus-inferência-estatística" class="level3">
-<h3 class="anchored" data-anchor-id="previsão-versus-inferência-estatística">Previsão versus Inferência Estatística</h3>
-<p>Compare:</p>
-<p><strong>Previsão</strong></p>
-<blockquote class="blockquote">
-<p>Qual cliente vai cancelar?</p>
-</blockquote>
-<p>Queremos prever um resultado ainda desconhecido para um novo caso.</p>
-<p><strong>Inferência Estatística</strong></p>
-<blockquote class="blockquote">
-<p>Qual é a taxa de churn dos nossos clientes e com que precisão conseguimos estimá-la?</p>
-</blockquote>
-<p>Queremos aprender uma quantidade sobre a população a partir de uma amostra e quantificar a incerteza dessa conclusão.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -643,15 +563,15 @@ Ideia principal
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Inferência Estatística cria valor quando precisamos <strong>aprender algo para além da amostra observada sem tratar cada número calculado como uma verdade exata sobre o todo</strong>.</p>
+<p><strong>Descrição</strong> diz o que aconteceu nos dados que vimos. <strong>Inferência Estatística</strong> usa os dados que vimos para aprender sobre aquilo que não observamos completamente, quantificando a incerteza dessa passagem.</p>
 </div>
 </div>
 </section>
 </section>
 <section id="inferência-causal-o-que-aconteceria-se-fizéssemos-alguma-coisa" class="level2">
-<h2 class="anchored" data-anchor-id="inferência-causal-o-que-aconteceria-se-fizéssemos-alguma-coisa">3. Inferência Causal: o que aconteceria se fizéssemos alguma coisa?</h2>
-<section id="a-pergunta-2" class="level3">
-<h3 class="anchored" data-anchor-id="a-pergunta-2">A pergunta</h3>
+<h2 class="anchored" data-anchor-id="inferência-causal-o-que-aconteceria-se-fizéssemos-alguma-coisa">4. Inferência Causal: o que aconteceria se fizéssemos alguma coisa?</h2>
+<section id="a-pergunta-3" class="level3">
+<h3 class="anchored" data-anchor-id="a-pergunta-3">A pergunta</h3>
 <p>Agora a pergunta muda novamente.</p>
 <p>Empresas não querem apenas observar ou prever o mundo. Elas querem <strong>agir sobre ele</strong>.</p>
 <p>Elas:</p>
@@ -676,23 +596,21 @@ Ideia principal
 <li>Se aumentarmos o preço, quanto muda a demanda?</li>
 <li>Essa campanha aumentou a receita?</li>
 <li>Esse novo onboarding reduziu churn?</li>
-<li>Essa funcionalidade aumentou retenção?</li>
-<li>Esse contato comercial realmente gerou vendas adicionais?</li>
 </ul>
 <p>A expressão fundamental aqui é:</p>
 <blockquote class="blockquote">
 <p><strong>por causa de.</strong></p>
 </blockquote>
-<p>Não queremos saber simplesmente se duas coisas aparecem juntas, <em>mas sim se mudar uma delas <strong>provoca</strong> uma mudança na outra</em>.</p>
+<p>Não queremos saber simplesmente se duas coisas aparecem juntas, mas se mudar uma delas <strong>provoca</strong> uma mudança na outra.</p>
 </section>
-<section id="associação-não-é-intervenção" class="level3">
-<h3 class="anchored" data-anchor-id="associação-não-é-intervenção">Associação não é intervenção</h3>
+<section id="the-jump-of-the-cat-associação-não-é-intervenção" class="level3">
+<h3 class="anchored" data-anchor-id="the-jump-of-the-cat-associação-não-é-intervenção">The Jump of the Cat: Associação não é intervenção</h3>
 <p>Imagine que clientes que recebem cupons compram mais.</p>
 <p>Isso não significa necessariamente que:</p>
 <blockquote class="blockquote">
 <p>os cupons fizeram esses clientes comprarem mais.</p>
 </blockquote>
-<p>Talvez a empresa ofereça cupons justamente aos seus melhores clientes, <em>que provavelmente já comprariam mais mesmo sem os cupons</em>.</p>
+<p>Talvez a empresa ofereça cupons justamente aos seus melhores clientes, que já comprariam mais mesmo sem o cupom.</p>
 <p>Da mesma forma:</p>
 <blockquote class="blockquote">
 <p>usuários que utilizam determinada feature possuem maior retenção.</p>
@@ -701,80 +619,12 @@ Ideia principal
 <blockquote class="blockquote">
 <p>fazer um usuário utilizar essa feature aumentará sua retenção.</p>
 </blockquote>
-<p>Talvez usuários naturalmente mais engajados <em>sejam justamente aqueles que utilizam a feature</em>.</p>
+<p>Talvez usuários naturalmente mais engajados sejam justamente aqueles que utilizam a feature.</p>
 <p><strong>Inferência Causal</strong> tenta responder:</p>
 <blockquote class="blockquote">
 <p>O que teria acontecido com essas mesmas unidades se a intervenção tivesse sido diferente?</p>
 </blockquote>
 <p>Essa é a ideia do <strong>contrafactual</strong>.</p>
-</section>
-<section id="por-que-uma-empresa-quer-causalidade" class="level3">
-<h3 class="anchored" data-anchor-id="por-que-uma-empresa-quer-causalidade">Por que uma empresa quer causalidade?</h3>
-<p>Porque praticamente <strong>toda estratégia empresarial envolve alguma intervenção</strong>.</p>
-<p>Se a empresa gasta dinheiro com uma ação, ela quer saber se aquela ação gera algum resultado incremental.</p>
-<p>Não queremos apenas saber:</p>
-<blockquote class="blockquote">
-<p>“quem compra?”</p>
-</blockquote>
-<p>Queremos saber:</p>
-<blockquote class="blockquote">
-<p>“quem comprará <strong>por causa da campanha</strong>?”</p>
-</blockquote>
-<p>Não queremos apenas saber:</p>
-<blockquote class="blockquote">
-<p>“quem vai churnar?”</p>
-</blockquote>
-<p>Podemos querer saber:</p>
-<blockquote class="blockquote">
-<p>“para quem uma intervenção realmente reduzirá churn?”</p>
-</blockquote>
-</section>
-<section id="o-que-a-empresa-pode-fazer-com-a-resposta-1" class="level3">
-<h3 class="anchored" data-anchor-id="o-que-a-empresa-pode-fazer-com-a-resposta-1">O que a empresa pode fazer com a resposta?</h3>
-<p><strong>Campanhas</strong></p>
-<p>Pergunta causal:</p>
-<blockquote class="blockquote">
-<p>“Essa campanha realmente aumentou vendas?”</p>
-</blockquote>
-<p>A empresa pode:</p>
-<ul>
-<li>aumentar investimento se houver retorno incremental;</li>
-<li>reduzir investimento se os clientes comprariam de qualquer forma;</li>
-<li>redistribuir orçamento entre canais.</li>
-</ul>
-<p><strong>Produto</strong></p>
-<p>Pergunta causal:</p>
-<blockquote class="blockquote">
-<p>“Essa nova experiência aumentou conversão?”</p>
-</blockquote>
-<p>A empresa pode:</p>
-<ul>
-<li>lançar a nova versão;</li>
-<li>abandonar a mudança;</li>
-<li>testar outra alternativa.</li>
-</ul>
-<p><strong>Pricing</strong></p>
-<p>Pergunta causal:</p>
-<blockquote class="blockquote">
-<p>“Quanto a demanda muda quando alteramos o preço?”</p>
-</blockquote>
-<p>A empresa pode:</p>
-<ul>
-<li>rever preços;</li>
-<li>segmentar estratégias;</li>
-<li>estimar trade-offs entre margem e volume.</li>
-</ul>
-<p><strong>Retenção</strong></p>
-<p>Pergunta causal:</p>
-<blockquote class="blockquote">
-<p>“Oferecer esse benefício reduz churn?”</p>
-</blockquote>
-<p>A empresa pode:</p>
-<ul>
-<li>decidir se a intervenção vale seu custo;</li>
-<li>selecionar quais clientes devem recebê-la;</li>
-<li>evitar gastar dinheiro com clientes cujo comportamento não mudará.</li>
-</ul>
 </section>
 <section id="previsão-não-é-inferência-causal" class="level3">
 <h3 class="anchored" data-anchor-id="previsão-não-é-inferência-causal">Previsão não é Inferência Causal</h3>
@@ -789,12 +639,12 @@ Ideia principal
 <li>40% de probabilidade prevista de churn;</li>
 <li>sua probabilidade poderia cair para 10% se recebesse a intervenção.</li>
 </ul>
-<p>Se a empresa olhar <em>apenas para previsão</em>, provavelmente priorizará A.</p>
+<p>Se a empresa olhar apenas para previsão, provavelmente priorizará A.</p>
 <p>Mas, se a pergunta for:</p>
 <blockquote class="blockquote">
 <p>“Em quem essa intervenção terá maior impacto?”</p>
 </blockquote>
-<p><strong>B pode ser o cliente mais interessante</strong>.</p>
+<p>B pode ser o cliente mais interessante.</p>
 <p>Portanto:</p>
 <blockquote class="blockquote">
 <p><strong>alto risco previsto não significa alto efeito causal.</strong></p>
@@ -802,27 +652,8 @@ Ideia principal
 </section>
 <section id="o-que-precisamos-aprender-para-fazer-inferência-causal" class="level3">
 <h3 class="anchored" data-anchor-id="o-que-precisamos-aprender-para-fazer-inferência-causal">O que precisamos aprender para fazer Inferência Causal?</h3>
-<p>Inferência Causal não substitui Inferência Estatística, ela se apoia nela e acrescenta uma nova camada.</p>
-<p>Primeiro precisamos dos fundamentos da <strong>Teoria da Probabilidade</strong>:</p>
-<ul>
-<li>variáveis aleatórias;</li>
-<li>distribuições;</li>
-<li>esperança;</li>
-<li>variância;</li>
-<li>probabilidade condicional;</li>
-<li>independência.</li>
-</ul>
-<p>Depois precisamos dos fundamentos de <strong>Inferência Estatística</strong>:</p>
-<ul>
-<li>amostragem;</li>
-<li>estimadores;</li>
-<li>distribuições amostrais;</li>
-<li>erro padrão;</li>
-<li>intervalos de confiança;</li>
-<li>testes de hipóteses;</li>
-<li>regressão.</li>
-</ul>
-<p>E então aparecem os conceitos especificamente <strong>causais</strong>:</p>
+<p>Inferência Causal não substitui Inferência Estatística. Ela se apoia nela e acrescenta uma nova camada.</p>
+<p>Além dos fundamentos de Probabilidade e Inferência Estatística, entram conceitos como:</p>
 <ul>
 <li>treatment;</li>
 <li>outcome;</li>
@@ -843,13 +674,11 @@ Ideia principal
 <li>Causal Machine Learning.</li>
 </ul>
 <p>Há uma distinção particularmente importante:</p>
-<p><strong>Inferência Estatística</strong></p>
-<p>ajuda a responder:</p>
+<p><strong>Inferência Estatística</strong> ajuda a responder:</p>
 <blockquote class="blockquote">
 <p>“Com que precisão estimamos esta quantidade?”</p>
 </blockquote>
-<p><strong>Inferência Causal</strong></p>
-<p>precisa primeiro responder:</p>
+<p><strong>Inferência Causal</strong> precisa primeiro responder:</p>
 <blockquote class="blockquote">
 <p>“Esta quantidade pode ser interpretada como efeito causal?”</p>
 </blockquote>
@@ -878,58 +707,69 @@ Ideia principal
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Inferência Causal cria valor quando precisamos descobrir <strong>quais ações realmente provocam mudanças nos resultados que importam para a empresa</strong>.</p>
+<p><strong>Inferência Causal</strong> cria valor quando precisamos descobrir quais ações realmente provocam mudanças nos resultados que importam para a empresa.</p>
 </div>
 </div>
 </section>
 </section>
-<section id="os-três-problemas-usando-os-mesmos-dados" class="level2">
-<h2 class="anchored" data-anchor-id="os-três-problemas-usando-os-mesmos-dados">Os três problemas usando os mesmos dados</h2>
-<p>Imagine novamente uma empresa com dados de clientes.</p>
-<section id="previsão" class="level3">
-<h3 class="anchored" data-anchor-id="previsão">Previsão</h3>
-<p>Pergunta:</p>
+<section id="o-mesmo-problema-de-churn-quatro-perguntas-diferentes" class="level2">
+<h2 class="anchored" data-anchor-id="o-mesmo-problema-de-churn-quatro-perguntas-diferentes">O mesmo problema de churn, quatro perguntas diferentes</h2>
+<p>Agora podemos voltar ao mesmo exemplo e separar claramente os quatro tipos de pergunta:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Pergunta da empresa</th>
+<th>O que queremos aprender?</th>
+<th>Tipo de problema</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>“Qual foi nosso churn no último trimestre?”</strong></td>
+<td>O que aconteceu com os clientes observados.</td>
+<td><strong>Descrição</strong></td>
+</tr>
+<tr class="even">
+<td><strong>“Quais clientes provavelmente vão dar churn?”</strong></td>
+<td>O resultado provável para novos casos.</td>
+<td><strong>Previsão</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>“Observamos churn de 10%. Esse número representa bem o nível de churn dos nossos clientes ou pode variar bastante?”</strong></td>
+<td>Uma quantidade que vai além da amostra observada e a incerteza associada.</td>
+<td><strong>Inferência Estatística</strong></td>
+</tr>
+<tr class="even">
+<td><strong>“Se oferecermos um benefício, o churn diminuirá? Quanto?”</strong></td>
+<td>O efeito de uma intervenção.</td>
+<td><strong>Inferência Causal</strong></td>
+</tr>
+</tbody>
+</table>
+<p>A diferença pode ser resumida assim:</p>
 <blockquote class="blockquote">
-<p>Quem vai cancelar?</p>
+<p><strong>Descrição:</strong> o que aconteceu?</p>
+<p><strong>Previsão:</strong> o que provavelmente vai acontecer?</p>
+<p><strong>Inferência Estatística:</strong> o que podemos aprender além dos dados que observamos, e com qual incerteza?</p>
+<p><strong>Inferência Causal:</strong> o que aconteceria se mudássemos alguma coisa?</p>
 </blockquote>
-<p>Objetivo: <em>Antecipar churn individual</em>.</p>
-<p>Possível ação: <em>Priorizar clientes para atendimento</em>.</p>
-</section>
-<section id="inferência-estatística" class="level3">
-<h3 class="anchored" data-anchor-id="inferência-estatística">Inferência Estatística</h3>
-<p>Pergunta:</p>
-<blockquote class="blockquote">
-<p>Qual é nossa taxa de churn e com que precisão conseguimos estimá-la?</p>
-</blockquote>
-<p>Objetivo: <em>Aprender sobre o nível de churn da população e sua incerteza</em>.</p>
-<p>Possíveis ações:</p>
-<ul>
-<li>planejamento financeiro;</li>
-<li>definição de metas;</li>
-<li>comparação entre segmentos;</li>
-<li>investigação de mudanças.</li>
-</ul>
-<hr>
-</section>
-<section id="inferência-causal" class="level3">
-<h3 class="anchored" data-anchor-id="inferência-causal">Inferência Causal</h3>
-<p>Pergunta:</p>
-<blockquote class="blockquote">
-<p>Oferecer determinado benefício reduz churn?</p>
-</blockquote>
-<p>Objetivo: <em>Estimar o efeito da intervenção</em>.</p>
-<p>Possíveis ações:</p>
-<ul>
-<li>decidir se o benefício vale seu custo;</li>
-<li>escalar ou interromper a estratégia;</li>
-<li>descobrir para quais clientes ela funciona melhor.</li>
-</ul>
-<hr>
-</section>
 </section>
 <section id="um-mapa-mental" class="level2">
 <h2 class="anchored" data-anchor-id="um-mapa-mental">Um mapa mental</h2>
-<p>Quando você se deparar com um novo problema de Data Science, tente começar por estas perguntas:</p>
+<p>Quando você se deparar com um novo problema de Data Science, comece pelas perguntas:</p>
+<section id="quero-apenas-resumir-o-que-aconteceu" class="level3">
+<h3 class="anchored" data-anchor-id="quero-apenas-resumir-o-que-aconteceu">Quero apenas resumir o que aconteceu?</h3>
+<blockquote class="blockquote">
+<p>O que aconteceu nos dados que observamos?</p>
+</blockquote>
+<p><strong>Descrição</strong></p>
+<hr>
+</section>
 <section id="quero-antecipar-um-resultado" class="level3">
 <h3 class="anchored" data-anchor-id="quero-antecipar-um-resultado">Quero antecipar um resultado?</h3>
 <blockquote class="blockquote">
@@ -938,10 +778,10 @@ Ideia principal
 <p><strong>Previsão</strong></p>
 <hr>
 </section>
-<section id="quero-aprender-uma-quantidade-sobre-uma-população-e-saber-quão-incerta-é-minha-conclusão" class="level3">
-<h3 class="anchored" data-anchor-id="quero-aprender-uma-quantidade-sobre-uma-população-e-saber-quão-incerta-é-minha-conclusão">Quero aprender uma quantidade sobre uma população e saber quão incerta é minha conclusão?</h3>
+<section id="quero-aprender-algo-que-vai-além-dos-dados-observados-e-quantificar-a-incerteza" class="level3">
+<h3 class="anchored" data-anchor-id="quero-aprender-algo-que-vai-além-dos-dados-observados-e-quantificar-a-incerteza">Quero aprender algo que vai além dos dados observados e quantificar a incerteza?</h3>
 <blockquote class="blockquote">
-<p>O que os dados me permitem afirmar sobre o mundo?</p>
+<p>O que os dados me permitem concluir para além da amostra?</p>
 </blockquote>
 <p><strong>Inferência Estatística</strong></p>
 <hr>
@@ -957,7 +797,6 @@ Ideia principal
 <blockquote class="blockquote">
 <p>Qual método ou modelo devo utilizar?</p>
 </blockquote>
-<hr>
 </section>
 </section>
 <section id="o-modelo-não-define-a-pergunta" class="level2">
@@ -971,18 +810,17 @@ Ideia principal
 <blockquote class="blockquote">
 <p>XGBoost = Previsão.</p>
 </blockquote>
-<p>Uma regressão pode ser utilizada para <strong>previsão</strong>, para <strong>Inferência Estatística</strong>, ou aparecer dentro de uma <strong>análise causal</strong>.</p>
-<p><strong>Machine Learning</strong> também pode ser utilizado dentro de Inferência Causal.</p>
+<p>Uma regressão pode ser utilizada para <strong>Previsão</strong>, <strong>Inferência Estatística</strong> ou dentro de uma <strong>análise causal</strong>.</p>
+<p>Machine Learning também pode ser utilizado dentro de Inferência Causal.</p>
 <p>Portanto:</p>
 <blockquote class="blockquote">
 <p><strong>o algoritmo não define o problema. A pergunta define o problema.</strong></p>
 </blockquote>
 <p>O modelo é uma ferramenta escolhida depois que sabemos o que queremos aprender.</p>
-<hr>
 </section>
 <section id="e-onde-entra-bayesian-statistics" class="level2">
 <h2 class="anchored" data-anchor-id="e-onde-entra-bayesian-statistics">E onde entra Bayesian Statistics?</h2>
-<p>Bayesian Statistics não constitui uma quarta categoria paralela às três anteriores.</p>
+<p>Bayesian Statistics não constitui uma quinta categoria paralela às quatro anteriores.</p>
 <p>Ela oferece outra maneira de representar e atualizar incerteza a partir de dados.</p>
 <p>Métodos bayesianos podem ser utilizados em:</p>
 <ul>
@@ -993,13 +831,12 @@ Ideia principal
 </ul>
 <p>Neste momento, basta guardar que:</p>
 <blockquote class="blockquote">
-<p>“Bayesian” e “Frequentist” dizem respeito a frameworks de inferência, e não substituem a distinção entre prever, inferir e estimar efeitos causais.</p>
+<p>“Bayesian” e “Frequentist” dizem respeito a frameworks de inferência, e não substituem a distinção entre descrever, prever, inferir e estimar efeitos causais.</p>
 </blockquote>
-<p>Voltaremos a essas ideias posteriormente. Porém, não entraremos em Bayesian Statistics nesse curso.</p>
-<hr>
+<p>Voltaremos a essas ideias posteriormente. Porém, não entraremos em Bayesian Statistics neste curso.</p>
 </section>
-<section id="isso-depende-da-empresa-ser-b2b-b2c-ou-uma-empresa-enorme" class="level2">
-<h2 class="anchored" data-anchor-id="isso-depende-da-empresa-ser-b2b-b2c-ou-uma-empresa-enorme">Isso depende da empresa ser B2B, B2C ou uma empresa enorme?</h2>
+<section id="o-tamanho-da-empresa-ou-o-modelo-de-negócio-importa" class="level2">
+<h2 class="anchored" data-anchor-id="o-tamanho-da-empresa-ou-o-modelo-de-negócio-importa">O tamanho da empresa ou o modelo de negócio importa?</h2>
 <p>Não necessariamente.</p>
 <p>Grandes empresas digitais frequentemente possuem condições particularmente favoráveis:</p>
 <ul>
@@ -1009,14 +846,15 @@ Ideia principal
 <li>boa instrumentação;</li>
 <li>infraestrutura de experimentação.</li>
 </ul>
-<p>Por isso vemos empresas como iFood, Nubank, Amazon, Uber, Booking e Netflix utilizando intensamente <strong>Machine Learning, Experimentação e Inferência Causal</strong>.</p>
-<p>Mas o tamanho da empresa não determina sozinho quais perguntas podem ser feitas. Uma empresa pequena pode possuir milhões de observações, e uma empresa enorme pode ter poucos dados para determinada pergunta.</p>
+<p>Por isso vemos empresas como iFood, Nubank, Amazon, Uber, Booking e Netflix utilizando intensamente Machine Learning, Experimentação e Inferência Causal.</p>
+<p>Mas o tamanho da empresa ou o fato de ela ser B2B ou B2C não determina sozinho quais perguntas podem ser feitas.</p>
+<p>Uma empresa pequena pode possuir milhões de observações, enquanto uma empresa enorme pode ter pouca informação para uma pergunta específica.</p>
 <p>Também é importante lembrar:</p>
 <blockquote class="blockquote">
-<p><strong>número N de linhas não é necessariamente o tamanho efetivo da amostra.</strong></p>
+<p><strong>número de linhas não é necessariamente o tamanho efetivo da amostra.</strong></p>
 </blockquote>
 <p>Uma base pode conter 20 milhões de eventos produzidos por apenas algumas centenas de empresas.</p>
-<p>Se a intervenção acontece <em>no nível da empresa</em>, o número relevante de unidades pode ser muito menor que 20 milhões.</p>
+<p>Se a intervenção acontece no nível da empresa, o número relevante de unidades pode ser muito menor que 20 milhões.</p>
 <p>O que importa é a combinação entre:</p>
 <ul>
 <li>pergunta de negócio;</li>
@@ -1027,37 +865,15 @@ Ideia principal
 <li>capacidade de medir outcomes;</li>
 <li>valor econômico da resposta.</li>
 </ul>
-<hr>
 </section>
 <section id="onde-este-curso-se-encaixa" class="level2">
 <h2 class="anchored" data-anchor-id="onde-este-curso-se-encaixa">Onde este curso se encaixa?</h2>
 <p>Este curso <strong>não é um curso de Machine Learning preditivo</strong>.</p>
-<p>Não vamos construir nosso caminho principalmente em torno de:</p>
-<ul>
-<li>Random Forest;</li>
-<li>XGBoost;</li>
-<li>redes neurais;</li>
-<li>forecasting;</li>
-<li>recommendation systems;</li>
-<li>predictive modeling.</li>
-</ul>
-<p>Essas são ferramentas extremamente importantes em Data Science, mas respondem principalmente ao primeiro ramo do nosso mapa:</p>
-<blockquote class="blockquote">
-<p><strong>Previsão.</strong></p>
-</blockquote>
-<p>Nosso caminho será direcionado principalmente aos outros dois:</p>
+<p>Nosso caminho será direcionado principalmente para:</p>
 <blockquote class="blockquote">
 <p><strong>Inferência Estatística e Inferência Causal.</strong></p>
 </blockquote>
-<p>Para chegar até eles, precisamos construir as fundações.</p>
-<p>Começaremos com <strong>Matemática e Teoria da Probabilidade</strong>, porque precisamos de uma linguagem rigorosa para representar incerteza.</p>
-<p>Depois estudaremos <strong>Inferência Estatística</strong>, aprendendo como uma amostra pode ser utilizada para aprender sobre uma população e como quantificar a incerteza das nossas conclusões.</p>
-<p>Estudaremos <strong>Regressão</strong>, uma das ferramentas mais importantes para modelar relações entre variáveis e que será também uma ponte fundamental para Inferência Causal.</p>
-<p>Finalmente chegaremos à <strong>Inferência Causal</strong>, onde adicionaremos uma nova pergunta:</p>
-<blockquote class="blockquote">
-<p>O que aconteceria se intervíssemos no mundo?</p>
-</blockquote>
-<p>O caminho do curso será, portanto:</p>
+<p>Para chegar até elas, construiremos as fundações necessárias:</p>
 <p><strong>Matemática</strong></p>
 <p>↓</p>
 <p><strong>Teoria da Probabilidade</strong></p>
@@ -1067,7 +883,13 @@ Ideia principal
 <p><strong>Regressão</strong></p>
 <p>↓</p>
 <p><strong>Inferência Causal</strong></p>
-<hr>
+<p>Começaremos com Matemática e Teoria da Probabilidade, porque precisamos de uma linguagem rigorosa para representar incerteza.</p>
+<p>Depois estudaremos Inferência Estatística, aprendendo como dados observados podem ser utilizados para aprender sobre quantidades que vão além da amostra e como quantificar a incerteza dessas conclusões.</p>
+<p>Estudaremos Regressão, uma das ferramentas mais importantes para modelar relações entre variáveis e uma ponte fundamental para Inferência Causal.</p>
+<p>Finalmente chegaremos à Inferência Causal, onde adicionaremos uma nova pergunta:</p>
+<blockquote class="blockquote">
+<p>O que aconteceria se intervíssemos no mundo?</p>
+</blockquote>
 </section>
 <section id="para-guardar" class="level2">
 <h2 class="anchored" data-anchor-id="para-guardar">Para guardar</h2>
@@ -1075,24 +897,21 @@ Ideia principal
 <blockquote class="blockquote">
 <p><strong>O que queremos aprender com os dados?</strong></p>
 </blockquote>
+<p><strong>Descrição</strong></p>
+<p>O que aconteceu nos dados que vimos?</p>
+<p>→ Ajuda a empresa a <strong>entender e medir o que aconteceu</strong>.</p>
 <p><strong>Previsão</strong></p>
 <p>O que provavelmente vai acontecer?</p>
 <p>→ Ajuda a empresa a <strong>antecipar</strong>.</p>
 <p><strong>Inferência Estatística</strong></p>
-<p>O que podemos aprender sobre uma população e com qual incerteza?</p>
-<p>→ Ajuda a empresa a <strong>medir sem confundir sinal com ruído</strong>.</p>
+<p>O que podemos aprender além dos dados observados e com qual incerteza?</p>
+<p>→ Ajuda a empresa a <strong>generalizar sem tratar uma métrica observada como verdade exata sobre o todo</strong>.</p>
 <p><strong>Inferência Causal</strong></p>
 <p>O que aconteceria se fizéssemos alguma coisa?</p>
 <p>→ Ajuda a empresa a <strong>descobrir quais ações realmente mudam resultados</strong>.</p>
 <p>Modelos vêm depois. <strong>Primeiro vem a pergunta</strong>.</p>
 
 
-</section>
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p>James, G., Witten, D., Hastie, T., &amp; Tibshirani, R. (2021). <em>An Introduction to Statistical Learning: with Applications in R</em> (2nd ed.). Springer.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
 </section>
 
 </main> <!-- /main -->

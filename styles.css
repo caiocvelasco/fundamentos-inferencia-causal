@@ -32,9 +32,13 @@ figure:has(.course-figure) figcaption:empty {
 .compact-table table,
 .compact-table table.table,
 .compact-table .table {
-  width: auto !important;
+  width: 80% !important;
   display: inline-table !important;
   margin: 0 !important;
+}
+
+.compact-table col {
+  width: auto !important;
 }
 
 .compact-table th,
@@ -216,7 +220,6 @@ figure:has(.course-figure) figcaption:empty {
   font-weight: 500;
 }
 
-/* Títulos dos módulos / partes */
 /* Títulos dos módulos / parts */
 #quarto-sidebar
 .sidebar-item-section

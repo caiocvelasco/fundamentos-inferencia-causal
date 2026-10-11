@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Da Incerteza à Probabilidade – Fundamentos para Inferência Causal</title>
+<title>Formalização Matemática - Espaço Estatístico – Fundamentos para Inferência Causal</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapters/02_formalizacao_modelo_estatistico.html" rel="next">
-<link href="../chapters/00-2_preludio_03.html" rel="prev">
+<link href="../chapters/01_da_incerteza_a_probabilidade.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -112,7 +111,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/01_da_incerteza_a_probabilidade_refatorado.html">Módulo 1 - Probabilidade</a></li><li class="breadcrumb-item"><a href="../chapters/01_da_incerteza_a_probabilidade_refatorado.html"><span class="chapter-title">Da Incerteza à Probabilidade</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/01_da_incerteza_a_probabilidade.html">Módulo 1 - Probabilidade</a></li><li class="breadcrumb-item"><a href="../chapters/02_formalizacao_espaco_estatistico.html"><span class="chapter-title">Formalização Matemática - Espaço Estatístico</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
@@ -153,7 +152,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/motivacao.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">O que queremos aprender com os dados?</span></a>
+  <a href="../chapters/00_o_que_aprender_com_os_dados.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">O que queremos aprender com os dados?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -184,12 +183,12 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/01_da_incerteza_a_probabilidade_refatorado.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Da Incerteza à Probabilidade</span></a>
+  <a href="../chapters/01_da_incerteza_a_probabilidade.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Da Incerteza à Probabilidade</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/02_formalizacao_modelo_estatistico.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A Formalização Matemática</span></a>
+  <a href="../chapters/02_formalizacao_espaco_estatistico.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Formalização Matemática - Espaço Estatístico</span></a>
   </div>
 </li>
       </ul>
@@ -204,11 +203,12 @@ window.Quarto = {
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#determinístico-vs.-estocástico" id="toc-determinístico-vs.-estocástico" class="nav-link active" data-scroll-target="#determinístico-vs.-estocástico">Determinístico vs.&nbsp;estocástico</a></li>
-  <li><a href="#acaso-e-regularidade" id="toc-acaso-e-regularidade" class="nav-link" data-scroll-target="#acaso-e-regularidade">Acaso e regularidade</a></li>
-  <li><a href="#repetição-e-frequência" id="toc-repetição-e-frequência" class="nav-link" data-scroll-target="#repetição-e-frequência">Repetição e frequência</a></li>
-  <li><a href="#do-fenômeno-aos-dados" id="toc-do-fenômeno-aos-dados" class="nav-link" data-scroll-target="#do-fenômeno-aos-dados">Do fenômeno aos dados</a></li>
-  <li><a href="#por-que-probabilidade" id="toc-por-que-probabilidade" class="nav-link" data-scroll-target="#por-que-probabilidade">Por que Probabilidade?</a></li>
+  <li><a href="#do-experimento-aleatório-ao-espaço-estatístico" id="toc-do-experimento-aleatório-ao-espaço-estatístico" class="nav-link active" data-scroll-target="#do-experimento-aleatório-ao-espaço-estatístico">Do Experimento Aleatório ao Espaço Estatístico</a></li>
+  <li><a href="#a-primeira-parte-espaço-de-probabilidade" id="toc-a-primeira-parte-espaço-de-probabilidade" class="nav-link" data-scroll-target="#a-primeira-parte-espaço-de-probabilidade">A primeira parte: Espaço de Probabilidade</a></li>
+  <li><a href="#a-segunda-parte-espaço-de-amostragem" id="toc-a-segunda-parte-espaço-de-amostragem" class="nav-link" data-scroll-target="#a-segunda-parte-espaço-de-amostragem">A segunda parte: Espaço de Amostragem</a></li>
+  <li><a href="#juntando-as-duas-partes" id="toc-juntando-as-duas-partes" class="nav-link" data-scroll-target="#juntando-as-duas-partes">Juntando as duas partes</a></li>
+  <li><a href="#preview-quando-os-ensaios-são-iid" id="toc-preview-quando-os-ensaios-são-iid" class="nav-link" data-scroll-target="#preview-quando-os-ensaios-são-iid">Preview: quando os ensaios são IID</a></li>
+  <li><a href="#antes-de-finalizarmos-feynman-e-o-framework" id="toc-antes-de-finalizarmos-feynman-e-o-framework" class="nav-link" data-scroll-target="#antes-de-finalizarmos-feynman-e-o-framework">Antes de finalizarmos: Feynman e o <em>framework</em></a></li>
   <li><a href="#antes-de-continuar" id="toc-antes-de-continuar" class="nav-link" data-scroll-target="#antes-de-continuar">Antes de continuar</a></li>
   </ul>
 </nav>
@@ -216,9 +216,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/01_da_incerteza_a_probabilidade_refatorado.html">Módulo 1 - Probabilidade</a></li><li class="breadcrumb-item"><a href="../chapters/01_da_incerteza_a_probabilidade_refatorado.html"><span class="chapter-title">Da Incerteza à Probabilidade</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/01_da_incerteza_a_probabilidade.html">Módulo 1 - Probabilidade</a></li><li class="breadcrumb-item"><a href="../chapters/02_formalizacao_espaco_estatistico.html"><span class="chapter-title">Formalização Matemática - Espaço Estatístico</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">Da Incerteza à Probabilidade</span></h1>
+<h1 class="title"><span class="chapter-title">Formalização Matemática - Espaço Estatístico</span></h1>
 </div>
 
 
@@ -239,305 +239,201 @@ window.Quarto = {
 FONTES PRINCIPAIS
 
 Spanos:
-- Chapter 1 — An Introduction to Empirical Modeling
-- 1.2 Stochastic Phenomena
-- 1.3 Chance Regularity and Statistical Models
+- Chapter 2: Probability Theory: a Modeling Framework
+- Chapter 3: The Notion of a Probability Model
+- Chapter 4: The Notion of a Random Sample
 
 Bertsekas & Tsitsiklis:
-- Chapter 1 — Sample Space and Probability
+- Chapter 1: Sample Space and Probability
 -->
-<p>No prelúdio, vimos o mapa geral: fenômenos do mundo real produzem dados e usamos a Probabilidade para construir uma representação matemática do mecanismo capaz de gerá-los.</p>
-<p>Mas antes de calcular probabilidades, precisamos responder:</p>
-<blockquote class="blockquote">
-<p><strong>Por que precisamos de uma Teoria das Probabilidades?</strong></p>
-</blockquote>
-<p>A resposta começa com o tipo de fenômeno que queremos representar.</p>
-<section id="determinístico-vs.-estocástico" class="level2">
-<h2 class="anchored" data-anchor-id="determinístico-vs.-estocástico">Determinístico vs.&nbsp;estocástico</h2>
-<p>Considere <span class="math inline">\(y=f(x)=2x+1\)</span>.</p>
-<p>Se <span class="math inline">\(x=3\)</span>, então necessariamente <span class="math inline">\(y=7\)</span>.</p>
-<p>Conhecido <span class="math inline">\(x\)</span> e conhecido o mecanismo <span class="math inline">\(f\)</span>, o resultado está determinado.</p>
-<p>Esse é um <strong>fenômeno determinístico</strong>.</p>
-<p>Agora pense em uma <strong>sessão de checkout de um usuário em um e-commerce</strong>.</p>
-<p>Podemos conhecer o dispositivo, país, horário, produtos no carrinho e várias outras características do usuário.</p>
-<p>Ainda assim, <strong>não necessariamente sabemos</strong> se ele fará uma compra.</p>
-<p>O resultado pode ser:</p>
-<p><span class="math display">\[
-\text{compra}
-\qquad\text{ou}\qquad
-\text{não compra}.
-\]</span></p>
-<p>Existe <strong>incerteza sobre o resultado que será observado</strong>.</p>
-<p>Esse é o tipo de situação que chamaremos de <strong>fenômeno estocástico</strong>.</p>
-<blockquote class="blockquote">
-<p>Em um fenômeno estocástico, não conseguimos determinar antecipadamente qual resultado particular será observado.</p>
-</blockquote>
-<p>Mas isso não significa ausência de estrutura.</p>
-</section>
-<section id="acaso-e-regularidade" class="level2">
-<h2 class="anchored" data-anchor-id="acaso-e-regularidade">Acaso e regularidade</h2>
-<p>Spanos<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> usa a expressão <em>chance regularity</em> para descrever uma característica fundamental dos fenômenos estocásticos:</p>
-<p><span class="math display">\[
-\underbrace{\text{Acaso}}_{\text{incerteza individual}}
-+
-\underbrace{\text{Regularidade}}_{\text{estrutura no agregado}}.
-\]</span></p>
-<p>Em palavras:</p>
-<blockquote class="blockquote">
-<p><strong>incerteza no resultado individual, regularidade quando observamos muitos resultados.</strong></p>
-</blockquote>
-<p>Considere o lançamento de dois dados.</p>
-<p>Em um lançamento, a soma pode ser qualquer valor entre <span class="math inline">\(2\)</span> e <span class="math inline">\(12\)</span>, e não sabemos antecipadamente qual será observado.</p>
-<p>Mas os valores possíveis não possuem a mesma estrutura:</p>
-<div class="compact-table">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: center;">Soma</th>
-<th style="text-align: center;">Combinações possíveis</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">2</td>
-<td style="text-align: center;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">3</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">5</td>
-<td style="text-align: center;">4</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">6</td>
-<td style="text-align: center;">5</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">7</td>
-<td style="text-align: center;">6</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">8</td>
-<td style="text-align: center;">5</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">9</td>
-<td style="text-align: center;">4</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">10</td>
-<td style="text-align: center;">3</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">11</td>
-<td style="text-align: center;">2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">12</td>
-<td style="text-align: center;">1</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>A soma <span class="math inline">\(7\)</span>, por exemplo, pode ocorrer de seis maneiras:</p>
-<p><span class="math display">\[
-(1,6),(2,5),(3,4),(4,3),(5,2),(6,1),
-\]</span></p>
-<p>enquanto a soma <span class="math inline">\(2\)</span> só pode ocorrer como</p>
-<p><span class="math display">\[
-(1,1).
-\]</span></p>
-<p>Podemos visualizar essa estrutura:</p>
-<div style="width: 100%; max-width: 900px; margin: 2rem auto; overflow-x: auto;">
-
-<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 900 390" width="100%" style="display: block;" role="img" aria-label="Número de combinações possíveis para cada soma de dois dados">
-
-  <line x1="70" y1="310" x2="850" y2="310" stroke="currentColor" stroke-width="2"></line>
-
-  <rect x="90" y="270" width="45" height="40" fill="currentColor" opacity="0.70"></rect>
-  <rect x="155" y="230" width="45" height="80" fill="currentColor" opacity="0.70"></rect>
-  <rect x="220" y="190" width="45" height="120" fill="currentColor" opacity="0.70"></rect>
-  <rect x="285" y="150" width="45" height="160" fill="currentColor" opacity="0.70"></rect>
-  <rect x="350" y="110" width="45" height="200" fill="currentColor" opacity="0.70"></rect>
-  <rect x="415" y="70" width="45" height="240" fill="currentColor" opacity="0.70"></rect>
-  <rect x="480" y="110" width="45" height="200" fill="currentColor" opacity="0.70"></rect>
-  <rect x="545" y="150" width="45" height="160" fill="currentColor" opacity="0.70"></rect>
-  <rect x="610" y="190" width="45" height="120" fill="currentColor" opacity="0.70"></rect>
-  <rect x="675" y="230" width="45" height="80" fill="currentColor" opacity="0.70"></rect>
-  <rect x="740" y="270" width="45" height="40" fill="currentColor" opacity="0.70"></rect>
-
-  <g fill="currentColor" font-size="16" text-anchor="middle">
-    <text x="112" y="260">1</text>
-    <text x="177" y="220">2</text>
-    <text x="242" y="180">3</text>
-    <text x="307" y="140">4</text>
-    <text x="372" y="100">5</text>
-    <text x="437" y="60">6</text>
-    <text x="502" y="100">5</text>
-    <text x="567" y="140">4</text>
-    <text x="632" y="180">3</text>
-    <text x="697" y="220">2</text>
-    <text x="762" y="260">1</text>
-  </g>
-
-  <g fill="currentColor" font-size="16" text-anchor="middle">
-    <text x="112" y="335">2</text>
-    <text x="177" y="335">3</text>
-    <text x="242" y="335">4</text>
-    <text x="307" y="335">5</text>
-    <text x="372" y="335">6</text>
-    <text x="437" y="335">7</text>
-    <text x="502" y="335">8</text>
-    <text x="567" y="335">9</text>
-    <text x="632" y="335">10</text>
-    <text x="697" y="335">11</text>
-    <text x="762" y="335">12</text>
-  </g>
-
-  <text x="437" y="375" text-anchor="middle" font-size="18" fill="currentColor">
-    Soma dos dois dados
-  </text>
-
-</svg>
-
-</div>
-<p>Ainda não definimos nenhuma probabilidade.</p>
-<p>Mas já percebemos a ideia importante:</p>
-<blockquote class="blockquote">
-<p><strong>a incerteza pode possuir estrutura.</strong></p>
-</blockquote>
-</section>
-<section id="repetição-e-frequência" class="level2">
-<h2 class="anchored" data-anchor-id="repetição-e-frequência">Repetição e frequência</h2>
-<p>Agora imagine repetir o lançamento dos dois dados muitas vezes:</p>
-<p><span class="math display">\[
-7,\;4,\;10,\;6,\;7,\;9,\;3,\;8,\ldots
-\]</span></p>
-<p>Cada resultado individual continua incerto, mas podemos observar quantas vezes determinado evento ocorre.</p>
-<p>Se a soma <span class="math inline">\(7\)</span> aparecer <span class="math inline">\(18\)</span> vezes em <span class="math inline">\(100\)</span> lançamentos, sua <strong>frequência relativa observada</strong> será</p>
-<p><span class="math display">\[
-\frac{18}{100}=0{,}18.
-\]</span></p>
-<p>Se repetirmos o processo, podemos encontrar <span class="math inline">\(0{,}15\)</span>, <span class="math inline">\(0{,}19\)</span>, <span class="math inline">\(0{,}17,\ldots\)</span></p>
-<p>Essas frequências variam, mas podem apresentar <strong>regularidade</strong> quando o número de observações cresce.</p>
-<p>É exatamente a combinação:</p>
-<p><span class="math display">\[
-\boxed{
-\text{incerteza individual}
-+
-\text{regularidade no agregado}
-}
-\]</span></p>
-<div class="callout callout-style-default callout-note callout-titled" title="Probabilidade não é frequência relativa">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Probabilidade não é frequência relativa
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>A <strong>frequência relativa</strong> é algo que observamos nos dados.</p>
-<p>A <strong>probabilidade</strong> fará parte do modelo matemático que construiremos.</p>
-<p>Mais adiante, a <span class="conceito"><strong>Lei dos Grandes Números</strong></span> (<em>Law of Large Numbers - LLN</em>) estabelecerá a relação entre essas duas ideias sob determinadas condições.</p>
-</div>
-</div>
-<p><img src="..\images/individual_agregado.png" class="course-figure img-fluid" style="width:80.0%"></p>
-</section>
-<section id="do-fenômeno-aos-dados" class="level2">
-<h2 class="anchored" data-anchor-id="do-fenômeno-aos-dados">Do fenômeno aos dados</h2>
-<p>No mundo real, normalmente não observamos diretamente o mecanismo estocástico, observamos suas <strong>realizações</strong>.</p>
-<p>Em um checkout, por exemplo, podemos observar:</p>
-<div class="compact-table">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: center;">user_id</th>
-<th style="text-align: center;">compra</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">2</td>
-<td style="text-align: center;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">5</td>
-<td style="text-align: center;">0</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>Isso nos obriga a separar duas coisas:</p>
-<p><span class="math display">\[
-\boxed{
-\text{mecanismo que gera os dados}
-\neq
-\text{dados observados}
-}
-\]</span></p>
-<p>Os dados são aquilo que observamos. O <strong>mecanismo subjacente</strong> é aquilo que queremos representar matematicamente.</p>
-<p>Mais adiante chamaremos esse mecanismo de <span class="conceito"><strong>Processo Gerador dos Dados</strong></span>, ou <em>Data Generating Process</em> (<strong>DGP</strong>).</p>
-</section>
-<section id="por-que-probabilidade" class="level2">
-<h2 class="anchored" data-anchor-id="por-que-probabilidade">Por que Probabilidade?</h2>
-<p>Chegamos então à pergunta inicial:</p>
-<blockquote class="blockquote">
-<p><strong>como representar matematicamente um fenômeno cujo resultado individual é incerto, mas que possui estrutura e pode apresentar regularidade?</strong></p>
-</blockquote>
-<p>É para isso que construiremos a <strong>Teoria das Probabilidades</strong>.</p>
-<p>Ela <strong>não eliminará a incerteza</strong> nem nos dirá necessariamente qual resultado ocorrerá, ela fornecerá uma linguagem para dizer, de maneira precisa:</p>
+<p>No capítulo anterior, vimos <strong>por que</strong> precisamos da Probabilidade.</p>
+<p>Agora começa a formalização: vamos transformar a ideia de um fenômeno incerto em uma estrutura matemática que, mais adiante, possa ser usada para modelar <strong>dados observados</strong>.</p>
+<p>Formalizar não é apenas trocar palavras por símbolos. É aprender a dizer com precisão:</p>
 <ul>
-<li>quais resultados são possíveis;</li>
-<li>quais conjuntos de resultados queremos estudar;</li>
-<li>como atribuímos probabilidades a eles.</li>
+<li>o que estamos modelando;</li>
+<li>quais hipóteses estamos impondo;</li>
+<li>quais objetos fazem parte do modelo;</li>
+<li>e como esses objetos se relacionam.</li>
 </ul>
-<p>Por enquanto, guarde apenas a história:</p>
+<p>Modelar começa <strong>antes</strong> de escolher um estimador, testar uma hipótese ou rodar um algoritmo.</p>
+<section id="do-experimento-aleatório-ao-espaço-estatístico" class="level2">
+<h2 class="anchored" data-anchor-id="do-experimento-aleatório-ao-espaço-estatístico">Do Experimento Aleatório ao Espaço Estatístico</h2>
+<p>O ponto de partida é o <span class="conceito"><strong>Experimento Aleatório</strong></span> (<em>Random Experiment</em>): o mecanismo conceitual que queremos representar matematicamente.</p>
+<p>Na organização de Spanos, ele reúne três ideias:</p>
+<ol type="1">
+<li><strong>[a]</strong> conhecemos a priori os possíveis resultados;</li>
+<li><strong>[b]</strong> em um ensaio específico não sabemos qual resultado ocorrerá, mas existe uma regularidade probabilística;</li>
+<li><strong>[c]</strong> o experimento pode ser repetido sob as mesmas condições.</li>
+</ol>
+<p>A formalização dessas ideias dará origem ao <span class="conceito"><strong>Espaço Estatístico</strong></span> (<em>Statistical Space</em>).</p>
 <p><span class="math display">\[
 \boxed{
-\text{fenômeno estocástico}
-\longrightarrow
-\text{incerteza + regularidade}
-\longrightarrow
-\text{modelo probabilístico}
+\text{Experimento Aleatório}
+\;\longrightarrow\;
+\text{Espaço Estatístico}
 }
 \]</span></p>
+<p>Ou seja, o Experimento Aleatório não está “dentro” do Espaço Estatístico. Ele é o fenômeno conceitual que estamos tentando representar matematicamente.</p>
+</section>
+<section id="a-primeira-parte-espaço-de-probabilidade" class="level2">
+<h2 class="anchored" data-anchor-id="a-primeira-parte-espaço-de-probabilidade">A primeira parte: Espaço de Probabilidade</h2>
+<p>As condições [a] e [b] são formalizadas pelo <span class="conceito"><strong>Espaço de Probabilidade</strong></span>.</p>
+<p>Para um único ensaio:</p>
+<p><span class="math display">\[
+(\Omega,\mathcal F,P).
+\]</span></p>
+<p>Aqui:</p>
+<ul>
+<li><span class="math inline">\(\Omega\)</span> reúne os possíveis resultados;</li>
+<li><span class="math inline">\(\mathcal F\)</span> organiza as perguntas que queremos fazer sobre esses resultados;</li>
+<li><span class="math inline">\(P\)</span> atribui probabilidades a essas perguntas.</li>
+</ul>
+<p>Quando queremos representar vários ensaios conjuntamente, usamos a estrutura correspondente</p>
+<p><span class="math display">\[
+(\Omega^{(n)},\mathcal F^{(n)},P^{(n)}).
+\]</span></p>
+<p>A ideia é a mesma. Agora estamos descrevendo probabilisticamente os possíveis resultados dos <span class="math inline">\(n\)</span> ensaios em conjunto.</p>
+</section>
+<section id="a-segunda-parte-espaço-de-amostragem" class="level2">
+<h2 class="anchored" data-anchor-id="a-segunda-parte-espaço-de-amostragem">A segunda parte: Espaço de Amostragem</h2>
+<p>A condição [c] introduz uma segunda estrutura.</p>
+<p>Se repetimos o experimento <span class="math inline">\(n\)</span> vezes, escrevemos</p>
+<p><span class="math display">\[
+\mathcal G_n=\{T_1,T_2,\ldots,T_n\},
+\]</span></p>
+<p>onde <span class="math inline">\(T_i\)</span> representa o <span class="math inline">\(i\)</span>-ésimo <span class="conceito"><strong>ensaio</strong></span> (<em>trial</em>).</p>
+<p>Chamaremos <span class="math inline">\(\mathcal G_n\)</span> de <span class="conceito"><strong>Espaço de Amostragem</strong></span> (<em>Sampling Space</em>).</p>
+<p>Neste ponto, ele apenas organiza a sequência de ensaios.</p>
+<p>Ainda <strong>não</strong> estamos assumindo que esses ensaios sejam independentes nem identicamente distribuídos.</p>
+<p>Portanto:</p>
+<ul>
+<li><span class="math inline">\(T_i\)</span> = ensaio;</li>
+<li><span class="math inline">\(\omega_i\)</span> = resultado do ensaio <span class="math inline">\(T_i\)</span>;</li>
+<li><span class="math inline">\(\Omega\)</span> = espaço amostral (<em>sample space</em>);</li>
+<li><span class="math inline">\(\mathcal G_n\)</span> = espaço de amostragem (<em>sampling space</em>).</li>
+</ul>
+<p>Esses dois últimos objetos têm nomes parecidos, mas representam coisas diferentes.</p>
+</section>
+<section id="juntando-as-duas-partes" class="level2">
+<h2 class="anchored" data-anchor-id="juntando-as-duas-partes">Juntando as duas partes</h2>
+<p>Podemos agora enxergar a representação matemática completa.</p>
+<div style="max-width: 820px; margin: 2rem auto; text-align: center;">
+
+  <div style="font-weight: 700; font-size: 1.15rem; margin-bottom: 0.35rem;">
+    Experimento Aleatório
+  </div>
+
+  <div style="font-size: 0.9rem; margin-bottom: 0.25rem;">
+    representação matemática
+  </div>
+
+  <div style="font-size: 1.9rem; line-height: 1; margin-bottom: 0.7rem;">
+    \(\downarrow\)
+  </div>
+
+  <div style="border: 2px solid currentColor; border-radius: 12px; padding: 1.2rem 1.4rem 1.4rem 1.4rem;">
+    <div style="font-weight: 700; font-size: 1.15rem; margin-bottom: 1rem;">
+      Espaço Estatístico
+    </div>
+
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+
+      <div style="flex: 1 1 280px; border: 1.5px solid currentColor; border-radius: 9px; padding: 1rem; text-align: center;">
+        <strong>Espaço de Probabilidade</strong><br>
+        <span style="font-size: 0.95rem;">formaliza [a] e [b]</span><br><br>
+        <span>\((\Omega^{(n)},\mathcal F^{(n)},P^{(n)})\)</span>
+      </div>
+
+      <div style="flex: 1 1 280px; border: 1.5px solid currentColor; border-radius: 9px; padding: 1rem; text-align: center;">
+        <strong>Espaço de Amostragem</strong><br>
+        <span style="font-size: 0.95rem;">formaliza [c]</span><br><br>
+        <span>\(\mathcal G_n=\{T_1,T_2,\ldots,T_n\}\)</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+<p>Assim, no caso geral:</p>
+<p><span class="math display">\[
+\boxed{
+\left[
+(\Omega^{(n)},\mathcal F^{(n)},P^{(n)}),
+\mathcal G_n
+\right]
+}
+\]</span></p>
+<p>é a estrutura abstrata que usaremos para representar conjuntamente a incerteza e a repetição do experimento.</p>
+</section>
+<section id="preview-quando-os-ensaios-são-iid" class="level2">
+<h2 class="anchored" data-anchor-id="preview-quando-os-ensaios-são-iid">Preview: quando os ensaios são IID</h2>
+<p>Até aqui, <span class="math inline">\(\mathcal G_n\)</span> representa apenas uma sequência de ensaios.</p>
+<p>Mais adiante, vamos formalizar a ideia de repetir o experimento <strong>sob as mesmas condições</strong> impondo duas propriedades:</p>
+<ul>
+<li><span class="conceito"><strong>Identical Distribution (ID)</strong></span>: a mesma estrutura probabilística é mantida de ensaio para ensaio;</li>
+<li><span class="conceito"><strong>Independence (I)</strong></span>: a informação de um ensaio não altera probabilisticamente os demais.</li>
+</ul>
+<p>Visualmente:</p>
+<p><span class="math display">\[
+\mathcal G_n
+\quad\xrightarrow{\text{ID + Independência}}\quad
+\mathcal G_n^{IID}.
+\]</span></p>
+<p>A sequência <span class="math inline">\(\mathcal G_n^{IID}\)</span> será chamada de uma sequência de <span class="conceito"><strong>Ensaios Aleatórios</strong></span> (<em>Random Trials</em>).</p>
+<p>Nesse caso simples, o Espaço Estatístico assume a forma</p>
+<p><span class="math display">\[
+\boxed{
+\left[
+(\Omega,\mathcal F,P)^n,
+\mathcal G_n^{IID}
+\right]
+}
+\]</span></p>
+<p>que chamaremos de <span class="conceito"><strong>Espaço Estatístico Simples</strong></span>.</p>
+<p>Não precisamos desenvolver IID agora.</p>
+<p>Por enquanto, basta guardar a arquitetura:</p>
+<p><span class="math display">\[
+\boxed{
+\text{Experimento Aleatório}
+\;\longrightarrow\;
+\text{Espaço Estatístico}
+}
+\]</span></p>
+<p>com duas partes:</p>
+<p><span class="math display">\[
+\boxed{
+\text{Espaço de Probabilidade}
+\;+\;
+\text{Espaço de Amostragem}
+}
+\]</span></p>
+<p>Nos próximos capítulos, vamos abrir essas caixas com mais cuidado e, depois, transformar essa estrutura abstrata em objetos adequados para trabalhar com dados.</p>
+</section>
+<section id="antes-de-finalizarmos-feynman-e-o-framework" class="level2">
+<h2 class="anchored" data-anchor-id="antes-de-finalizarmos-feynman-e-o-framework">Antes de finalizarmos: Feynman e o <em>framework</em></h2>
+<p>Antes de continuar, assista a este breve vídeo de Richard Feynman.</p>
+<p>O ponto importante aqui é a ideia de que uma explicação só consegue avançar quando quem pergunta e quem responde compartilham um <strong>framework de conhecimento e raciocínio</strong>.</p>
+<p>Ele comenta isso por volta do minuto 1:38.</p>
+<p>É exatamente o que estamos fazendo agora: construindo a linguagem necessária para que, mais adiante, conceitos de Estatística e Inferência Causal não apareçam como fórmulas isoladas.</p>
+<div style="max-width: 900px; margin: 1.5rem auto;">
+  <iframe width="100%" style="aspect-ratio: 16 / 9; border: 0;" src="https://www.youtube.com/embed/36GT2zI8lVA?start=1" title="Richard Feynman: Why?" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="">
+  </iframe>
+</div>
 </section>
 <section id="antes-de-continuar" class="level2">
 <h2 class="anchored" data-anchor-id="antes-de-continuar">Antes de continuar</h2>
-<p>Até aqui, construímos a motivação: fenômenos estocásticos combinam <strong>incerteza no resultado individual</strong> com algum tipo de <strong>estrutura ou regularidade</strong>.</p>
-<p>A próxima etapa é transformar essa intuição em matemática.</p>
-<p>No próximo capítulo, começaremos a formalização: veremos como definir com precisão o fenômeno que queremos estudar e como organizar os objetos matemáticos que permitirão passar da Probabilidade para a Estatística.</p>
-<blockquote class="blockquote">
-<p><strong>A pergunta deixa de ser apenas “por que Probabilidade?” e passa a ser: como construímos um modelo matemático para representar essa incerteza?</strong></p>
-</blockquote>
-
-
-</section>
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p>Spanos, A. (1999). <em>Probability Theory and Statistical Inference: Econometric Modeling with Observational Data</em>. Cambridge University Press.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<p>Tente responder sem voltar ao texto:</p>
+<ol type="1">
+<li><p>O que estamos tentando representar matematicamente quando construímos um Espaço Estatístico?</p></li>
+<li><p>Quais condições do Experimento Aleatório são formalizadas pelo Espaço de Probabilidade?</p></li>
+<li><p>Qual condição motiva a introdução do Espaço de Amostragem?</p></li>
+<li><p>Qual é a diferença entre <span class="math inline">\(\Omega\)</span> e <span class="math inline">\(\mathcal G_n\)</span>?</p></li>
+<li><p>O que representam <span class="math inline">\(T_i\)</span> e <span class="math inline">\(\omega_i\)</span>?</p></li>
+<li><p>No caso geral, estamos assumindo que os ensaios são IID?</p></li>
+<li><p>O que precisamos acrescentar a <span class="math inline">\(\mathcal G_n\)</span> para obter <span class="math inline">\(\mathcal G_n^{IID}\)</span>?</p></li>
+<li><p>Qual é a forma do Espaço Estatístico Simples?</p></li>
 </ol>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -942,14 +838,11 @@ Probabilidade não é frequência relativa
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/00-2_preludio_03.html" class="pagination-link" aria-label="Onde Queremos Chegar: do Experimento Aleatório ao Modelo Estatístico">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Onde Queremos Chegar: do Experimento Aleatório ao Modelo Estatístico</span></span>
+      <a href="../chapters/01_da_incerteza_a_probabilidade.html" class="pagination-link" aria-label="Da Incerteza à Probabilidade">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Da Incerteza à Probabilidade</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/02_formalizacao_modelo_estatistico.html" class="pagination-link" aria-label="A Formalização Matemática">
-        <span class="nav-page-text"><span class="chapter-title">A Formalização Matemática</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
